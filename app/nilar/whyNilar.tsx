@@ -137,7 +137,9 @@ function WhyAfricaNeedsNilar() {
               key={sec.id}
               id={sec.id}
               data-id={sec.id}
-              ref={(el) => (refs.current[idx] = el)}
+              ref={(el) => {
+  refs.current[idx] = el;
+}}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
@@ -151,7 +153,7 @@ function WhyAfricaNeedsNilar() {
                 {sec.content}
               </p>
              <div className="flex flex-col gap-y-2 font-semibold mt-2">
-             {sec?.stages?.map((stage)=> <p className="text-gray-700 leading-relaxed whitespace-pre-line"> 	•	{stage}</p> )}
+             {sec?.stages?.map((stage, index)=> <p key={index} className="text-gray-700 leading-relaxed whitespace-pre-line"> 	•	{stage}</p> )}
              </div>
 
              <p className="text-gray-700 leading-relaxed whitespace-pre-line mt-2">{sec?.conclusion}</p>

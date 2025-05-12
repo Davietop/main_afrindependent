@@ -17,6 +17,7 @@ import { usePublications } from "./publication-section";
 import ReactPaginate from "react-paginate";
 import Link from "next/link";
 import { paths } from "@/components/ui/page-sections/nav-bar/pc";
+import Image from "next/image";
 
 interface Article {
   title: string;
@@ -26,6 +27,28 @@ interface Article {
   image: string;
   intro?: string;
 }
+
+interface Author {
+  desc: string;
+  about: string;
+  name: string;
+  slug: string;
+  image: string;
+}
+
+interface Publication {
+  slug: string;
+  title: string;
+  image: string;
+  publishedAt: string;
+  category: string;
+  intro: string;
+  categoryName: string;
+  author: Author;
+  file: string;
+  abstract: string;
+}
+
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -43,7 +66,8 @@ export default function Filters({ categories }: PropType) {
   const [activeFilter, setActiveFilter] = useState("latest_pub");
   const [filteredPublications, setFilteredPublications] = useState<any[]>([]);
   const { data: publications } = usePublications({});
-  const [publicationData, setPublicationData] = useState([]);
+
+  const [publicationData, setPublicationData] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6;
@@ -123,7 +147,8 @@ export default function Filters({ categories }: PropType) {
     setFilteredPublications(uniqueResults);
   };
 
-  useEffect(() => {
+
+    useEffect(() => {
     handleFilterClick("latest_pub");
   }, [publications]);
 
@@ -168,7 +193,7 @@ export default function Filters({ categories }: PropType) {
             </h3>
           </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-5 lg:px-10">
-          {uniqueFeatured.map(({ title, level, slug }) => (
+          {uniqueFeatured.map(({ title, level, slug }:any) => (
             <Link
 
             href={`${paths.publications}/${slug}`}
@@ -236,7 +261,8 @@ export default function Filters({ categories }: PropType) {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {currentItems.map(({ slug, title, image, publishedAt, category, author, abstract, categoryName, intro }) => (
                       <div key={slug} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-                        <img src={image} alt={title} className="w-full h-52 object-cover" />
+                        <Image height={100} width={100} src={image} alt={title} className="w-full h-52 object-cover" />
+                        
                         <div className="p-5 flex flex-col gap-y-4">
                         <p className="inline-block  font-semibold rounded-full text-sm tracking-wider text-[#ffd700] uppercase w-fit">{categoryName}</p>
                           <h3 className="text-xl font-semibold text-deepForest mb-2">{title}</h3>

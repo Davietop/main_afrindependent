@@ -8,7 +8,30 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { getPublications } from "@/service/sanity-queries";
 import { IBM_Plex_Sans } from 'next/font/google';
 import { getSinglePublication } from "@/service/sanity-queries";
+interface Author {
+  desc: string;
+  about: string;
+  name: string;
+  slug: string;
+  image: string;
+}
 
+interface Publication {
+  slug: string;
+  title: string;
+  image: string;
+  publishedAt: string;
+  category: string;
+  intro: string;
+  categoryName: string;
+  author: Author;
+  file: string;
+  abstract: string;
+}
+
+interface AbstractBlock {
+  children: { text: string }[];
+}
 
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -53,7 +76,7 @@ function SkeletonCard() {
 }
 
 const PublicationSection =  ({ filter, authorSlug }: PropType) => {
-  const [publicationData, setPublicationData] = useState([]);
+ const [publicationData, setPublicationData] = useState<Publication[]>([]);
  
   const { data: publications, isLoading } = usePublications({
     ...(filter && { category: filter }),
@@ -109,8 +132,24 @@ const PublicationSection =  ({ filter, authorSlug }: PropType) => {
   ) : (
     <section className={`${ibmPlexSans.className} grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[60px]`}>
       {publicationData.map(({ slug, title, image, publishedAt, category, author, abstract, categoryName }, index) => {
-        const combinedText =  abstract[0]?.children .map(item => item.text).join('');
-        const cleanedText = combinedText.replace(/^\[|\]$/g, ''); // remove [ at start or ] at end
+        // const combinedText =  abstract[0]?.children .map(({item}:any) => item.text).join('');
+      let abstractText = "";
+      try {
+  const parsed = JSON.parse(abstract) as unknown;
+
+  if (
+    Array.isArray(parsed) &&
+    typeof parsed[0] === "object" &&
+    "children" in parsed[0]
+  ) {
+    abstractText = (parsed[0] as AbstractBlock).children
+      .map((child) => child.text)
+      .join("");
+  }
+} catch (e) {
+  abstractText = "";
+}
+        const cleanedText = abstractText.replace(/^\[|\]$/g, ''); // remove [ at start or ] at end
         const readableDate = new Date(publishedAt).toLocaleString("en-US", {
           year: "numeric",
           month: "long",
