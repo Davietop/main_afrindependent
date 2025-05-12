@@ -111,7 +111,7 @@ const List = ({ authorSlug }: PropType) => {
               const isLast = index === publicationData.length - 1;
 
               return (
-                <Link  href={`${paths.publications}/${slugData.slug}?type=${category}`}>
+                <Link key={index}  href={`${paths.publications}/${slugData.slug}?type=${category}`}>
                   <div className="text-black flex flex-col md:flex-row gap-x-10   w-full  ">
                     <div className="h-[300px] w-11/12 md:w-4/12 bg-cover bg-center "  style={{
     backgroundImage: `url('${image}')`,

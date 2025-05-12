@@ -461,8 +461,8 @@ export default function AfriconomicsPage() {
                             ))}
                           </div>
                           {
-                            concept?.stages?.map((stage)=>{
-                              return <div>
+                            concept?.stages?.map((stage, index)=>{
+                              return <div key={index}>
                               <br/>
                                 <p className="font-semibold">{stage.intro}</p>
                                 <p className="font-semibold">{stage.stage}</p>

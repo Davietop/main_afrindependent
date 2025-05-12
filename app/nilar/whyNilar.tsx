@@ -79,7 +79,7 @@ function WhyAfricaNeedsNilar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  });
 
   return (
     <section className={`relative py-24 px-5 lg:px-10 ${ibmPlexSans.className}`}>
