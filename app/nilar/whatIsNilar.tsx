@@ -37,7 +37,7 @@ const WhatIsNilar = ()=>{
         <div className="mt-16 grid gap-8 md:grid-cols-3">
           
           {/* Key Point 1 */}
-          <div className="p-6 bg-gray-50 rounded-2xl shadow flex flex-col items-center text-center">
+          <div className="p-6 bg-gray-50 border border-[#ffd700] rounded-2xl shadow flex flex-col items-center text-center">
             <ShieldCheck className="h-10 w-10 text-yellow-500" />
             <h3 className="mt-4 text-lg font-semibold text-gray-900">
               A gold-based currency for African nations,
@@ -48,7 +48,7 @@ const WhatIsNilar = ()=>{
           </div>
 
           {/* Key Point 2 */}
-          <div className="p-6 bg-gray-50 rounded-2xl shadow flex flex-col items-center text-center">
+          <div className="p-6 bg-gray-50  border border-[#ffd700] rounded-2xl shadow flex flex-col items-center text-center">
             <Scale className="h-10 w-10 text-yellow-500" />
             <h3 className="mt-4 text-lg font-semibold text-gray-900">
             Grounded in Africonomics and natural-moral law,
@@ -59,7 +59,7 @@ const WhatIsNilar = ()=>{
           </div>
 
           {/* Key Point 3 */}
-          <div className="p-6 bg-gray-50 rounded-2xl shadow flex flex-col items-center text-center">
+          <div className="p-6 bg-gray-50  border border-[#ffd700] rounded-2xl shadow flex flex-col items-center text-center">
             <Globe2 className="h-10 w-10 text-yellow-500" />
             <h3 className="mt-4 text-lg font-semibold text-gray-900">
             Designed to restore sound money, monetary sovereignty, and economic stability,

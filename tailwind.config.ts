@@ -43,7 +43,7 @@ const config = {
         bg_home:`url("/hero_landing.jpg")`,
         contact: `url("/contact.jpg")`,
         mission_hands:`url("/working_mission.jpg")`,
-        publication:`url("/publication.jpg")`,
+        publication:`url("/pub_lica.jpg")`,
         logo_bg: `url("/Afridependent_2.svg")`,
         gradient:
           "linear-gradient(rgba(138, 65, 50, .9) 10%, rgba(36, 17, 13, 0.6) 90%);",

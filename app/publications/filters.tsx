@@ -121,8 +121,8 @@ export default function Filters({ categories }: PropType) {
     { label: "Latest Publications", id: "latest_pub" },
     { label: "Academic Papers", id: "africonomics-papers" },
     { label: "Policy Papers", id: "policy_papers" },
-    { label: "Afrindependent Edge", id: "afrindependent-edge" },
-    { label: "Afrindependent Blog", id: "afrindependent-blog" },
+    { label: "Afrindependent Lens", id: "afrindependent-edge" },
+    { label: "Afrindependent Post", id: "afrindependent-blog" },
   ];
 
   const handleFilterClick = (id: string) => {
@@ -181,6 +181,18 @@ export default function Filters({ categories }: PropType) {
   const handlePageClick = (event: { selected: number }) => {
     setCurrentPage(event.selected);
   };
+  
+
+  const truncateText = (text: string, limit: number) =>
+  text.length > limit ? text.slice(0, limit) + '...' : text;
+
+const stripHtml = (html: string) => {
+  if (!html) return '';
+  return html.replace(/<[^>]*>?/gm, '');
+};
+
+console.log(categories)
+
 
   return (
     <>
@@ -192,34 +204,65 @@ export default function Filters({ categories }: PropType) {
               Featured Section
             </h3>
           </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-5 lg:px-10">
-          {uniqueFeatured.map(({ title, level, slug }:any) => (
-            <Link
+        <div className=" px-5 lg:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 ">
+  {uniqueFeatured.map(
+    (
+      {
+        title,
+        level,
+        slug,
+        image,
+        author,
+        publishedAt,
+        abstract,
+        category,
+      }: any,
+      index: number
+    ) => (
+      <Link
+        key={slug}
+        href={`${paths.publications}/${slug}?type=${category}`}
+        className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg "
+      >
+        {/* Image Thumbnail */}
+        <div
+          className="h-[150px] w-full bg-cover bg-center"
+          style={{ backgroundImage: `url('${image}')` }}
+        />
 
-            href={`${paths.publications}/${slug}`}
-              key={title}
-              className={`border-l-4 p-5 shadow-md bg-white rounded-md ${
-                level === "gold"
-                  ? "border-[#FFD700]"
-                  : level === "silver"
-                  ? "border-[#C0C0C0]"
-                  : "border-[#CD7F32]"
-              }`}
-            >
-              <span
-                className={`uppercase text-xs font-bold px-3 py-1 rounded-full inline-block mb-3 ${
-                  level === "gold"
-                    ? "bg-[#FFD700]/20 text-[#FFD700]"
-                    : level === "silver"
-                    ? "bg-[#C0C0C0]/20 text-[#C0C0C0]"
-                    : "bg-[#CD7F32]/20 text-[#CD7F32]"
-                }`}
-              >
-                {level.charAt(0).toUpperCase() + level.slice(1)} Feature
-              </span>
-              <h3 className="text-lg font-semibold text-deepForest">{title}</h3>
-            </Link>
-          ))}
+        {/* Content */}
+        <div className="flex flex-col p-4 gap-y-3">
+          {/* Feature Level Tag */}
+          <span
+            className={`uppercase text-xs font-bold px-3 py-1 rounded-full self-start ${
+              level === "gold"
+                ? "bg-[#FFD700]/20 text-[#FFD700]"
+                : level === "silver"
+                ? "bg-[#C0C0C0]/20 text-[#C0C0C0]"
+                : "bg-[#CD7F32]/20 text-[#CD7F32]"
+            }`}
+          >
+            {level.charAt(0).toUpperCase() + level.slice(1)} Feature
+          </span>
+
+          {/* Title */}
+          <h3 className="text-lg font-semibold text-deepForest line-clamp-2">
+            {title}
+          </h3>
+
+        
+
+          {/* Abstract (truncated) */}
+          <p className="text-sm text-gray-700 line-clamp-3">
+            {truncateText(stripHtml(abstract), 200)}
+          </p>
+        </div>
+      </Link>
+    )
+  )}
+</div>
+
         </div>
       </section>
 
@@ -261,10 +304,15 @@ export default function Filters({ categories }: PropType) {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {currentItems.map(({ slug, title, image, publishedAt, category, author, abstract, categoryName, intro }) => (
                       <div key={slug} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-                        <Image height={100} width={100} src={image} alt={title} className="w-full h-52 object-cover" />
+                 
+
+                         <div
+          className="h-52 w-full bg-cover bg-center"
+          style={{ backgroundImage: `url('${image}')` }}
+        />
                         
                         <div className="p-5 flex flex-col gap-y-4">
-                        <p className="inline-block  font-semibold rounded-full text-sm tracking-wider text-[#ffd700] uppercase w-fit">{categoryName}</p>
+                        <p className="inline-block  font-semibold rounded-full text-sm tracking-wider text-[#ffd700] uppercase w-fit">{categoryName === "Scholarly Papers" ? "Academic Papers" : categoryName === "Afrindependent Blog" ? "Afrindependent Post" : categoryName === "Afrindependent Edge"? "Afrindependent Lens" : categoryName}</p>
                           <h3 className="text-xl font-semibold text-deepForest mb-2">{title}</h3>
                           <p className="text-gray-700 text-base line-clamp-3">{intro ?? "No summary available."}</p>
 

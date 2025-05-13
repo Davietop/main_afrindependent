@@ -35,20 +35,20 @@ const Hero = () => {
           <div className="relative z-10 lg:max-w-5xl mx-auto text-white">
             <h1 className="text-5xl md:text-6xl font-extrabold lg:leading-tight mb-6">
               The Nilar: <br className="block md:hidden" />
-              <span className="text-yellow-400">A Gold-Based Currency </span>
+              <span className="text-white">A Gold-Based Currency </span>
               <br className="hidden lg:block" />
               for African Economic Sovereignty
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-200 mb-10">
+            <p className="text-lg md:text-xl text-[#ffd700] mb-10">
             Rooted in Africonomics. Grounded in justice. Built for freedom.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-yellow-400 text-green-950 font-semibold px-6 py-3 rounded-full hover:bg-yellow-300 transition-all">
+              <button className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-3xl shadow-md transition duration-300">
                 Read the Framework
               </button>
-              <button className="border border-yellow-400 text-yellow-400 font-semibold px-6 py-3 rounded-full hover:bg-yellow-500 hover:text-green-950 transition-all">
+              <button className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-3xl shadow-md transition duration-300">
                 Explore the Vision
               </button>
             </div>

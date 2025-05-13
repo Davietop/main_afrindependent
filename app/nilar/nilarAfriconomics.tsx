@@ -40,7 +40,7 @@ function HowNilarAligns() {
        
           How the Nilar Aligns with <span className="text-[#ffd700]">Africonomics</span>
      </h3>
-     <p className="italic ml-4 text-lg text-gray-600 mb-6">
+     <p className="italic ml-4 text-lg text-[#ffd700] mb-6">
           More than a currency it is a civilizational affirmation.
         </p>
 
@@ -223,7 +223,7 @@ function HowNilarAligns() {
         <p className="text-xl font-bold text-deepForest mb-6">It is the monetary foundation for a free, prosperous, and structurally just Africa.</p>
         <Button
           variant="outline"
-          className="border-gray-300 text-[#ffd700] text-lg bg-deepForest"
+          className="flex items-center mx-auto justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300 text-base  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
         >
           Learn How the Nilar Works
         </Button>

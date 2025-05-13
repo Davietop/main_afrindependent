@@ -40,7 +40,7 @@ const Principle = ()=>{
       <h2 className=" text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 ">
         <p className="border-l-4 border-yellow-400 pl-4"> Our Principles</p>
       </h2>
-      <p className=' mt-4 w-full  lg:font-medium text-[#323232] px-6 sm:px-10 lg:px-20  text-lg leading-[28px] mb-6 lg:text-xl lg:leading-[40px]'>We are guided by four foundational principles that undergird all our work:
+      <p className=' mt-4 w-full  lg:font-medium text-[#323232] px-6 sm:px-10 lg:px-20  text-lg leading-[28px] mb-6 lg:text-xl ml-4 lg:leading-[40px]'>We are guided by four foundational principles that undergird all our work:
 </p>
       <section className="px-6  ">
       <div className="max-w-6xl mx-auto">
@@ -51,10 +51,10 @@ const Principle = ()=>{
           {principles.map((p, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow border border-[#002813]/10"
+              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow border border-[#ffd700]"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="bg-[#d2b48c]/20 p-3 rounded-full">{p.icon}</div>
+                <div className="bg-[#ffd700] p-3 rounded-full">{p.icon}</div>
                 <h3 className="text-xl font-semibold text-[#002813]">{p.title}</h3>
               </div>
               <p className="text-gray-800 text-base">{p.desc}</p>

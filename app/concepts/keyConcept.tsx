@@ -421,37 +421,17 @@ export default function AfriconomicsPage() {
                     </div>
 
 
-                    {/* Featured Concepts (first 2) */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                      {cluster.concepts.slice(0, 2).map((concept) => (
-                        <motion.div
-                          key={concept.id}
-                          id={concept.id}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="p-6 border rounded-2xl shadow-lg hover:shadow-xl transition bg-green-50"
-                        >
-                          <h3 className="text-2xl font-bold text-deepForest mb-2">{concept.title}</h3>
-                          <p className="italic text-gray-700 mb-4">{concept.intro}</p>
-                          <div className="space-y-4 text-gray-800">
-                            {concept?.description?.split("\n\n").map((paragraph, idx) => (
-                              <p key={idx}>{paragraph}</p>
-                            ))}
-                          </div>
-                         
-                        </motion.div>
-                      ))}
-                    </div>
+                   
 
                     {/* Other Concepts */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
-                      {cluster.concepts.slice(2).map((concept) => (
+                      {cluster.concepts.map((concept) => (
                         <motion.div
                           key={concept.id}
                           id={concept.id}
                           whileHover={{ scale: 1.01 }}
                           whileTap={{ scale: 0.98 }}
-                          className="p-4 border rounded-2xl shadow-sm hover:shadow-md transition"
+                          className="p-4 border rounded-2xl shadow-sm hover:shadow-md transition bg-green-50"
                         >
                           <h3 className="text-xl font-semibold mb-2">{concept.title}</h3>
                           <p className="text-gray-600 mb-4 italic">{concept.intro}</p>

@@ -60,8 +60,8 @@ export default function NilarNote() {
           The failure of Zimbabwe’s gold-linked fiat is <strong>not a failure of gold or sound money</strong>—it is a failure of <span className="italic text-yellow-400">monetary dishonesty</span> and state manipulation.
         </p>
 
-        <div className="bg-[#fef9e6] dark:bg-[#173524] p-6 mt-10 rounded-xl shadow-sm border border-yellow-400">
-          <h3 className="text-2xl font-bold mb-2 text-[#00210d] dark:text-yellow-300">
+        <div className="bg-[#fef9e6] dark:bg-[#173524] mx-auto text-center p-6 mt-10 rounded-xl shadow-sm border border-yellow-400">
+          <h3 className="text-2xl  font-bold mb-2 text-[#00210d] dark:text-yellow-300">
             The Nilar corrects this.
           </h3>
           <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-200">

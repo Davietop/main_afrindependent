@@ -12,24 +12,32 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 const GetInvolved = ()=>{
   return <section className={`py-16 bg-[#f9f9f6] dark:bg-[#0f1c16] text-[#002813] dark:text-white ${ibmPlexSans.className}`}>
-  <div className="max-w-5xl mx-auto px-4 text-center">
-    <motion.h2
-      className="text-3xl font-bold text-[#002813] dark:text-[#ffd700] mb-4"
+      <div  className="pt-10 px-5 lg:px-10">
+        
+       
+     <motion.h2
+      className="text-3xl font-bold text-[#002813] dark:text-[#ffd700] mb-4  text-left lg:text-3xl border-l-4 text-deepForest border-[#ffd700]  pl-4"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
       Get Involved and Spread the Vision
     </motion.h2>
-
-    <motion.p
-      className="text-lg max-w-3xl mx-auto mb-6"
+     <motion.p
+      className="text-lg max-w-3xl text-[#ffd700] ml-4 mb-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2, duration: 0.6 }}
     >
       Help build a just and sovereign Africa—starting with sound money.
     </motion.p>
+ 
+          </div>
+  <div className="max-w-5xl mx-auto px-4 text-center ">
+   
+    
+
+   
 
     <motion.p
       className="text-base text-gray-700 dark:text-gray-300 mb-12 max-w-4xl mx-auto"

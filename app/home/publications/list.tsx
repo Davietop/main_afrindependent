@@ -78,7 +78,7 @@ const List = ({ authorSlug }: PropType) => {
       ref={containerRef}
     >
       {topTwo?.length < 1 ? (
-        <p className="text-black">loading</p>
+        <p className="text-black"></p>
       ) : (
         <div className="flex flex-col mt-4 lgmt-6 gap-y-6 mx-2  ">
           {publicationData.map(

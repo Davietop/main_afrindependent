@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"; 
 import { FaFileAlt, FaBookOpen, FaVideo } from "react-icons/fa";
 import { IBM_Plex_Sans } from "next/font/google";
+import List from "../home/publications/list";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -23,7 +24,7 @@ function PublicationsResearch() {
           </p>
           </div>
   
-    <section className={`bg-white text-gray-800  px-6 sm:px-10 lg:px-20 ${ibmPlexSans.className}`}>
+    <section className={`bg-white text-gray-800  px-6 sm:px-10  ${ibmPlexSans.className}`}>
       <div className="max-w-6xl mx-auto">
         {/* Top Title */}
         <div className="text-center mb-16">
@@ -41,7 +42,7 @@ function PublicationsResearch() {
             <p className="text-gray-700 text-base mb-4">
             This Afrindependent Institute Policy Paper lays out the full case for a gold-based African currency rooted in sound money, structural justice, and postcolonial liberation. It outlines the moral, economic, and civilizational imperative of adopting the Nilar—and how African nations can lead the world toward a more principled and just monetary reality.
             </p>
-            <Button variant="default" className="bg-deepForest text-base text-white hover:bg-green-800">
+            <Button variant="default" className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 text-base hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300">
               Read the Full Paper →
             </Button>
           </div>
@@ -52,34 +53,7 @@ function PublicationsResearch() {
           <h4 className="text-2xl font-semibold mb-6 text-deepForest">Related Research & Commentary</h4>
 
           {/* List of Items */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-  {[
-    "The Fraudulent and Ruinous Nature of Fiat Monetary Systems",
-    "The Fiat Dollar Standard: Its Uncivilized and Destructive Nature",
-    "Fractional Reserve Banking Is Fraudulent and Ruinous",
-    "Money Demystified: Understanding Why, How, and What It Is",
-    "The Africonomics Theory Of Monetary Justice",
-    "The Africonomics Theory of Economic Cycles",
-  ].map((title, index) => (
-    <div
-      key={index}
-      className="bg-gray-50 dark:bg-[#1a2c23] rounded-xl p-6 flex items-start gap-4 border border-gray-200 dark:border-[#2e4638] hover:shadow-md transition"
-    >
-      <FaFileAlt className="text-3xl text-yellow-500 mt-1" />
-      <div>
-        <h5 className="font-semibold mb-2 text-lg text-[#00210d] dark:text-white">
-          {title}
-        </h5>
-        <Button
-          variant="link"
-          className="text-yellow-600 dark:text-yellow-400 p-0 text-base"
-        >
-          Read Paper →
-        </Button>
-      </div>
-    </div>
-  ))}
-</div>
+  <List />
         </div>
       </div>
     </section>

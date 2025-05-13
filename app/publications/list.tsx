@@ -95,32 +95,7 @@ const List = ({
           />
         </Link>
       )}
-      {activeFilter === "afrindependent-edge" ? (
-        <div className=" mt-24 lg:mt-[104px] max-w-5xl mx-auto bg-primary rounded-[17px] lg:rounded-[29px] py-[55px] px-7 lg:px-36 text-center relative">
-          <div className="absolute -top-[44px] lg:-top-[72px] left-[30px] w-20 lg:w-36 h-20 lg:h-36 rounded-full bg-secondary flex items-center justify-center font-bold text-[47px] lg:text-[67px] text-white font-ojuju">
-            i
-          </div>
-          <h3 className="font-bold font-inter_tight text-xl lg:text-4xl mb-8 text-secondary leading-[50px]">
-            What is Afrindependent Edge?
-          </h3>
-          <p className="font-medium font-inter_tight text-lg lg:text-2xl text-[#323232] leading-[28px] lg:leading-[40px]">
-            <span className="font-semibold italic">Afrindependent Edge</span> is
-            a publication that provides insightful commentary articles and
-            concise analyses on economic, social, and geopolitical matters
-            impacting Africa and the global landscape through an Africonomics
-            lens.
-          </p>
-          <p className="font-medium font-inter_tight text-lg lg:text-2xl text-[#323232] mt-10 leading-[28px] lg:leading-[40px]">
-            To submit an article to Afrindependent Edge, please email{" "}
-            <Link
-              href={`mailto:editor@afrindependent.org`}
-              className="underline"
-            >
-              editor@afrindependent.org
-            </Link>
-          </p>
-        </div>
-      ) : null}
+      
     </section>
   );
 };

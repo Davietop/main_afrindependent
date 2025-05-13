@@ -56,6 +56,14 @@ const faqs = [
 
 export default function FAQAccordion() {
   return (
+
+   <div className={`${ibmPlexSans.className}`}>
+       <div  className="bg-white mb-4  pt-10 px-5 lg:px-10">
+          <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
+       
+    Frequently Asked Questions
+     </h3>
+          </div>
     <div
       className={`${ibmPlexSans.className} relative bg-deepForest py-20 px-6 sm:px-10 lg:px-20 text-white overflow-hidden`}
     >
@@ -66,9 +74,7 @@ export default function FAQAccordion() {
       <FaGlobeAfrica className="absolute top-10 left-5 text-[250px] text-[#ffd700] opacity-50" />
       <FaCoins className="absolute bottom-10 right-5 text-[200px] text-[#ffd700]  opacity-50" />
 
-      <h2 className="text-4xl font-bold text-center mb-12 relative z-10">
-        Frequently Asked Questions
-      </h2>
+    
 
       <div className="max-w-4xl mx-auto space-y-5 relative z-10">
         {faqs.map((faq, i) => (
@@ -110,5 +116,6 @@ export default function FAQAccordion() {
         ))}
       </div>
     </div>
+   </div>
   );
 }

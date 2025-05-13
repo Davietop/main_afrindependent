@@ -71,53 +71,50 @@ export const metadata: Metadata = {
 const Publications = async () => {
   const categories = await getCategories();
 
-    const featuredItems = [
-      "The Scale of Statism",
-      "Understanding Human Civilization",
-      "The Africonomics Theory of International Relations",
-    ];
-
   return (
     <main className={`${ibmPlexSans.className} bg-white`}>
       <div className=" ">
         <Navbar />
       </div>
- {/* HERO SECTION */}
- <section className="relative bg-[#f9f9f6] py-24 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <svg
-            className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 opacity-10 text-gray-300"
-            width="404"
-            height="404"
-            fill="none"
-            viewBox="0 0 404 404"
-          >
-            <defs>
-              <pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <rect x="0" y="0" width="4" height="4" fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect width="404" height="404" fill="url(#pattern)" />
-          </svg>
-        </div>
+{/* HERO SECTION */}
+<section className="relative bg-publication bg-cover bg-center mt-20 xl:mt-0  py-24 px-4 sm:px-6 lg:px-8">
 
-      <div className="relative max-w-4xl mx-auto text-center px-4 py-16">
-  {/* Optional background glow or shape */}
-  <div className="absolute inset-0 -z-10 bg-gradient-to-b from-violet-100/20 via-transparent to-transparent blur-3xl"></div>
+  {/* Overlay with deepForest color */}
+  <div className="absolute inset-0 bg-deepForest opacity-80 z-0"></div>
 
-  <h1 className="text-4xl sm:text-5xl font-extrabold text-deepForest tracking-tight leading-tight">
-    <span className="">
+  {/* Decorative SVG pattern (still sits above overlay) */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+    <svg
+      className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 opacity-10 text-gray-300"
+      width="404"
+      height="404"
+      fill="none"
+      viewBox="0 0 404 404"
+    >
+      <defs>
+        <pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <rect x="0" y="0" width="4" height="4" fill="currentColor" />
+        </pattern>
+      </defs>
+      <rect width="404" height="404" fill="url(#pattern)" />
+    </svg>
+  </div>
+
+  {/* Main content */}
+  <div className="relative max-w-4xl mx-auto text-center px-4 py-16 h-[300px] z-20">
+    {/* Optional gradient shape */}
+    <div className="absolute h-[700px] inset-0 -z-10 bg-gradient-to-b from-violet-100/20 via-transparent to-transparent blur-xl"></div>
+
+    <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
       Publications
-    </span>
-  </h1>
+    </h1>
 
-  <p className="mt-6 text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-    Explore the Afrindependent Institute’s original research, essays, and frameworks advancing African intellectual and economic sovereignty.
-  </p>
+    <p className="mt-6 text-lg sm:text-xl text-gray-100 max-w-2xl mx-auto leading-relaxed">
+      Explore the Afrindependent Institute’s original research, essays, and frameworks advancing African intellectual and economic sovereignty.
+    </p>
+  </div>
+</section>
 
-</div>
-
-      </section>
 
       {/* INTRO SECTION */}
       <section className="bg-white px-5 py-10 lg:px-10">

@@ -53,7 +53,7 @@ export const links = [
     link: paths.getInvolved,
   },
   {
-    name: "Contact",
+    name: "Contact Us",
     link: paths.contact,
   },
 ];
@@ -115,7 +115,7 @@ const PcNav = () => {
     
 <Link
                 href="/donate"
-                className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400  dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
+                className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
               >
                 <HeartHandshake className="w-5 h-5" />
                 Donate

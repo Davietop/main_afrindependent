@@ -6,6 +6,7 @@ import { getCompany } from "@/service/sanity-queries";
 import Footer from "@/components/ui/page-sections/footer";
 import FormSend from "./contactForm";
 import ContactSection from "./contactForm";
+import Hero from "./hero";
 
 export const metadata: Metadata = {
   title: "Contact Afrindependent",
@@ -60,6 +61,8 @@ const ContactPage = async () => {
         <div className=" z-50">
           <Navbar />
         </div>
+
+        <Hero/>
      
         <ContactSection/>
       </div>
