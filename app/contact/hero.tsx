@@ -1,5 +1,5 @@
 const Hero = ()=>{
-    return  <div className=" text-center mb-16 w-full  bg-deepForest h-[400px] ">
+    return  <div className="mt-20 lg:mt-0 text-center mb-16 w-full  bg-deepForest h-[400px] ">
         <div className="mx-auto pt-[100px]">
             <h2 className="text-4xl text-[#ffd700] sm:text-5xl font-bold mb-4 tracking-tight ">Contact Us</h2>
         <p className="text-xl text-white">We welcome inquiry, media engagement, and meaningful collaboration.</p>

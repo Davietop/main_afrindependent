@@ -73,7 +73,7 @@ export default function GetInvolvedSection() {
         <h2 className="text-4xl sm:text-5xl font-bold text-[#002813] dark:text-[#ffd700] mb-4 tracking-tight">
           Get Involved
         </h2>
-        <p className="text-xl text-[#002813] dark:text-[#d6d6d6]">
+        <p className="text-xl text-[#36454f] font-medium dark:text-[#d6d6d6]">
           Be Part of Africa’s Intellectual and Economic Rebirth
         </p>
         <p className="mt-4 text-[#002813] dark:text-[#bbbbbb] text-lg leading-relaxed">

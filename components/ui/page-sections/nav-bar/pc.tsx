@@ -70,7 +70,7 @@ const PcNav = () => {
       }  ${ibmPlexSans.className} `}
     >
       {/* <div className="flex items-center gap-x-12"> */}
-      <Link href="/">
+      {/* <Link href="/">
         <Image
           src={`Afridependent.svg`}
           alt="Afrindependent"
@@ -78,7 +78,21 @@ const PcNav = () => {
           height={5}
           priority
         />
+       
+      </Link> */}
+       <Link href="/">
+        <Image
+          src={`/Afridependent.svg`}
+          alt="Afrindependent.svg"
+          width={200}
+          height={52}
+          priority
+        />
       </Link>
+
+     
+    
+      
       <ul className="flex items-center text-lg font-semibold">
   {links.map(({ name, link }, index) => {
     const active = pathname === link;

@@ -19,20 +19,21 @@ const Post = ({ post }: { post: PublicationDto }) => {
 
   const type = typeParams.get("type");
 
-  const isPaper = post.category === "africonomics-papers";
+  const isPaper = post?.category === "africonomics-papers";
 
   return (
-    <div className={` ${ibmPlexSans.className}`}>
-      <div className="mx-5 lg:mx-14 border-b border-[#323232] pb-4 mb-8">
+    <div className={` ${ibmPlexSans.className} w-full lg:w-10/12 lg:mx-auto `}>
+      <div className="mx-5 lg:mx-14  pb-4 ">
         <Link
           href={`${paths.publications}?type=${type}`}
-          className="font-bold text-[#0E102A] lg:text-lg "
+          className="font-bold text-[#0E102A] text-base lg:text-lg "
         >
-          {post.categoryName}
+          
+          {post.categoryName === "Scholarly Papers" ? "Academic Papers" : post.categoryName === "Afrindependent Blog" ? "Afrindependent Post" : post.categoryName === "Afrindependent Edge"? "Afrindependent Lens" : post.categoryName}
         </Link>
       </div>
       <h1
-        className={`px-5 lg:px-14 font-medium text-deepForest max-w-[860px] text-3xl lg:text-5xl leading-[34px] lg:leading-[60px]`}
+        className={`px-5 lg:px-14 font-bold text-black max-w-11/12 w-full lg:w-9/12 text-3xl lg:text-4xl leading-[34px] lg:leading-[50px]`}
       >
         {post.title}
       </h1>

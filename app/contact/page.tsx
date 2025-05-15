@@ -57,7 +57,7 @@ const ContactPage = async () => {
     <main
       className={`bg-white`}
     >
-      <div>
+      <div className="mb-6">
         <div className=" z-50">
           <Navbar />
         </div>

@@ -32,11 +32,11 @@ const Hero = () => {
 
           <div className="absolute inset-0  bg-opacity-80 z-0" />
 
-          <div className="relative z-10 lg:max-w-5xl mx-auto text-white">
+          <div className="relative w-full z-10 lg:max-w-5xl mx-auto text-white">
             <h1 className="text-5xl md:text-6xl font-extrabold lg:leading-tight mb-6">
               The Nilar: <br className="block md:hidden" />
-              <span className="text-white">A Gold-Based Currency </span>
-              <br className="hidden lg:block" />
+            A Gold-Based Currency 
+         
               for African Economic Sovereignty
             </h1>
 
@@ -45,10 +45,10 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-3xl shadow-md transition duration-300">
+              <button className="flex items-center justify-center gap-3 border-2 bg-deepForest border-deepForest dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-3xl shadow-md transition duration-300">
                 Read the Framework
               </button>
-              <button className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-3xl shadow-md transition duration-300">
+              <button className="flex items-center justify-center gap-3 border-2 bg-deepForest border-deepForest dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-3xl shadow-md transition duration-300">
                 Explore the Vision
               </button>
             </div>

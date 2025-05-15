@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
+import { FaArrowDown, FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import Subscribe from "@/app/home/subscribe";
 import { paths } from "@/components/ui/page-sections/nav-bar/pc";
 import Share from "./share";
@@ -9,14 +9,41 @@ import TextComponent from "./text-comp";
 import List from "../list";
 import Reaction from "./reaction";
 import { PublicationDto } from "@/lib/types";
-import { IBM_Plex_Sans } from 'next/font/google';
+import { IBM_Plex_Sans } from "next/font/google";
+import SubscribeForm from "@/components/subscribe";
+import { Button } from "@/components/ui/button";
+import Filters from "../filters";
+import PublicationSection, { usePublications } from "../publication-section";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
 const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ['latin'],          // Or 'latin-ext' if needed
-  weight: ['400', '500', '700'], // Optional: choose weights you use
-  display: 'swap',             // Optional: improves text rendering
+  subsets: ["latin"], // Or 'latin-ext' if needed
+  weight: ["400", "500", "700"], // Optional: choose weights you use
+  display: "swap", // Optional: improves text rendering
 });
 
 const Article = ({ post }: { post: PublicationDto }) => {
+   const { data: publications } = usePublications({});
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 6;
+
+  
+      const filterByCategory = (data:any, category:any) => {
+      const uniqueData = Array.from(new Map(data.map((item:any) => [item.slug, item])).values());
+      return uniqueData
+        .filter((item:any) => item.category === category)
+        .sort((a: any, b: any) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+    };
+
+  const filteredData = filterByCategory(publications || [], post.category);
+  const pageCount = Math.ceil(filteredData.length / itemsPerPage);
+
+  const handlePageClick = ({ selected }:any) => {
+    setCurrentPage(selected);
+  };
+
+  const offset = currentPage * itemsPerPage;
+  const currentItems = filteredData.slice(offset, offset + itemsPerPage);
   return (
     <div className={`${ibmPlexSans.className}`}>
       <div className="px-5 lg:px-14 lg:mb-10">
@@ -25,8 +52,27 @@ const Article = ({ post }: { post: PublicationDto }) => {
             {post?.intro}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3 lg:hidden  font-medium">
+        <div className="lg:flex hidden items-center gap-x-3 mt-4">
+          <div className="h-[50px] w-[50px] bg-founder bg-cover  rounded-full"></div>.
+       
           <Link
+            href={`${paths.authors}/${post?.author?.slug}`}
+            className="text-base"
+          >
+            {post?.author?.name}
+          </Link>
+          .<p className="text-base">{post?.categoryName}</p>.
+          <p className="text-base">{isoStringToDate(post.publishedAt)}</p>
+        </div>
+        <div className="flex flex-col   gap-3 lg:hidden mb-4 font-medium">
+          <div className="flex flex-col ">
+             <p className=" text-base font-medium lg:text-xl leading-[25px] lg:leading-[45px] mb-1 lg:mb-0">
+          Share Publication
+        </p>
+        <Share title={post.title} />
+          </div>
+        <div className="flex items-center gap-x-2">
+            <Link
             href={`${paths.authors}/${post?.author?.slug}`}
             className="capitalize leading-[12px] underline"
           >
@@ -37,22 +83,22 @@ const Article = ({ post }: { post: PublicationDto }) => {
             <span>{isoStringToDate(post.publishedAt)}</span>
           </div>
         </div>
-        <div className="mt-6 lg:mt-8 lg:h-[614px] overflow-hidden flex items-center justify-center">
-          <Image
-            src={post.image}
-            alt={post.title}
-            width={1732}
-            height={862}
-            className="w-full h-auto object-cover object-center"
-          />
+           
         </div>
       </div>
-      <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-5">
-        <article className="col-span-3 mt-6 lg:mt-10 overflow-x-hidden">
-          <div className="min-w-full leading-6 lg:text-lg mb-[52px] text-deepForest prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:40px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] lg:prose-blockquote:after:-top-3 prose-blockquote:after:left-6 prose-blockquote:after:w-[40px] prose-blockquote:after:h-[40px] prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:decoration-deepForest prose-strong:font-bold prose-a:text-[#ffd700]"> 
+      <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-x-20">
+        <article className="w-full col-span-4  overflow-x-hidden">
+          <div className="pb-8 overflow-hidden flex items-center justify-center">
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={1732}
+              height={862}
+              className="w-full h-auto object-cover rounded-2xl object-center"
+            />
+          </div>
+          <div className="min-w-full leading-6 lg:text-lg mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:40px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] lg:prose-blockquote:after:-top-3 prose-blockquote:after:left-6 prose-blockquote:after:w-[40px] prose-blockquote:after:h-[40px] prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:decoration-deepForest prose-strong:font-bold prose-a:text-deepForest">
             <TextComponent value={post.abstract} />
-          
-           
           </div>
           <div className="mt-5 mb-2">
             <Image
@@ -77,7 +123,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
           </p>
           <Reaction />
           <div className=" p-5 rounded-[19px] bg-[#D9D9D9] mt-10">
-            <p className=" font-medium text-lg text-deepForest mb-5">
+            <p className=" font-medium text-lg text-black mb-5">
               About the author
             </p>
             <div className="flex gap-4">
@@ -91,15 +137,13 @@ const Article = ({ post }: { post: PublicationDto }) => {
                 />
               </div>
               <div className="flex-1 space-y-2">
-                <p className="text-deepForest  font-semibold">
-                  {post.author.name}
-                </p>
-                <p className="text-deepForest text-sm lg:text-base leading-[20px] lg:leading-8 ">
+                <p className="text-black  font-semibold">{post.author.name}</p>
+                <p className="text-black text-sm lg:text-base leading-[20px] lg:leading-8 ">
                   {post.author.about}
                 </p>
                 <Link
                   href={`${paths.authors}/${post?.author?.slug}`}
-                  className="underline leading-[44px] font-medium text-[#ffd700] "
+                  className="underline leading-[44px] font-medium text-deepForest "
                 >
                   See author&apos;s profile
                 </Link>
@@ -108,70 +152,115 @@ const Article = ({ post }: { post: PublicationDto }) => {
           </div>
         </article>
         <aside className="hidden lg:flex flex-col items-end col-span-2">
-          <div className="max-w-[278px] sticky top-0 pt-[67px] lg:pt-10">
-            <p className=" uppercase font-light text-deepForest">
-              Article Author
-            </p>
-            <Link
-              href={`${paths.authors}/${post?.author?.slug}`}
-              className="block capitalize mb-5 text-lg font-medium text-deepForest"
-            >
-              {post?.author?.name}
-            </Link>
-            <p className="">Published on</p>
-            <p className=" text-lg leading-[25px] mb-5 font-medium">
-              {isoStringToDate(post.publishedAt)}
-            </p>
-            <p className=" leading-[25px]">Share Publication</p>
-            <Share title={post.title} />
+          <div className="w-full sticky top-0">
+            <div className="relative w-[300px] h-[300px] bg-world bg-contain border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2">
+              {/* White Overlay */}
 
-            <div className="bg-deepForest text-base text-white font-inter_tight rounded-lg p-4 mt-7 lg:mt-9 text-center">
-              <p>
-                <Link
-                  href={"#subscibe"}
-                  className="underline font-semibold block"
-                >
-                  Subscribe
-                </Link>{" "}
-                Don&apos;t miss out! Subscribe to our newsletter to stay
-                informed on our latest articles, news, and more. Gain valuable
-                new insights delivered straight to your inbox.
-              </p>
+              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
+              {/* Content on top of overlay */}
+              <div className="relative z-10 px-2 flex items-center flex-col text-black">
+                <h1 className="font-bold">Afrindependent Institute</h1>
+                <p className=" text-base mt-6 mb-4">
+                  Hello, We’re content writer who is fascinated by content
+                  fashion, celebrity and lifestyle. We help clients bring the
+                  right content to the right people.
+                </p>
+                <Share title={post.title} />
+              </div>
             </div>
-            <div className="bg-[#ffd700] text-base text-deepForest  rounded-lg p-4 mt-7 lg:mt-9 text-center font-light">
-              <p>
-                <Link
-                  href={paths.donate}
-                  className="underline font-semibold block"
-                >
-                  Donate
+            <div className="relative w-[300px] h-[300px]  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
+              {/* White Overlay */}
+
+              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
+              {/* Content on top of overlay */}
+              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+                <h1 className="font-bold">NewsLetters</h1>
+                <p className="text-sm">Join our intellectual movement</p>
+                <SubscribeForm />
+                <p className="text-sm">
+                  We respect your privacy. No spam — just thoughtful updates.
+                  You can unsubscribe anytime.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative w-[300px] h-[300px]  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
+              {/* White Overlay */}
+
+              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
+              {/* Content on top of overlay */}
+              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+                <h1 className="font-bold">Donate</h1>
+                <p className="text-sm">
+                  Partner with us in our mission to unlock Africa's prosperity.
+                  Your donation aligns you with our vision and empowers
+                  groundbreaking scholarly work towards this goal.
+                </p>
+                <Link href={paths.donate}>
+                  <Button
+                    type="submit"
+                    className="flex items-center gap-2 bg-deepForest text-sm border-2  border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700]  font-medium px-10 py-1 rounded-full transition duration-200"
+                  >
+                    Donate
+                  </Button>
                 </Link>{" "}
-                Partner with us in our mission to unlock Africa&apos;s
-                prosperity. Your donation aligns you with our vision and
-                empowers groundbreaking scholarly work towards this goal.
-              </p>
+              </div>
             </div>
           </div>
         </aside>
       </section>
-      <div className="px-5 lg:px-14 pt-10">
-        <h2 className="mt-7 text-deepForest font-medium text-xl lg:text-[40px] leading-[40px] ">
+      <div className="px-5 lg:px-14 ">
+        <h2 className="mt-7 text-black font-medium text-xl lg:text-3xl leading-[40px] ">
           More by {post.author.name}
         </h2>
-        <div className="bg-deepForest h-[2px] mt-2 mb-7 lg:mb-14"></div>
-        <List
-          authorSlug={post.author.slug}
-          isComponent
-          categories={[]}
-          showViewMore={false}
+       
+ <div>
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {currentItems.slice(0, itemsPerPage).map(({ slug, title, image, publishedAt, category, author, abstract, categoryName, intro }:any) => (
+         <Link  href={`${paths.publications}/${slug}?type=${post.category}`}>
+           <div key={slug} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+            <div className="h-52 w-full bg-cover bg-center" style={{ backgroundImage: `url('${image}')` }} />
+            <div className="p-5 flex flex-col gap-y-4">
+              <p className="inline-block font-semibold rounded-full text-sm tracking-wider text-[#ffd700] uppercase w-fit">
+                {categoryName === "Scholarly Papers" ? "Academic Papers" :
+                 categoryName === "Afrindependent Blog" ? "Afrindependent Post" :
+                 categoryName === "Afrindependent Edge" ? "Afrindependent Lens" : categoryName}
+              </p>
+              <h3 className="text-xl font-semibold text-deepForest mb-2">{title}</h3>
+              <p className="text-gray-700 text-base line-clamp-3">{intro ?? "No summary available."}</p>
+              <div className="flex items-center text-gray-700 gap-x-2">
+                <p>By {author?.name}</p> |
+                <p className="text-sm text-gray-700">{new Date(publishedAt).toLocaleDateString("en-GB")}</p>
+              </div>
+             
+            </div>
+          </div>
+         </Link>
+        ))}
+      </div>
+ <div className="flex justify-center mt-10">
+        <ReactPaginate
+          previousLabel="← Previous"
+          nextLabel="Next →"
+          breakLabel="..."
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          forcePage={currentPage}
+          containerClassName="flex gap-2"
+          pageClassName="px-4 py-2 rounded border border-gray-300 text-sm"
+          pageLinkClassName="text-gray-700"
+          activeClassName="bg-[#ffd700] text-deepForest font-bold"
+          previousClassName={`px-4 py-2 rounded border border-gray-300 text-sm ${currentPage === 0 ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
+          nextClassName={`px-4 py-2 rounded border border-gray-300 text-sm ${currentPage === pageCount - 1 ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
+          disabledClassName="opacity-50 cursor-not-allowed pointer-events-none"
         />
       </div>
-      <div
-        id="subscibe"
-        className="mx-5 lg:mx-14 rounded-[20px] lg:rounded-[41px] overflow-hidden h-fit mt-16 lg:mt-36"
-      >
-       
+    </div>
+
       </div>
+
+    
+    
     </div>
   );
 };

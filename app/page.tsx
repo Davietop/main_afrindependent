@@ -88,7 +88,7 @@ export default function Home() {
 
   
   return (
-    <main className="">
+    <main className="overflow-x-hidden">
       <div className="h-[800px]  bg-pattern_bg  bg-cover overflow-hidden flex justify-center flex-col bg-center  relative">
         <div className="relative  h-full">
           <Navbar />

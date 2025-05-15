@@ -12,7 +12,7 @@ export default function NilarNote() {
         <div  className="bg-white mb-4 pt-10 px-5 lg:px-10">
           <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
        
-          A Note on Zimbabwe’s “Gold-Backed” Currency Attempts
+         Zimbabwe’s “Gold-Backed” Currency Attempts
      </h3>
    
 

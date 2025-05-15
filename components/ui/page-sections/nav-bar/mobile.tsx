@@ -67,15 +67,15 @@ export const MobileNav = ({ turnBrown = false }: { turnBrown?: boolean }) => {
       ref={containerRef}
       className="flex w-full items-center justify-between xl:hidden"
     >
-      <m.div className="flex w-full items-center justify-between px-2 absolute z-40 top-[-60px]">
+      <m.div className="flex w-full items-center justify-between px-2  absolute top-[-60px]  z-40 ">
       <Link href="/">
         <Image
-       src={`Afridependent.svg`}
+          src={`/Afridependent.svg`}
           alt="Afrindependent"
           width={200}
           height={52}
           className="  relative z-30"
-         
+          priority
         />
       </Link>
       

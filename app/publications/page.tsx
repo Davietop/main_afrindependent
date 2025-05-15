@@ -109,7 +109,7 @@ const Publications = async () => {
       Publications
     </h1>
 
-    <p className="mt-6 text-lg sm:text-xl text-gray-100 max-w-2xl mx-auto leading-relaxed">
+    <p className="mt-6 text-lg sm:text-xl text-[#ffd700] max-w-2xl mx-auto leading-relaxed">
       Explore the Afrindependent Institute’s original research, essays, and frameworks advancing African intellectual and economic sovereignty.
     </p>
   </div>

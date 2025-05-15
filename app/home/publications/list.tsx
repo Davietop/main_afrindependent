@@ -48,20 +48,20 @@ const List = ({ authorSlug }: PropType) => {
 
   const shouldShowArrow =
     width >= 1024 ? publications!?.length > 3 : publications!?.length > 1;
-  const topTwo = (publications ?? [])
+  const topThree = (publications ?? [])
     .sort(
       (a: Article, b: Article) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
-    .slice(0, 2);
+    .slice(0, 3);
 
   useEffect(() => {
-    if (!topTwo || topTwo.length === 0) return;
+    if (!topThree || topThree.length === 0) return;
 
     const fetchAll = async () => {
       try {
         const results = await Promise.all(
-          topTwo.map(({ slug }) => getSinglePublication({ slug }))
+          topThree.map(({ slug }) => getSinglePublication({ slug }))
         );
         setPublicationData(results);
       } catch (error) {
@@ -70,17 +70,17 @@ const List = ({ authorSlug }: PropType) => {
     };
 
     fetchAll();
-  }, [topTwo]);
+  }, [topThree]);
 
   return (
     <div
       className={`group/parent lg:px-16  block max-w-screen h-fit overflow-hidden relative ${ibmPlexSans.className}`}
       ref={containerRef}
     >
-      {topTwo?.length < 1 ? (
+      {topThree?.length < 1 ? (
         <p className="text-black"></p>
       ) : (
-        <div className="flex flex-col mt-4 lgmt-6 gap-y-6 mx-2  ">
+        <div className="flex flex-col  lg:mt-4 gap-y-6 mx-2  ">
           {publicationData.map(
             (
               {
@@ -94,7 +94,7 @@ const List = ({ authorSlug }: PropType) => {
               },
               index
             ) => {
-              const slugData = topTwo[index]
+              const slugData = topThree[index]
               
               const combinedText = abstract[0]?.children
                 .map((item:any) => item.text)
@@ -113,16 +113,16 @@ const List = ({ authorSlug }: PropType) => {
               return (
                 <Link key={index}  href={`${paths.publications}/${slugData.slug}?type=${category}`}>
                   <div className="text-black flex flex-col md:flex-row gap-x-10   w-full  ">
-                    <div className="h-[300px] w-11/12 md:w-4/12 bg-cover bg-center "  style={{
+                    <div className="h-[300px] w-full md:w-4/12 bg-cover bg-center rounded-xl "  style={{
     backgroundImage: `url('${image}')`,
   }}>
                      
                     </div>
 
-                    <div className="flex flex-col  w-11/12  md:w-8/12 gap-y-4 md:gap-y-6">
-                      <div className="flex items-center mt-2 md:mt-0 gap-x-4">
+                    <div className="flex flex-col  w-full  md:w-8/12 gap-y-4 md:gap-y-6">
+                      <div className="flex items-center mt-2 md:mt-0 gap-x-2">
                         <p>{author?.name}</p>
-                        <p>.</p>
+                        
                         <p>{readableDate}</p>
                       </div>
 
@@ -145,7 +145,7 @@ const List = ({ authorSlug }: PropType) => {
         </div>
       )}
 
-      <div className="text-center mt-10">
+      <div className="text-center mt-6">
         <Link
           href="/publications"
           className="flex items-center justify-center gap-3 border-2 w-fit mx-auto bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"

@@ -41,7 +41,7 @@ const Subscribe = ({ onHomePage = true }: { onHomePage?: boolean }) => {
     
       <SubscribeForm />
 
-      <p className={`${ibmPlexSans.className } font-medium italics text-base sm:text-lg`}>	We respect your privacy. No spam — just thoughtful updates. You can unsubscribe anytime.
+      <p className={`${ibmPlexSans.className } font-medium italics text-base`}>	We respect your privacy. No spam — just thoughtful updates. You can unsubscribe anytime.
       </p>
       </div>
   

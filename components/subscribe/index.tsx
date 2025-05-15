@@ -84,11 +84,11 @@ const SubscribeForm = () => {
           className="w-full rounded-xl border border-gray-300 shadow-sm px-5 py-3 text-[#1E1E1E]"
         />
   
-        <div className="w-full flex justify-center mt-2">
+        <div className="w-full flex justify-center">
           <Button
             type="submit"
             disabled={status === 'loading'}
-            className="flex items-center gap-2 bg-deepForest border-2  border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700] text-lg font-medium px-10 py-2 rounded-full transition duration-200"
+            className="flex items-center gap-2 bg-deepForest text-base border-2  border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700]  font-medium px-10 py-1 rounded-full transition duration-200"
           >
             {status === 'loading' ? (
               <LuLoader2 className="animate-spin w-6 h-6 text-deepForest" />

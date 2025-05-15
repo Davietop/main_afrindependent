@@ -74,11 +74,10 @@ export default function Filters({ categories }: PropType) {
 
   const titlesInOrder = [
     "statism",
-    "civilization",
-    "nilar",
+    "really",
+    "philosophical",
   ];
-  
-  const levelOrder = ["gold", "silver", "bronze"];
+ 
   
   // Step 1: Match publications by keywords in order
   const orderedFeaturedPublications = titlesInOrder
@@ -89,7 +88,7 @@ export default function Filters({ categories }: PropType) {
           pub.slug?.toLowerCase().includes(keyword)
       );
       if (match) {
-        return { ...match, level: levelOrder[index] };
+        return { ...match };
       }
       return null;
     })
@@ -191,7 +190,7 @@ const stripHtml = (html: string) => {
   return html.replace(/<[^>]*>?/gm, '');
 };
 
-console.log(categories)
+
 
 
   return (
@@ -204,7 +203,7 @@ console.log(categories)
               Featured Section
             </h3>
           </div>
-        <div className=" px-5 lg:px-10">
+        <div className="lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
   {uniqueFeatured.map(
     (
@@ -235,15 +234,9 @@ console.log(categories)
         <div className="flex flex-col p-4 gap-y-3">
           {/* Feature Level Tag */}
           <span
-            className={`uppercase text-xs font-bold px-3 py-1 rounded-full self-start ${
-              level === "gold"
-                ? "bg-[#FFD700]/20 text-[#FFD700]"
-                : level === "silver"
-                ? "bg-[#C0C0C0]/20 text-[#C0C0C0]"
-                : "bg-[#CD7F32]/20 text-[#CD7F32]"
-            }`}
+            className={`uppercase text-sm font-bold px-3 py-1 rounded-full  self-start bg-[#FFD700]/20 text-[#FFD700]`}
           >
-            {level.charAt(0).toUpperCase() + level.slice(1)} Feature
+             Featured
           </span>
 
           {/* Title */}
@@ -302,40 +295,30 @@ console.log(categories)
               ) : currentItems.length > 0 ? (
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {currentItems.map(({ slug, title, image, publishedAt, category, author, abstract, categoryName, intro }) => (
-                      <div key={slug} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-                 
+  {currentItems.map(({ slug, title, image, publishedAt, category, author, abstract, categoryName, intro }) => (
+   <Link  href={`${paths.publications}/${slug}?type=${activeFilter}`}>
+     <div key={slug} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full">
+      <div className="h-52 w-full bg-cover bg-center" style={{ backgroundImage: `url('${image}')` }} />
 
-                         <div
-          className="h-52 w-full bg-cover bg-center"
-          style={{ backgroundImage: `url('${image}')` }}
-        />
-                        
-                        <div className="p-5 flex flex-col gap-y-4">
-                        <p className="inline-block  font-semibold rounded-full text-sm tracking-wider text-[#ffd700] uppercase w-fit">{categoryName === "Scholarly Papers" ? "Academic Papers" : categoryName === "Afrindependent Blog" ? "Afrindependent Post" : categoryName === "Afrindependent Edge"? "Afrindependent Lens" : categoryName}</p>
-                          <h3 className="text-xl font-semibold text-deepForest mb-2">{title}</h3>
-                          <p className="text-gray-700 text-base line-clamp-3">{intro ?? "No summary available."}</p>
+      <div className="p-5 flex flex-col gap-y-4 flex-grow">
+        <p className="inline-block font-semibold rounded-full text-sm tracking-wider text-[#ffd700] uppercase w-fit">
+          {categoryName === "Scholarly Papers" ? "Academic Papers" : categoryName === "Afrindependent Blog" ? "Afrindependent Post" : categoryName === "Afrindependent Edge" ? "Afrindependent Lens" : categoryName}
+        </p>
+        <h3 className="text-xl font-semibold text-deepForest mb-2">{title}</h3>
+        {intro && <p className="text-gray-700 text-base line-clamp-3">{intro}</p>}
 
-                          <div className="flex items-center text-gray-700 gap-x-2">
-                          <p>By {author?.name}</p> |
-                         
-                         <p className="text-sm text-gray-700 ">{new Date(publishedAt).toLocaleDateString()}</p>
-                          </div>
+        <div className="flex items-center text-gray-700 gap-x-2">
+          <p>By {author?.name}</p> |
+          <p className="text-sm text-gray-700">{new Date(publishedAt).toLocaleDateString("en-GB")}</p>
+        </div>
 
+       
+      </div>
+    </div>
+   </Link>
+  ))}
+</div>
 
-                          <Link
-                href={`${paths.publications}/${slug}?type=${activeFilter}`}
-                className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
-              >
-                
-                Read More
-              </Link>
-                        
-                          
-                        </div>
-                      </div>
-                    ))}
-                  </div>
 
                   <div className="flex justify-center mt-10">
                     <ReactPaginate

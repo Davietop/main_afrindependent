@@ -14,12 +14,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     slug: params.publicationId,
   });
 
-  const optimizedImage = {
-    url: publication.image,
-    width: 1200,
-    height: 630,
-    alt: publication.title,
-  };
+  // const optimizedImage = {
+  //   url: publication.image,
+  //   width: 1200,
+  //   height: 630,
+  //   alt: publication.title,
+  // };
 
   return {
     title: publication.title,
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: publication.intro,
       url: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
       type: "article",
-      images: [optimizedImage],
+      // images: [optimizedImage],
       siteName: "Afrindenpendent Organisation",
     },
     twitter: {
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: publication.title,
       description: publication.intro,
       site: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
-      images: [optimizedImage],
+      // images: [optimizedImage],
     },
   };
 }
@@ -51,14 +51,16 @@ const Publication = async ({
   params: { publicationId: string };
 }) => {
   const data = await getSinglePublication({ slug: params.publicationId });
-  console.log(data)
   return (
-    <main className="bg-white">
+    <main className="bg-[#faf9f6]">
       <div className=" ">
         <Navbar />
       </div>
-      <Post post={data} />
-      <div className="mt-36">
+
+      <div className="mt-20 lg:mt-0">
+        <Post post={data} />
+      </div>
+      <div className="mt-10">
         <Footer />
       </div>
     </main>

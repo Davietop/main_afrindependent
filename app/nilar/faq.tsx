@@ -65,14 +65,14 @@ export default function FAQAccordion() {
      </h3>
           </div>
     <div
-      className={`${ibmPlexSans.className} relative bg-deepForest py-20 px-6 sm:px-10 lg:px-20 text-white overflow-hidden`}
+      className={`${ibmPlexSans.className} relative  py-20 px-6 sm:px-10 lg:px-20 text-black overflow-hidden`}
     >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover bg-center opacity-5"></div>
 
       {/* Decorative background icons */}
-      <FaGlobeAfrica className="absolute top-10 left-5 text-[250px] text-[#ffd700] opacity-50" />
-      <FaCoins className="absolute bottom-10 right-5 text-[200px] text-[#ffd700]  opacity-50" />
+      <FaGlobeAfrica className="absolute top-10 left-5 text-[250px] text-[#ffd700] opacity-60" />
+      <FaCoins className="absolute bottom-10 right-5 text-[200px] text-[#ffd700]  opacity-60" />
 
     
 
@@ -82,33 +82,33 @@ export default function FAQAccordion() {
             key={i}
             sx={{
               backgroundColor: "rgba(255, 255, 255, 0.05)",
-              color: "white",
+              color: "black",
               boxShadow: "none",
               borderRadius: 2,
               backdropFilter: "blur(4px)",
               "&::before": { display: "none" },
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              border: "1px solid #002813",
               transition: "all 0.3s ease",
               "&:hover": {
-                backgroundColor: "rgba(255, 255, 255, 0.08)",
+                backgroundColor: "#faf9f6",
                 borderColor: "rgba(255, 255, 255, 0.2)",
               },
             }}
           >
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
+              expandIcon={<ExpandMoreIcon sx={{ color: "black" }} />}
             >
               <Typography fontWeight="bold">{faq.question}</Typography>
             </AccordionSummary>
 
             <AccordionDetails>
               {typeof faq.answer === "string" ? (
-                <Typography className="text-gray-200">{faq.answer}</Typography>
+                <Typography className="text-black">{faq.answer}</Typography>
               ) : (
                 <div className="space-y-4">
-                       <p className="text-gray-200">{faq.answer.header}</p>
+                       <p className="text-black">{faq.answer.header}</p>
                  
-                  <p className="text-gray-200">{faq.answer.paragraph}</p>
+                  <p className="text-black">{faq.answer.paragraph}</p>
                 </div>
               )}
             </AccordionDetails>

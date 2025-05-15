@@ -53,7 +53,7 @@ const ContactSection: FC = () => {
   };
 
   return (
-    <section className={`${ibmPlexSans.className} text-[#002813] px-6 sm:px-10 lg:px-24 py-14 bg-white`}>
+    <section className={`${ibmPlexSans.className} text-[#002813] px-6 sm:px-10  bg-white`}>
      
 
       {/* Contact Form Section */}

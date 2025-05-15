@@ -20,7 +20,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 interface PropType {
   isComponent?: boolean;
   authorSlug?: string;
-  categories: CategoriesDto[];
+  categories?: CategoriesDto[];
   showViewMore?: boolean;
 }
 
@@ -68,7 +68,7 @@ const List = ({
     <section
       className={`${isComponent ? "" : ""} mb-[70px] ${ibmPlexSans.className}`}
     >
-       {categories.length ? (
+       {categories?.length ? (
         <Filters
           categories={categories}
           setActiveFilter={setActiveFilter}

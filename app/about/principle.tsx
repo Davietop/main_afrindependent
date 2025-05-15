@@ -40,13 +40,12 @@ const Principle = ()=>{
       <h2 className=" text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 ">
         <p className="border-l-4 border-yellow-400 pl-4"> Our Principles</p>
       </h2>
-      <p className=' mt-4 w-full  lg:font-medium text-[#323232] px-6 sm:px-10 lg:px-20  text-lg leading-[28px] mb-6 lg:text-xl ml-4 lg:leading-[40px]'>We are guided by four foundational principles that undergird all our work:
+      <p className='pl-6 lg:pl-24 mt-2   lg:font-medium text-[#323232]   text-lg leading-[28px] mb-6 lg:text-xl lg:leading-[40px]'>We are guided by four foundational principles that undergird all our work:
 </p>
       <section className="px-6  ">
       <div className="max-w-6xl mx-auto">
        
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {principles.map((p, i) => (
             <div
