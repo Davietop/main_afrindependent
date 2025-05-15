@@ -136,11 +136,11 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-4 text-center text-black">
           <div className="flex flex-wrap items-center justify-center gap-4 mb-4 font-medium">
-            <Link href="/concepts">KEY CONCEPTS</Link>
-            <Link href="/publications">PUBLICATIONS</Link>
-            <Link href="/nilar">THE NILAR</Link>
+            <Link href="/concepts">KEY CONCEPTS</Link>  <div className="h-6  w-0.5 bg-[#ffd700]"></div>
+            <Link href="/publications">PUBLICATIONS</Link> <div className="h-6  w-0.5 bg-[#ffd700]"></div>
+            <Link href="/nilar">THE NILAR</Link> <div className="h-6  w-0.5 bg-[#ffd700]"></div>
            
-            <Link href="/about">ABOUT US</Link>
+            <Link href="/about">ABOUT US</Link>  <div className="h-6  w-0.5 bg-[#ffd700]"></div>
            
            <Link
                 href="/donate"

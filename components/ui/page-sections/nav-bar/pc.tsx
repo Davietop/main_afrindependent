@@ -69,17 +69,7 @@ const PcNav = () => {
         pathname === paths.contact ? "lg:relative" : ""
       }  ${ibmPlexSans.className} `}
     >
-      {/* <div className="flex items-center gap-x-12"> */}
-      {/* <Link href="/">
-        <Image
-          src={`Afridependent.svg`}
-          alt="Afrindependent"
-          width={237}
-          height={5}
-          priority
-        />
-       
-      </Link> */}
+      
        <Link href="/">
         <Image
           src={`/Afridependent.svg`}

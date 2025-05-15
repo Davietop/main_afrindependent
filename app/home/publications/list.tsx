@@ -43,7 +43,7 @@ const List = ({ authorSlug }: PropType) => {
   const { width } = useDimensions(containerRef)! || {};
   function truncateText(text: string, maxLength: number): string {
     if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength).trim() + '...';
+    return text.slice(0, maxLength).trim() + "...";
   }
 
   const shouldShowArrow =
@@ -53,7 +53,7 @@ const List = ({ authorSlug }: PropType) => {
       (a: Article, b: Article) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
-    .slice(0, 3);
+    .slice(1, 4);
 
   useEffect(() => {
     if (!topThree || topThree.length === 0) return;
@@ -94,10 +94,10 @@ const List = ({ authorSlug }: PropType) => {
               },
               index
             ) => {
-              const slugData = topThree[index]
-              
+              const slugData = topThree[index];
+
               const combinedText = abstract[0]?.children
-                .map((item:any) => item.text)
+                .map((item: any) => item.text)
                 .join("");
               const cleanedText = combinedText.replace(/^\[|\]$/g, ""); // remove [ at start or ] at end
               const readableDate = new Date(publishedAt).toLocaleString(
@@ -111,28 +111,30 @@ const List = ({ authorSlug }: PropType) => {
               const isLast = index === publicationData.length - 1;
 
               return (
-                <Link key={index}  href={`${paths.publications}/${slugData.slug}?type=${category}`}>
+                <Link
+                  key={index}
+                  href={`${paths.publications}/${slugData.slug}?type=${category}`}
+                >
                   <div className="text-black flex flex-col md:flex-row gap-x-10   w-full  ">
-                    <div className="h-[300px] w-full md:w-4/12 bg-cover bg-center rounded-xl "  style={{
-    backgroundImage: `url('${image}')`,
-  }}>
-                     
-                    </div>
+                    <div
+                      className="h-[300px] w-full md:w-4/12 bg-cover bg-center rounded-xl "
+                      style={{
+                        backgroundImage: `url('${image}')`,
+                      }}
+                    ></div>
 
                     <div className="flex flex-col  w-full  md:w-8/12 gap-y-4 md:gap-y-6">
                       <div className="flex items-center mt-2 md:mt-0 gap-x-2">
                         <p>{author?.name}</p>
-                        
+
                         <p>{readableDate}</p>
                       </div>
 
                       <div className="flex flex-col gap-y-4">
                         <h1 className="text-2xl lg:text-3xl font-bold">
-                        {title}
+                          {title}
                         </h1>
-                        <p>
-                        {   truncateText(cleanedText, 200) }
-                        </p>
+                        <p>{truncateText(cleanedText, 200)}</p>
                       </div>
                     </div>
                   </div>
