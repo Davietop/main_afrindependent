@@ -227,7 +227,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
                  categoryName === "Afrindependent Edge" ? "Afrindependent Lens" : categoryName}
               </p>
               <h3 className="text-xl font-semibold text-deepForest mb-2">{title}</h3>
-              <p className="text-gray-700 text-base line-clamp-3">{intro ?? "No summary available."}</p>
+              <p className="text-gray-700 text-base line-clamp-3">{intro}</p>
               <div className="flex items-center text-gray-700 gap-x-2">
                 <p>By {author?.name}</p> |
                 <p className="text-sm text-gray-700">{new Date(publishedAt).toLocaleDateString("en-GB")}</p>
