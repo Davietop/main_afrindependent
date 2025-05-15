@@ -192,7 +192,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
               <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold">Donate</h1>
                 <p className="text-sm">
-                  Partner with us in our mission to unlock Africa's prosperity.
+                  Partner with us in our mission to unlock Africa prosperity.
                   Your donation aligns you with our vision and empowers
                   groundbreaking scholarly work towards this goal.
                 </p>
@@ -217,7 +217,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
  <div>
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {currentItems.slice(0, itemsPerPage).map(({ slug, title, image, publishedAt, category, author, abstract, categoryName, intro }:any) => (
-         <Link  href={`${paths.publications}/${slug}?type=${post.category}`}>
+         <Link key={slug}  href={`${paths.publications}/${slug}?type=${post.category}`}>
            <div key={slug} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
             <div className="h-52 w-full bg-cover bg-center" style={{ backgroundImage: `url('${image}')` }} />
             <div className="p-5 flex flex-col gap-y-4">

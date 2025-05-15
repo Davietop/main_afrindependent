@@ -296,7 +296,7 @@ const stripHtml = (html: string) => {
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
   {currentItems.map(({ slug, title, image, publishedAt, category, author, abstract, categoryName, intro }) => (
-   <Link  href={`${paths.publications}/${slug}?type=${activeFilter}`}>
+   <Link key={slug}  href={`${paths.publications}/${slug}?type=${activeFilter}`}>
      <div key={slug} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full">
       <div className="h-52 w-full bg-cover bg-center" style={{ backgroundImage: `url('${image}')` }} />
 
