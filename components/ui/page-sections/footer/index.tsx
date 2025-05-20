@@ -70,57 +70,49 @@ const Footer = () => {
       },
     ]
   }, [companyDetails]);
+  const currentYear = new Date().getFullYear();
 
   return (
-<footer className={`${ibmPlexSans.className} bg-[#d0d5cd]  text-white py-4`}>
-   
-      <div className="container mx-auto px-4">
-    <div className="w-fit">
-           <Link href="/">
-        <Image
-          src={`/Afridependent.svg`}
-          alt="Afrindependent.svg"
-          width={250}
-          height={52}
-          priority
-        />
-      </Link>
-    </div>
-        <div className="relative top-[-40px] grid grid-cols-1 text-black md:grid-cols-3 gap-8">
-          <div>
-            <h2 className="font-bold text-xl mb-4">GENERAL</h2>
-            <ul className="space-y-2">
-            <li><a href="/contact" className="">Contact</a></li>
-             
-          <li><a href="/about" className="">About Us</a></li>
-              <li><a href="/nilar" className="">The Nilar</a></li>
-              <li><a href="/involved" className="">Get Involved</a></li>
-            
-            </ul>
-          </div>
-          <div>
-          
-       
-            <h2 className="font-bold text-xl mb-4">Writings</h2>
-            <ul className="space-y-2">
-             <li><a href="/concepts" className="">Key Concepts</a></li>
-              <li><a href="/publications" className="">Publication</a></li>
-         <li><a href="/video" className="hover:text-white">Videos</a></li>
-           
-            </ul>
-          </div>
-         <div className="text-base space-y-1 ">
+    <footer className={`${ibmPlexSans.className} bg-[#f4f1e6] text-deepForest `}>
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Menu */}
+        <div>
+        <h2 className="font-bold text-xl mb-4">Menu</h2>
+          <ul className="space-y-2 text-base">
+            <li><a href="/about" className="hover:underline">About</a></li>
+            <li><a href="/concepts" className="hover:underline">Key Concepts</a></li>
+            <li><a href="/publications" className="hover:underline">Publications</a></li>
+            <li><a href="/nilar" className="hover:underline">The Nilar</a></li>
+            <li><a href="/video" className="hover:underline">Videos</a></li>
+            <li><a href="/involved" className="hover:underline">Get Involved</a></li>
+            <li><a href="/contact" className="hover:underline">Contact Us</a></li>
+            <li><a href="/involved#submit" className="hover:underline">Submit an Article</a></li>
+          </ul>
+        </div>
+
+        {/* Special Projects */}
+        <div>
+        <h2 className="font-bold text-xl mb-4">Contact Details</h2>
+          <ul className="space-y-2 text-base">
+            <li><a href="#" className="hover:underline">Ten Thousand Commandments</a></li>
+            <li><a href="#" className="hover:underline">Eye on FTC</a></li>
+            <li><a href="#" className="hover:underline">Children Online Safety Tools</a></li>
+            <li><a href="#" className="hover:underline">Net Neutrality 101</a></li>
+          </ul>
+        </div>
+
+        {/* Contact + Socials */}
+        <div>
           <h2 className="font-bold text-xl mb-4">Contact Details</h2>
-            {companyDetails?.title && <p>{companyDetails.title}</p>}
+          <div className="text-base  space-y-1 ">
+         
+       {companyDetails?.title && <p>{companyDetails.title}</p>}
             {companyDetails?.location && <p>{companyDetails.location}</p>}
             {companyDetails?.email && <p>{companyDetails.email}</p>}
             {companyDetails?.phoneNumber && <p>{companyDetails.phoneNumber}</p>}
           </div>
-        </div>
-
-       
-           <div className="flex gap-3 flex-wrap mb-4 text-lg">
-              {socials.map((social, idx) => (
+          <div className="flex flex-wrap gap-4 mt-4 text-xl">
+          {socials.map((social, idx) => (
                 <a
                   key={idx}
                   href={social.link}
@@ -131,38 +123,20 @@ const Footer = () => {
                   {social.icon}
                 </a>
               ))}
-            </div>
-
-
-        <div className="border-t border-gray-700 mt-8 pt-4 text-center text-black">
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-4 font-medium">
-            <Link href="/concepts">KEY CONCEPTS</Link>  <div className="h-6  w-0.5 bg-[#ffd700]"></div>
-            <Link href="/publications">PUBLICATIONS</Link> <div className="h-6  w-0.5 bg-[#ffd700]"></div>
-            <Link href="/nilar">THE NILAR</Link> <div className="h-6  w-0.5 bg-[#ffd700]"></div>
-           
-            <Link href="/about">ABOUT US</Link>  <div className="h-6  w-0.5 bg-[#ffd700]"></div>
-           
-           <Link
-                href="/donate"
-                className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
-              >
-                <HeartHandshake className="w-5 h-5" />
-                Donate
-              </Link>
           </div>
-          
         </div>
       </div>
+
+      <div className="bg-[#d0d5cd] text-center text-lg ">
+        <div className="max-w-7xl flex flex-col gap-y-4 lg:flex-row lg:items-center py-10 justify-between mx-auto px-6 ">
+        <Image    src={`/Afridependen_2.png`} height={230} width={230} alt=""/>
+     <p className="text-left">   © {currentYear} Afrindependent Institute. All rights reserved {" "}</p>
+        </div>
+       
+       
+      </div>
     </footer>
-  
-
-
-   
   );
 };
 
 export default Footer;
-
-
-
-

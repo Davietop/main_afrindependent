@@ -53,7 +53,21 @@ const List = ({ authorSlug }: PropType) => {
       (a: Article, b: Article) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
-    .slice(1, 4);
+    
+
+    const getRecentPublications = (data: any[], maxAgeInDays = 180) => {
+      const now = new Date();
+      const cutoff = new Date(now.setDate(now.getDate() - maxAgeInDays));
+      return data
+        .filter((item) => new Date(item.publishedAt) >= cutoff)
+        .sort(
+          (a, b) =>
+            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        );
+    };
+
+    const latest = getRecentPublications(topThree ?? []).slice(0,4)
+
 
   useEffect(() => {
     if (!topThree || topThree.length === 0) return;
@@ -61,8 +75,10 @@ const List = ({ authorSlug }: PropType) => {
     const fetchAll = async () => {
       try {
         const results = await Promise.all(
-          topThree.map(({ slug }) => getSinglePublication({ slug }))
+          latest.map(({ slug }) => getSinglePublication({ slug }))
         );
+
+        console.log(results)
         setPublicationData(results);
       } catch (error) {
         console.error("Failed to fetch publications:", error);
@@ -70,7 +86,7 @@ const List = ({ authorSlug }: PropType) => {
     };
 
     fetchAll();
-  }, [topThree]);
+  }, [topThree.length]);
 
   return (
     <div
@@ -125,7 +141,7 @@ const List = ({ authorSlug }: PropType) => {
 
                     <div className="flex flex-col  w-full  md:w-8/12 gap-y-4 md:gap-y-6">
                       <div className="flex items-center mt-2 md:mt-0 gap-x-2">
-                        <p>{author?.name}</p>
+                        <p>{author?.name}</p>|
 
                         <p>{readableDate}</p>
                       </div>

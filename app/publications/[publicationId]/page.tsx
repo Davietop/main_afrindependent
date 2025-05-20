@@ -51,13 +51,14 @@ const Publication = async ({
   params: { publicationId: string };
 }) => {
   const data = await getSinglePublication({ slug: params.publicationId });
+
   return (
     <main className="bg-[#faf9f6]">
       <div className=" ">
         <Navbar />
       </div>
 
-      <div className="mt-20 lg:mt-0">
+      <div className="mt-20 xl:mt-0">
         <Post post={data} />
       </div>
       <div className="mt-10">

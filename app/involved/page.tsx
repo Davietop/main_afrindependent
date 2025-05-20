@@ -135,14 +135,89 @@ export default function GetInvolvedSection() {
         </div>
       </div>
 
-      {/* Closing Statement */}
-      <div className="max-w-3xl mx-auto text-center mt-20 border-t border-[#ffd700] pt-10">
-        <p className="text-xl text-[#002813] dark:text-[#ffd700] font-semibold">
-          Africa’s future depends on principled action.<br />
-          Help us build the foundation. Share the Nilar vision.
-        </p>
-      </div>
+  
+
     </section>
+
+        <section id="submit" className="px-5  lg:px-10 bg-white mb-8  pb-16  text-deepForest">
+      
+   
+
+       <div className="mb-8">
+            <h3 className="text-xl lg:text-2xl font-bold text-deepForest border-l-4 border-[#ffd700] pl-4">
+            Article Submissions
+            </h3>
+             <p className="text-base ml-4 text-gray-700 mb-4">Share your voice. Shape the future.</p>
+              <p className="ml-4 text-base text-gray-700 mb-6">
+      At the <span className="font-semibold">Afrindependent Institute</span>, we believe in the power of principled ideas to change societies. If you’re an aspiring or established writer, scholar, or thinker with bold insights grounded in truth, liberty, sound money, and structural justice—we welcome your contribution.
+    </p>
+
+    <p className="text-base ml-4 text-gray-700 mb-12">
+      We accept submissions for two distinct publication platforms:
+    </p>
+          </div>
+   
+  <div className="max-w-full w-10/12 mx-auto">
+  
+
+   
+
+    <div className="grid md:grid-cols-2 gap-10 mb-16">
+      {/* The Lens */}
+      <div className="bg-white shadow-lg rounded-xl p-6 border-t-4 border-yellow-400 flex flex-col h-full">
+        <h2 className="text-2xl font-semibold mb-2">The Afrindependent Lens</h2>
+        <p className="text-sm font-medium uppercase text-gray-500 mb-4">Longform Essays | Strategic Frameworks | Civilizational Thought</p>
+        <p className="text-gray-700 mb-4">
+          Our flagship platform for in-depth analysis, theoretical exploration, and high-level commentary. The Lens publishes essays that challenge dominant paradigms and help shape African intellectual and economic sovereignty.
+        </p>
+        <p className="text-gray-700 mb-3 font-medium">Ideal topics include:</p>
+        <ul className="list-disc list-inside text-gray-700 mb-4">
+          <li>Natural-moral law and African policy</li>
+          <li>Sound money and monetary reform</li>
+          <li>Decolonizing economics and education</li>
+          <li>Structural justice, liberty, and postcolonial renewal</li>
+          <li>Africonomics-based critiques of global governance, aid, or finance</li>
+        </ul>
+        <div className="mt-auto text-sm text-gray-600">
+          <p><span className="font-semibold">Word count:</span> 1,500–4,000 words</p>
+          <p><span className="font-semibold">Tone:</span> Analytical, rigorous, and original</p>
+        </div>
+      </div>
+
+      {/* The Post */}
+      <div className="bg-white shadow-lg rounded-xl p-6 border-t-4 border-yellow-400 flex flex-col h-full">
+        <h2 className="text-2xl font-semibold mb-2">The Afrindependent Post</h2>
+        <p className="text-sm font-medium uppercase text-gray-500 mb-4">Timely Commentary | Reflections | Emerging Insights</p>
+        <p className="text-gray-700 mb-4">
+          A space for shorter reflections, topical commentary, and thought-provoking takes on current events, policies, or public debates. Designed to spark engagement and invite principled perspectives rooted in the Africonomics worldview.
+        </p>
+        <div className="mt-auto text-sm text-gray-600">
+          <p><span className="font-semibold">Word count:</span> 600–1,500 words</p>
+          <p><span className="font-semibold">Tone:</span> Accessible, insightful, and grounded</p>
+        </div>
+      </div>
+    </div>
+
+    {/* How to Submit */}
+    <div className="bg-white p-6 rounded-xl shadow border-l-4 border-yellow-400 mb-12">
+      <h3 className="text-2xl font-semibold mb-4">How to Submit</h3>
+      <ul className="list-disc list-inside text-gray-700 space-y-2">
+        <li>Send your article as a Word or Google Doc to: <a href="mailto:submissions@afrindependent.org" className="text-blue-600 underline">submissions@afrindependent.org</a></li>
+        <li>Include a short bio (max 100 words) and a preferred author photo (optional)</li>
+        <li>Indicate whether your piece is intended for <strong>The Lens</strong> or <strong>The Post</strong></li>
+      </ul>
+      <p className="mt-4 text-sm text-gray-600">
+        All submissions are reviewed by our editorial team. Accepted pieces will be lightly edited in collaboration with the author. We aim to respond within 10–14 business days.
+      </p>
+    </div>
+
+    {/* Closing Statement */}
+    <div className="text-center">
+      <h4 className="text-xl font-semibold mb-2 text-deepForest">The world needs principled African voices.</h4>
+      <p className="text-gray-700 text-lg font-medium">Add yours to the conversation. Submit your work today.</p>
+    </div>
+  </div>
+</section>
 
     <Footer/>
         </main>

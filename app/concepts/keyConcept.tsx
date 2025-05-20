@@ -24,7 +24,7 @@ const clusters = [
       {
         id: "africonomics",
         title: "Africonomics",
-        intro:"A school of African philosophical and economic thought grounded in natural law, sound money, liberty, and justice.",
+        intro:"An African school of philosophical, economic, and civilizational thought grounded in natural-moral law, truth, liberty, and justice.",
         description: " Africonomics offers a principled and transformative alternative to Western economic orthodoxy—rejecting statism, fiat money, coercive governance, and technocratic social engineering in favor of upholding natural rights, voluntary cooperation, sound money systems, and structurally just social order grounded in natural-moral law jurisprudence.\n\nAfriconomics challenges established philosophical and economic models and advances a principled and more constructive approach to economics and other social sciences.",
       },
       {
@@ -294,7 +294,7 @@ export default function AfriconomicsPage() {
       </h1>
       <p className="max-w-5xl mx-auto text-gray-700 text-base md:text-lg leading-relaxed">
         The Afrindependent Institute advances a principled and transformative body of knowledge based on Africonomics—
-        a school of African philosophical, economic, and civilizational thought grounded in natural-moral law, justice,
+        an African school of philosophical, economic, and civilizational thought grounded in natural-moral law, justice,
         and liberty that advances sound economic systems.
       </p>
       <p className="max-w-5xl mx-auto text-gray-700 text-base md:text-lg leading-relaxed">
@@ -424,44 +424,34 @@ export default function AfriconomicsPage() {
                    
 
                     {/* Other Concepts */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
-                      {cluster.concepts.map((concept) => (
-                        <motion.div
-                          key={concept.id}
-                          id={concept.id}
-                          whileHover={{ scale: 1.01 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="p-4 border rounded-2xl shadow-sm hover:shadow-md transition bg-green-50"
-                        >
-                          <h3 className="text-xl font-semibold mb-2">{concept.title}</h3>
-                          <p className="text-gray-600 mb-4 italic">{concept.intro}</p>
-                          <div className="text-gray-600 mb-4 space-y-4">
-                            {concept?.description?.split("\n\n").map((paragraph, idx) => (
-                              <p key={idx}>{paragraph}</p>
-                            ))}
-                          </div>
-                          {
-                            concept?.stages?.map((stage, index)=>{
-                              return <div key={index}>
-                              <br/>
-                                <p className="font-semibold">{stage.intro}</p>
-                                <p className="font-semibold">{stage.stage}</p>
-                                <p >{stage.description}</p>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12 items-start">
+  {cluster.concepts.map((concept) => (
+    <motion.div
+      key={concept.id}
+      id={concept.id}
+      whileHover={{ scale: 1.01 }}
+      whileTap={{ scale: 0.98 }}
+      className="p-4 border rounded-2xl shadow-sm hover:shadow-md transition bg-green-50 self-start"
+    >
+      <h3 className="text-xl font-semibold mb-2">{concept.title}</h3>
+      <p className="text-gray-600 mb-4 italic">{concept.intro}</p>
+      <div className="text-gray-600 mb-4 space-y-4">
+        {concept?.description?.split("\n\n").map((paragraph, idx) => (
+          <p key={idx}>{paragraph}</p>
+        ))}
+      </div>
+      {concept?.stages?.map((stage, index) => (
+        <div key={index} className="mb-2">
+          <p className="font-semibold">{stage.intro}</p>
+          <p className="font-semibold">{stage.stage}</p>
+          <p>{stage.description}</p>
+        </div>
+      ))}
+      <p className="mt-2">{concept?.closing}</p>
+    </motion.div>
+  ))}
+</div>
 
-                              
-                              </div>
-
-                            })
-                          }
-
-                          <p className="mt-2">{concept?.closing}</p>
-
-                         
-                        
-                       
-                        </motion.div>
-                      ))}
-                    </div>
                   
 <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full max-w-md mx-auto ">
       {/* Explore */}
@@ -476,7 +466,7 @@ export default function AfriconomicsPage() {
 
       {/* Subscribe */}
       <Link
-        href="/subscribe"
+        href="/#subscribe"
         className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
       >
         <MailCheck className="w-5 h-5" />

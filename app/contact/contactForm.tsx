@@ -1,11 +1,12 @@
-"use client"
-import { FC, useState, FormEvent } from 'react';
-import { Mail, MapPin, MessageSquare } from 'lucide-react';
-import { IBM_Plex_Sans } from 'next/font/google';
+"use client";
+import { FC, useState, FormEvent } from "react";
+import { Mail, MapPin, MessageSquare } from "lucide-react";
+import { IBM_Plex_Sans } from "next/font/google";
+
 const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ['latin'],          // Or 'latin-ext' if needed
-  weight: ['400', '500', '700'], // Optional: choose weights you use
-  display: 'swap',             // Optional: improves text rendering
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 interface FormState {
@@ -17,14 +18,14 @@ interface FormState {
 
 const ContactSection: FC = () => {
   const [formData, setFormData] = useState<FormState>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,27 +36,25 @@ const ContactSection: FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/send-contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/send-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (res.ok) {
-        setSubmitted(true);
-        setFormData({ firstName: '', lastName: '', email: '', message: '' });
+        setShowModal(true);
+        setFormData({ firstName: "", lastName: "", email: "", message: "" });
       }
     } catch (err) {
-      console.error('Submission error:', err);
+      console.error("Submission error:", err);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section className={`${ibmPlexSans.className} text-[#002813] px-6 sm:px-10  bg-white`}>
-     
-
+    <section className={`${ibmPlexSans.className} text-[#002813] px-6 sm:px-10 bg-white`}>
       {/* Contact Form Section */}
       <div className="grid lg:grid-cols-2 gap-16">
         <div>
@@ -63,56 +62,53 @@ const ContactSection: FC = () => {
           <p className="mb-6">
             Use the form below to contact our team regarding our work, publications, or opportunities to collaborate.
           </p>
-          {submitted ? (
-            <p className="text-lg font-medium">Thank you—your message has been sent.</p>
-          ) : (
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <input
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="First Name"
-                  className="p-4 rounded-xl border bg-white text-[#002813]"
-                  required
-                />
-                <input
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Last Name"
-                  className="p-4 rounded-xl border bg-white text-[#002813]"
-                  required
-                />
-                <input
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  type="email"
-                  placeholder="Email Address"
-                  className="p-4 rounded-xl border bg-white text-[#002813] col-span-full"
-                  required
-                />
-              </div>
-              <textarea
-                name="message"
-                value={formData.message}
+
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <input
+                name="firstName"
+                value={formData.firstName}
                 onChange={handleChange}
-                placeholder="Your Message"
-                className="w-full p-4 rounded-xl border bg-white text-[#002813] h-40"
+                type="text"
+                placeholder="First Name"
+                className="p-4 rounded-xl border bg-white text-[#002813]"
                 required
-              ></textarea>
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-[#002813] text-[#ffd700] px-6 py-3 rounded-xl font-medium hover:bg-[#001d0f] transition"
-              >
-                {loading ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
-          )}
+              />
+              <input
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                type="text"
+                placeholder="Last Name"
+                className="p-4 rounded-xl border bg-white text-[#002813]"
+                required
+              />
+              <input
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                type="email"
+                placeholder="Email Address"
+                className="p-4 rounded-xl border bg-white text-[#002813] col-span-full"
+                required
+              />
+            </div>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your Message"
+              className="w-full p-4 rounded-xl border bg-white text-[#002813] h-40"
+              required
+            ></textarea>
+            <button
+              type="submit"
+              disabled={loading}
+              className="bg-[#002813] text-[#ffd700] px-6 py-3 rounded-xl font-medium hover:bg-[#001d0f] transition"
+            >
+              {loading ? "Sending..." : "Send Message"}
+            </button>
+          </form>
         </div>
 
         {/* Contact Info Section */}
@@ -150,9 +146,26 @@ const ContactSection: FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-white rounded-xl p-6 max-w-md w-full shadow-xl text-center">
+            <h2 className="text-xl font-semibold mb-2">Message Sent</h2>
+            <p className="mb-4 text-[#002813]">
+              Thank you—your message has been successfully sent. We’ll be in touch soon.
+            </p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="bg-[#002813] text-[#ffd700] px-6 py-2 rounded-xl font-medium hover:bg-[#001d0f] transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
 
 export default ContactSection;
-

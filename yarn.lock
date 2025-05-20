@@ -9915,10 +9915,10 @@ reselect@^5.1.1:
   resolved "https://registry.npmjs.org/reselect/-/reselect-5.1.1.tgz"
   integrity sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==
 
-resend@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.npmjs.org/resend/-/resend-4.4.1.tgz"
-  integrity sha512-FR22bzMW3VfoyZSBc8ScGo8ShrMWHmWB0G3FrispzWCnYSEEK5M7pyRvZtInKmM/09lsJETKc2q66mX+dXPSmg==
+resend@^4.5.1:
+  version "4.5.1"
+  resolved "https://registry.npmjs.org/resend/-/resend-4.5.1.tgz"
+  integrity sha512-ryhHpZqCBmuVyzM19IO8Egtc2hkWI4JOL5lf5F3P7Dydu3rFeX6lHNpGqG0tjWoZ63rw0l731JEmuJZBdDm3og==
   dependencies:
     "@react-email/render" "1.0.6"
 
