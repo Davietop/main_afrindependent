@@ -285,7 +285,7 @@ We accept submissions for two distinct publication platforms:
               <p className="text-gray-700 text-base line-clamp-3">{intro}</p>
 
               <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
-                <p>By {author?.name}</p> |
+                <p>  {post?.author?.name}</p> |
                 <p className="text-sm text-gray-700">
                   {new Date(publishedAt).toLocaleDateString("en-GB")}
                 </p>

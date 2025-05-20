@@ -316,11 +316,15 @@ We accept submissions for two distinct publication platforms:
               <h3 className="text-xl font-semibold text-deepForest mb-2">
                 {title}
               </h3>
+             
               <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
+                <p>  {post?.author?.name}</p> |
                 <p className="text-sm text-gray-700">
                   {new Date(publishedAt).toLocaleDateString("en-GB")}
                 </p>
               </div>
+              
+              
             </div>
           </div>
         </Link>
