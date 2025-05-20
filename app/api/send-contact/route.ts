@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend('re_j5g1WtaS_2MrLQHVQqYURHoQJyUATMczZ');
 
 export async function POST(req: NextRequest) {
   try {
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
   
 
     const sendToAdmin = await resend.emails.send({
-      from: process.env.RESEND_FROM as string,
+      from: "Afrindependent Contact <noreply@afrindependent.org>",
       to: ['oyatoye2003@gmail.com'],
       subject: `New Contact Message from ${firstName} ${lastName}`,
       replyTo: email,
@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
     `;
 
     const sendAutoReply = await resend.emails.send({
-      from: process.env.RESEND_FROM as string,
+      from: "Afrindependent Contact <noreply@afrindependent.org>",
       to: [email],
       subject: 'Thank You for Contacting the Afrindependent Institute',
       html: autoReplyHtml,
