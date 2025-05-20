@@ -86,18 +86,18 @@ const Footer = () => {
             <li><a href="/video" className="hover:underline">Videos</a></li>
             <li><a href="/involved" className="hover:underline">Get Involved</a></li>
             <li><a href="/contact" className="hover:underline">Contact Us</a></li>
-            <li><a href="/involved#submit" className="hover:underline">Submit an Article</a></li>
+          
           </ul>
         </div>
 
         {/* Special Projects */}
         <div>
-        <h2 className="font-bold text-xl mb-4">Contact Details</h2>
+        <h2 className="font-bold text-xl mb-4">Engage</h2>
           <ul className="space-y-2 text-base">
-            <li><a href="#" className="hover:underline">Ten Thousand Commandments</a></li>
-            <li><a href="#" className="hover:underline">Eye on FTC</a></li>
-            <li><a href="#" className="hover:underline">Children Online Safety Tools</a></li>
-            <li><a href="#" className="hover:underline">Net Neutrality 101</a></li>
+            <li><a href="/publications#filter" className="hover:underline">Afrindependent Post</a></li>
+            <li><a href="/publications#filter" className="hover:underline">Afrindependent Lens</a></li>
+            <li><a href="/involved#submit" className="hover:underline">Submit an Article</a></li>
+           
           </ul>
         </div>
 
