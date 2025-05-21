@@ -218,7 +218,7 @@ export default function Filters({ categories }: PropType) {
       <section className=" py-10 px-5 lg:px-10">
         <div className="mb-8">
           <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] pl-4">
-            Featured Section
+            Featured Publications
           </h3>
         </div>
         <div className="lg:px-10">

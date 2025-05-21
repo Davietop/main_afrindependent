@@ -38,9 +38,9 @@ function HowNilarAligns() {
         <div  className="bg-white pt-10 px-5 lg:px-10">
           <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
        
-          How the Nilar Aligns with <span className="text-[#ffd700]">Africonomics</span>
+          How the Nilar Aligns with Africonomics
      </h3>
-     <p className="italic ml-4 text-lg text-[#ffd700] mb-6">
+     <p className="italic ml-4 mt-2 text-lg text-[#ffd700] mb-6">
           More than a currency it is a civilizational affirmation.
         </p>
 
@@ -193,13 +193,13 @@ function HowNilarAligns() {
               ],
             ].map(([feature, nilar, fiat], idx) => (
               <tr key={idx} className="even:bg-gray-50">
-                <td className="border border-gray-200 p-4 font-medium text-gray-700 text-base">
+                <td className="border border-gray-200 p-4 font-bold text-gray-700 text-base">
                   {feature}
                 </td>
-                <td className="border border-gray-200 p-4 text-[#ffd700] font-semibold text-base">
+                <td className="border border-gray-200 p-4 text-gray-700 font-semibold text-base">
                   {nilar}
                 </td>
-                <td className="border border-gray-200 p-4 text-base text-deepForest font-semibold">
+                <td className="border border-gray-200 p-4 text-base text-gray-700 font-semibold">
                   {fiat}
                 </td>
               </tr>

@@ -30,25 +30,25 @@ export default function NilarNote() {
         </p>
 
         <p className="text-lg sm:text-xl leading-relaxed mb-6">
-          They were <span className="text-yellow-500 font-medium">monetary illusions</span>—veiled efforts by the state to maintain control over a fiat system that had already collapsed. The central bank continued to issue money without full gold convertibility, applied technocratic exchange rate controls, and attempted to peg the currency to the U.S. dollar—all classic signs of fiat manipulation in disguise.
+          They were monetary illusions—veiled efforts by the state to maintain control over a fiat system that had already collapsed. The central bank continued to issue money without full gold convertibility, applied technocratic exchange rate controls, and attempted to peg the currency to the U.S. dollar—all classic signs of fiat manipulation in disguise.
         </p>
 
-        <p className="text-lg sm:text-xl leading-relaxed font-semibold text-yellow-400 mt-8 mb-4">
-          A genuine gold-based currency—like the <span className="text-white bg-yellow-500 px-1 rounded">Nilar</span>—requires none of these artificial mechanisms:
+        <p className="text-lg sm:text-xl leading-relaxed font-semibold  mt-8 mb-4">
+          A genuine gold-based currency—like the Nilar—requires none of these artificial mechanisms:
         </p>
 
         <ul className="space-y-4 text-base sm:text-lg pl-6 list-none">
           <li className="flex items-start gap-3">
             <ShieldCheck className="w-6 h-6 text-yellow-400 mt-1" />
-            <span><strong>Fully backed by physical gold</strong>, not promises.</span>
+            <span>Fully backed by physical gold, not promises.</span>
           </li>
           <li className="flex items-start gap-3">
             <Scale className="w-6 h-6 text-yellow-400 mt-1" />
-            <span><strong>Freely exchangeable</strong>, not subject to central bank whims.</span>
+            <span>Freely exchangeable, not subject to central bank whims.</span>
           </li>
           <li className="flex items-start gap-3">
             <Banknote className="w-6 h-6 text-yellow-400 mt-1" />
-            <span><strong>Not pegged</strong> to fiat currencies; derives its value from gold itself.</span>
+            <span>Not pegged to fiat currencies; derives its value from gold itself.</span>
           </li>
           <li className="flex items-start gap-3">
             <BadgeDollarSign className="w-6 h-6 text-yellow-400 mt-1" />
@@ -57,7 +57,7 @@ export default function NilarNote() {
         </ul>
 
         <p className="text-lg sm:text-xl leading-relaxed mt-8">
-          The failure of Zimbabwe’s gold-linked fiat is <strong>not a failure of gold or sound money</strong>—it is a failure of <span className="italic text-yellow-400">monetary dishonesty</span> and state manipulation.
+          The failure of Zimbabwe’s gold-linked fiat is not a failure of gold or sound money is a  <span className="font-bold"> failure of monetary dishonesty</span> and state manipulation.
         </p>
 
         <div className="bg-[#fef9e6] dark:bg-[#173524] mx-auto text-center p-6 mt-10 rounded-xl shadow-sm border border-yellow-400">

@@ -79,7 +79,7 @@ const Footer = () => {
         <div>
         <h2 className="font-bold text-xl mb-4">Menu</h2>
           <ul className="space-y-2 text-base">
-            <li><a href="/about" className="hover:underline">About</a></li>
+            <li><a href="/about" className="hover:underline">About The Institute</a></li>
             <li><a href="/concepts" className="hover:underline">Key Concepts</a></li>
             <li><a href="/publications" className="hover:underline">Publications</a></li>
             <li><a href="/nilar" className="hover:underline">The Nilar</a></li>
@@ -96,6 +96,7 @@ const Footer = () => {
           <ul className="space-y-2 text-base">
             <li><a href="/publications#filter" className="hover:underline">Afrindependent Post</a></li>
             <li><a href="/publications#filter" className="hover:underline">Afrindependent Lens</a></li>
+            <li><a href="/#subscribe" className="hover:underline">Sovereign Signals (Newsletter)</a></li>
             <li><a href="/involved#submit" className="hover:underline">Submit an Article</a></li>
            
           </ul>
@@ -111,7 +112,10 @@ const Footer = () => {
             {companyDetails?.email && <p>{companyDetails.email}</p>}
             {companyDetails?.phoneNumber && <p>{companyDetails.phoneNumber}</p>}
           </div>
+          <h2 className="font-semibold mt-4 text-lg mb-4">Connect with us </h2>
           <div className="flex flex-wrap gap-4 mt-4 text-xl">
+
+          
           {socials.map((social, idx) => (
                 <a
                   key={idx}

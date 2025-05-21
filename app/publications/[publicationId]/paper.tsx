@@ -83,6 +83,8 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
     const offset = currentPage * itemsPerPage;
     const currentItems = filteredData.slice(offset, offset + itemsPerPage);
 
+    console.log(type)
+
   
   return (
     <section className={`${ibmPlexSans.className} px-5 lg:px-14`}>
@@ -114,8 +116,10 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
           >
             {post?.author?.name}
           </Link>|
-          <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>|
-          <p className="text-base">{isoStringToDate(post.publishedAt)}</p>
+
+               <p className="text-base">{isoStringToDate(post.publishedAt)}</p>|
+          <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+     
         </div>
      <div className="flex flex-wrap items-center gap-3 lg:hidden mb-4 font-medium">
           <Link
@@ -139,9 +143,10 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
         />
       </div>
           <h3 className="font-semibold text-xl lg:text-2xl leading-[20px] lg:leading-[40px] mb-6 ">
-            Executive Summary:
+            {type === "policy_papers" ? "Executive Summary:" : "Abstract:"}
+            
           </h3>
-          <div className="min-w-full leading-6 lg:text-lg  mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:40px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] prose-blockquote:after:left-6 prose-blockquote:after:w-full prose-blockquote:after:h-full prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:deepForest prose-strong:font-bold prose-a:text-deepForest">
+          <div className="min-w-full leading-6 lg:text-lg  mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:25px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] prose-blockquote:after:left-6 prose-blockquote:after:w-full prose-blockquote:after:h-full prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:deepForest prose-strong:font-bold prose-a:text-deepForest">
         
             <TextComponent value={post.abstract} />
           </div>
@@ -216,7 +221,7 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
               <div className="absolute inset-0 bg-white/80 z-0 rounded-lg" />
               {/* Content on top of overlay */}
               <div className="relative z-10 px-2 flex items-center flex-col text-black">
-                <h1 className="font-bold text-base">Afrindependent Institute</h1>
+                <h1 className="font-bold text-lg">Share this Publication</h1>
                 <p className=" text-base mt-6 mb-4">
                   {/* Hello, We’re content writer who is fascinated by content
                   fashion, celebrity and lifestyle. We help clients bring the
@@ -231,13 +236,36 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
               <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
               {/* Content on top of overlay */}
               <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
-                <h1 className="font-bold text-base">NewsLetters</h1>
+                <h1 className="font-bold text-base">NewsLetter</h1>
                 <p className="text-base">Join our intellectual movement</p>
                 <SubscribeForm />
                 <p className="text-base">
                   We respect your privacy. No spam — just thoughtful updates.
                   You can unsubscribe anytime.
                 </p>
+              </div>
+            </div>
+            
+            <div className="relative  w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
+              {/* White Overlay */}
+
+              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
+              {/* Content on top of overlay */}
+              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+                <h1 className="font-bold text-base">Donate</h1>
+                <p className="text-base">
+                  Partner with us in our mission to unlock Africa prosperity.
+                  Your donation aligns you with our vision and empowers
+                  groundbreaking scholarly work towards this goal.
+                </p>
+                <Link href={paths.donate}>
+                  <Button
+                    type="submit"
+                    className="flex items-center gap-2 bg-deepForest text-sm border-2  border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700]  font-medium px-10 py-1 rounded-full transition duration-200"
+                  >
+                    Donate
+                  </Button>
+                </Link>{" "}
               </div>
             </div>
             <div className="relative  w-full lg:w-[300px] h-fit py-6 border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
@@ -261,28 +289,6 @@ We accept submissions for two distinct publication platforms:
                     className="flex items-center gap-2 bg-deepForest text-sm border-2  border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700]  font-medium px-10 py-1 rounded-full transition duration-200"
                   >
                     Submit an article
-                  </Button>
-                </Link>{" "}
-              </div>
-            </div>
-            <div className="relative  w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
-              {/* White Overlay */}
-
-              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
-                <h1 className="font-bold text-base">Donate</h1>
-                <p className="text-base">
-                  Partner with us in our mission to unlock Africa prosperity.
-                  Your donation aligns you with our vision and empowers
-                  groundbreaking scholarly work towards this goal.
-                </p>
-                <Link href={paths.donate}>
-                  <Button
-                    type="submit"
-                    className="flex items-center gap-2 bg-deepForest text-sm border-2  border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700]  font-medium px-10 py-1 rounded-full transition duration-200"
-                  >
-                    Donate
                   </Button>
                 </Link>{" "}
               </div>

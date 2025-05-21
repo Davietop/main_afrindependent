@@ -78,7 +78,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
             {post?.intro}
           </p>
         </div>
-        <div className="lg:flex hidden items-center gap-x-3 mt-4">
+        <div className="lg:flex hidden items-center gap-x-3 mt-4 font-medium">
           <div className="h-[50px] w-[50px] bg-founder bg-cover  rounded-full"></div>
        
           <Link
@@ -86,9 +86,9 @@ const Article = ({ post }: { post: PublicationDto }) => {
             className="text-base"
           >
             {post?.author?.name}
-          </Link>
-          |<p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>|
+          </Link>|
           <p className="text-base">{isoStringToDate(post.publishedAt)}</p>
+          |<p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
         </div>
         <div className="flex flex-col   gap-3 lg:hidden mb-4 font-medium">
           <div className="flex flex-col ">
@@ -123,7 +123,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
               className="w-full h-auto object-cover rounded-2xl object-center"
             />
           </div>
-          <div className="min-w-full leading-6 lg:text-lg mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:40px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] lg:prose-blockquote:after:-top-3 prose-blockquote:after:left-6 prose-blockquote:after:w-[40px] prose-blockquote:after:h-[40px] prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:decoration-deepForest prose-strong:font-bold prose-a:text-deepForest">
+          <div className="min-w-full leading-6 lg:text-lg mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:25px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] lg:prose-blockquote:after:-top-3 prose-blockquote:after:left-6 prose-blockquote:after:w-[40px] prose-blockquote:after:h-[40px] prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:decoration-deepForest prose-strong:font-bold prose-a:text-deepForest">
             <TextComponent value={post.abstract} />
           </div>
           <div className="mt-5 mb-2">
@@ -185,7 +185,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
               <div className="absolute inset-0 bg-white/80 z-0 rounded-lg" />
               {/* Content on top of overlay */}
               <div className="relative z-10 px-2 flex items-center flex-col text-black">
-                <h1 className="font-bold text-base">Afrindependent Institute</h1>
+                <h1 className="font-bold text-lg">Share this publication</h1>
                 <p className=" text-base mt-6 mb-4">
                   {/* Hello, We’re content writer who is fascinated by content
                   fashion, celebrity and lifestyle. We help clients bring the
@@ -200,13 +200,35 @@ const Article = ({ post }: { post: PublicationDto }) => {
               <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
               {/* Content on top of overlay */}
               <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
-                <h1 className="font-bold text-base">NewsLetters</h1>
+                <h1 className="font-bold text-base">NewsLetter</h1>
                 <p className="text-base">Join our intellectual movement</p>
                 <SubscribeForm />
                 <p className="text-base">
                   We respect your privacy. No spam — just thoughtful updates.
                   You can unsubscribe anytime.
                 </p>
+              </div>
+            </div>
+             <div className="relative  w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
+              {/* White Overlay */}
+
+              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
+              {/* Content on top of overlay */}
+              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+                <h1 className="font-bold text-base">Donate</h1>
+                <p className="text-base">
+                  Partner with us in our mission to unlock Africa prosperity.
+                  Your donation aligns you with our vision and empowers
+                  groundbreaking scholarly work towards this goal.
+                </p>
+                <Link href={paths.donate}>
+                  <Button
+                    type="submit"
+                    className="flex items-center gap-2 bg-deepForest text-sm border-2  border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700]  font-medium px-10 py-1 rounded-full transition duration-200"
+                  >
+                    Donate
+                  </Button>
+                </Link>{" "}
               </div>
             </div>
             <div className="relative  w-full lg:w-[300px] h-fit py-6 border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
@@ -234,28 +256,7 @@ We accept submissions for two distinct publication platforms:
                 </Link>{" "}
               </div>
             </div>
-            <div className="relative  w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
-              {/* White Overlay */}
-
-              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
-                <h1 className="font-bold text-base">Donate</h1>
-                <p className="text-base">
-                  Partner with us in our mission to unlock Africa prosperity.
-                  Your donation aligns you with our vision and empowers
-                  groundbreaking scholarly work towards this goal.
-                </p>
-                <Link href={paths.donate}>
-                  <Button
-                    type="submit"
-                    className="flex items-center gap-2 bg-deepForest text-sm border-2  border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700]  font-medium px-10 py-1 rounded-full transition duration-200"
-                  >
-                    Donate
-                  </Button>
-                </Link>{" "}
-              </div>
-            </div>
+           
           </div>
         </aside>
       </section>

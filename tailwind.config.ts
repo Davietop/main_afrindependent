@@ -42,7 +42,7 @@ const config = {
         "teacher": `url("/teacher-replace.jpg")`,
         bg_home:`url("/hero_landing.jpg")`,
         contact: `url("/contact.jpg")`,
-        mission_hands:`url("/working_mission.jpg")`,
+        mission_hands:`url("/about_new.png")`,
         publication:`url("/pub_lica.jpg")`,
         logo_bg: `url("/Afridependent_2.svg")`,
         founder: `url("/founder.jpg")`,
