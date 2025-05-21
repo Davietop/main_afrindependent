@@ -34,7 +34,7 @@ const VissionMission = () => {
       </div>
   
       {/* Right: Text Section */}
-      <div className="w-full md:w-10/12 md:text-center xl:text-left flex flex-col xl:w-7/12 mt-2 lg:mt-0">
+<div className="w-full md:w-10/12 md:text-center xl:text-left flex flex-col xl:w-7/12 mt-2 lg:mt-0">
   <p className="text-[#323232] text-base sm:text-lg lg:text-xl leading-relaxed lg:leading-[40px]">
     As the Home of Africonomics, our mission at the Afrindependent Institute is to advance African intellectual and economic sovereignty through principled research, transformative frameworks, and bold alternatives to failed Western models. We are committed to building a new African reality rooted in truth, liberty, sound money, and structural justice—for a free, prosperous, and dignified Africa.
     <br />
@@ -48,14 +48,14 @@ const VissionMission = () => {
     </span>
   </p>
 
-  <p className="text-[#323232] text-base sm:text-lg lg:text-xl leading-relaxed lg:leading-[40px] mt-6">
+  {/* Emphasized Quote */}
+  <div className="mt-8 border-l-4 border-yellow-500 pl-4  text-[#1a1a1a] text-lg sm:text-xl lg:text-2xl font-semibold leading-relaxed">
     “African intellectual independence is the precursor to African material independence in the form of integrated, stable, and thriving African economies.”
-  </p>
+  </div>
 
-  <p className="text-[#323232] text-base sm:text-base lg:text-lg leading-relaxed  text-right self-end mt-6">
+  <p className="text-[#323232] text-base sm:text-base lg:text-lg leading-relaxed text-right self-end mt-4">
     — Manuel Tacanho <br />
-    Founder of the Afrindependent Institute <br />
-  
+    Founder of the Afrindependent Institute
   </p>
 </div>
 
