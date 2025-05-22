@@ -122,6 +122,7 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
           <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
      
         </div>
+      
      <div className="flex flex-wrap items-center gap-3 lg:hidden mb-4 font-medium">
           <Link
             href={`${paths.authors}/${post?.author?.slug}`}
@@ -132,7 +133,21 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
           <div className="h-4 w-[1px] bg-black"></div>
           <div>
             <span>{isoStringToDate(post.publishedAt)}</span>
-          </div>
+          </div> |
+              <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+        </div>
+
+         <div className="mt-5 mb-5">
+          {/* Category Name Heading */}
+        
+          {/* Back Link */}
+          <a
+            href="/publications#filter"
+            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+          >
+            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
+            <span>Back to Publications</span>
+          </a>
         </div>
       <div className="mb-6  overflow-hidden flex items-center justify-center">
         <Image

@@ -92,31 +92,21 @@ const Article = ({ post }: { post: PublicationDto }) => {
           <p className="text-base">{isoStringToDate(post.publishedAt)}</p>
           |<p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
         </div>
-            <div className="hidden lg:flex mt-10">
+         <div className="mb-5 mt-8 hidden lg:flex ">
           {/* Category Name Heading */}
         
           {/* Back Link */}
           <a
             href="/publications#filter"
-            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-medium hover:underline"
+            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
           >
             <img src="/left_icon.png" height={20} width={20} alt="back icon" />
             <span>Back to Publications</span>
           </a>
         </div>
+         
         <div className="flex flex-col   gap-3 lg:hidden mb-4 font-medium">
-           <div className=" ">
-          {/* Category Name Heading */}
         
-          {/* Back Link */}
-          <a
-            href="/publications#filter"
-            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-medium hover:underline"
-          >
-            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
-            <span>Back to Publications</span>
-          </a>
-        </div>
 
           <div className="flex flex-col ">
              <p className=" text-base font-medium lg:text-xl leading-[25px] lg:leading-[45px] mb-1 lg:mb-0">
@@ -136,6 +126,19 @@ const Article = ({ post }: { post: PublicationDto }) => {
             <span>{isoStringToDate(post.publishedAt)}</span>|
             <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
           </div>
+        </div>
+
+           <div className="mb-5 mt-5">
+          {/* Category Name Heading */}
+        
+          {/* Back Link */}
+          <a
+            href="/publications#filter"
+            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+          >
+            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
+            <span>Back to Publications</span>
+          </a>
         </div>
 
         
