@@ -36,29 +36,17 @@ const Post = ({ post }: { post: PublicationDto }) => {
   };
   
   return (
-    <div className={`${ibmPlexSans.className} w-full lg:w-10/12 lg:mx-auto`}>
+    <div className={`${ibmPlexSans.className} w-full mt-10 lg:w-10/12 lg:mx-auto`}>
   {/* Category Name & Back Link */}
-  <div className="mx-5 lg:mx-14 mt-6  pb-4">
-  {/* Category Name Heading */}
-  <h1 className="text-xl lg:text-2xl font-semibold text-[#0E102A] mb-2">
-  The {getDisplayCategoryName(post?.categoryName, type ?? "")}
-  </h1>
 
-  {/* Back Link */}
-  <Link
-    href="/publications#filter"
-    className="flex w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-medium hover:underline"
-  >
-    <img src="/left_icon.png" height={20} width={20} alt="back icon" />
-    <span>Back to Publications</span>
-  </Link>
-</div>
-
+ 
 
   {/* Title */}
   <h1 className="px-5 lg:px-14 font-bold text-black w-full max-w-[90%] text-3xl lg:text-4xl leading-tight lg:leading-[50px]">
     {post.title}
   </h1>
+
+
 
   {/* Content */}
   {isPaper ? <Paper post={post} /> : <Article post={post} />}

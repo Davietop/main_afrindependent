@@ -89,6 +89,7 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
   return (
     <section className={`${ibmPlexSans.className} px-5 lg:px-14`}>
       
+      
       <div className="mt-6 lg:hidden w-full">
         <Link
           href={post.file}

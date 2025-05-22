@@ -5,6 +5,8 @@ import Footer from "@/components/ui/page-sections/footer";
 import Post from "./post";
 import { getSinglePublication } from "@/service/sanity-queries";
 
+import Link from "next/link";
+
 type Props = {
   params: { publicationId: string };
 };
@@ -51,6 +53,22 @@ const Publication = async ({
   params: { publicationId: string };
 }) => {
   const data = await getSinglePublication({ slug: params.publicationId });
+    
+  
+  
+    const isPaper = data?.category === "africonomics-papers";
+    const getDisplayCategoryName = (categoryName: string, type: string) => {
+      if (categoryName === "Scholarly Papers") {
+        return type === "policy_papers" ? "Policy Papers" : "Academic Papers";
+      }
+    
+      const categoryMap: Record<string, string> = {
+        "Afrindependent Blog": "Afrindependent Post",
+        "Afrindependent Edge": "Afrindependent Lens",
+      };
+    
+      return categoryMap[categoryName] || categoryName;
+    };
 
   return (
     <main className="bg-[#faf9f6]">
@@ -58,7 +76,8 @@ const Publication = async ({
         <Navbar />
       </div>
 
-      <div className="mt-20 xl:mt-0">
+      <div className=" mt-20 xl:mt-0">
+        
         <Post post={data} />
       </div>
       <div className="mt-10">

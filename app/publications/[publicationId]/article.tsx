@@ -72,12 +72,14 @@ const Article = ({ post }: { post: PublicationDto }) => {
   const currentItems = filteredData.slice(offset, offset + itemsPerPage);
   return (
     <div className={`${ibmPlexSans.className}`}>
+      
       <div className="px-5 lg:px-14 lg:mb-10">
         <div className="grid grid-cols-1 lg:grid-cols-5">
-          <p className="col-span-1 lg:col-span-3 leading-6 text-sm lg:text-base  mt-4 mb-4 lg:mb-0">
+          <p className="col-span-1 lg:col-span-3 leading-6 text-base lg:text-lg  mt-4 mb-4 lg:mb-0">
             {post?.intro}
           </p>
         </div>
+        
         <div className="lg:flex hidden items-center gap-x-3 mt-4 font-medium">
           <div className="h-[50px] w-[50px] bg-founder bg-cover  rounded-full"></div>
        
@@ -90,7 +92,32 @@ const Article = ({ post }: { post: PublicationDto }) => {
           <p className="text-base">{isoStringToDate(post.publishedAt)}</p>
           |<p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
         </div>
+            <div className="hidden lg:flex mt-10">
+          {/* Category Name Heading */}
+        
+          {/* Back Link */}
+          <a
+            href="/publications#filter"
+            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-medium hover:underline"
+          >
+            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
+            <span>Back to Publications</span>
+          </a>
+        </div>
         <div className="flex flex-col   gap-3 lg:hidden mb-4 font-medium">
+           <div className=" ">
+          {/* Category Name Heading */}
+        
+          {/* Back Link */}
+          <a
+            href="/publications#filter"
+            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-medium hover:underline"
+          >
+            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
+            <span>Back to Publications</span>
+          </a>
+        </div>
+
           <div className="flex flex-col ">
              <p className=" text-base font-medium lg:text-xl leading-[25px] lg:leading-[45px] mb-1 lg:mb-0">
           Share Publication
@@ -105,10 +132,13 @@ const Article = ({ post }: { post: PublicationDto }) => {
             {post?.author?.name}
           </Link>
           <div className="h-4 w-[1px] bg-black"></div>
-          <div>
-            <span>{isoStringToDate(post.publishedAt)}</span>
+          <div className="flex gap-x-2">
+            <span>{isoStringToDate(post.publishedAt)}</span>|
+            <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
           </div>
         </div>
+
+        
            
         </div>
       </div>
