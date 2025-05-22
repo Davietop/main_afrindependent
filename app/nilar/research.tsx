@@ -104,7 +104,7 @@ console.log(uniqueFeaturedFeat)
           Publications & Research
         </h3>
         <p className="text-lg text-gray-600 max-w-full mx-auto mt-2 ml-4">
-          <span className="italic ">
+          <span className="italic text-[#ffd700] ">
             {" "}
             The intellectual foundation of the Nilar framework.
           </span>
@@ -123,7 +123,7 @@ console.log(uniqueFeaturedFeat)
       <section
         className={`bg-white text-gray-800 mt-10 px-6 sm:px-10  ${ibmPlexSans.className}`}
       >
-        <div className="max-w-11/12 w-11/12  mx-auto">
+        <div className="max-w-full lg:w-11/12  mx-auto">
           {/* Featured Publication */}
           {publicationData.map(
             (

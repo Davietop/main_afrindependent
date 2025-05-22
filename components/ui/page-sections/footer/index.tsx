@@ -86,6 +86,7 @@ const Footer = () => {
             <li><a href="/video" className="hover:underline">Videos</a></li>
             <li><a href="/involved" className="hover:underline">Get Involved</a></li>
             <li><a href="/contact" className="hover:underline">Contact Us</a></li>
+            <li><a href="/donate" className="hover:underline">Donate</a></li>
           
           </ul>
         </div>

@@ -13,7 +13,7 @@ const WhatIsNilar = ()=>{
              What Is the Nilar?
             </h3>
           
-          <p className=" text-xl text-yellow-600 font-semibold italic ml-4">
+          <p className=" text-xl mt-2 text-yellow-600 font-semibold italic ml-4">
           A gold-based currency for African monetary sovereignty, economic stability, and prosperity.
           </p>
            <div className="mt-8 w-10/12  text-gray-700 text-base ml-4">

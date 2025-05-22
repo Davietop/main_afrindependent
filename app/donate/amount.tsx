@@ -17,7 +17,7 @@ const Amount = ({ donationAmount, setDonationAmount }: PropType) => {
             key={item}
             className={`lg:w-[118px] lg:h-[53px] rounded-[60px] font-nohemi text-lg font-medium max-lg:py-1 max-lg:px-4 ${
               item === donationAmount
-                ? " bg-primary text-secondary"
+                ? " bg-deepForest text-white"
                 : "bg-transparent border-[2px] border-[#21213B] text-[#0E102A]"
             }`}
             onClick={() => setDonationAmount(item)}

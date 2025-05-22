@@ -53,10 +53,11 @@ const VissionMission = () => {
     “African intellectual independence is the precursor to African material independence in the form of integrated, stable, and thriving African economies.”
   </div>
 
-  <p className="text-[#323232] text-base sm:text-base lg:text-lg leading-relaxed text-right self-end mt-4">
-    — Manuel Tacanho <br />
-    Founder of the Afrindependent Institute
-  </p>
+<p className="text-[#323232] text-base sm:text-base lg:text-lg leading-relaxed text-right self-end mt-4 font-semibold italic">
+  — Manuel Tacanho <br />
+  <span className="text-sm font-medium not-italic text-[#666]">Founder of the Afrindependent Institute</span>
+</p>
+
 </div>
 
   

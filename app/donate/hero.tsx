@@ -52,7 +52,7 @@ const Hero = () => {
      <Link
               className="dbox-donation-button"
               id="preview_inline_popup_button"
-              href="https://donorbox.org/afrindependent-donations?default_interval=o"
+              href="https://donorbox.org/afrindependent-donations"
             >
               Donate now
             </Link>

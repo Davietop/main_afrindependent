@@ -148,11 +148,11 @@ export default function GetInvolvedSection() {
             Article Submissions
             </h3>
              <p className="text-base ml-4 lg:text-lg text-gray-700 mb-4 text-center">Share your voice. Shape the future.</p>
-              <p className="ml-4 text-base text-gray-700 mb-6">
+              <p className="ml-4 text-base lg:text-lg  text-gray-700 mb-6 text-center">
       At the <span className="font-semibold">Afrindependent Institute</span>, we believe in the power of principled ideas to change societies. If you’re an aspiring or established writer, scholar, or thinker with bold insights grounded in truth, liberty, sound money, and structural justice—we welcome your contribution.
     </p>
 
-    <p className="text-base ml-4 text-gray-700 mb-12">
+    <p className="text-base lg:text-lg ml-4 text-gray-700 mb-12 text-center">
       We accept submissions for two distinct publication platforms:
     </p>
           </div>

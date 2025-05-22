@@ -18,8 +18,8 @@ const Switch = ({ frequency, setFrequency }: PropType) => {
             onClick={() => setFrequency(item)}
             className={`h-[52px] text-base lg:w-[171px] rounded-[60px] max-lg:px-4 ${
               frequency === item
-                ? "bg-secondary hover:bg-secondary text-white"
-                : "bg-transparent text-secondary hover:bg-primary"
+                ? "bg-deepForest hover:bg-deepForest text-[#ffd700]"
+                : "bg-deepForest hover:bg-deepForest text-[#ffd700]"
             }`}
           >
             {item}

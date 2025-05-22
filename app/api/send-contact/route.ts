@@ -14,35 +14,38 @@ export async function POST(req: NextRequest) {
       );
     }
  // 1. Send email to site owner
-    const htmlBody = `
-    <div style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 40px 20px;">
-      <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden;">
-        
-        <!-- Header with Logo -->
-        <div style="background-color: #002813; padding: 24px 32px; text-align: center;">
-          <img src="https://afrindependent.org/Afridependent.png" alt="Afrindependent Logo" style="height: 60px; max-width: 100%; margin-bottom: 10px;" />
-          <h2 style="color: #ffd700; margin: 0; font-size: 20px;">New Contact Form Submission</h2>
+const htmlBody = `
+  <div style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 40px 20px;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden;">
+      
+      <!-- Header with Logo -->
+      <div style="background-color: #002813; padding: 24px 32px; text-align: center;">
+        <div style="display: inline-block; background-color: #ffffff; padding: 8px; border-radius: 8px;">
+          <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/104455417/446529944-2f89f308-b252-466d-9525-f868b14fb50a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250522%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250522T105703Z&X-Amz-Expires=300&X-Amz-Signature=0817285ed20704185156705e73a1b8a1c7c0e06894951a741300c5dbc0d5af17&X-Amz-SignedHeaders=host" alt="Afrindependent Logo" style="height: 60px; max-width: 100%;" />
         </div>
-  
-        <!-- Body Content -->
-        <div style="padding: 24px 32px; color: #002813;">
-          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-          <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #006400;">${email}</a></p>
-          <p><strong>Message:</strong></p>
-          <div style="background-color: #f9f9f9; padding: 16px; border-left: 4px solid #002813; white-space: pre-line; border-radius: 4px;">
-            ${message}
-          </div>
-        </div>
-  
-        <!-- Footer -->
-        <div style="padding: 20px 32px; background-color: #fafafa; text-align: center; color: #999; font-size: 12px;">
-          Afrindependent Institute · hello@afrindependent.org<br/>
-          www.afrindependent.org
-        </div>
-  
+        <h2 style="color: #ffd700; margin: 12px 0 0; font-size: 20px;">New Contact Form Submission</h2>
       </div>
+
+      <!-- Body Content -->
+      <div style="padding: 24px 32px; color: #002813;">
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #006400;">${email}</a></p>
+        <p><strong>Message:</strong></p>
+        <div style="background-color: #f9f9f9; padding: 16px; border-left: 4px solid #002813; white-space: pre-line; border-radius: 4px;">
+          ${message}
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div style="padding: 20px 32px; background-color: #fafafa; text-align: center; color: #999; font-size: 12px;">
+        Afrindependent Institute · hello@afrindependent.org<br/>
+        www.afrindependent.org
+      </div>
+
     </div>
-  `;
+  </div>
+`;
+
   
 
     const sendToAdmin = await resend.emails.send({
