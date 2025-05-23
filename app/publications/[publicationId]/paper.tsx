@@ -119,7 +119,13 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
           </Link>|
 
                <p className="text-base">{isoStringToDate(post.publishedAt)}</p>|
-          <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+         <a
+            href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
+            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+          >
+            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
+             <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+          </a>
      
         </div>
       
@@ -134,20 +140,21 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
           <div>
             <span>{isoStringToDate(post.publishedAt)}</span>
           </div> |
-              <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+            <a
+            href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
+            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+          >
+            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
+             <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+          </a>
+            
         </div>
 
          <div className="mt-5 mb-5">
           {/* Category Name Heading */}
         
           {/* Back Link */}
-          <a
-            href="/publications#filter"
-            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
-          >
-            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
-            <span>Back to Publications</span>
-          </a>
+        
         </div>
       <div className="mb-6  overflow-hidden flex items-center justify-center">
         <Image
@@ -231,21 +238,22 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
               <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
             </Link>
             
-            <div className="relative w-full lg:w-[300px] hidden h-fit py-6 bg-world bg-contain border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden lg:flex items-center text-center flex-col justify-center px-2 gap-y-2">
-              {/* White Overlay */}
+          <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-[#014421] text-white shadow-md">
+  {/* Gold Accent Bar */}
+  <div className="w-full h-[20px] bg-[#FFD700]" />
 
-              <div className="absolute inset-0 bg-white/80 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 flex items-center flex-col text-black">
-                <h1 className="font-bold text-lg">Share this Publication</h1>
-                <p className=" text-base mt-6 mb-4">
-                  {/* Hello, We’re content writer who is fascinated by content
-                  fashion, celebrity and lifestyle. We help clients bring the
-                  right content to the right people. */}
-                </p>
-                <Share title={post.title} />
-              </div>
-            </div>
+  {/* Content */}
+  <div className="px-4 py-6 flex flex-col items-center space-y-4 ">
+    <h1 className="font-bold text-lg">Share this Publication</h1>
+
+    <p className="text-sm text-white/80">
+      Help amplify this story. Share it with your community and networks.
+    </p>
+
+    <Share title={post.title} />
+  </div>
+</div>
+
             <div className="relative   w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
               {/* White Overlay */}
 

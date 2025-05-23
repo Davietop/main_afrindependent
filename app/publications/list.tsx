@@ -71,30 +71,13 @@ const List = ({
        {categories?.length ? (
         <Filters
           categories={categories}
-          setActiveFilter={setActiveFilter}
-          activeFilter={activeFilter}
+          
         />
       ) : null}
 
 
    
-      {isComponent && showViewMore && (
-        <Link
-          href={paths.publications}
-          className="bg-transparent flex items-center justify-center gap-5 border-b-[2px] border-secondary w-fit mx-auto mt-16 hover:bg-transparent px-0"
-        >
-          <span className="font-medium font-nohemi text-center leading-[19px] lg:leading-[40px] text-secondary text-lg lg:text-3xl">
-            View more publications
-          </span>
-          <Image
-            src="/arr-down.svg"
-            className="h-[14px] lg:h-5 w-auto mb-1"
-            alt="teacher"
-            width={2}
-            height={29}
-          />
-        </Link>
-      )}
+     
       
     </section>
   );

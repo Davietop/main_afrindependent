@@ -50,7 +50,7 @@ const htmlBody = `
 
     const sendToAdmin = await resend.emails.send({
       from: "Afrindependent Contact <noreply@afrindependent.org>",
-      to: ['oyatoye2003@gmail.com'],
+      to: ['hello@afrindependent.org'],
       subject: `New Contact Message from ${firstName} ${lastName}`,
       replyTo: email,
       html: htmlBody,
