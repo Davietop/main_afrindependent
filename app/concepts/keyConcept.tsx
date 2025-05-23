@@ -457,7 +457,7 @@ export default function AfriconomicsPage() {
       {/* Explore */}
     
       <Link
-        href="/explore"
+        href="/concepts"
         className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
       >
         <BookOpen className="w-5 h-5" />

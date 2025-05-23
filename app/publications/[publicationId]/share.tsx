@@ -26,25 +26,25 @@ const Share = ({ title }: PropType) => {
   return (
     <div className="flex flex-wrap  items-center gap-2 mb-5  lg:gap-3">
       <EmailShareButton className="" url={url} subject={title}>
-        <MdEmail className="text-white h-4 lg:h-[20px] w-auto" />
+        <MdEmail className="text-black lg:text-white h-4 lg:h-[20px] w-auto" />
       </EmailShareButton>
       <LinkedinShareButton url={url} title={title}>
-        <FaLinkedinIn className="text-white h-4 lg:h-[20px] w-auto" />
+        <FaLinkedinIn className="text-black lg:text-white h-4 lg:h-[20px] w-auto" />
       </LinkedinShareButton>
       <TwitterShareButton url={url} title={title}>
-        <FaXTwitter className="text-white h-4 lg:h-[20px] w-auto" />
+        <FaXTwitter className="text-black lg:text-white h-4 lg:h-[20px] w-auto" />
       </TwitterShareButton>
       <WhatsappShareButton url={url} title={title}>
-        <FaWhatsapp className="text-white h-4 lg:h-[20px] w-auto" />
+        <FaWhatsapp className="text-black lg:text-whiteh-4 lg:h-[20px] w-auto" />
       </WhatsappShareButton>
       <FacebookShareButton url={url} title={title}>
-        <FaFacebook className="text-white h-4 lg:h-[20px] w-auto"/>
+        <FaFacebook className="text-black lg:text-white h-4 lg:h-[20px] w-auto"/>
       </FacebookShareButton>
       <InstapaperShareButton url={url} title={title}>
-        <FaInstagram className="text-white h-4 lg:h-[20px] w-auto"/>
+        <FaInstagram className="text-black lg:text-white h-4 lg:h-[20px] w-auto"/>
       </InstapaperShareButton>
 
-      <FaYoutube className="text-white h-4 lg:h-[20px] w-auto"/>
+      <FaYoutube className="text-black lg:text-white h-4 lg:h-[20px] w-auto"/>
     </div>
   );
 };

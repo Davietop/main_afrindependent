@@ -58,15 +58,15 @@ const Footer = () => {
       },
       {
         icon: <FaYoutube />,
-        link: companyDetails?.youtube || "",
+        link: companyDetails?.youtube || "/#",
       },
       {
         icon: <FaWhatsapp />,
-        link: companyDetails?.youtube || "",
+        link: companyDetails?.youtube || "/#",
       },
       {
         icon: <FaFacebook />,
-        link: companyDetails?.youtube || "",
+        link: companyDetails?.youtube || "/#",
       },
     ]
   }, [companyDetails]);
