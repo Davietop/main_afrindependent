@@ -35,7 +35,7 @@ const Share = ({ title }: PropType) => {
         <FaXTwitter className="text-black lg:text-white h-4 lg:h-[20px] w-auto" />
       </TwitterShareButton>
       <WhatsappShareButton url={url} title={title}>
-        <FaWhatsapp className="text-black lg:text-whiteh-4 lg:h-[20px] w-auto" />
+        <FaWhatsapp className="text-black lg:text-white h-4 lg:h-[20px] w-auto" />
       </WhatsappShareButton>
       <FacebookShareButton url={url} title={title}>
         <FaFacebook className="text-black lg:text-white h-4 lg:h-[20px] w-auto"/>
