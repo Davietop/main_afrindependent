@@ -104,7 +104,7 @@ console.log(uniqueFeaturedFeat)
           Publications & Research
         </h3>
         <p className="text-lg text-gray-600 max-w-full mx-auto mt-2 ml-4">
-          <span className="italic text-[#ffd700] ">
+          <span className="italic text-[#835C3B] ">
             {" "}
             The intellectual foundation of the Nilar framework.
           </span>

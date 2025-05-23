@@ -40,7 +40,7 @@ function HowNilarAligns() {
        
           How the Nilar Aligns with Africonomics
      </h3>
-     <p className="italic ml-4 mt-2 text-lg text-[#ffd700] mb-6">
+     <p className="italic ml-4 mt-2 text-lg text-[#835C3B] mb-6">
           More than a currency it is a civilizational affirmation.
         </p>
 

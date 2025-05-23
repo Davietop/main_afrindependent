@@ -24,35 +24,41 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 const Article = ({ post }: { post: PublicationDto }) => {
-   const { data: publications } = usePublications({});
+  const { data: publications } = usePublications({});
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6;
   const typeParams = useSearchParams();
 
   const type = typeParams.get("type");
 
-   const updatedPublications = publications
-  ?.map(pub =>
-    pub.slug === "the-nilar-the-path-to-african-economic-sovereignty-and-prosperity"
-      ? { ...pub, category: "policy_papers" }
-      : pub
-  )
-  .filter(pub =>
-    pub.title !== post.title
+  const updatedPublications = publications
+    ?.map((pub) =>
+      pub.slug ===
+      "the-nilar-the-path-to-african-economic-sovereignty-and-prosperity"
+        ? { ...pub, category: "policy_papers" }
+        : pub
+    )
+    .filter((pub) => pub.title !== post.title);
+
+  const filterByCategory = (data: any, category: any) => {
+    const uniqueData = Array.from(
+      new Map(data.map((item: any) => [item.slug, item])).values()
+    );
+    return uniqueData
+      .filter((item: any) => item.category === category)
+      .sort(
+        (a: any, b: any) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
+  };
+
+  const filteredData = filterByCategory(
+    updatedPublications || [],
+    post.category
   );
-
-  
-      const filterByCategory = (data:any, category:any) => {
-      const uniqueData = Array.from(new Map(data.map((item:any) => [item.slug, item])).values());
-      return uniqueData
-        .filter((item:any) => item.category === category)
-        .sort((a: any, b: any) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    };
-
-  const filteredData = filterByCategory(updatedPublications || [], post.category);
   const pageCount = Math.ceil(filteredData.length / itemsPerPage);
 
-  const handlePageClick = ({ selected }:any) => {
+  const handlePageClick = ({ selected }: any) => {
     setCurrentPage(selected);
   };
 
@@ -60,81 +66,107 @@ const Article = ({ post }: { post: PublicationDto }) => {
     if (categoryName === "Scholarly Papers") {
       return type === "policy_papers" ? "Policy Papers" : "Academic Papers";
     }
-  
+
     const categoryMap: Record<string, string> = {
       "Afrindependent Blog": "Afrindependent Post",
       "Afrindependent Edge": "Afrindependent Lens",
     };
-  
+
     return categoryMap[categoryName] || categoryName;
   };
   const offset = currentPage * itemsPerPage;
   const currentItems = filteredData.slice(offset, offset + itemsPerPage);
 
-  console.log(getDisplayCategoryName(post?.categoryName , type ?? ""))
+  console.log(getDisplayCategoryName(post?.categoryName, type ?? ""));
   return (
     <div className={`${ibmPlexSans.className}`}>
-      
       <div className="px-5 lg:px-14 lg:mb-10">
         <div className="grid grid-cols-1 lg:grid-cols-5">
           <p className="col-span-1 lg:col-span-3 leading-6 text-base lg:text-lg  mt-4 mb-4 lg:mb-0">
             {post?.intro}
           </p>
         </div>
-        
+
         <div className="lg:flex hidden items-center gap-x-3 mt-4 font-medium">
           <div className="h-[50px] w-[50px] bg-founder bg-cover  rounded-full"></div>
-       
           <Link
             href={`${paths.authors}/${post?.author?.slug}`}
             className="text-sm lg:text-base"
           >
             {post?.author?.name}
-          </Link>|
-          <p className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</p>
-          |   <a
-            href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
+          </Link>{" "}
+          <p className="font-bold">|</p>
+          <p className="text-sm lg:text-base">
+            {isoStringToDate(post.publishedAt)}
+          </p>
+          <p className="font-bold">|</p>{" "}
+          <a
+            href={
+              getDisplayCategoryName(post?.categoryName, type ?? "") ===
+              "Afrindependent Lens"
+                ? "/publications?filter=afrindependent-edge#filter"
+                : getDisplayCategoryName(post?.categoryName, type ?? "") ===
+                    "Afrindependent Post"
+                  ? "/publications?filter=afrindependent-blog#filter"
+                  : getDisplayCategoryName(post?.categoryName, type ?? "") ===
+                      "Policy Papers"
+                    ? "/publications?filter=policy_papers#filter"
+                    : "/publications?filter=africonomics-papers#filter"
+            }
             className="flex underline  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
           >
             <img src="/arrow.png" height={20} width={20} alt="back icon" />
-             <p className="text-sm lg:text-base"> {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+            <p className="text-sm lg:text-base">
+              {" "}
+              {getDisplayCategoryName(post?.categoryName, type ?? "")}
+            </p>
           </a>
         </div>
-       
-         
+
         <div className="flex flex-col   gap-3 lg:hidden mb-4 font-medium">
-        
-
           <div className="flex flex-col ">
-             <p className=" text-base font-semibold lg:text-xl leading-[25px] lg:leading-[45px] mb-4 lg:mb-0">
-          Share this Publication
-        </p>
-        <Share title={post.title} />
+            <p className=" text-base font-semibold lg:text-xl leading-[25px] lg:leading-[45px] mb-4 lg:mb-0">
+              Share this Publication
+            </p>
+            <Share title={post.title} />
           </div>
-        <div className="flex flex-wrap  items-center gap-x-2">
+          <div className="flex flex-wrap  items-center gap-x-2">
             <Link
-            href={`${paths.authors}/${post?.author?.slug}`}
-            className="capitalize text-sm lg:text-base leading-[12px] underline"
-          >
-            {post?.author?.name}
-          </Link>
-          <div className="h-4 w-[1px] bg-black"></div>
-          <div className="flex  items-center gap-x-2">
-            <span className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</span>|
-             <a
-            href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
-            className="flex underline w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
-          >
-          
-             <p className="text-sm lg:text-base underline">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
-          </a>
+              href={`${paths.authors}/${post?.author?.slug}`}
+              className="capitalize text-sm lg:text-base leading-[12px] underline"
+            >
+              {post?.author?.name}
+            </Link>
+            <p className="font-bold">|</p>
+            <div className="flex  items-center gap-x-2">
+              <span className="text-sm lg:text-base">
+                {isoStringToDate(post.publishedAt)}
+              </span>{" "}
+              <p className="font-bold">|</p>
+              <a
+                href={
+                  getDisplayCategoryName(post?.categoryName, type ?? "") ===
+                  "Afrindependent Lens"
+                    ? "/publications?filter=afrindependent-edge#filter"
+                    : getDisplayCategoryName(post?.categoryName, type ?? "") ===
+                        "Afrindependent Post"
+                      ? "/publications?filter=afrindependent-blog#filter"
+                      : getDisplayCategoryName(
+                            post?.categoryName,
+                            type ?? ""
+                          ) === "Policy Papers"
+                        ? "/publications?filter=policy_papers#filter"
+                        : "/publications?filter=africonomics-papers#filter"
+                }
+                className="flex underline w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+              >
+                <p className="text-sm lg:text-base underline">
+                  {" "}
+                  {getDisplayCategoryName(post?.categoryName, type ?? "")}
+                </p>
+              </a>
+            </div>
           </div>
-        </div>
-
-          
-
-        
-           
         </div>
       </div>
       <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-x-20">
@@ -204,22 +236,22 @@ const Article = ({ post }: { post: PublicationDto }) => {
         </article>
         <aside className=" md:col-span-4 flex  lg:flex lg:flex-col   items-end lg:col-span-2">
           <div className="mx-auto  sticky flex flex-wrap lg:flex-col gap-x-6 top-0">
-                       
-          <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-[#014421] text-white shadow-md">
-  {/* Gold Accent Bar */}
-  <div className="w-full h-[20px] bg-[#FFD700]" />
+            <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-[#014421] text-white shadow-md">
+              {/* Gold Accent Bar */}
+              <div className="w-full h-[20px] bg-[#FFD700]" />
 
-  {/* Content */}
-  <div className="px-4 py-6 flex flex-col items-center space-y-4 ">
-    <h1 className="font-bold text-lg">Share this Publication</h1>
+              {/* Content */}
+              <div className="px-4 py-6 flex flex-col items-center space-y-4 ">
+                <h1 className="font-bold text-lg">Share this Publication</h1>
 
-    <p className="text-sm text-white">
-      Advance economic truth and justice. Share it with your community and networks..
-    </p>
+                <p className="text-sm text-white">
+                  Advance economic truth and justice. Share it with your
+                  community and networks..
+                </p>
 
-    <Share title={post.title} />
-  </div>
-</div>
+                <Share title={post.title} />
+              </div>
+            </div>
             <div className="relative   w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
               {/* White Overlay */}
 
@@ -235,7 +267,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
                 </p>
               </div>
             </div>
-             <div className="relative  w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
+            <div className="relative  w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
               {/* White Overlay */}
 
               <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
@@ -263,14 +295,15 @@ const Article = ({ post }: { post: PublicationDto }) => {
               <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
               {/* Content on top of overlay */}
               <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
-                <h1 className="font-bold text-base">Article Submissions
-                </h1>
+                <h1 className="font-bold text-base">Article Submissions</h1>
                 <p className="text-base">Share your voice. Shape the future.</p>
-
                 <p className="text-base">
-                At the Afrindependent Institute, we believe in the power of principled ideas to change societies. If you’re an aspiring or established writer, scholar, or thinker with bold insights grounded in truth, liberty, sound money, and structural justice—we welcome your contribution.
-We accept submissions for two distinct publication platforms:
-
+                  At the Afrindependent Institute, we believe in the power of
+                  principled ideas to change societies. If you’re an aspiring or
+                  established writer, scholar, or thinker with bold insights
+                  grounded in truth, liberty, sound money, and structural
+                  justice—we welcome your contribution. We accept submissions
+                  for two distinct publication platforms:
                 </p>
                 <Link href={`${paths.getInvolved}/#submit`}>
                   <Button
@@ -282,70 +315,92 @@ We accept submissions for two distinct publication platforms:
                 </Link>{" "}
               </div>
             </div>
-           
           </div>
         </aside>
       </section>
-    {currentItems.length >= 1 &&   
-    <div className="px-5 lg:px-14">
-  <h2 className="mt-7 text-black font-medium text-xl lg:text-3xl leading-[40px]">
-    More by {post.author.name}
-  </h2>
+      {currentItems.length >= 1 && (
+        <div className="px-5 lg:px-14">
+          <h2 className="mt-7 text-black font-medium text-xl lg:text-3xl leading-[40px]">
+            More by {post.author.name}
+          </h2>
 
-  <div>
-    <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-      {currentItems.slice(0, itemsPerPage).map(({ slug, title, image, publishedAt, category, author, abstract, categoryName, intro }: any) => (
-        <Link key={slug} href={`${paths.publications}/${slug}?type=${post.category}`}>
-          <div className="flex flex-col h-full min-h-[520px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-            <div
-              className="h-52 w-full bg-cover bg-center"
-              style={{ backgroundImage: `url('${image}')` }}
-            />
-            <div className="flex flex-col justify-between flex-grow p-5 gap-y-4">
-              <p className="inline-block font-semibold rounded-full text-sm tracking-wider text-[#ffd700] uppercase w-fit">
-                {categoryName === "Scholarly Papers" ? "Academic Papers" :
-                 categoryName === "Afrindependent Blog" ? "Afrindependent Post" :
-                 categoryName === "Afrindependent Edge" ? "Afrindependent Lens" :
-                 categoryName}
-              </p>
-              <h3 className="text-xl font-semibold text-deepForest mb-2">{title}</h3>
-              <p className="text-gray-700 text-base line-clamp-3">{intro}</p>
+          <div>
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+              {currentItems
+                .slice(0, itemsPerPage)
+                .map(
+                  ({
+                    slug,
+                    title,
+                    image,
+                    publishedAt,
+                    category,
+                    author,
+                    abstract,
+                    categoryName,
+                    intro,
+                  }: any) => (
+                    <Link
+                      key={slug}
+                      href={`${paths.publications}/${slug}?type=${post.category}`}
+                    >
+                      <div className="flex flex-col h-full min-h-[520px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                        <div
+                          className="h-52 w-full bg-cover bg-center"
+                          style={{ backgroundImage: `url('${image}')` }}
+                        />
+                        <div className="flex flex-col justify-between flex-grow p-5 gap-y-4">
+                          <p className="inline-block font-semibold rounded-full text-sm tracking-wider text-[#ffd700] uppercase w-fit">
+                            {categoryName === "Scholarly Papers"
+                              ? "Academic Papers"
+                              : categoryName === "Afrindependent Blog"
+                                ? "Afrindependent Post"
+                                : categoryName === "Afrindependent Edge"
+                                  ? "Afrindependent Lens"
+                                  : categoryName}
+                          </p>
+                          <h3 className="text-xl font-semibold text-deepForest mb-2">
+                            {title}
+                          </h3>
+                          <p className="text-gray-700 text-base line-clamp-3">
+                            {intro}
+                          </p>
 
-              <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
-                <p>  {post?.author?.name}</p> |
-                <p className="text-sm text-gray-700">
-                  {new Date(publishedAt).toLocaleDateString("en-GB")}
-                </p>
-              </div>
+                          <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
+                            <p> {post?.author?.name}</p> |
+                            <p className="text-sm text-gray-700">
+                              {new Date(publishedAt).toLocaleDateString(
+                                "en-GB"
+                              )}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  )
+                )}
+            </div>
+
+            <div className="flex justify-center mt-10">
+              <ReactPaginate
+                previousLabel="← Previous"
+                nextLabel="Next →"
+                breakLabel="..."
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
+                forcePage={currentPage}
+                containerClassName="flex gap-2"
+                pageClassName="px-4 py-2 rounded border border-gray-300 text-sm"
+                pageLinkClassName="text-gray-700"
+                activeClassName="bg-[#ffd700] text-deepForest font-bold"
+                previousClassName={`px-4 py-2 rounded border border-gray-300 text-sm ${currentPage === 0 ? "opacity-50 cursor-not-allowed pointer-events-none" : ""}`}
+                nextClassName={`px-4 py-2 rounded border border-gray-300 text-sm ${currentPage === pageCount - 1 ? "opacity-50 cursor-not-allowed pointer-events-none" : ""}`}
+                disabledClassName="opacity-50 cursor-not-allowed pointer-events-none"
+              />
             </div>
           </div>
-        </Link>
-      ))}
-    </div>
-
-    <div className="flex justify-center mt-10">
-      <ReactPaginate
-        previousLabel="← Previous"
-        nextLabel="Next →"
-        breakLabel="..."
-        pageCount={pageCount}
-        onPageChange={handlePageClick}
-        forcePage={currentPage}
-        containerClassName="flex gap-2"
-        pageClassName="px-4 py-2 rounded border border-gray-300 text-sm"
-        pageLinkClassName="text-gray-700"
-        activeClassName="bg-[#ffd700] text-deepForest font-bold"
-        previousClassName={`px-4 py-2 rounded border border-gray-300 text-sm ${currentPage === 0 ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
-        nextClassName={`px-4 py-2 rounded border border-gray-300 text-sm ${currentPage === pageCount - 1 ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
-        disabledClassName="opacity-50 cursor-not-allowed pointer-events-none"
-      />
-    </div>
-  </div>
-</div>
-}
-
-    
-    
+        </div>
+      )}
     </div>
   );
 };

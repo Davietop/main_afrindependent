@@ -89,7 +89,7 @@ function WhyAfricaNeedsNilar() {
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4">
  Why Africa Needs the <span >Nilar</span>
             </h3>
-            <p className="italic ml-4 mt-2 text-lg text-[#ffd700] mb-4">
+            <p className="italic ml-4 mt-2 text-lg text-[#835C3B] mb-4">
         Ending monetary dependency. Rooting out Economic instability. Restoring African sovereignty.
         </p>
           </div>

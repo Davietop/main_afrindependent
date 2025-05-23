@@ -116,9 +116,9 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
             className="text-sm lg:text-base"
           >
             {post?.author?.name}
-          </Link>|
+          </Link>  <p className="font-bold">|</p>
 
-               <p className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</p>|
+               <p className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</p>  <p className="font-bold">|</p>
          <a
              href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : post.title.includes("The Nilar: The Path to African Economic Sovereignty and Prosperity") ? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
             className="flex underline  w-fit items-center gap-x-1  text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
@@ -130,17 +130,17 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
      
         </div>
       
-     <div className="flex flex-wrap items-center gap-x-1 lg:hidden mb-4 font-medium">
+     <div className="flex flex-wrap items-center gap-x-2 lg:hidden mb-4 font-medium">
           <Link
             href={`${paths.authors}/${post?.author?.slug}`}
             className="capitalize text-sm lg:text-base leading-[12px] underline"
           >
             {post?.author?.name}
-          </Link>|
+          </Link>  <p className="font-bold">|</p>
           
           <div>
             <span className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</span>
-          </div> |
+          </div>  <p className="font-bold">|</p>
             <a
             href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : post.title.includes("The Nilar: The Path to African Economic Sovereignty and Prosperity") ? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
             className="flex underline w-fit items-center gap-1 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"

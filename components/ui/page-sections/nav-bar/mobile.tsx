@@ -65,9 +65,9 @@ export const MobileNav = ({ turnBrown = false }: { turnBrown?: boolean }) => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      className="flex w-full items-center justify-between xl:hidden"
+      className="flex  w-full items-center justify-between xl:hidden"
     >
-      <m.div className="flex w-full items-center justify-between px-2  absolute top-[-60px]  z-40 ">
+      <m.div className="flex w-full items-center justify-between px-2   absolute top-[-60px]  z-40 ">
       <Link href="/">
         <Image
           src={`/Afridependent.svg`}
@@ -88,7 +88,7 @@ export const MobileNav = ({ turnBrown = false }: { turnBrown?: boolean }) => {
       </m.div>
     
       <m.div
-        className={`absolute right-0 bottom-0 top-0 w-full z-30`}
+        className={`h-screen absolute right-0 bottom-0 top-0 w-full z-30`}
         variants={sidebar}
       />
       <Navigation isOpen={isOpen} />
