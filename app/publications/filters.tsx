@@ -34,7 +34,7 @@ const FILTER_OPTIONS = [
   { label: "Academic Papers", id: "africonomics-papers" },
   { label: "Policy Papers", id: "policy_papers" },
   { label: "Afrindependent Lens", id: "afrindependent-edge" }, // keep id as "afrindependent-edge"
-  { label: "Afrindependent Post", id: "afrindependent-blog" }, // keep id as "afrindependent-blog"
+  { label: "Afrindependent Posts", id: "afrindependent-blog" }, // keep id as "afrindependent-blog"
 ];
 
 // Map filter ids to URL params — change edge/blog to lens/post only for URL
@@ -279,6 +279,8 @@ export default function Filters({ categories }: PropType) {
       <h4 className="text-xl font-semibold text-deepForest mb-6">
         Showing results for:{" "}
         <span className="text-[#FFD700] underline">
+          {FILTER_OPTIONS.find((f) => f.id === activeFilter)?.label.toUpperCase().includes("AFRINDEPENDENT") ? "THE " : ""}
+      
           {FILTER_OPTIONS.find((f) => f.id === activeFilter)?.label.toUpperCase()}
         </span>
       </h4>

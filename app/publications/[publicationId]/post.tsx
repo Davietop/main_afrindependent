@@ -42,7 +42,7 @@ const Post = ({ post }: { post: PublicationDto }) => {
  
 
   {/* Title */}
-  <h1 className="px-5 lg:px-14 font-bold text-black w-full max-w-[90%] text-3xl lg:text-4xl leading-tight lg:leading-[50px]">
+  <h1 className="px-5 lg:px-14 font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
     {post.title}
   </h1>
 

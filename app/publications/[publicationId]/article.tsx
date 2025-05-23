@@ -87,17 +87,17 @@ const Article = ({ post }: { post: PublicationDto }) => {
        
           <Link
             href={`${paths.authors}/${post?.author?.slug}`}
-            className="text-base"
+            className="text-sm lg:text-base"
           >
             {post?.author?.name}
           </Link>|
-          <p className="text-base">{isoStringToDate(post.publishedAt)}</p>
+          <p className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</p>
           |   <a
             href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
-            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+            className="flex underline  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
           >
-            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
-             <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+            <img src="/arrow.png" height={20} width={20} alt="back icon" />
+             <p className="text-sm lg:text-base"> {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
           </a>
         </div>
        
@@ -106,27 +106,27 @@ const Article = ({ post }: { post: PublicationDto }) => {
         
 
           <div className="flex flex-col ">
-             <p className=" text-base font-medium lg:text-xl leading-[25px] lg:leading-[45px] mb-1 lg:mb-0">
-          Share Publication
+             <p className=" text-base font-semibold lg:text-xl leading-[25px] lg:leading-[45px] mb-4 lg:mb-0">
+          Share this Publication
         </p>
         <Share title={post.title} />
           </div>
-        <div className="flex items-center gap-x-2">
+        <div className="flex flex-wrap  items-center gap-x-2">
             <Link
             href={`${paths.authors}/${post?.author?.slug}`}
-            className="capitalize leading-[12px] underline"
+            className="capitalize text-sm lg:text-base leading-[12px] underline"
           >
             {post?.author?.name}
           </Link>
           <div className="h-4 w-[1px] bg-black"></div>
-          <div className="flex gap-x-2">
-            <span>{isoStringToDate(post.publishedAt)}</span>|
+          <div className="flex  items-center gap-x-2">
+            <span className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</span>|
              <a
             href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
-            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+            className="flex underline w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
           >
-            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
-             <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+          
+             <p className="text-sm lg:text-base underline">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
           </a>
           </div>
         </div>
@@ -213,8 +213,8 @@ const Article = ({ post }: { post: PublicationDto }) => {
   <div className="px-4 py-6 flex flex-col items-center space-y-4 ">
     <h1 className="font-bold text-lg">Share this Publication</h1>
 
-    <p className="text-sm text-white/80">
-      Help amplify this story. Share it with your community and networks.
+    <p className="text-sm text-white">
+      Advance economic truth and justice. Share it with your community and networks..
     </p>
 
     <Share title={post.title} />

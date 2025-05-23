@@ -95,8 +95,8 @@ const Footer = () => {
         <div>
         <h2 className="font-bold text-xl mb-4">Engage</h2>
           <ul className="space-y-2 text-base">
-            <li><a href="/publications?filter=afrindependent-blog#filter" className="hover:underline">Afrindependent Post</a></li>
-            <li><a href="/publications?filter=afrindependent-edge#filter" className="hover:underline">Afrindependent Lens</a></li>
+            <li><a href="/publications?filter=afrindependent-blog#filter" className="hover:underline">The Afrindependent Post</a></li>
+            <li><a href="/publications?filter=afrindependent-edge#filter" className="hover:underline">The Afrindependent Lens</a></li>
             <li><a href="/#subscribe" className="hover:underline">Sovereign Signals (Newsletter)</a></li>
             <li><a href="/involved#submit" className="hover:underline">Submit an Article</a></li>
            

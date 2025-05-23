@@ -100,8 +100,8 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
           Access PDF
           <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
         </Link>
-        <p className=" text-lg lg:text-xl leading-[25px] lg:leading-[45px] mb-1 lg:mb-0">
-          Share Publication
+        <p className=" text-base font-semibold lg:text-xl leading-[25px] lg:leading-[45px] mb-4 lg:mb-0">
+          Share this Publication
         </p>
         <Share title={post.title} />
       </div>
@@ -110,42 +110,44 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
         <article className="col-span-4  overflow-x-hidden">
             <div className="lg:flex font-medium mb-6 hidden items-center gap-x-3 mt-4">
           <div className="h-[50px] w-[50px] bg-founder bg-cover  rounded-full"></div>
-          {/* <p>{post?.author.name}</p> */}
+        
           <Link
             href={`${paths.authors}/${post?.author?.slug}`}
-            className="text-base"
+            className="text-sm lg:text-base"
           >
             {post?.author?.name}
           </Link>|
 
-               <p className="text-base">{isoStringToDate(post.publishedAt)}</p>|
+               <p className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</p>|
          <a
-            href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
-            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+             href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : post.title.includes("The Nilar: The Path to African Economic Sovereignty and Prosperity") ? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
+            className="flex underline  w-fit items-center gap-x-1  text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
           >
-            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
-             <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+            <img src="/arrow.png" height={20} width={20} alt="back icon" />
+             <p className="text-sm underline lg:text-base">{
+              post.title.includes("The Nilar: The Path to African Economic Sovereignty and Prosperity") ? "Policy Papers" : getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
           </a>
      
         </div>
       
-     <div className="flex flex-wrap items-center gap-3 lg:hidden mb-4 font-medium">
+     <div className="flex flex-wrap items-center gap-x-1 lg:hidden mb-4 font-medium">
           <Link
             href={`${paths.authors}/${post?.author?.slug}`}
-            className="capitalize leading-[12px] underline"
+            className="capitalize text-sm lg:text-base leading-[12px] underline"
           >
             {post?.author?.name}
-          </Link>
-          <div className="h-4 w-[1px] bg-black"></div>
+          </Link>|
+          
           <div>
-            <span>{isoStringToDate(post.publishedAt)}</span>
+            <span className="text-sm lg:text-base">{isoStringToDate(post.publishedAt)}</span>
           </div> |
             <a
-            href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
-            className="flex  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+            href={getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Lens"? "/publications?filter=afrindependent-edge#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Afrindependent Post" ? "/publications?filter=afrindependent-blog#filter" : getDisplayCategoryName(post?.categoryName , type ?? "") === "Policy Papers"? "/publications?filter=policy_papers#filter" : post.title.includes("The Nilar: The Path to African Economic Sovereignty and Prosperity") ? "/publications?filter=policy_papers#filter" : "/publications?filter=africonomics-papers#filter"}
+            className="flex underline w-fit items-center gap-1 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
           >
-            <img src="/left_icon.png" height={20} width={20} alt="back icon" />
-             <p className="text-base">  {getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
+            
+             <p className="text-sm underline lg:text-base">{
+              post.title.includes("The Nilar: The Path to African Economic Sovereignty and Prosperity") ? "Policy Papers" : getDisplayCategoryName(post?.categoryName , type ?? "")}</p>
           </a>
             
         </div>
@@ -166,7 +168,9 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
         />
       </div>
           <h3 className="font-semibold text-xl lg:text-2xl leading-[20px] lg:leading-[40px] mb-6 ">
-            {type === "policy_papers" ? "Executive Summary:" : "Abstract:"}
+            {type === "policy_papers" || post.title?.includes("The Nilar: The Path to African Economic Sovereignty and Prosperity")? "Executive Summary:" : "Abstract:"}
+
+            
             
           </h3>
           <div className="min-w-full leading-6 lg:text-lg  mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:25px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] prose-blockquote:after:left-6 prose-blockquote:after:w-full prose-blockquote:after:h-full prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:deepForest prose-strong:font-bold prose-a:text-deepForest">
@@ -246,8 +250,8 @@ const Paper = ({ post }: { post: PublicationDto }, {params}: Props) => {
   <div className="px-4 py-6 flex flex-col items-center space-y-4 ">
     <h1 className="font-bold text-lg">Share this Publication</h1>
 
-    <p className="text-sm text-white/80">
-      Help amplify this story. Share it with your community and networks.
+    <p className="text-sm text-white">
+     Advance economic truth and justice. Share it with your community and networks.
     </p>
 
     <Share title={post.title} />
