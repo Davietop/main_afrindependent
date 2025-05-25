@@ -12,32 +12,32 @@ export const metadata: Metadata = {
   title: "Contact Afrindependent",
   description: "We'd like your support in advancing Africonomics. Reach out.",
   applicationName: "Afrindenpendent Organisation",
-  manifest: "https://afrindependent.org/contact",
+  manifest: "https://www.afrindependent.org/contact",
   openGraph: {
     title: "Contact Afrindependent",
     description: "We'd like your support in advancing Africonomics. Reach out.",
     images: [
       {
-        url: "https://afrindependent.org/header-web-bg.jpg",
+        url: "https://www.afrindependent.org/hero_landing.jpg",
         width: 1200,
         height: 630,
         alt: "Afrindependent Institute - Unlocking Africa's Prosperity",
       },
     ],
-    url: "https://afrindependent.org/contact",
+    url: "https://www.afrindependent.org/contact",
   },
   twitter: {
     title: "Contact Afrindependent",
     description: "We'd like your support in advancing Africonomics. Reach out.",
     images: [
       {
-        url: "https://afrindependent.org/header-web-bg.jpg",
+        url: "https://www.afrindependent.org/hero_landing.jpg",
         width: 1200,
         height: 630,
         alt: "Afrindependent Institute - Unlocking Africa's Prosperity",
       },
     ],
-    site: "https://afrindependent.org/contact",
+    site: "https://www.afrindependent.org/contact",
   },
   keywords: [
     "Advancing Africonomics",

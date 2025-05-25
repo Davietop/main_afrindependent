@@ -54,21 +54,6 @@ const Publication = async ({
 }) => {
   const data = await getSinglePublication({ slug: params.publicationId });
     
-  
-  
-    const isPaper = data?.category === "africonomics-papers";
-    const getDisplayCategoryName = (categoryName: string, type: string) => {
-      if (categoryName === "Scholarly Papers") {
-        return type === "policy_papers" ? "Policy Papers" : "Academic Papers";
-      }
-    
-      const categoryMap: Record<string, string> = {
-        "Afrindependent Blog": "Afrindependent Post",
-        "Afrindependent Edge": "Afrindependent Lens",
-      };
-    
-      return categoryMap[categoryName] || categoryName;
-    };
 
   return (
     <main className="bg-[#faf9f6]">

@@ -62,27 +62,22 @@ const Article = ({ post }: { post: PublicationDto }) => {
     setCurrentPage(selected);
   };
 
-  const getDisplayCategoryName = (categoryName: string, type: string) => {
-    if (categoryName === "Scholarly Papers") {
-      return type === "policy_papers" ? "Policy Papers" : "Academic Papers";
-    }
 
-    const categoryMap: Record<string, string> = {
-      "Afrindependent Blog": "Afrindependent Post",
-      "Afrindependent Edge": "Afrindependent Lens",
-    };
-
-    return categoryMap[categoryName] || categoryName;
-  };
   const offset = currentPage * itemsPerPage;
   const currentItems = filteredData.slice(offset, offset + itemsPerPage);
 
-  console.log(getDisplayCategoryName(post?.categoryName, type ?? ""));
+  
   return (
     <div className={`${ibmPlexSans.className}`}>
-      <div className="px-5 lg:px-14 lg:mb-10">
+     
+      <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-x-20">
+        <article className="w-full col-span-full md:col-span-4   overflow-x-hidden">
+           <div className=" lg:mb-10">
         <div className="grid grid-cols-1 lg:grid-cols-5">
-          <p className="col-span-1 lg:col-span-3 leading-6 text-base lg:text-lg  mt-4 mb-4 lg:mb-0">
+           <h1 className="col-span-full font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
+    {post.title}
+  </h1>
+          <p className="col-span-full leading-6 text-base lg:text-lg  mt-4 mb-4 lg:mb-0">
             {post?.intro}
           </p>
         </div>
@@ -102,23 +97,23 @@ const Article = ({ post }: { post: PublicationDto }) => {
           <p className="font-bold">|</p>{" "}
           <a
             href={
-              getDisplayCategoryName(post?.categoryName, type ?? "") ===
+              post?.categoryName ===
               "Afrindependent Lens"
-                ? "/publications?filter=afrindependent-edge#filter"
-                : getDisplayCategoryName(post?.categoryName, type ?? "") ===
+                ? "/publications?filter=afrindependent-lens#filter"
+                : post?.categoryName ===
                     "Afrindependent Post"
-                  ? "/publications?filter=afrindependent-blog#filter"
-                  : getDisplayCategoryName(post?.categoryName, type ?? "") ===
+                  ? "/publications?filter=afrindependent-post#filter"
+                  : post?.categoryName ===
                       "Policy Papers"
                     ? "/publications?filter=policy_papers#filter"
-                    : "/publications?filter=africonomics-papers#filter"
+                    : "/publications?filter=academic-papers#filter"
             }
             className="flex underline  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
           >
             <img src="/arrow.png" height={20} width={20} alt="back icon" />
             <p className="text-sm lg:text-base">
               {" "}
-              {getDisplayCategoryName(post?.categoryName, type ?? "")}
+              {post?.categoryName}
             </p>
           </a>
         </div>
@@ -145,32 +140,27 @@ const Article = ({ post }: { post: PublicationDto }) => {
               <p className="font-bold">|</p>
               <a
                 href={
-                  getDisplayCategoryName(post?.categoryName, type ?? "") ===
+                 post?.categoryName ===
                   "Afrindependent Lens"
-                    ? "/publications?filter=afrindependent-edge#filter"
-                    : getDisplayCategoryName(post?.categoryName, type ?? "") ===
+                    ? "/publications?filter=afrindependent-lens#filter"
+                    : post?.categoryName ===
                         "Afrindependent Post"
-                      ? "/publications?filter=afrindependent-blog#filter"
-                      : getDisplayCategoryName(
-                            post?.categoryName,
-                            type ?? ""
-                          ) === "Policy Papers"
+                      ? "/publications?filter=afrindependent-post#filter"
+                      : post?.categoryName === "Policy Papers"
                         ? "/publications?filter=policy_papers#filter"
-                        : "/publications?filter=africonomics-papers#filter"
+                        : "/publications?filter=academic-papers#filter"
                 }
                 className="flex underline w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
               >
                 <p className="text-sm lg:text-base underline">
                   {" "}
-                  {getDisplayCategoryName(post?.categoryName, type ?? "")}
+                  {post?.categoryName}
                 </p>
               </a>
             </div>
           </div>
         </div>
       </div>
-      <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-x-20">
-        <article className="w-full col-span-full md:col-span-4   overflow-x-hidden">
           <div className="pb-8 overflow-hidden flex items-center justify-center">
             <Image
               src={post.image}
@@ -258,7 +248,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
               <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
               {/* Content on top of overlay */}
               <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
-                <h1 className="font-bold text-base">NewsLetter</h1>
+                <h1 className="font-bold text-base">Newsletter</h1>
                 <p className="text-base">Join our intellectual movement</p>
                 <SubscribeForm />
                 <p className="text-base">

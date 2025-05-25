@@ -29,7 +29,7 @@ const Hero = () => {
     </h1>
 
     <p className="text-lg md:text-xl text-[#ffd700] mb-10">
-      We are pioneering a new vision for integrated African economies.
+     Advancing African monetary sovereignty, economic stability, and prosperity
     </p>
 
     <div className="flex justify-center gap-4">

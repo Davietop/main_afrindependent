@@ -12,15 +12,15 @@ export const metadata: Metadata = {
   description:
     'Join the movement to advance African liberty, sound economics, and structural justice. Discover how you can contribute, collaborate, or volunteer.',
   applicationName: 'Afrindependent Institute',
-  manifest: 'https://afrindependent.org/getInvolved',
+  manifest: 'https://www.afrindependent.org/involved',
   openGraph: {
     title: 'Get Involved – Afrindependent Institute',
     description:
       'Be part of a transformative mission to build a free, prosperous, and sovereign Africa through Africonomics and principled action.',
-    url: 'https://afrindependent.org/getInvolved',
+    url: 'https://www.afrindependent.org/involved',
     images: [
       {
-        url: 'https://afrindependent.org/images/get-involved-og.jpg', // Replace with your actual image path
+        url: 'https://www.afrindependent.org/hero_landing.jpg', // Replace with your actual image path
         width: 1200,
         height: 630,
         alt: 'Get Involved – Afrindependent Movement',
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
       'Help shape Africa’s economic and intellectual future. Explore how to support, partner, or volunteer with Afrindependent.',
     images: [
       {
-        url: 'https://afrindependent.org/images/get-involved-og.jpg',
+        url: 'https://www.afrindependent.org/hero_landing.jpg',
         width: 1200,
         height: 630,
         alt: 'Get Involved – Afrindependent Institute',
       },
     ],
-    site: 'https://afrindependent.org/getInvolved',
+    site: 'https://www.afrindependent.org/involved',
   },
   keywords: [
     'Get Involved Afrindependent',

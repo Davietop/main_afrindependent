@@ -21,30 +21,14 @@ const Post = ({ post }: { post: PublicationDto }) => {
   const type = typeParams.get("type");
 
 
-  const isPaper = post?.category === "africonomics-papers";
-  const getDisplayCategoryName = (categoryName: string, type: string) => {
-    if (categoryName === "Scholarly Papers") {
-      return type === "policy_papers" ? "Policy Papers" : "Academic Papers";
-    }
-  
-    const categoryMap: Record<string, string> = {
-      "Afrindependent Blog": "Afrindependent Post",
-      "Afrindependent Edge": "Afrindependent Lens",
-    };
-  
-    return categoryMap[categoryName] || categoryName;
-  };
+  const isPaper = post?.category === "academic-papers" || post?.category === "policy-papers" ;
+ 
   
   return (
     <div className={`${ibmPlexSans.className} w-full mt-10 lg:w-10/12 lg:mx-auto`}>
   {/* Category Name & Back Link */}
 
- 
 
-  {/* Title */}
-  <h1 className="px-5 lg:px-14 font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
-    {post.title}
-  </h1>
 
 
 

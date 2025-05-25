@@ -155,7 +155,7 @@ const List = ({ authorSlug }: PropType) => {
                     </div>
                   </div>
 
-                  {!isLast && <hr className="h-0.5 bg-[#ffd700] mt-6" />}
+                  {!isLast && <hr className="border-t border-[#ffd700] mt-6" />}
                 </Link>
               );
             }

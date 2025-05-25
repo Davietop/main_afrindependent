@@ -23,20 +23,20 @@ export const metadata: Metadata = {
   description:
     "We produce various publications, including scholarly papers, commentary articles, and blog posts",
   applicationName: "Afrindenpendent Organisation",
-  manifest: "https://afrindependent.org/publications",
+  manifest: "https://www.afrindependent.org/publications",
   openGraph: {
     title: "Afrindependent Publications",
     description:
       "We produce various publications, including scholarly papers, commentary articles, and blog posts",
-    images: ["https://afrindependent.org/library.jpg"],
-    url: "https://afrindependent.org/publications",
+    images: ["https://www.afrindependent.org/pub_lica.jpg"],
+    url: "https://www.afrindependent.org/publications",
   },
   twitter: {
     title: "Afrindependent Publications",
     description:
       "We produce various publications, including scholarly papers, commentary articles, and blog posts",
-    images: ["https://afrindependent.org/library.jpg"],
-    site: "https://afrindependent.org/publications",
+    images: ["https://www.afrindependent.org/pub_lica.jpg"],
+    site: "https://www.afrindependent.org/publications",
   },
   keywords: [
     "African Prosperity",

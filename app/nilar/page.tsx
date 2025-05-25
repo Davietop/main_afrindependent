@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   title: 'Nilar Currency Framework',
   description: 'Discover Nilar – a gold-based currency model for African economic sovereignty and structural justice.',
   applicationName: 'Afrindependent Institute',
-  manifest: 'https://afrindependent.org/nilar',
+  manifest: 'https://www.afrindependent.org/nilar',
   openGraph: {
     title: 'Nilar Currency Framework',
     description: 'Nilar is a sound monetary alternative promoting liberty, prosperity, and postcolonial empowerment.',
-    url: 'https://afrindependent.org/nilar',
+    url: 'https://www.afrindependent.org/nilar',
     images: [
       {
-        url: 'https://afrindependent.org/images/nilar-og.jpg', // Replace with actual hosted image
+        url: 'https://www.afrindependent.org/nilar_coin.jpg', // Replace with actual hosted image
         width: 1200,
         height: 630,
         alt: 'Nilar Gold-Based Currency Framework',
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     description: 'A gold-based framework to restore economic sovereignty across Africa.',
     images: [
       {
-        url: 'https://afrindependent.org/images/nilar-og.jpg', // Replace with actual hosted image
+        url: 'https://www.afrindependent.org/nilar_coin.jpg', // Replace with actual hosted image
         width: 1200,
         height: 630,
         alt: 'Nilar Gold Currency',
       },
     ],
-    site: 'https://afrindependent.org/nilar',
+    site: 'https://www.afrindependent.org/nilar',
   },
   keywords: [
     'Nilar Currency',

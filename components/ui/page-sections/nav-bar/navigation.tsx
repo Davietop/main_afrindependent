@@ -19,7 +19,7 @@ interface PropType {
 export const Navigation = ({ isOpen }: PropType) => (
   <m.ul
     variants={variants}
-    className={`absolute  left-0 right-0 top-[117px] w-full ${
+    className={`absolute h-scrren  left-0 right-0 top-[117px] w-full ${
       isOpen ? "z-50" : "-z-10"
     }`}
   >

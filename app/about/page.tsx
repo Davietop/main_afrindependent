@@ -21,32 +21,32 @@ export const metadata: Metadata = {
   title: "About Afrindependent",
   description: "An African school of philosophical and economic thought",
   applicationName: "Afrindenpendent Organisation",
-  manifest: "https://afrindependent.org/about",
+  manifest: "https://www.afrindependent.org/about",
   openGraph: {
     title: "About Afrindependent",
     description: "An African school of philosophical and economic thought",
     images: [
       {
-        url: "https://afrindependent.org/header-web-bg.jpg",
+        url: "https://www.afrindependent.org/about_new.png",
         width: 1200,
         height: 630,
         alt: "Afrindependent Institute - Unlocking Africa's Prosperity",
       },
     ],
-    url: "https://afrindependent.org/about",
+    url: "https://www.afrindependent.org/about",
   },
   twitter: {
     title: "About Afrindependent",
     description: "An African school of philosophical and economic thought",
     images: [
       {
-        url: "https://afrindependent.org/header-web-bg.jpg",
+        url: "https://www.afrindependent.org/about_new.png",
         width: 1200,
         height: 630,
         alt: "Afrindependent Institute - Unlocking Africa's Prosperity",
       },
     ],
-    site: "https://afrindependent.org/about",
+    site: "https://www.afrindependent.org/about",
   },
   keywords: [
     "Pioneering Africonomics",

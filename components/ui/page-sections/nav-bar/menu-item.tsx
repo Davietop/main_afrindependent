@@ -35,7 +35,7 @@ export const MenuItem = ({ name, link }: { name: string; link: string }) => {
       variants={variants}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.95 }}
-      className="list-none pointer border-b border-deepForest pb-6"
+      className="list-none pointer border-t border-deepForest pb-6"
       onClick={onLinkClick}
     >
       <Link

@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   description:
     "Support Afrindependent Institute’s mission of truth, liberty, sound money, and structural justice. Your contribution empowers independent African thought and transformation.",
   applicationName: "Afrindependent Institute",
-  manifest: "https://afrindependent.org/donate",
+  manifest: "https://www.afrindependent.org/donate",
   openGraph: {
     title: "Donate – Afrindependent Institute",
     description:
       "Join our mission to reshape African economies with Africonomics. Your donation supports original research, education, and gold-based monetary reform.",
-    url: "https://afrindependent.org/donate",
+    url: "https://www.afrindependent.org/donate",
     images: [
       {
-        url: "https://afrindependent.org/donate.jpg", // Replace with your actual image
+        url: "https://www.afrindependent.org/donate.jpg", // Replace with your actual image
         width: 1200,
         height: 630,
         alt: "Support Afrindependent Institute – Donate Today",
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
       "Support truth, liberty, and African prosperity through Africonomics. Donate to Afrindependent today.",
     images: [
       {
-        url: "https://afrindependent.org/donate.jpg", // Replace with your actual image
+        url: "https://www.afrindependent.org/donate.jpg", // Replace with your actual image
         width: 1200,
         height: 630,
         alt: "Support Afrindependent Institute – Donate Today",
       },
     ],
-    site: "https://afrindependent.org/donate",
+    site: "https://www.afrindependent.org/donate",
   },
   keywords: [
     "Donate to Afrindependent",

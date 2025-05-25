@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     url: "https://afrindependent.org",
     images: [
       {
-        url: "https://afrindependent.org/header-web-bg.jpg",
+        url: "https://afrindependent.org/hero_landing.jpg",
         width: 1200,
         height: 630,
         alt: "Afrindependent Institute - Unlocking Africa's Prosperity",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     site: "https://afrindependent.org",
     images: [
       {
-        url: "https://afrindependent.org/header-web-bg.jpg",
+        url: "https://afrindependent.org/hero_landing.jpg",
         width: 1200,
         height: 630,
         alt: "Afrindependent Institute - Unlocking Africa's Prosperity",
