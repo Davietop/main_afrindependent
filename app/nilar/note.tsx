@@ -65,7 +65,7 @@ export default function NilarNote() {
             The Nilar corrects this.
           </h3>
           <p className="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-200">
-            It is a principled monetary system built on <strong>transparency</strong>, <strong>convertibility</strong>, and <strong>value-based issuance</strong>—aligned with <em>Africonomics</em>, and designed to serve <span className="text-yellow-500 font-semibold">people, not power</span>.
+            It is a principled monetary system built on transparency, convertibility, and value-based-issuance—aligned with <em>Africonomics</em>, and designed to serve <span className="text-yellow-500 font-semibold">people, not power</span>.
           </p>
         </div>
       </div>

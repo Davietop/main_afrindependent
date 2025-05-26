@@ -11,10 +11,11 @@ import Reaction from "./reaction";
 import { PublicationDto } from "@/lib/types";
 import { IBM_Plex_Sans } from "next/font/google";
 import ReactPaginate from "react-paginate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import SubscribeForm from "@/components/subscribe";
 import { useSearchParams } from "next/navigation";
+import Head from "next/head";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -32,6 +33,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
 
   const { data: publications } = usePublications({});
   const [currentPage, setCurrentPage] = useState(0);
+  const [url, setUrl] = useState("");
   const itemsPerPage = 6;
 
   const updatedPublications = publications
@@ -57,11 +59,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
 
   const filteredData = filterByCategory(updatedPublications || [], type);
 
-  filteredData.find((datFind: any) => {
-    console.log(datFind.title === post.title);
-  });
 
-  console.log(post);
   const pageCount = Math.ceil(filteredData.length / itemsPerPage);
 
   const handlePageClick = ({ selected }: any) => {
@@ -70,9 +68,22 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
 
   const offset = currentPage * itemsPerPage;
   const currentItems = filteredData.slice(offset, offset + itemsPerPage);
+  useEffect(() => {
+  setUrl(window.location.href);
+}, []);
 
   return (
     <section className={`${ibmPlexSans.className} px-5 lg:px-14`}>
+
+             <Head>
+        <title>{post?.title}</title>
+        <meta property="og:title" content={post?.title} />
+        <meta property="og:description" content={post?.intro} />
+        <meta property="og:image" content={post?.image} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
       <div className="mt-6 lg:hidden w-full">
                       <h1 className="col-span-full mb-6  font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
     {post.title}

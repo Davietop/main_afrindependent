@@ -41,7 +41,7 @@ function HowNilarAligns() {
           How the Nilar Aligns with Africonomics
      </h3>
      <p className="italic ml-4 mt-2 text-lg text-[#835C3B] mb-6">
-          More than a currency it is a civilizational affirmation.
+        More than a sound currency. It’s a civilizational affirmation.
         </p>
 
         <p className="text-gray-700 text-lg leading-relaxed ml-4">

@@ -14,9 +14,10 @@ import SubscribeForm from "@/components/subscribe";
 import { Button } from "@/components/ui/button";
 import Filters from "../filters";
 import PublicationSection, { usePublications } from "../publication-section";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useSearchParams } from "next/navigation";
+import Head from "next/head";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -26,6 +27,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 const Article = ({ post }: { post: PublicationDto }) => {
   const { data: publications } = usePublications({});
   const [currentPage, setCurrentPage] = useState(0);
+  const [url, setUrl] = useState("");
   const itemsPerPage = 6;
   const typeParams = useSearchParams();
 
@@ -67,8 +69,23 @@ const Article = ({ post }: { post: PublicationDto }) => {
   const currentItems = filteredData.slice(offset, offset + itemsPerPage);
 
   
+
+useEffect(() => {
+  setUrl(window.location.href);
+}, []);
+
+  
   return (
     <div className={`${ibmPlexSans.className}`}>
+       <Head>
+        <title>{post?.title}</title>
+        <meta property="og:title" content={post?.title} />
+        <meta property="og:description" content={post?.intro} />
+        <meta property="og:image" content={post?.image} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
      
       <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-x-20">
         <article className="w-full col-span-full md:col-span-4   overflow-x-hidden">

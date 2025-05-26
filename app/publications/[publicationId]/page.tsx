@@ -6,6 +6,7 @@ import Post from "./post";
 import { getSinglePublication } from "@/service/sanity-queries";
 
 import Link from "next/link";
+import Head from "next/head";
 
 type Props = {
   params: { publicationId: string };
@@ -53,10 +54,9 @@ const Publication = async ({
   params: { publicationId: string };
 }) => {
   const data = await getSinglePublication({ slug: params.publicationId });
-    
-
   return (
     <main className="bg-[#faf9f6]">
+       
       <div className=" ">
         <Navbar />
       </div>

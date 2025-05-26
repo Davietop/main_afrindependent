@@ -41,7 +41,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-[#ffd700] mb-10">
-            Rooted in Africonomics. Grounded in justice. Built for freedom.
+            Rooted in Africonomics. Grounded in justice. Built for Prosperity.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
