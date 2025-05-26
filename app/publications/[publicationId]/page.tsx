@@ -5,8 +5,7 @@ import Footer from "@/components/ui/page-sections/footer";
 import Post from "./post";
 import { getSinglePublication } from "@/service/sanity-queries";
 
-import Link from "next/link";
-import Head from "next/head";
+import { optimizeImage } from "next/dist/server/image-optimizer";
 
 type Props = {
   params: { publicationId: string };
@@ -17,12 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     slug: params.publicationId,
   });
 
-  // const optimizedImage = {
-  //   url: publication.image,
-  //   width: 1200,
-  //   height: 630,
-  //   alt: publication.title,
-  // };
+  console.log(publication.image)
 
   return {
     title: publication.title,
@@ -35,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: publication.intro,
       url: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
       type: "article",
-      // images: [optimizedImage],
+      images: [publication.image],
       siteName: "Afrindenpendent Organisation",
     },
     twitter: {
@@ -43,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: publication.title,
       description: publication.intro,
       site: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
-      // images: [optimizedImage],
+      images: [publication.image],
     },
   };
 }
