@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: publication.intro,
       url: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
       type: "article",
-      images: [publication.image],
+      images: ['https://cdn.sanity.io/images/uhq8lam1/production/4669faf1e197c6289ce19374d37b76ee84ede97c-1408x704.png'],
       siteName: "Afrindenpendent Organisation",
     },
     twitter: {
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: publication.title,
       description: publication.intro,
       site: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
-      images: [publication.image],
+      images: ['https://cdn.sanity.io/images/uhq8lam1/production/4669faf1e197c6289ce19374d37b76ee84ede97c-1408x704.png'],
     },
   };
 }

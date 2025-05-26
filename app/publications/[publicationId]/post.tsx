@@ -19,6 +19,7 @@ const Post = ({ post }: { post: PublicationDto }) => {
   const typeParams = useSearchParams();
 
   const type = typeParams.get("type");
+  console.log(post?.image)
 
 
   const isPaper = post?.category === "academic-papers" || post?.category === "policy-papers" ;
