@@ -260,12 +260,12 @@ export default function Filters({ categories }: PropType) {
         </h3>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-4 mt-8 mb-10">
+        <div className="flex flex-col lg:flex-row flex-wrap gap-4 mt-8 mb-10">
           {FILTER_OPTIONS.map((item) => (
             <button
               key={item.id}
               onClick={() => handleFilterClick(item.id)}
-              className={`py-3 px-6 rounded-xl font-semibold shadow-md border-2 transition duration-300 ${
+              className={`py-3 px-6 rounded-xl font-semibold shadow-md border-2 transition duration-300 text-left text-sm lg:text-base ${
                 activeFilter === item.id
                   ? "bg-white text-deepForest border-[#00210d]"
                   : "bg-deepForest text-[#ffd700] border-[#00210d] hover:bg-white hover:text-deepForest"
@@ -279,7 +279,7 @@ export default function Filters({ categories }: PropType) {
         {/* Active Filter Header */}
         <h4 className="text-xl font-semibold text-deepForest mb-6">
           Showing results for:{" "}
-          <span className="text-[#FFD700] underline">
+          <span className="text-[#FFD700]  underline">
          
 {FILTER_OPTIONS.find(
               (f) => f.id === activeFilter

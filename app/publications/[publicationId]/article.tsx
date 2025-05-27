@@ -215,7 +215,7 @@ useEffect(() => {
             </Link>
           </p>
           <Reaction />
-          <div className=" p-5 rounded-[19px] border-l-[#ffd700] border-l-2 bg-white mt-10">
+          <div className=" p-5 rounded-[19px] bg-[#D9D9D9] mt-10">
             <p className=" font-medium text-lg text-black mb-5">
               About the author
             </p>
@@ -255,9 +255,9 @@ useEffect(() => {
                 <h1 className="font-bold text-lg">Share this Publication</h1>
 
                 <p className="text-sm text-black">
-                  Advance economic truth and justice.
-Share This Publication with your
-community
+         Advance economic truth and justice.
+Share this publication with your
+community.
                 </p>
 
                 <Share title={post.title} />

@@ -113,7 +113,7 @@ const Footer = () => {
             {companyDetails?.email && <p>{companyDetails.email}</p>}
             {companyDetails?.phoneNumber && <p>{companyDetails.phoneNumber}</p>}
           </div>
-          <h2 className="font-semibold mt-8 text-lg mb-4">Connect and engage with us </h2>
+          <h2 className="font-semibold mt-8 text-lg mb-4">Connect and Engage With Us </h2>
           <div className="flex flex-wrap gap-4 mt-4 text-xl">
 
           
@@ -133,9 +133,9 @@ const Footer = () => {
       </div>
 
       <div className="bg-[#d0d5cd] text-center text-lg ">
-        <div className="max-w-7xl flex flex-col gap-y-4 lg:flex-row lg:items-center py-10 justify-between mx-auto px-6 ">
-        <Image    src={`/Afridependen_2.png`} height={230} width={230} alt=""/>
-     <p className="text-left">   © {currentYear} Afrindependent Institute. All rights reserved {" "}</p>
+        <div className="max-w-7xl flex flex-col gap-y-4 lg:flex-row lg:items-center py-10 justify-between mx-auto px-3  ">
+        <Image  className=""  src={`/Afridependen_2.png`} height={230} width={230} alt=""/>
+     <p className="text-left text-base pl-2">   © {currentYear} Afrindependent Institute. All rights reserved {" "}</p>
         </div>
        
        
