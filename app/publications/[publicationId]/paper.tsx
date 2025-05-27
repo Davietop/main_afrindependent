@@ -72,6 +72,8 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
   setUrl(window.location.href);
 }, []);
 
+
+
   return (
     <section className={`${ibmPlexSans.className} px-5 lg:px-14`}>
 
@@ -92,19 +94,18 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
           href={post.file}
           download={post.title}
           target="_blank"
-          className="inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 lg:py-4 px-6 lg:px-10 mb-4 lg:mb-14 hover:bg-deepForest max-w-[316px]"
+          className="inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px]     mb-4 p-3 hover:bg-deepForest max-w-fit"
         >
-          Access PDF
-          <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
+          <p className="text-sm">Access PDF</p>
+          <AiFillFilePdf className="ml-2 text-white h-4 w-auto" />
         </Link>
         <p className=" text-base font-semibold lg:text-xl leading-[25px] lg:leading-[45px] mb-4 lg:mb-0">
           Share this Publication
         </p>
         <Share title={post.title} />
       </div>
-      <section className="grid grid-cols-1 lg:grid-cols-6 gap-x-20 max-lg:gap-y-10">
-        <article className="col-span-4  overflow-x-hidden">
-                <h1 className="col-span-full hidden lg:block font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
+      <div className="w-full lg:w-8/12">
+                 <h1 className="col-span-full hidden lg:block font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
     {post.title}
   </h1>
           <div className="lg:flex font-medium mb-6 hidden items-center gap-x-3 mt-4">
@@ -168,7 +169,10 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
                 {post?.categoryName}
               </p>
             </a>
-          </div>
+          </div></div>
+      <section className="grid grid-cols-1 lg:grid-cols-6 gap-x-20 max-lg:gap-y-10">
+        <article className="col-span-4  overflow-x-hidden">
+     
 
           <div className="mt-5 mb-5">
             {/* Category Name Heading */}
@@ -186,9 +190,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
           </div>
           <h3 className="font-semibold text-xl lg:text-2xl leading-[20px] lg:leading-[40px] mb-6 ">
             {type === "policy_papers" ||
-            post.title?.includes(
-              "The Nilar: The Path to African Economic Sovereignty and Prosperity"
-            )
+            post.category === "policy-papers"
               ? "Executive Summary:"
               : "Abstract:"}
           </h3>
@@ -246,13 +248,13 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
             </div>
           </div>
         </article>
-        <aside className=" col-span-4 flex  lg:flex lg:flex-col   items-end lg:col-span-2">
+        <aside className=" col-span-4 flex  lg:flex lg:flex-col  mt-5 items-end lg:col-span-2">
           <div className="w-full sticky top-0">
             <Link
               href={post.file}
               download={post.title}
               target="_blank"
-              className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-4 px-10  mb-8 hover:bg-  max-w-[316px]"
+              className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-5  mb-8   w-fit"
             >
               Access PDF
               <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />

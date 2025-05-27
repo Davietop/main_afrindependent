@@ -198,11 +198,17 @@ const clusters = [
   },
   {
     id: "advanced-africonomics-theory",
-    title: "5. Advanced Africonomics Theory",
+    title: "5. Advanced Africonomics Theories",
     intro: "Applying the Africonomics framework to cycles, praxeology, and global order.",
     subText:"This cluster features advanced theories developed within the Africonomics school of thought that explain real-world dynamics—offering a moral, African alternative to prevailing theories of economics, international relations, and human nature. They provide crucial insights for strategic reform, principled scholarship, and postcolonial reconstruction—beyond the destructive assumptions of Western utilitarian, positivist, and materialist Darwinian models.",
     text: "This cluster features advanced theories within Africonomics that explain real-world dynamics—offering a moral, African alternative to prevailing theories of economics, international relations, and human nature.",
     concepts: [
+        {
+        id: "praxeology-framework",
+        title: "The Africonomics Framework of Praxeology",
+        intro: "Human action is intentional, moral, and intelligible—not random behavior to be manipulated.",
+        description: "Africonomics reframes and elevates praxeology by grounding it in a correct conception of human nature and natural-moral law. Principled praxeology is the most appropriate methodological approach for the human sciences—a method for studying and understanding human activities based on deductive, logical reasoning.\n\nThis methodology allows for a more accurate and constructive analysis of the nature and consequences of human choices, actions, relations, and institutions. It is consistent with the reality that humans act thoughtfully, intentionally, and, often, ethically.\n\nWestern economics—including the Austrian School—rests on a fundamentally flawed conception of human nature, shaped by utilitarian, materialist, and Darwinian philosophies. These frameworks reduce human beings to animalistic, instinct-driven entities, resulting in distorted, incomplete, and destructive assumptions about human decision-making, action, and interaction.\n\nAfriconomics, by contrast, offers a more coherent and constructive understanding of human nature—one that recognizes individuals as moral agents endowed with reason, moral responsibility, and the capacity for ethical discernment. This distinctly human and principled framework forms the foundation for a structurally just, peaceful, and civilized social order."
+      },
       {
         id: "economic-cycles-theory",
         title: "The Africonomics Theory of Economic Cycles",
@@ -215,12 +221,7 @@ const clusters = [
         intro: "Truth, justice, and peace—not rivalry and domination—should govern global affairs.",
         description: "This theory redefines and reframes international relations through natural-moral law, rejecting the Darwinian, statist, and militarist foundations of Western IR theory. It presents a peaceful, principled framework grounded in African values and economic sovereignty.\n\nRooted in the African worldview, Africonomics offers a framework for understanding and ordering international human relations not through coercion, rivalry, or power politics but through the natural-moral law principles of truth, justice, and nonaggression."
       },
-      {
-        id: "praxeology-framework",
-        title: "The Africonomics Framework of Praxeology",
-        intro: "Human action is intentional, moral, and intelligible—not random behavior to be manipulated.",
-        description: "Africonomics reframes and elevates praxeology by grounding it in a correct conception of human nature and natural-moral law. Principled praxeology is the most appropriate methodological approach for the human sciences—a method for studying and understanding human activities based on deductive, logical reasoning.\n\nThis methodology allows for a more accurate and constructive analysis of the nature and consequences of human choices, actions, relations, and institutions. It is consistent with the reality that humans act thoughtfully, intentionally, and, often, ethically.\n\nWestern economics—including the Austrian School—rests on a fundamentally flawed conception of human nature, shaped by utilitarian, materialist, and Darwinian philosophies. These frameworks reduce human beings to animalistic, instinct-driven entities, resulting in distorted, incomplete, and destructive assumptions about human decision-making, action, and interaction.\n\nAfriconomics, by contrast, offers a more coherent and constructive understanding of human nature—one that recognizes individuals as moral agents endowed with reason, moral responsibility, and the capacity for ethical discernment. This distinctly human and principled framework forms the foundation for a structurally just, peaceful, and civilized social order."
-      }
+    
     ]
   }
   
@@ -336,7 +337,7 @@ export default function AfriconomicsPage() {
               <button
                 key={c.id}
                 onClick={() => handleNavClick(c.id)}
-                className={`flex-shrink-0 px-5 py-2 text-sm font-medium rounded-full whitespace-nowrap transition ${
+                className={`flex-shrink-0 px-5 py-2 text-sm font-medium rounded-xl whitespace-nowrap transition ${
                   activeId === c.id ? "bg-deepForest text-white shadow" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -358,7 +359,7 @@ export default function AfriconomicsPage() {
             placeholder="Search concepts..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full p-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-green-800"
+            className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-800"
           />
         </motion.div>
 

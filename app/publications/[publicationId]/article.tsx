@@ -86,10 +86,8 @@ useEffect(() => {
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-     
-      <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-x-20">
-        <article className="w-full col-span-full md:col-span-4   overflow-x-hidden">
-           <div className=" lg:mb-10">
+
+       <div className="w-full lg:w-8/12 px-5 lg:px-14 lg:mb-10">
         <div className="grid grid-cols-1 lg:grid-cols-5">
            <h1 className="col-span-full font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
     {post.title}
@@ -178,6 +176,10 @@ useEffect(() => {
           </div>
         </div>
       </div>
+     
+      <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-x-20">
+        <article className="w-full col-span-full md:col-span-4   overflow-x-hidden">
+          
           <div className="pb-8 overflow-hidden flex items-center justify-center">
             <Image
               src={post.image}
@@ -241,7 +243,7 @@ useEffect(() => {
             </div>
           </div>
         </article>
-        <aside className=" md:col-span-4 flex  lg:flex lg:flex-col   items-end lg:col-span-2">
+        <aside className=" md:col-span-4 flex  lg:flex lg:flex-col    items-end lg:col-span-2">
           <div className="mx-auto  sticky flex flex-wrap lg:flex-col gap-x-6 top-0">
             <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-[#014421] text-white shadow-md">
               {/* Gold Accent Bar */}
