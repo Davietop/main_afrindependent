@@ -416,7 +416,7 @@ export default function AfriconomicsPage() {
                   >
                     <div className="mb-6">
                       <h2 className="text-3xl font-bold text-deepForest">{cluster.title}</h2>
-                      <p className="text-[#ffd700] italic text-lg mt-2">{cluster.intro}</p>
+                      <p className="text-[#8B4513] italic text-lg mt-2">{cluster.intro}</p>
                       <p className="text-gray-700 mt-2">{cluster.subText}</p>
                    
                     </div>

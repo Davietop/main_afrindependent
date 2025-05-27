@@ -108,7 +108,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
                  <h1 className="col-span-full hidden lg:block font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
     {post.title}
   </h1>
-          <div className="lg:flex font-medium mb-6 hidden items-center gap-x-3 mt-4">
+          <div className="lg:flex font-medium mb-3 hidden items-center gap-x-3 mt-4">
             <div className="h-[50px] w-[50px] bg-founder bg-cover  rounded-full"></div>
             <Link
               href={`${paths.authors}/${post?.author?.slug}`}
@@ -127,8 +127,8 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
                   ? "/publications?filter=afrindependent-lens#filter"
                   : post?.categoryName === "Afrindependent Post"
                     ? "/publications?filter=afrindependent-post#filter"
-                    : post?.categoryName === "Policy Papers"
-                      ? "/publications?filter=policy_papers#filter"
+                    : post?.categoryName === "Policy Papers"
+                      ? "/publications?filter=policy-papers"
                       : "/publications?filter=academic-papers#filter"
               }
               className="flex underline  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
@@ -158,8 +158,8 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
                   ? "/publications?filter=afrindependent-lens#filter"
                   : post?.categoryName === "Afrindependent Post"
                     ? "/publications?filter=afrindependent-post#filter"
-                    : post?.categoryName === "Policy Papers"
-                      ? "/publications?filter=policy_papers#filter"
+                    : post?.categoryName === "Policy Papers"
+                      ? "/publications?filter=policy-papers"
                       : "/publications?filter=academic-papers#filter"
               }
               className="flex underline w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
@@ -170,7 +170,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
               </p>
             </a>
           </div></div>
-      <section className="grid grid-cols-1 lg:grid-cols-6 gap-x-20 max-lg:gap-y-10">
+      <section className="grid grid-cols-1 lg:grid-cols-6 gap-x-20 max-lg:gap-y-8">
         <article className="col-span-4  overflow-x-hidden">
      
 
@@ -219,8 +219,8 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
             </Link>
           </p>
           <Reaction />
-          <div className="p-5 rounded-[19px] bg-[#D9D9D9] mt-14">
-            <p className=" font-medium text-lg text-[#717171] mb-5">
+          <div className="p-5 border-l-[#ffd700] border-l-2 rounded-[19px] bg-white mt-14">
+            <p className=" font-medium text-lg text-black mb-5">
               About the author
             </p>
             <div className="flex gap-4">
@@ -249,56 +249,59 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
           </div>
         </article>
         <aside className=" col-span-4 flex  lg:flex lg:flex-col  mt-5 items-end lg:col-span-2">
-          <div className="w-full sticky top-0">
+          <div className="mx-auto  sticky flex flex-wrap lg:flex-col gap-x-6 gap-y-6 top-0">
+             <div className="w-full ">
             <Link
               href={post.file}
               download={post.title}
               target="_blank"
-              className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-5  mb-8   w-fit"
+              className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-5     w-fit"
             >
               Access PDF
               <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
             </Link>
 
-            <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-[#014421] text-white shadow-md">
-              {/* Gold Accent Bar */}
-              <div className="w-full h-[20px] bg-[#FFD700]" />
+           
+          </div>
+            <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+              {/* green Accent Bar */}
+              <div className="w-full h-[20px] bg-deepForest" />
 
               {/* Content */}
               <div className="px-4 py-6 flex flex-col items-center space-y-4 ">
                 <h1 className="font-bold text-lg">Share this Publication</h1>
 
-                <p className="text-sm text-white">
-                  Advance economic truth and justice. Share it with your
-                  community and networks.
+                <p className="text-sm text-black">
+                  Advance economic truth and justice.
+Share This Publication with your
+community
                 </p>
 
                 <Share title={post.title} />
               </div>
             </div>
+            <div className=" w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+              {/* green Accent Bar */}
+              <div className="w-full h-[20px] bg-deepForest" />
 
-            <div className="relative   w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
-              {/* White Overlay */}
-
-              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+              {/* Content */}
+              <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Newsletter</h1>
                 <p className="text-base">Join our intellectual movement</p>
                 <SubscribeForm />
-                <p className="text-base">
+                <p className="text-sm">
                   We respect your privacy. No spam — just thoughtful updates.
                   You can unsubscribe anytime.
                 </p>
               </div>
+           
             </div>
+               <div className=" w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+              {/* green Accent Bar */}
+              <div className="w-full h-[20px] bg-deepForest" />
 
-            <div className="relative  w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
-              {/* White Overlay */}
-
-              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+              {/* Content */}
+             <div className="relative z-10 px-4 py-6 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Donate</h1>
                 <p className="text-base">
                   Partner with us in our mission to unlock Africa prosperity.
@@ -314,16 +317,17 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
                   </Button>
                 </Link>{" "}
               </div>
+           
             </div>
-            <div className="relative  w-full lg:w-[300px] h-fit py-6 border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
-              {/* White Overlay */}
+               <div className=" w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+              {/* green Accent Bar */}
+              <div className="w-full h-[20px] bg-deepForest" />
 
-              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+              {/* Content */}
+              <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Article Submissions</h1>
-                <p className="text-base">Share your voice. Shape the future.</p>
-                <p className="text-base">
+                <p className="text-base font-medium">Share your voice. Shape the future.</p>
+                <p className="text-sm">
                   At the Afrindependent Institute, we believe in the power of
                   principled ideas to change societies. If you’re an aspiring or
                   established writer, scholar, or thinker with bold insights
@@ -340,7 +344,10 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
                   </Button>
                 </Link>{" "}
               </div>
+           
             </div>
+       
+           
           </div>
         </aside>
       </section>

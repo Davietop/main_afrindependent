@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     slug: params.publicationId,
   });
 
-  console.log(publication.image)
+
 
   return {
     title: publication.title,

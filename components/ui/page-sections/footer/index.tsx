@@ -113,7 +113,7 @@ const Footer = () => {
             {companyDetails?.email && <p>{companyDetails.email}</p>}
             {companyDetails?.phoneNumber && <p>{companyDetails.phoneNumber}</p>}
           </div>
-          <h2 className="font-semibold mt-4 text-lg mb-4">Connect and engage with us </h2>
+          <h2 className="font-semibold mt-8 text-lg mb-4">Connect and engage with us </h2>
           <div className="flex flex-wrap gap-4 mt-4 text-xl">
 
           
@@ -123,7 +123,7 @@ const Footer = () => {
                   href={social.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-[#ffd700] hover:bg-white text-deepForest p-2 rounded-full"
+                  className="bg-[#ffd700] hover:bg-white text-deepForest p-1.5 lg:p-2 rounded-full"
                 >
                   {social.icon}
                 </a>

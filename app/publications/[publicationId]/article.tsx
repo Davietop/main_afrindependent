@@ -74,6 +74,7 @@ useEffect(() => {
   setUrl(window.location.href);
 }, []);
 
+
   
   return (
     <div className={`${ibmPlexSans.className}`}>
@@ -87,7 +88,7 @@ useEffect(() => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-       <div className="w-full lg:w-8/12 px-5 lg:px-14 lg:mb-10">
+       <div className="w-full lg:w-8/12 px-5 lg:px-14 lg:mb-5">
         <div className="grid grid-cols-1 lg:grid-cols-5">
            <h1 className="col-span-full font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
     {post.title}
@@ -120,7 +121,7 @@ useEffect(() => {
                   ? "/publications?filter=afrindependent-post#filter"
                   : post?.categoryName ===
                       "Policy Papers"
-                    ? "/publications?filter=policy_papers#filter"
+                    ? "/publications?filter=policy-papers"
                     : "/publications?filter=academic-papers#filter"
             }
             className="flex underline  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
@@ -162,7 +163,7 @@ useEffect(() => {
                         "Afrindependent Post"
                       ? "/publications?filter=afrindependent-post#filter"
                       : post?.categoryName === "Policy Papers"
-                        ? "/publications?filter=policy_papers#filter"
+                        ? "/publications?filter=policy-papers"
                         : "/publications?filter=academic-papers#filter"
                 }
                 className="flex underline w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
@@ -177,7 +178,7 @@ useEffect(() => {
         </div>
       </div>
      
-      <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-x-20">
+      <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-y-8 gap-x-20">
         <article className="w-full col-span-full md:col-span-4   overflow-x-hidden">
           
           <div className="pb-8 overflow-hidden flex items-center justify-center">
@@ -214,7 +215,7 @@ useEffect(() => {
             </Link>
           </p>
           <Reaction />
-          <div className=" p-5 rounded-[19px] bg-[#D9D9D9] mt-10">
+          <div className=" p-5 rounded-[19px] border-l-[#ffd700] border-l-2 bg-white mt-10">
             <p className=" font-medium text-lg text-black mb-5">
               About the author
             </p>
@@ -244,44 +245,46 @@ useEffect(() => {
           </div>
         </article>
         <aside className=" md:col-span-4 flex  lg:flex lg:flex-col    items-end lg:col-span-2">
-          <div className="mx-auto  sticky flex flex-wrap lg:flex-col gap-x-6 top-0">
-            <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-[#014421] text-white shadow-md">
-              {/* Gold Accent Bar */}
-              <div className="w-full h-[20px] bg-[#FFD700]" />
+          <div className="mx-auto  sticky flex flex-wrap lg:flex-col gap-x-6 gap-y-10 top-0">
+            <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+              {/* green Accent Bar */}
+              <div className="w-full h-[20px] bg-deepForest" />
 
               {/* Content */}
               <div className="px-4 py-6 flex flex-col items-center space-y-4 ">
                 <h1 className="font-bold text-lg">Share this Publication</h1>
 
-                <p className="text-sm text-white">
-                  Advance economic truth and justice. Share it with your
-                  community and networks..
+                <p className="text-sm text-black">
+                  Advance economic truth and justice.
+Share This Publication with your
+community
                 </p>
 
                 <Share title={post.title} />
               </div>
             </div>
-            <div className="relative   w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
-              {/* White Overlay */}
+            <div className=" w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+              {/* green Accent Bar */}
+              <div className="w-full h-[20px] bg-deepForest" />
 
-              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+              {/* Content */}
+              <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Newsletter</h1>
                 <p className="text-base">Join our intellectual movement</p>
                 <SubscribeForm />
-                <p className="text-base">
+                <p className="text-sm">
                   We respect your privacy. No spam — just thoughtful updates.
                   You can unsubscribe anytime.
                 </p>
               </div>
+           
             </div>
-            <div className="relative  w-full lg:w-[300px] h-fit py-6  border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
-              {/* White Overlay */}
+               <div className=" w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+              {/* green Accent Bar */}
+              <div className="w-full h-[20px] bg-deepForest" />
 
-              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+              {/* Content */}
+             <div className="relative z-10 px-4 py-6 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Donate</h1>
                 <p className="text-base">
                   Partner with us in our mission to unlock Africa prosperity.
@@ -297,16 +300,17 @@ useEffect(() => {
                   </Button>
                 </Link>{" "}
               </div>
+           
             </div>
-            <div className="relative  w-full lg:w-[300px] h-fit py-6 border border-gray-300 bg-no-repeat bg-center rounded-xl overflow-hidden flex items-center text-center flex-col justify-center px-2 gap-y-2 mt-6">
-              {/* White Overlay */}
+               <div className="w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+              {/* green Accent Bar */}
+              <div className="w-full h-[20px] bg-deepForest" />
 
-              <div className="absolute inset-0 bg-white/70 z-0 rounded-lg" />
-              {/* Content on top of overlay */}
-              <div className="relative z-10 px-2 gap-y-4 flex items-center flex-col text-black">
+              {/* Content */}
+              <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Article Submissions</h1>
-                <p className="text-base">Share your voice. Shape the future.</p>
-                <p className="text-base">
+                <p className="text-base font-medium">Share your voice. Shape the future.</p>
+                <p className="text-sm">
                   At the Afrindependent Institute, we believe in the power of
                   principled ideas to change societies. If you’re an aspiring or
                   established writer, scholar, or thinker with bold insights
@@ -323,7 +327,10 @@ useEffect(() => {
                   </Button>
                 </Link>{" "}
               </div>
+           
             </div>
+       
+           
           </div>
         </aside>
       </section>

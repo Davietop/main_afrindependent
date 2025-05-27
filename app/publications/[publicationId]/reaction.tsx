@@ -107,7 +107,7 @@ const Reaction = () => {
         setSent(true);
       }
     } catch (error) {
-      console.log(error);
+  
       setSending(false);
       setError(true);
     }

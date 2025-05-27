@@ -188,6 +188,8 @@ export default function Filters({ categories }: PropType) {
     return html.replace(/<[^>]*>?/gm, "");
   };
 
+
+
   return (
     <>
       <section className=" py-10 px-5 lg:px-10">
@@ -278,14 +280,14 @@ export default function Filters({ categories }: PropType) {
         <h4 className="text-xl font-semibold text-deepForest mb-6">
           Showing results for:{" "}
           <span className="text-[#FFD700] underline">
-            {FILTER_OPTIONS.find((f) => f.id === activeFilter)
-              ?.label.toUpperCase()
-              .includes("AFRINDEPENDENT")
-              ? `THE  ${FILTER_OPTIONS.find(
+         
+{FILTER_OPTIONS.find(
               (f) => f.id === activeFilter
-            )?.label.toUpperCase()}`
-              : ''}
-
+            )?.label.toUpperCase().includes("AFRIN") ?`THE  ${FILTER_OPTIONS.find(
+              (f) => f.id === activeFilter
+            )?.label.toUpperCase()}`: FILTER_OPTIONS.find(
+              (f) => f.id === activeFilter
+            )?.label.toUpperCase()}
            
           </span>
         </h4>
