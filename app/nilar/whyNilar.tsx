@@ -83,7 +83,7 @@ function WhyAfricaNeedsNilar() {
   });
 
   return (
-    <section className={`relative  px-5 lg:px-10 ${ibmPlexSans.className}`}>
+    <section className={`relative mt-14  px-5 lg:px-10 ${ibmPlexSans.className}`}>
 
       
        <div className="mb-4">

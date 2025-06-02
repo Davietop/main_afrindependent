@@ -21,17 +21,17 @@ const Subscribe = ({ onHomePage = true }: { onHomePage?: boolean }) => {
       </div>
 
       <section
-        className={` py-20   ${ibmPlexSans.className}`}
+        className={` py-20 bg-pattern_subscribe bg-center  bg-cover   bg-no-repeat   ${ibmPlexSans.className}`}
         id="subscribe"
       >
 
        
-        <div className=" backdrop-blur-xs   w-11/12 mx-auto  lg:w-full lg:px-0 flex flex-col justify-center items-center h-[350px] gap-y-6  text-center relative ">
-          <h3 className="font-bold text-deepForest  text-2xl lg:text-3xl ">
+        <div className=" backdrop-blur-xs   w-11/12 mx-auto  lg:w-full lg:px-0 flex flex-col justify-center items-center h-[350px] gap-y-6  text-center relative mt-10 mb-10 lg:mb-0 lg:mt-0 ">
+          <h3 className="font-bold  text-deepForest  text-xl lg:text-3xl ">
        Stay Informed. Stay Sovereign
         </h3>
            <p className="pl-4 mt-4 text-base lg:text-lg font-medium text-[#182D09]">
-          Join <span className="font-medium">Sovereign Signals</span>, the official newsletter of the Afrindependent
+          Join <span className="font-bold">Sovereign Signals</span>, the official newsletter of the Afrindependent
           Institute.
         </p> 
            <p className="pl-4 text-base lg:text-lg font-medium text-[#182D09]">
