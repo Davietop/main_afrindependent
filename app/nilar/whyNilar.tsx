@@ -82,7 +82,7 @@ function WhyAfricaNeedsNilar() {
   });
 
   return (
-    <section className={`relative py-24 px-5 lg:px-10 ${ibmPlexSans.className}`}>
+    <section className={`relative  px-5 lg:px-10 ${ibmPlexSans.className}`}>
 
       
        <div className="mb-4">
@@ -131,7 +131,7 @@ function WhyAfricaNeedsNilar() {
         </div>
 
         {/* Right side (content) */}
-        <div className="md:col-span-3 space-y-24">
+        <div className="md:col-span-3 space-y-10">
           {sections.map((sec, idx) => (
             <motion.div
               key={sec.id}
@@ -156,9 +156,17 @@ function WhyAfricaNeedsNilar() {
              {sec?.stages?.map((stage, index)=> <p key={index} className="text-gray-700 leading-relaxed whitespace-pre-line"> 	•	{stage}</p> )}
              </div>
 
-             <p className="text-gray-700 leading-relaxed whitespace-pre-line mt-2">{sec?.conclusion}</p>
+             {/* <p className="text-gray-700 leading-relaxed whitespace-pre-line mt-2"></p> */}
+               <div className="mt-8 border-l-4 border-yellow-500 pl-4  text-[#1a1a1a] text-lg sm:text-sm lg:text-base font-semibold leading-relaxed">
+   {sec?.conclusion}
+  </div>
 
-             <p className="text-gray-700 leading-relaxed font-bold self-end mt-2 whitespace-pre-line">{sec?.author}</p>
+<p className="text-[#323232] text-base sm:text-sm lg:text-base leading-relaxed text-right self-end mt-4 font-semibold italic">
+   {sec?.author} <br />
+ 
+</p>
+
+        
               
             </motion.div>
           ))}

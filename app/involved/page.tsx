@@ -92,7 +92,7 @@ export default function GetInvolvedSection() {
           <p className="text-white dark:text-[#e2e2e2] mb-5">
             Help us expand research, produce publications, and reach wider audiences. Your contribution fuels independent African scholarship and the development of principled alternatives.
           </p>
-          <a href="#" className="text-[#ffd700] hover:underline font-medium transition">Donate Now →</a>
+          <a href="/donate" className="text-[#ffd700] hover:underline font-medium transition">Donate Now →</a>
         </div>
 
         {/* Spread the Vision */}
@@ -119,7 +119,7 @@ export default function GetInvolvedSection() {
           <p className="text-white dark:text-[#e2e2e2] mb-5">
             Bring Africonomics to your conference, classroom, institution, or media platform. We offer keynotes, lectures, and briefings on economic sovereignty, sound money, and postcolonial justice.
           </p>
-          <a href="#" className="text-[#ffd700] hover:underline font-medium transition">Invite Us to Speak →</a>
+          <a href="/contact" className="text-[#ffd700] hover:underline font-medium transition">Invite Us to Speak →</a>
         </div>
 
         {/* Volunteer or Collaborate */}
@@ -131,7 +131,7 @@ export default function GetInvolvedSection() {
           <p className="text-white dark:text-[#e2e2e2] mb-5">
             Have skills in research, media, design, policy, or translation? Want to partner institutionally? We welcome collaborators aligned with our mission and ready to contribute meaningfully.
           </p>
-          <a href="#" className="text-[#ffd700] hover:underline font-medium transition">Become a Collaborator →</a>
+          <a href="/contact" className="text-[#ffd700] hover:underline font-medium transition">Become a Collaborator →</a>
         </div>
       </div>
 
