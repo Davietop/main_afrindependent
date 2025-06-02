@@ -21,15 +21,21 @@ const Subscribe = ({ onHomePage = true }: { onHomePage?: boolean }) => {
       </div>
 
       <section
-        className={` py-20  bg-pattern_subscribe bg-center  bg-cover   bg-no-repeat ${ibmPlexSans.className}`}
+        className={` py-20   ${ibmPlexSans.className}`}
         id="subscribe"
       >
 
        
         <div className=" backdrop-blur-xs   w-11/12 mx-auto  lg:w-full lg:px-0 flex flex-col justify-center items-center h-[350px] gap-y-6  text-center relative ">
+          <h3 className="font-bold text-deepForest  text-2xl lg:text-3xl ">
+       Stay Informed. Stay Sovereign
+        </h3>
            <p className="pl-4 mt-4 text-base lg:text-lg font-medium text-[#182D09]">
-          Join Sovereign Signals, the official newsletter of the Afrindependent
-          Institute. Get principled insights, new publications, video releases,
+          Join <span className="font-medium">Sovereign Signals</span>, the official newsletter of the Afrindependent
+          Institute.
+        </p> 
+           <p className="pl-4 text-base lg:text-lg font-medium text-[#182D09]">
+ Get principled insights, new publications, video releases,
           and key updates—delivered straight to your inbox.
         </p> 
         <p className="pl-4 text-base lg:text-lg font-medium text-[#182D09]">
@@ -45,8 +51,6 @@ const Subscribe = ({ onHomePage = true }: { onHomePage?: boolean }) => {
           <p
             className={`${ibmPlexSans.className} font-medium italic text-base`}
           >
-            {" "}
-            We respect your privacy. No spam — just thoughtful updates. <br />{" "}
             You can unsubscribe anytime.
           </p>
         </div>
