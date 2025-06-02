@@ -42,7 +42,8 @@ function WhyAfricaNeedsNilar() {
     {
       id: "nilar-corrective",
       title: "The Nilar as a Corrective and Liberating Force",
-      author:"— Manuel Tacanho, social philosopher and economist",
+      author:"— Manuel Tacanho, ",
+      subAuthorInfo: "Social philosopher and economist",
       stages:["based on gold, an honest and timeless form of money","free from foreign manipulation and arbitrary devaluation","designed for long-term monetary reliability and economic stability","aligned with truth, justice, liberty, and economic sovereignty"],
       content: `The Nilar breaks this cycle. Rooted in Africonomics, it is not a Western imitation but an African innovation—based on real value, honest exchange, and ethical monetary policy.\n\nIt allows African nations to build currency systems:
       `,
@@ -162,7 +163,14 @@ function WhyAfricaNeedsNilar() {
   </div>
 
 <p className="text-[#323232] text-base sm:text-sm lg:text-base leading-relaxed text-right self-end mt-4 font-semibold italic">
-   {sec?.author} <br />
+   {sec?.author} 
+  
+ 
+</p>
+
+<p className="text-[#323232] text-base sm:text-sm lg:text-base leading-relaxed text-right self-end mt-1 font-medium italic">
+    {sec?.subAuthorInfo} 
+  
  
 </p>
 

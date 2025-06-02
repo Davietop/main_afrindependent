@@ -50,7 +50,7 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
       >
-       Explore the foundations of a distinctly human and principled approach to economics, jurisprudence, and other social sciences.
+      Explore the foundations of a distinctly human and principled approach to economics, jurisprudence, and the broader social sciences.
       </motion.p>
 
       {/* Icon Grid */}
