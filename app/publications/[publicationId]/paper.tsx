@@ -37,13 +37,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
   const itemsPerPage = 6;
 
   const updatedPublications = publications
-    ?.map((pub) =>
-      pub.slug ===
-      "the-nilar-the-path-to-african-economic-sovereignty-and-prosperity"
-        ? { ...pub, category: "policy_papers" }
-        : pub
-    )
-    .filter((pub) => pub.title !== post.title);
+    ?.filter((pub) => pub.title !== post.title);
 
   const filterByCategory = (data: any, category: any) => {
     const uniqueData = Array.from(

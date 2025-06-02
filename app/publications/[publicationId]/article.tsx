@@ -33,14 +33,9 @@ const Article = ({ post }: { post: PublicationDto }) => {
 
   const type = typeParams.get("type");
 
-  const updatedPublications = publications
-    ?.map((pub) =>
-      pub.slug ===
-      "the-nilar-the-path-to-african-economic-sovereignty-and-prosperity"
-        ? { ...pub, category: "policy_papers" }
-        : pub
-    )
-    .filter((pub) => pub.title !== post.title);
+  const updatedPublications = publications?.filter(
+    (pub) => pub.title !== post.title
+  );
 
   const filterByCategory = (data: any, category: any) => {
     const uniqueData = Array.from(
@@ -64,21 +59,16 @@ const Article = ({ post }: { post: PublicationDto }) => {
     setCurrentPage(selected);
   };
 
-
   const offset = currentPage * itemsPerPage;
   const currentItems = filteredData.slice(offset, offset + itemsPerPage);
 
-  
+  useEffect(() => {
+    setUrl(window.location.href);
+  }, []);
 
-useEffect(() => {
-  setUrl(window.location.href);
-}, []);
-
-
-  
   return (
     <div className={`${ibmPlexSans.className}`}>
-       <Head>
+      <Head>
         <title>{post?.title}</title>
         <meta property="og:title" content={post?.title} />
         <meta property="og:description" content={post?.intro} />
@@ -88,11 +78,11 @@ useEffect(() => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-       <div className="w-full lg:w-8/12 px-5 lg:px-14 lg:mb-5">
+      <div className="w-full lg:w-8/12 px-5 lg:px-14 lg:mb-5">
         <div className="grid grid-cols-1 lg:grid-cols-5">
-           <h1 className="col-span-full font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
-    {post.title}
-  </h1>
+          <h1 className="col-span-full font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
+            {post.title}
+          </h1>
           <p className="col-span-full leading-6 text-base lg:text-lg  mt-4 mb-4 lg:mb-0">
             {post?.intro}
           </p>
@@ -113,24 +103,18 @@ useEffect(() => {
           <p className="font-bold">|</p>{" "}
           <a
             href={
-              post?.categoryName ===
-              "Afrindependent Lens"
+              post?.categoryName === "Afrindependent Lens"
                 ? "/publications?filter=afrindependent-lens#filter"
-                : post?.categoryName ===
-                    "Afrindependent Post"
+                : post?.categoryName === "Afrindependent Post"
                   ? "/publications?filter=afrindependent-post#filter"
-                  : post?.categoryName ===
-                      "Policy Papers"
+                  : post?.categoryName === "Policy Papers"
                     ? "/publications?filter=policy-papers"
                     : "/publications?filter=academic-papers#filter"
             }
             className="flex underline  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
           >
             <img src="/arrow.png" height={20} width={20} alt="back icon" />
-            <p className="text-sm lg:text-base">
-              {" "}
-              {post?.categoryName}
-            </p>
+            <p className="text-sm lg:text-base"> {post?.categoryName}</p>
           </a>
         </div>
 
@@ -156,11 +140,9 @@ useEffect(() => {
               <p className="font-bold">|</p>
               <a
                 href={
-                 post?.categoryName ===
-                  "Afrindependent Lens"
+                  post?.categoryName === "Afrindependent Lens"
                     ? "/publications?filter=afrindependent-lens#filter"
-                    : post?.categoryName ===
-                        "Afrindependent Post"
+                    : post?.categoryName === "Afrindependent Post"
                       ? "/publications?filter=afrindependent-post#filter"
                       : post?.categoryName === "Policy Papers"
                         ? "/publications?filter=policy-papers"
@@ -177,10 +159,9 @@ useEffect(() => {
           </div>
         </div>
       </div>
-     
+
       <section className="px-5 lg:px-14 grid grid-cols-1 lg:grid-cols-6 gap-y-8 gap-x-20">
         <article className="w-full col-span-full md:col-span-4   overflow-x-hidden">
-          
           <div className="pb-8 overflow-hidden flex items-center justify-center">
             <Image
               src={post.image}
@@ -255,9 +236,8 @@ useEffect(() => {
                 <h1 className="font-bold text-lg">Share this Publication</h1>
 
                 <p className="text-sm text-black">
-         Advance economic truth and justice.
-Share this publication with your
-community.
+                  Advance economic truth and justice. Share this publication
+                  with your community.
                 </p>
 
                 <Share title={post.title} />
@@ -277,14 +257,13 @@ community.
                   You can unsubscribe anytime.
                 </p>
               </div>
-           
             </div>
-               <div className=" w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+            <div className=" w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
               {/* green Accent Bar */}
               <div className="w-full h-[20px] bg-deepForest" />
 
               {/* Content */}
-             <div className="relative z-10 px-4 py-6 gap-y-4 flex items-center flex-col text-black">
+              <div className="relative z-10 px-4 py-6 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Donate</h1>
                 <p className="text-base">
                   Partner with us in our mission to unlock Africa prosperity.
@@ -300,16 +279,17 @@ community.
                   </Button>
                 </Link>{" "}
               </div>
-           
             </div>
-               <div className="w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
+            <div className="w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
               {/* green Accent Bar */}
               <div className="w-full h-[20px] bg-deepForest" />
 
               {/* Content */}
               <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Article Submissions</h1>
-                <p className="text-base font-medium">Share your voice. Shape the future.</p>
+                <p className="text-base font-medium">
+                  Share your voice. Shape the future.
+                </p>
                 <p className="text-sm">
                   At the Afrindependent Institute, we believe in the power of
                   principled ideas to change societies. If you’re an aspiring or
@@ -327,10 +307,7 @@ community.
                   </Button>
                 </Link>{" "}
               </div>
-           
             </div>
-       
-           
           </div>
         </aside>
       </section>
