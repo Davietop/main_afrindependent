@@ -267,7 +267,7 @@ No spam—just truthful content and reliable insights. You can unsubscribe anyt
               <div className="relative z-10 px-4 py-6 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Donate</h1>
                 <p className="text-sm">
-                Partner with us in our mission to advance African intellectual independence and economic prosperity. Your donation aligns you with our transformative vision and empowers groundbreaking scholarly work..
+                Partner with us in our mission to advance African intellectual independence and economic prosperity. Your donation aligns you with our transformative vision and empowers groundbreaking work.
                 </p>
                 <Link href={paths.donate}>
                   <Button
