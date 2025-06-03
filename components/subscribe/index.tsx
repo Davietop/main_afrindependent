@@ -14,7 +14,7 @@ const ibmPlexSans = IBM_Plex_Sans({
   display: 'swap',
 });
 
-const SubscribeForm = () => {
+const SubscribeForm = ({post}:any) => {
   const [email, setEmail] = useState('');
 
   const [status, setStatus] = useState('');
@@ -76,7 +76,7 @@ const SubscribeForm = () => {
           <Button
             type="submit"
             disabled={status === 'loading'}
-            className="flex items-center gap-2 bg-deepForest text-base border-2 border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700] font-medium px-10 py-1 rounded-full transition duration-200"
+            className={`flex items-center gap-2 bg-deepForest ${post=== "post"? "text-sm" :"text-base"} border-2 border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700] font-medium px-10 py-1 rounded-full transition duration-200`}
           >
             {status === 'loading' ? (
               <LuLoader2 className="animate-spin w-6 h-6 text-[#ffd700]" />

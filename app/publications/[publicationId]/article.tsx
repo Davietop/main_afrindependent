@@ -49,10 +49,8 @@ const Article = ({ post }: { post: PublicationDto }) => {
       );
   };
 
-  const filteredData = filterByCategory(
-    updatedPublications || [],
-    post.category
-  );
+
+    const filteredData = filterByCategory(updatedPublications || [], type === "latest_pub" ? post.category : type);
   const pageCount = Math.ceil(filteredData.length / itemsPerPage);
 
   const handlePageClick = ({ selected }: any) => {
@@ -65,6 +63,9 @@ const Article = ({ post }: { post: PublicationDto }) => {
   useEffect(() => {
     setUrl(window.location.href);
   }, []);
+
+
+
 
   return (
     <div className={`${ibmPlexSans.className}`}>
@@ -233,7 +234,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
 
               {/* Content */}
               <div className="px-4 py-6 flex flex-col items-center space-y-4 ">
-                <h1 className="font-bold text-lg">Share this Publication</h1>
+                <h1 className="font-bold text-base">Share this Publication</h1>
 
                 <p className="text-sm text-black">
                   Advance economic truth and justice. Share this publication
@@ -250,11 +251,11 @@ const Article = ({ post }: { post: PublicationDto }) => {
               {/* Content */}
               <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Newsletter</h1>
-                <p className="text-base">Join our intellectual movement</p>
-                <SubscribeForm />
+                <p className="text-sm">Join the movement for African sovereignty and global civilizational renewal</p>
+                <SubscribeForm post={"post"} />
                 <p className="text-sm">
-                  We respect your privacy. No spam — just thoughtful updates.
-                  You can unsubscribe anytime.
+                  
+No spam—just truthful content and reliable insights. You can unsubscribe anytime.
                 </p>
               </div>
             </div>
@@ -265,10 +266,8 @@ const Article = ({ post }: { post: PublicationDto }) => {
               {/* Content */}
               <div className="relative z-10 px-4 py-6 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Donate</h1>
-                <p className="text-base">
-                  Partner with us in our mission to unlock Africa prosperity.
-                  Your donation aligns you with our vision and empowers
-                  groundbreaking scholarly work towards this goal.
+                <p className="text-sm">
+                Partner with us in our mission to advance African intellectual independence and economic prosperity. Your donation aligns you with our transformative vision and empowers groundbreaking scholarly work..
                 </p>
                 <Link href={paths.donate}>
                   <Button
@@ -278,6 +277,10 @@ const Article = ({ post }: { post: PublicationDto }) => {
                     Donate
                   </Button>
                 </Link>{" "}
+                   <p className="text-sm text-black">
+                  
+Help restore truth in economics and dignity in society.
+                </p>
               </div>
             </div>
             <div className="w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
@@ -287,7 +290,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
               {/* Content */}
               <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Article Submissions</h1>
-                <p className="text-base font-medium">
+                <p className="text-sm font-medium">
                   Share your voice. Shape the future.
                 </p>
                 <p className="text-sm">

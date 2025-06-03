@@ -132,6 +132,7 @@ export default function Filters({ categories }: PropType) {
       id === "latest_pub"
         ? getRecentPublications(dataToUse, 120)
         : filterByCategory(dataToUse, id);
+        
 
     const uniqueResults = result.filter(
       (item, index, self) =>
