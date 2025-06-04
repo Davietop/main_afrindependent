@@ -328,8 +328,7 @@ Help restore truth in economics and dignity in society.
                   principled ideas to change societies. If you’re an aspiring or
                   established writer, scholar, or thinker with bold insights
                   grounded in truth, liberty, sound money, and structural
-                  justice—we welcome your contribution. We accept submissions
-                  for two distinct publication platforms:
+                  justice—we welcome your contribution.
                 </p>
                 <Link href={`${paths.getInvolved}/#submit`}>
                   <Button
