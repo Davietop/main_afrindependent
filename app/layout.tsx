@@ -19,32 +19,32 @@ export const metadata: Metadata = {
     icon: '/favicon.ico', // if you're using a PNG instead
   },
   applicationName: "Afrindenpendent Organisation",
-  manifest: "https://afrindependent.org",
+  manifest: "https://www.afrindependent.org/",
   openGraph: {
     title: "Afrindependent",
     description: "Unlocking Africa's Prosperity through Africonomics",
     images: [
       {
-        url: "https://afrindependent.org/header-web-bg.jpg",
+        url: "https://www.afrindependent.org/hero_landing.jpg",
         width: 1200,
         height: 630,
         alt: "Afrindependent Institute - Unlocking Africa's Prosperity",
       },
     ],
-    url: "https://afrindependent.org",
+    url: "https://www.afrindependent.org/",
   },
   twitter: {
     title: "Afrindependent",
     description: "Unlocking Africa's Prosperity through Africonomics",
     images: [
       {
-        url: "https://afrindependent.org/header-web-bg.jpg",
+        url: "https://www.afrindependent.org/hero_landing.jpg",
         width: 1200,
         height: 630,
         alt: "Afrindependent Institute - Unlocking Africa's Prosperity",
       },
     ],
-    site: "https://afrindependent.org",
+    site: "https://www.afrindependent.org/",
   },
   keywords: [
     "Africonomics",

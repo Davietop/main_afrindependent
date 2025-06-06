@@ -39,6 +39,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       site: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
       images: [publication.image],
     },
+     keywords: [
+  "African economic commentary",
+  "postcolonial critique",
+  "liberty and justice Africa",
+  "African political economy",
+  "African economies",
+  "African politics",
+  "African liberation",
+  "geopolitics",
+  "principled insights"
+],
   };
 }
 

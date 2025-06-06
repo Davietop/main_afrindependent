@@ -82,23 +82,19 @@ const About = async () => {
     <main className=" bg-white ">
       <div className="bg-white">
         <div className=" h-fit">
-        <div className="">
-        <Navbar />
-      </div>
-  
+          <div className="">
+            <Navbar />
+          </div>
 
-
-    
-      <Hero />
+          <Hero />
         </div>
-    
       </div>
-     
-     <VissionMission/>
-     <HistoryFounder/>
-     <AfriDifferent/>
-     <Principle/>
-    
+
+      <VissionMission />
+      <HistoryFounder />
+      <AfriDifferent />
+      <Principle />
+
       <Footer />
     </main>
   );

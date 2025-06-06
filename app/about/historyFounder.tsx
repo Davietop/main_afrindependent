@@ -3,26 +3,22 @@ import mission_img from "../../public/AfridependentLogo.svg";
 import founder from "../../public/founder.jpg";
 import { IBM_Plex_Sans } from "next/font/google";
 const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"], // Or 'latin-ext' if needed
-  weight: ["400", "500", "700"], // Optional: choose weights you use
-  display: "swap", // Optional: improves text rendering
+  subsets: ["latin"], 
+  weight: ["400", "500", "700"], 
+  display: "swap", 
 });
 
 const HistoryFounder = () => {
   return (
     <div className={`${ibmPlexSans.className}`}>
-    <h2 className=" text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 ">
+      <h2 className=" text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 ">
         <p className="border-l-4 border-yellow-400 pl-4">History And Founder</p>
       </h2>
 
-   
       <div
         className={`${ibmPlexSans.className} flex flex-col xl:flex-row items-center justify-center gap-x-10 mt-10 mb-20`}
       >
-       
-       
-           <div className="relative w-11/12 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12   text-white  overflow-hidden">
-             
+        <div className="relative w-11/12 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12   text-white  overflow-hidden">
           <Image
             src={founder}
             height={600}
@@ -30,8 +26,7 @@ const HistoryFounder = () => {
             alt="mission_img"
             className="absolute object-contain  left-1/2  transform -translate-x-1/2"
           />
-               
-              </div>
+        </div>
 
         <div className="w-11/12 md:w-10/12 md:text-center xl:text-left xl:w-7/12 mt-4 lg:mt-0 ">
           <p className="lg:font-medium text-[#323232] mt-4 text-lg leading-[28px] lg:text-xl lg:leading-[40px] ">

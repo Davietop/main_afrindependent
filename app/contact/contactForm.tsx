@@ -27,7 +27,9 @@ const ContactSection: FC = () => {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -54,13 +56,18 @@ const ContactSection: FC = () => {
   };
 
   return (
-    <section className={`${ibmPlexSans.className} text-[#002813] px-6 sm:px-10 bg-white`}>
+    <section
+      className={`${ibmPlexSans.className} text-[#002813] px-6 sm:px-10 bg-white`}
+    >
       {/* Contact Form Section */}
       <div className="grid lg:grid-cols-2 gap-16">
         <div>
-          <h3 className="text-2xl font-semibold border-t border-[#002813] pt-10 mb-4">General Inquiries</h3>
+          <h3 className="text-2xl font-semibold border-t border-[#002813] pt-10 mb-4">
+            General Inquiries
+          </h3>
           <p className="mb-6">
-            Use the form below to contact our team regarding our work, publications, or opportunities to collaborate.
+            Use the form below to contact our team regarding our work,
+            publications, or opportunities to collaborate.
           </p>
 
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -120,7 +127,10 @@ const ContactSection: FC = () => {
             </h3>
             <p className="flex items-center gap-3 mb-3">
               <Mail className="w-5 h-5" />
-              <a href="mailto:hello@afrindependent.org" className="underline hover:no-underline">
+              <a
+                href="mailto:hello@afrindependent.org"
+                className="underline hover:no-underline"
+              >
                 hello@afrindependent.org
               </a>
             </p>
@@ -136,10 +146,15 @@ const ContactSection: FC = () => {
 
           {/* Media & Press Inquiries */}
           <div>
-            <h3 className="text-2xl font-semibold border-t border-[#002813] pt-10 mb-4">Media & Press Inquiries</h3>
+            <h3 className="text-2xl font-semibold border-t border-[#002813] pt-10 mb-4">
+              Media & Press Inquiries
+            </h3>
             <p className="flex items-center gap-3">
               <MessageSquare className="w-5 h-5" />
-              <a href="mailto:media@afrindependent.org" className="underline hover:no-underline">
+              <a
+                href="mailto:media@afrindependent.org"
+                className="underline hover:no-underline"
+              >
                 media@afrindependent.org
               </a>
             </p>
@@ -153,7 +168,8 @@ const ContactSection: FC = () => {
           <div className="bg-white rounded-xl p-6 max-w-md w-full shadow-xl text-center">
             <h2 className="text-xl font-semibold mb-2">Message Sent</h2>
             <p className="mb-4 text-[#002813]">
-              Thank you—your message has been successfully sent. We’ll be in touch soon.
+              Thank you—your message has been successfully sent. We’ll be in
+              touch soon.
             </p>
             <button
               onClick={() => setShowModal(false)}

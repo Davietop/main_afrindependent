@@ -52,24 +52,20 @@ export const metadata: Metadata = {
 const ContactPage = async () => {
   const companyDetails = await getCompany();
   return (
- 
     <>
-    <main
-      className={`bg-white`}
-    >
-      <div className="mb-6">
-        <div className=" z-50">
-          <Navbar />
-        </div>
+      <main className={`bg-white`}>
+        <div className="mb-6">
+          <div className=" z-50">
+            <Navbar />
+          </div>
 
-        <Hero/>
-     
-        <ContactSection/>
-      </div>
-      <Footer/>
-    </main>
- 
-  </>
+          <Hero />
+
+          <ContactSection />
+        </div>
+        <Footer />
+      </main>
+    </>
   );
 };
 

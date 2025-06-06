@@ -47,17 +47,16 @@ export const metadata: Metadata = {
     ],
     site: 'https://www.afrindependent.org/nilar',
   },
-  keywords: [
-    'Nilar Currency',
-    'Gold Standard Africa',
-    'Sound Money Africa',
-    'African Economic Sovereignty',
-    'Nilar Monetary Framework',
-    'Gold-Based Currency Africa',
-    'Africonomics Currency',
-    'Afrindependent Currency',
-    'Postcolonial Economics',
-  ],
+keywords: [
+  "gold-backed currency",
+  "sound money system",
+  "African monetary reform",
+  "anti-inflation Africa",
+  "the Nilar currency",
+  "monetary justice",
+  "economic sovereignty"
+],
+
 };
 
 

@@ -3,7 +3,6 @@ import Footer from "@/components/ui/page-sections/footer";
 import Navbar from "@/components/ui/page-sections/nav-bar";
 import Hero from "./hero";
 
-
 export const metadata: Metadata = {
   title: "Donate – Afrindependent Institute",
   description:
@@ -54,13 +53,10 @@ export const metadata: Metadata = {
   ],
 };
 
-
 const Donate = () => {
   return (
     <>
-      <main
-        className={` bg-white`}
-      >
+      <main className={` bg-white`}>
         <div>
           <div className=" z-50">
             <Navbar />
