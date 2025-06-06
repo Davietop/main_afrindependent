@@ -1,5 +1,4 @@
 import { FaEye, FaPlayCircle } from "react-icons/fa";
-import { motion } from "framer-motion";
 import { IBM_Plex_Sans } from "next/font/google";
 import Navbar from "@/components/ui/page-sections/nav-bar";
 import Footer from "@/components/ui/page-sections/footer";
@@ -65,11 +64,7 @@ export default function VideoSection() {
         className={`py-20 px-4 bg-white dark:bg-[#0f1c16] text-[#002813] dark:text-white ${ibmPlexSans.className}`}
       >
         <div className="max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+         
             <FaEye className="text-4xl text-yellow-500 mx-auto mb-4" />
             <h2 className="text-4xl font-bold mb-4 text-[#002813] dark:text-[#ffd700]">
               Visual Insight. Moral Clarity. African Sovereignty in Focus.
@@ -85,12 +80,10 @@ export default function VideoSection() {
               inspire a new generation of African thinkers, leaders, and
               builders.
             </p>
-          </motion.div>
+          
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+          <div
+            
             className="bg-[#f9f9f6] dark:bg-[#1a2c23] border border-gray-200 dark:border-[#2e4638] rounded-xl p-10 max-w-2xl mx-auto"
           >
             <div className="flex flex-col items-center">
@@ -102,7 +95,7 @@ export default function VideoSection() {
                 Watch, reflect, and share the vision.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
