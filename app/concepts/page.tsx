@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     url: "https://www.afrindependent.org/concepts",
     images: [
       {
-        url: "https://afrindependent.org/teacher-replace.jpg", // Replace with actual hosted image
+        url: "https://www.afrindependent.org/teacher-replace.jpg", // Replace with actual hosted image
         width: 1200,
         height: 630,
         alt: "Afrindependent Key Concepts",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       "Explore our intellectual foundation: liberty, sound economics, and African sovereignty.",
     images: [
       {
-        url: "https://afrindependent.org/teacher-replace.jpg", // Replace with actual hosted image
+        url: "https://www.afrindependent.org/teacher-replace.jpg", // Replace with actual hosted image
         width: 1200,
         height: 630,
         alt: "Afrindependent Key Concepts",
