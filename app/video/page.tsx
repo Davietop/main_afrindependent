@@ -1,4 +1,3 @@
-"use client";
 import { FaEye, FaPlayCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { IBM_Plex_Sans } from "next/font/google";
