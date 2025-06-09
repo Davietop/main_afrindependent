@@ -9,6 +9,8 @@ import { nohemi, inter_tight, ojuju } from "@/contants/font-def";
 import Motion from "./motion";
 import WebVitals from "@/components/web-vitals";
 import Image from "next/image";
+import { Analytics } from '@vercel/analytics/next';
+
 
 export const revalidate = 0;
 
@@ -117,6 +119,8 @@ fbq('track', 'PageView');
             src="https://www.facebook.com/tr?id=872800324995642&ev=PageView&noscript=1"
           />
         </noscript>
+
+        <Analytics />
       </body>
       <GoogleAnalytics gaId="G-6C3P705179" />
     </html>
