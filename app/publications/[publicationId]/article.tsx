@@ -79,7 +79,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <div className="w-full lg:w-8/12 px-5 lg:px-14 lg:mb-5">
+      <div className="w-full mt-4 lg:w-8/12 px-5 lg:px-14 lg:mb-5">
         <div className="grid grid-cols-1 lg:grid-cols-5">
           <h1 className="col-span-full font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
             {post.title}

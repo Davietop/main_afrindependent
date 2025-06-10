@@ -65,20 +65,20 @@ const PcNav = () => {
 
   return (
     <nav
-      className={`text-white pt-6 px-10 hidden xl:flex justify-between  items-center  ${
-        pathname === paths.contact ? "" : ""
+      className={`text-white px-10   h-[100px] hidden xl:flex justify-between  relative z-10  items-center  ${
+        pathname === paths.contact ? "lg:relative" : ""
       }  ${ibmPlexSans.className} `}
     >
       
-    
-      <Link href="/" >
+       <Link href="/">
         <Image
           src={`/Afridependen_2.png`}
-          alt="Afrindependent"
+          alt="Afrindependent.svg"
           width={200}
-          height={1}
-        /></Link>
-      
+          height={52}
+          priority
+        />
+      </Link>
 
      
     

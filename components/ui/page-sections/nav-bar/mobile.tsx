@@ -67,7 +67,7 @@ export const MobileNav = ({ turnBrown = false }: { turnBrown?: boolean }) => {
       ref={containerRef}
       className="flex   w-full items-center justify-between xl:hidden"
     >
-      <m.div className="flex w-full pt-6 items-center justify-between px-2     z-40 ">
+      <m.div className="flex w-full py-6 items-center justify-between px-2     z-40 ">
       <Link href="/">
         <Image
           src={`/Afridependen_2.png`}

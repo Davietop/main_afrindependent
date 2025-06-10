@@ -61,7 +61,7 @@ const Publications = async () => {
         <Navbar />
       </div>
 {/* HERO SECTION */}
-<section className="relative bg-publication bg-cover bg-center mt-20 xl:mt-0  py-24 px-4 sm:px-6 lg:px-8">
+<section className="relative bg-publication bg-cover bg-center xl:mt-0  py-24 px-4 sm:px-6 lg:px-8">
 
   {/* Overlay with deepForest color */}
   <div className="absolute inset-0 bg-deepForest opacity-80 z-0"></div>

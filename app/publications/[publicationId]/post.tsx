@@ -26,7 +26,7 @@ const Post = ({ post }: { post: PublicationDto }) => {
  
   
   return (
-    <div className={`${ibmPlexSans.className} w-full lg:mt-10 lg:w-10/12 lg:mx-auto`}>
+    <div className={`${ibmPlexSans.className} w-full  xl:w-10/12 lg:mt-6 lg:mx-auto`}>
   {/* Category Name & Back Link */}
 
 

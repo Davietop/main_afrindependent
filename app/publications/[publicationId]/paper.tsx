@@ -81,7 +81,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="mt-6 lg:hidden w-full">
+      <div className="mt-4 lg:hidden w-full">
                       <h1 className="col-span-full mb-6  font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
     {post.title}
   </h1>
