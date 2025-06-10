@@ -65,15 +65,15 @@ export const MobileNav = ({ turnBrown = false }: { turnBrown?: boolean }) => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      className="flex  w-full items-center justify-between xl:hidden"
+      className="flex   w-full items-center justify-between xl:hidden"
     >
-      <m.div className="flex w-full items-center justify-between px-2   absolute top-[-60px]  z-40 ">
+      <m.div className="flex w-full pt-6 items-center justify-between px-2     z-40 ">
       <Link href="/">
         <Image
-          src={`/Afridependent.svg`}
+          src={`/Afridependen_2.png`}
           alt="Afrindependent"
           width={200}
-          height={52}
+          height={1}
           className="  relative z-30"
           priority
         />

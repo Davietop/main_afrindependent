@@ -66,7 +66,7 @@ const Publication = async ({
         <Navbar />
       </div>
 
-      <div className=" mt-20 xl:mt-0">
+      <div className="  xl:mt-0">
         
         <Post post={data} />
       </div>
