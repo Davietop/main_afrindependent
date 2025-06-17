@@ -122,7 +122,7 @@ fbq('track', 'PageView');
 
         <Analytics />
       </body>
-      <GoogleAnalytics gaId="G-TCF453GYTX" />
+      <GoogleAnalytics gaId="G-T07D9QCKGL" />
 
       
     </html>
