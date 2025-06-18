@@ -9,8 +9,7 @@ import { nohemi, inter_tight, ojuju } from "@/contants/font-def";
 import Motion from "./motion";
 import WebVitals from "@/components/web-vitals";
 import Image from "next/image";
-import { Analytics } from '@vercel/analytics/next';
-
+import { Analytics } from "@vercel/analytics/next";
 
 export const revalidate = 0;
 
@@ -18,7 +17,7 @@ export const metadata: Metadata = {
   title: "Afrindependent Institute",
   description: "Unlocking Africa's Prosperity through Africonomics",
   icons: {
-    icon: '/favicon.ico', // if you're using a PNG instead
+    icon: "/favicon.ico", // if you're using a PNG instead
   },
   applicationName: "Afrindenpendent Organisation",
   manifest: "https://www.afrindependent.org/",
@@ -78,40 +77,45 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-  <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-T07D9QCKGL"
-        strategy="afterInteractive"
-      />
+      <head>
+        <meta
+          name="google-site-verification"
+          content="l7x0_5-fz6PfVbOJ731cHG3ccwcPepQZigyGv3RyPdg"
+        />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-T07D9QCKGL"
+          strategy="afterInteractive"
+        />
 
-      {/* Inline gtag initialization */}
-      <Script id="gtag-init" strategy="afterInteractive">
-        {`
+        {/* Inline gtag initialization */}
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-T07D9QCKGL');
         `}
-      </Script>
-      <body
-        id="body"
-        className={`${nohemi.variable} ${inter_tight.variable} ${ojuju.variable} bg-[#f2f2f2] max-w-[1920px] mx-auto`}
-      >
-        <WebVitals />
-        <Motion>{children}</Motion>
-      <Link
-        rel="alternate"
-        type="application/rss+xml"
-        href="/rss"
-        title="Afrindependent RSS Feed"
-      />
-        <Script
-          defer
-          type="text/javascript"
-          src="https://donorbox.org/install-popup-button.js"
-          id="donorbox-popup-button-installer"
-        />
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
+        </Script>
+        <body
+          id="body"
+          className={`${nohemi.variable} ${inter_tight.variable} ${ojuju.variable} bg-[#f2f2f2] max-w-[1920px] mx-auto`}
+        >
+          <WebVitals />
+          <Motion>{children}</Motion>
+          <Link
+            rel="alternate"
+            type="application/rss+xml"
+            href="/rss"
+            title="Afrindependent RSS Feed"
+          />
+          <Script
+            defer
+            type="text/javascript"
+            src="https://donorbox.org/install-popup-button.js"
+            id="donorbox-popup-button-installer"
+          />
+          <Script id="meta-pixel" strategy="afterInteractive">
+            {`
             !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -123,23 +127,20 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '872800324995642');
 fbq('track', 'PageView');
           `}
-        </Script>
-        <noscript>
-          <Image
-            alt=""
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=872800324995642&ev=PageView&noscript=1"
-          />
-        </noscript>
+          </Script>
+          <noscript>
+            <Image
+              alt=""
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src="https://www.facebook.com/tr?id=872800324995642&ev=PageView&noscript=1"
+            />
+          </noscript>
 
-        <Analytics />
-
-      </body>
-   
-
-      
+          <Analytics />
+        </body>
+      </head>
     </html>
   );
 }
