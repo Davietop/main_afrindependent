@@ -17,6 +17,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/404"],
       },
     ],
-    sitemap: "https://afrindependent.org/sitemap.xml", // Ensure the TLD is correct
+    sitemap: "https://www.afrindependent.org/sitemap.xml", // Ensure the TLD is correct
   };
 }
