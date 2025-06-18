@@ -78,6 +78,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+  <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-T07D9QCKGL"
+        strategy="afterInteractive"
+      />
+
+      {/* Inline gtag initialization */}
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-T07D9QCKGL');
+        `}
+      </Script>
       <body
         id="body"
         className={`${nohemi.variable} ${inter_tight.variable} ${ojuju.variable} bg-[#f2f2f2] max-w-[1920px] mx-auto`}
@@ -121,8 +135,9 @@ fbq('track', 'PageView');
         </noscript>
 
         <Analytics />
+
       </body>
-      <GoogleAnalytics gaId="G-T07D9QCKGL" />
+   
 
       
     </html>
