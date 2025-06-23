@@ -1,19 +1,8 @@
 // app/sitemap.ts
 import { MetadataRoute } from "next";
-import { getCategories } from "@/service/sanity-queries";
-import { usePublications } from "./publications/publication-section";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const { data: publications } = usePublications({});
-
-  const dynamicPages = (publications || []).map((pub) => ({
-    url: `https://www.afrindependent.org/publications/${pub.slug}`,
-    lastModified: new Date(pub.publishedAt || new Date()),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
-
-  const staticPages = [
+  return [
     {
       url: "https://www.afrindependent.org/",
       lastModified: new Date(),
@@ -69,6 +58,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
   ];
-
-  return [...staticPages, ...dynamicPages] as MetadataRoute.Sitemap;
 }
