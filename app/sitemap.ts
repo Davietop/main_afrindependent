@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: "https://www.afrindependent.org/publications?filter=latest_pub",
+      url: "https://www.afrindependent.org/publications",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
