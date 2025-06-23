@@ -63,6 +63,8 @@ interface PropType {
   authorSlug?: string;
 }
 
+
+
 function SkeletonCard() {
   return (
     <div className="flex flex-col space-y-3">
@@ -82,6 +84,8 @@ const PublicationSection =  ({ filter, authorSlug }: PropType) => {
     ...(filter && { category: filter }),
     authorSlug,
   });
+
+
 
 
   function truncateText(text: string, maxLength: number): string {
