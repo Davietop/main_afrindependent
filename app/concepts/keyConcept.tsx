@@ -519,7 +519,7 @@ export default function AfriconomicsPage() {
                                 <p>{stage.description}</p>
                               </div>
                             ))}
-                            <p className="mt-2">{concept?.closing}</p>
+                            <p className="mt-8">{concept?.closing}</p>
                           </motion.div>
                         ))}
                       </div>
