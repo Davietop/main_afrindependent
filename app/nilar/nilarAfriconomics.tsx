@@ -35,7 +35,7 @@ const item = {
 function HowNilarAligns() {
   return (
     <div className={`${ibmPlexSans.className}`}>
-        <div  className="bg-white pt-10 px-5 lg:px-10">
+        <div  className="bg-white  px-5 lg:px-10">
           <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
        
           How the Nilar Aligns with Africonomics

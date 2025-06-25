@@ -28,7 +28,7 @@ const Subscribe = ({ onHomePage = true }: { onHomePage?: boolean }) => {
        
         <div className=" backdrop-blur-xs   w-11/12 mx-auto  lg:w-full lg:px-0 flex flex-col justify-center items-center h-[350px] gap-y-6  text-center relative mt-10 mb-10 lg:mb-0 lg:mt-0 ">
           <h3 className="font-bold  text-deepForest  text-xl lg:text-3xl ">
-       Stay Informed. Stay Sovereign
+       Stay Informed. Stay Empowered
         </h3>
            <p className="pl-4 mt-4 text-base lg:text-lg font-medium text-[#182D09]">
           Join <span className="font-bold">Sovereign Signals</span>, the official newsletter of the Afrindependent

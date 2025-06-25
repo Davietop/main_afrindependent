@@ -25,7 +25,7 @@ const Hero = () => {
 
   const translateY = useTransform(scrollYProgress, [0, 1], ["0px", "40px"]);
   return (
-    <main className={`${ibmPlexSans.className} mt-20 xl:mt-0`}>
+    <main className={`${ibmPlexSans.className}  xl:mt-0`}>
       <div className=" bg-white ">
         <section className="relative min-h-screen bg-deepForest flex items-center justify-center text-center px-6  ">
           <div className="absolute inset-0  bg-nilar_coin bg-cover bg-center opacity-40 z-0" />

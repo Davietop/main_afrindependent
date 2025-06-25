@@ -33,7 +33,7 @@ const item = {
 function PrinciplesOfNilar() {
   return (
     <section
-      className={`relative py-24 px-5 lg:px-10 overflow-hidden ${ibmPlexSans.className}`}
+      className={`relative py-12 px-5 lg:px-10 overflow-hidden ${ibmPlexSans.className}`}
     >
           <div className="mb-3">
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4">
@@ -57,7 +57,7 @@ function PrinciplesOfNilar() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="space-y-16 max-w-5xl mx-auto"
+        className="space-y-10 max-w-5xl mx-auto"
       >
         {[
           {

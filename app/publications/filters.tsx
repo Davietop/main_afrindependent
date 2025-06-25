@@ -70,7 +70,7 @@ export default function Filters({ categories }: PropType) {
     }
   }, []);
 
-  const titlesInOrder = ["philosophical", "statism", "really"];
+  const titlesInOrder = ["philosophical", "purpose", "really"];
 
   // Step 1: Match publications by keywords in order
   const orderedFeaturedPublications = titlesInOrder

@@ -8,7 +8,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 const WhatIsNilar = ()=>{
     return    <div className={`${ibmPlexSans.className}`}>
-         <div className="mb-3 mt-10  px-5 lg:px-10">
+         <div className=" mt-10  px-5 lg:px-10">
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4">
              What Is the Nilar?
             </h3>
@@ -16,7 +16,7 @@ const WhatIsNilar = ()=>{
           <p className=" text-xl mt-2 text-[#835C3B] font-semibold italic ml-4">
           A gold-based currency for African monetary sovereignty, economic stability, and prosperity.
           </p>
-           <div className="mt-8 w-10/12  text-gray-700 text-base ml-4">
+           <div className="mt-4   text-gray-700 text-lg ml-4">
           <p>
           The Nilar is a principled monetary framework and gold-based currency system developed to empower African nations to reclaim monetary independence, restore honest money and economic stability, and build structurally just, thriving economies. It is not merely an alternative currency—it is a transformative economic model proposed by Africonomics.
           </p>
@@ -34,7 +34,7 @@ const WhatIsNilar = ()=>{
 
        
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
+        <div className="mt-10 grid gap-8 md:grid-cols-3">
           
           {/* Key Point 1 */}
           <div className="p-6 bg-gray-50 border border-[#ffd700] rounded-2xl shadow flex flex-col items-center text-center">

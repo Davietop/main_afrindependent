@@ -20,7 +20,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 export default function HeroSection() {
   return (
     <header className={`${ibmPlexSans.className} `}>
-      <section className="relative bg-deepForest min-h-[600px] xl:min-h-screen mt-20 xl:mt-0 flex items-center justify-center px-6 py-20 overflow-hidden">
+      <section className="relative bg-deepForest min-h-[600px] xl:min-h-screen  xl:mt-0 flex items-center justify-center px-6 py-20 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 z-0 bg-teacher bg-cover bg-center opacity-30" />
 

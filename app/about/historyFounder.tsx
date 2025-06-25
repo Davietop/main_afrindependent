@@ -16,7 +16,7 @@ const HistoryFounder = () => {
       </h2>
 
       <div
-        className={`${ibmPlexSans.className} flex flex-col xl:flex-row items-center justify-center gap-x-10 mt-10 mb-20`}
+        className={`${ibmPlexSans.className} flex flex-col xl:flex-row items-center justify-center gap-x-10 mt-10 mb-10`}
       >
         <div className="relative w-11/12 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12   text-white  overflow-hidden">
           <Image

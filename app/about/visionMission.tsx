@@ -9,8 +9,8 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 const VissionMission = () => {
   return (
-    <section className={`w-full py-10    ${ibmPlexSans.className}`}>
-      <h2 className="text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 mb-12 sm:mb-16">
+    <section className={`w-full     ${ibmPlexSans.className}`}>
+      <h2 className="text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 mb-10">
         <span className="border-l-4 border-yellow-400 pl-4">
           {" "}
           Vision & Mission
