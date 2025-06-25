@@ -76,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const dynamicPublicationRoutes: MetadataRoute.Sitemap = validPublications.map(
     (pub: { slug: string; category: string; publishedAt?: string }) => ({
-      url: `https://www.afrindependent.org/publications/${pub.slug}?type=${pub.category}`,
+      url: `https://www.afrindependent.org/publications/${pub.slug}`,
       lastModified: pub.publishedAt ? new Date(pub.publishedAt) : new Date(),
       changeFrequency: "monthly",
       priority: 0.6,

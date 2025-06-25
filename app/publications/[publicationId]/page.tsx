@@ -16,42 +16,46 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     slug: params.publicationId,
   });
 
-
+  const canonicalUrl = `https://www.afrindependent.org/publications/${params.publicationId}`;
 
   return {
     title: publication.title,
     description: publication.intro,
-    applicationName: "Afrindenpendent Organisation",
-    manifest: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
+    applicationName: "Afrindependent Organisation",
+    manifest: canonicalUrl,
     robots: { googleBot: { nocache: true } },
     openGraph: {
       title: publication.title,
       description: publication.intro,
-      url: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
+      url: canonicalUrl,
       type: "article",
       images: [publication.image],
-      siteName: "Afrindenpendent Organisation",
+      siteName: "Afrindependent Organisation",
     },
     twitter: {
       card: "summary_large_image",
       title: publication.title,
       description: publication.intro,
-      site: `https://www.afrindenpendent.org/publications/${params.publicationId}`,
+      site: canonicalUrl,
       images: [publication.image],
     },
-     keywords: [
-  "African economic commentary",
-  "postcolonial critique",
-  "liberty and justice Africa",
-  "African political economy",
-  "African economies",
-  "African politics",
-  "African liberation",
-  "geopolitics",
-  "principled insights"
-],
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    keywords: [
+      "African economic commentary",
+      "postcolonial critique",
+      "liberty and justice Africa",
+      "African political economy",
+      "African economies",
+      "African politics",
+      "African liberation",
+      "geopolitics",
+      "principled insights"
+    ],
   };
 }
+
 
 const Publication = async ({
   params,
