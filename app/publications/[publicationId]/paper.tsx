@@ -70,7 +70,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
 
 
   return (
-    <section className={`${ibmPlexSans.className} px-5 lg:px-14`}>
+    <section className={`${ibmPlexSans.className} pt-20 px-5 lg:px-14`}>
 
              <Head>
         <title>{post?.title}</title>

@@ -68,7 +68,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
 
 
   return (
-    <div className={`${ibmPlexSans.className}`}>
+    <div className={`pt-20 ${ibmPlexSans.className}`}>
       <Head>
         <title>{post?.title}</title>
         <meta property="og:title" content={post?.title} />

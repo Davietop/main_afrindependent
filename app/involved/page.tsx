@@ -157,7 +157,7 @@ export default function GetInvolvedSection() {
     </p>
           </div>
    
-  <div className="max-w-full w-10/12 mx-auto">
+  <div className="max-w-full w-full mx-auto">
   
 
    

@@ -61,7 +61,7 @@ export default function VideoSection() {
       <Navbar />
 
       <section
-        className={`py-20 px-4 bg-white dark:bg-[#0f1c16] text-[#002813] dark:text-white ${ibmPlexSans.className}`}
+        className={`py-20 mt-4 lg:mt-0 px-4 bg-white dark:bg-[#0f1c16] text-[#002813] dark:text-white ${ibmPlexSans.className}`}
       >
         <div className="max-w-6xl mx-auto text-center">
          

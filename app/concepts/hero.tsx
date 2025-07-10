@@ -19,14 +19,14 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 export default function HeroSection() {
   return (
-    <header className={`${ibmPlexSans.className} `}>
+    <header className={`${ibmPlexSans.className} pt-4 lg:pt-0 `}>
       <section className="relative bg-deepForest min-h-[600px] xl:min-h-screen  xl:mt-0 flex items-center justify-center px-6 py-20 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 z-0 bg-teacher bg-cover bg-center opacity-30" />
 
         {/* Overlay Content */}
         <div className="relative z-10 w-full text-center">
-          <div className="max-w-5xl mx-auto flex flex-col gap-y-10 text-white">
+          <div className="max-w-5xl mx-auto flex flex-col gap-y-2 lg:gap-y-10 text-white">
             {/* Heading */}
             <motion.h1
               className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"

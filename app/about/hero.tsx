@@ -20,10 +20,11 @@ const Hero = () => {
 
         {/* Overlay Content */}
         <div className="relative  z-10 w-full text-center ">
-          <h1 className="text-5xl w-full md:text-6xl font-extrabold text-white   mb-6">
+          <h1 className="text-4xl w-full md:text-6xl font-extrabold text-white   mb-6">
             Discover our Vision and Mission <br className="hidden lg:block" />
             in Pioneering Africonomics
           </h1>
+
 
           <p className="text-lg md:text-xl text-[#ffd700] mb-10">
             Advancing African monetary sovereignty, economic
