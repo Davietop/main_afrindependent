@@ -28,7 +28,22 @@ export const MobileDevV2 = () => {
         <div className="flex items-center justify-between px-3 py-4">
           <div className="flex items-center">
             {/* Sidebar Toggle */}
-            <button onClick={toggleSidebar}>
+
+
+            {/* Logo */}
+            <Link href="/">
+              <Image
+                src={`/Afridependen_2.png`}
+                alt="Afrindependent"
+                width={180}
+                height={1}
+                className="relative z-30"
+                priority
+              />
+            </Link>
+          </div>
+
+         <button onClick={toggleSidebar}>
               {!open ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -59,28 +74,6 @@ export const MobileDevV2 = () => {
                 </svg>
               )}
             </button>
-
-            {/* Logo */}
-            <Link href="/">
-              <Image
-                src={`/Afridependen_2.png`}
-                alt="Afrindependent"
-                width={180}
-                height={1}
-                className="relative z-30"
-                priority
-              />
-            </Link>
-          </div>
-
-          {/* Donate Button */}
-          <Link
-            href="/donate"
-            className="flex items-center justify-center gap-2 border-2 bg-deepForest text-sm border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300 dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-medium py-2.5 px-4 rounded-xl shadow-md transition duration-300"
-          >
-            <HeartHandshake className="w-5 h-5" />
-            Donate
-          </Link>
         </div>
       </header>
 
@@ -96,7 +89,7 @@ export const MobileDevV2 = () => {
 
         {/* Sidebar */}
         <div
-          className={`fixed top-16 pt-7 left-0 w-8/12 h-screen bg-white z-50 transform transition-transform duration-300 ease-in-out ${
+          className={`fixed top-16  left-0 w-8/12 h-screen bg-[#ffd700] z-50 transform transition-transform duration-300 ease-in-out ${
             open ? "translate-x-0" : "-translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -108,14 +101,14 @@ export const MobileDevV2 = () => {
                 <Link
                   key={name}
                   href={link}
-                  className={`flex relative items-center border-b  hover:bg-gray-50 transition-colors `}
+                  className={`flex relative items-center border-b  `}
                 >
                    {
                     isActive &&  <div className="h-full w-[10px] z-10 bg-deepForest absolute l-0"></div>
                    }
-                <div className="flex relative items-center px-4 py-7 border-b pl-6  hover:bg-gray-50 transition-colors">
+                <div className="flex relative items-center px-4 py-7 border-b pl-6 ">
                       {/* <div className="w-6 h-6 bg-gray-300 mr-3 rounded-sm flex-shrink-0" /> */}
-                  <span className="text-base font-semibold">{name}</span>
+                  <span className="text-lg font-semibold">{name}</span>
                 </div>
                 </Link>
               );
