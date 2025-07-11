@@ -7,8 +7,6 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { IBM_Plex_Sans } from "next/font/google";
 import { links, paths } from "./pc";
-import MenuIcon from "@/public/menubar.svg"; // Use alias or relative path
-
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -47,9 +45,20 @@ export const MobileDevV2 = () => {
 
          <button onClick={toggleSidebar}>
               {!open ? (
-               <MenuIcon width={45} height={45} />
-
-                
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
               ) : (
                 <svg
                   className="w-10 h-10"
