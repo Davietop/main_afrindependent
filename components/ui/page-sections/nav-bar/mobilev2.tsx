@@ -47,7 +47,7 @@ export const MobileDevV2 = () => {
 
          <button onClick={toggleSidebar}>
               {!open ? (
-               <MenuIcon width={35} height={35} />
+               <MenuIcon width={38} height={38} />
 
                 
               ) : (
