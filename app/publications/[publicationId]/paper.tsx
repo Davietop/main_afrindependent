@@ -78,16 +78,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
   setUrl(window.location.href);
 }, []);
  
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason,
-  ) => {
-    if (reason === 'clickaway') {
-      return;
-    }
 
-    setOpen(false);
-  };
 
   useEffect(() => {
     const subscription = sanityClient
@@ -97,7 +88,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
         if (update.result?._type === "publications") {
          
           const slug = update.result?.slug?.current;
-           setOpen(true);
+          
         
 
        setTimeout(()=>{
@@ -466,16 +457,7 @@ Help restore truth in economics and dignity in society.
       )}
 
       
-            <Snackbar open={open} autoHideDuration={120000} onClose={handleClose}>
-              <Alert
-                onClose={handleClose}
-                severity="success"
-                variant="filled"
-                sx={{ width: '100%', color: "white", backgroundColor: "#001A08"  }}
-              >
-               This paper has been refreshed with recent edits. Updates may take a couple of minutes to appear!
-              </Alert>
-            </Snackbar>
+            
     </section>
   );
 };

@@ -82,16 +82,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
 
   
 
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason,
-  ) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
+ 
 
   useEffect(() => {
     const subscription = sanityClient
@@ -101,7 +92,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
         if (update.result?._type === "publications") {
          
           const slug = update.result?.slug?.current;
-           setOpen(true);
+           
         
 
        setTimeout(()=>{
@@ -456,16 +447,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
         </div>
       )}
 
-      <Snackbar open={open} autoHideDuration={120000} onClose={handleClose}>
-        <Alert
-          onClose={handleClose}
-          severity="success"
-          variant="filled"
-          sx={{ width: '100%', color: "white", backgroundColor: "#001A08"  }}
-        >
-         This article has been refreshed with recent edits. Updates may take a couple of minutes to appear!
-        </Alert>
-      </Snackbar>
+   
     </div>
   );
 };
