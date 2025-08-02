@@ -107,7 +107,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
   },[key, mutate]);
 
   return (
-    <div className={` ${ibmPlexSans.className}`}>
+    <div className={`pt-20 xl:pt-0 ${ibmPlexSans.className}`}>
       <Head>
         <title>{post?.title}</title>
         <meta property="og:title" content={post?.title} />
