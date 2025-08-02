@@ -1,3 +1,6 @@
+"use client"
+
+import * as React from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowDown, FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
@@ -18,6 +21,11 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useSearchParams } from "next/navigation";
 import Head from "next/head";
+import { sanityClient } from "@/service/sanity";
+import { getSinglePublication } from "@/service/sanity-queries";
+// import Button from '@mui/material/Button';
+import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -25,8 +33,14 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 const Article = ({ post }: { post: PublicationDto }) => {
-  const { data: publications } = usePublications({});
+ const [open, setOpen] = React.useState(false);
+
+
+  const { data: publications, isLoading, mutate, key } = usePublications({});
   const [currentPage, setCurrentPage] = useState(0);
+  const [updatedPublication, setUpdatedPub] = useState<PublicationDto | null>(
+    null
+  );
   const [url, setUrl] = useState("");
   const itemsPerPage = 6;
   const typeParams = useSearchParams();
@@ -49,8 +63,10 @@ const Article = ({ post }: { post: PublicationDto }) => {
       );
   };
 
-
-    const filteredData = filterByCategory(updatedPublications || [], type === "latest_pub" ? post.category : type);
+  const filteredData = filterByCategory(
+    updatedPublications || [],
+    type === "latest_pub" ? post.category : type
+  );
   const pageCount = Math.ceil(filteredData.length / itemsPerPage);
 
   const handlePageClick = ({ selected }: any) => {
@@ -64,11 +80,43 @@ const Article = ({ post }: { post: PublicationDto }) => {
     setUrl(window.location.href);
   }, []);
 
+  
 
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
 
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    const subscription = sanityClient
+      .listen('*[_type == "publications"]')
+      .subscribe((update) => {
+        console.log("Publication changed:", update);
+        if (update.result?._type === "publications") {
+         
+          const slug = update.result?.slug?.current;
+           setOpen(true);
+        
+
+       setTimeout(()=>{
+           getSinglePublication({ slug }).then((data) => {
+            setUpdatedPub(data);
+          });
+       }, 120000)
+        }
+      });
+
+    return () => subscription.unsubscribe(); // Clean up on unmount
+  },[key, mutate]);
 
   return (
-    <div className={`pt-20 ${ibmPlexSans.className}`}>
+    <div className={` ${ibmPlexSans.className}`}>
       <Head>
         <title>{post?.title}</title>
         <meta property="og:title" content={post?.title} />
@@ -173,7 +221,13 @@ const Article = ({ post }: { post: PublicationDto }) => {
             />
           </div>
           <div className="min-w-full leading-6 lg:text-lg mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:25px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] lg:prose-blockquote:after:-top-3 prose-blockquote:after:left-6 prose-blockquote:after:w-[40px] prose-blockquote:after:h-[40px] prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:decoration-deepForest prose-strong:font-bold prose-a:text-deepForest">
-            <TextComponent value={post.abstract} />
+            <TextComponent
+              value={
+                updatedPublication === null
+                  ? post.abstract
+                  : updatedPublication?.abstract
+              }
+            />
           </div>
           <div className="mt-5 mb-2">
             <Image
@@ -251,11 +305,14 @@ const Article = ({ post }: { post: PublicationDto }) => {
               {/* Content */}
               <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Newsletter</h1>
-                <p className="text-sm">Join the movement for African sovereignty and global civilizational renewal</p>
+                <p className="text-sm">
+                  Join the movement for African sovereignty and global
+                  civilizational renewal
+                </p>
                 <SubscribeForm post={"post"} />
                 <p className="text-sm">
-                  
-No spam—just truthful content and reliable insights. You can unsubscribe anytime.
+                  No spam—just truthful content and reliable insights. You can
+                  unsubscribe anytime.
                 </p>
               </div>
             </div>
@@ -267,7 +324,10 @@ No spam—just truthful content and reliable insights. You can unsubscribe anyt
               <div className="relative z-10 px-4 py-6 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Donate</h1>
                 <p className="text-sm">
-                Partner with us in our mission to advance African intellectual independence and economic prosperity. Your donation aligns you with our transformative vision and empowers groundbreaking work.
+                  Partner with us in our mission to advance African intellectual
+                  independence and economic prosperity. Your donation aligns you
+                  with our transformative vision and empowers groundbreaking
+                  work.
                 </p>
                 <Link href={paths.donate}>
                   <Button
@@ -277,9 +337,8 @@ No spam—just truthful content and reliable insights. You can unsubscribe anyt
                     Donate
                   </Button>
                 </Link>{" "}
-                   <p className="text-sm text-black">
-                  
-Help restore truth in economics and dignity in society.
+                <p className="text-sm text-black">
+                  Help restore truth in economics and dignity in society.
                 </p>
               </div>
             </div>
@@ -396,6 +455,17 @@ Help restore truth in economics and dignity in society.
           </div>
         </div>
       )}
+
+      <Snackbar open={open} autoHideDuration={120000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%', color: "white", backgroundColor: "#001A08"  }}
+        >
+         This article has been refreshed with recent edits. Updates may take a couple of minutes to appear!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

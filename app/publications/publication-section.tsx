@@ -42,22 +42,29 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 
-export const usePublications =  ({
+export const usePublications = ({
   category,
   authorSlug,
 }: {
   category?: string;
   authorSlug?: string;
 }) => {
-  const fetcher = () => {
-    return getPublications({ category: category !== "latest" ? category : "" });
-  };
-  const { data, isLoading, error, mutate } = useSWR(
-    `category-${category}`,
-    authorSlug ? null : fetcher
-  );
-  return { data, isLoading, error, mutate };
+  const key = authorSlug
+    ? null
+    : category
+    ? `publications-${category}`
+    : 'publications-all';
+
+  const fetcher = () =>
+    getPublications({
+      category: category && category !== 'latest' ? category : '',
+    });
+
+  const { data, isLoading, error, mutate } = useSWR(key, fetcher);
+
+  return { data, isLoading, error, mutate, key };
 };
+
 
 interface PropType {
   filter?: string;

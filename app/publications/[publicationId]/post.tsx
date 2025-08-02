@@ -34,7 +34,7 @@ const Post = ({ post }: { post: PublicationDto }) => {
 
 
   {/* Content */}
-  {isPaper ? <Paper post={post} /> : <Article post={post} />}
+  {isPaper ? <Paper post={post} /> : <Article post={post}  />}
 </div>
 
   );

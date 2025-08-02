@@ -7,7 +7,6 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { IBM_Plex_Sans } from "next/font/google";
 import { links, paths } from "./pc";
-
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -43,6 +42,7 @@ export const MobileDevV2 = () => {
             </Link>
           </div>
 
+          
          <button onClick={toggleSidebar}>
               {!open ? (
                 <svg

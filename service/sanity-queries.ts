@@ -203,3 +203,4 @@ export const getComments = async ({ slug }: SanityPropType) => {
   );
   return data;
 };
+

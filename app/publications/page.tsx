@@ -7,6 +7,7 @@ import { getCategories } from "@/service/sanity-queries";
 import { IBM_Plex_Sans } from "next/font/google";
 import { paths } from "@/components/ui/page-sections/nav-bar/pc";
 import Filters from "./filters";
+import CustomizedSnackbars from "@/components/ui/snackbar";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -133,6 +134,8 @@ const Publications = async ({ searchParams }: { searchParams: { filter?: string 
           </div>
         </div>
       </section>
+
+     
 
       <List categories={categories} />
       <Footer />

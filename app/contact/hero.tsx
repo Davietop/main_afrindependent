@@ -1,4 +1,13 @@
+"use client"
+
+
+import { useEffect } from "react";
+import { sanityClient } from "@/service/sanity";
+
+
 const Hero = () => {
+
+
   return (
     <div className="mt-20 xl:mt-0 text-center mb-16 w-full  bg-deepForest h-[400px] ">
       <div className="mx-auto pt-[100px]">

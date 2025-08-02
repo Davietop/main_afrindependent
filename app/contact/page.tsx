@@ -1,3 +1,4 @@
+
 import { Metadata } from "next";
 
 import Navbar from "@/components/ui/page-sections/nav-bar";
@@ -7,6 +8,7 @@ import Footer from "@/components/ui/page-sections/footer";
 import FormSend from "./contactForm";
 import ContactSection from "./contactForm";
 import Hero from "./hero";
+
 
 export const metadata: Metadata = {
   title: "Contact Afrindependent",
@@ -48,6 +50,10 @@ export const metadata: Metadata = {
     "Afrindependent Phone",
   ],
 };
+
+
+
+
 
 const ContactPage = async () => {
   const companyDetails = await getCompany();

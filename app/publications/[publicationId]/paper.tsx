@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import Link from "next/link";
 import { AiFillFilePdf } from "react-icons/ai";
 import Image from "next/image";
@@ -16,6 +18,10 @@ import { Button } from "@/components/ui/button";
 import SubscribeForm from "@/components/subscribe";
 import { useSearchParams } from "next/navigation";
 import Head from "next/head";
+import { sanityClient } from "@/service/sanity";
+import { getSinglePublication } from "@/service/sanity-queries";
+import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -28,10 +34,15 @@ type Props = {
 };
 
 const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
+   const [open, setOpen] = React.useState(false);
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
 
-  const { data: publications } = usePublications({});
+ const { data: publications, isLoading, mutate, key } = usePublications({});
+   const [updatedPublication, setUpdatedPub] = useState<PublicationDto | null>(
+    null
+  );
+
   const [currentPage, setCurrentPage] = useState(0);
   const [url, setUrl] = useState("");
   const itemsPerPage = 6;
@@ -67,10 +78,41 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
   setUrl(window.location.href);
 }, []);
  
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
 
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    const subscription = sanityClient
+      .listen('*[_type == "publications"]')
+      .subscribe((update) => {
+        console.log("Publication changed:", update);
+        if (update.result?._type === "publications") {
+         
+          const slug = update.result?.slug?.current;
+           setOpen(true);
+        
+
+       setTimeout(()=>{
+           getSinglePublication({ slug }).then((data) => {
+            setUpdatedPub(data);
+          });
+       }, 120000)
+        }
+      });
+
+    return () => subscription.unsubscribe(); // Clean up on unmount
+  },[key, mutate]);
 
   return (
-    <section className={`${ibmPlexSans.className} pt-20 px-5 lg:px-14`}>
+    <section className={`${ibmPlexSans.className} px-5 lg:px-14`}>
 
              <Head>
         <title>{post?.title}</title>
@@ -190,7 +232,7 @@ const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
               : "Abstract:"}
           </h3>
           <div className="min-w-full leading-6 lg:text-lg  mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:25px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] prose-blockquote:after:left-6 prose-blockquote:after:w-full prose-blockquote:after:h-full prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:deepForest prose-strong:font-bold prose-a:text-deepForest">
-            <TextComponent value={post.abstract} />
+            <TextComponent value={updatedPublication === null ? post.abstract : updatedPublication?.abstract} />
           </div>
           <div className="mt-5 mb-2">
             <Image
@@ -422,6 +464,18 @@ Help restore truth in economics and dignity in society.
           </div>
         </section>
       )}
+
+      
+            <Snackbar open={open} autoHideDuration={120000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                variant="filled"
+                sx={{ width: '100%', color: "white", backgroundColor: "#001A08"  }}
+              >
+               This paper has been refreshed with recent edits. Updates may take a couple of minutes to appear!
+              </Alert>
+            </Snackbar>
     </section>
   );
 };
