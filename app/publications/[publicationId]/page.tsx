@@ -6,8 +6,6 @@ import Post from "./post";
 import { getSinglePublication } from "@/service/sanity-queries";
 
 import { optimizeImage } from "next/dist/server/image-optimizer";
-
-
 type Props = {
   params: { publicationId: string };
 };
