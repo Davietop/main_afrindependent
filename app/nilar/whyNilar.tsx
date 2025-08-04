@@ -24,34 +24,31 @@ function WhyAfricaNeedsNilar() {
     {
       id: "fiat-inflation",
       title: "The Dangers of Fiat Currency and Inflation",
-      content: `Fiat currencies, created by decree and not backed by real value, are inherently unstable and fraudulent—as the Africonomics Theory of Monetary Justice has decisively demonstrated.\n\nFiat monetary systems are a central and confiscatory structural injustice in contemporary statist socioeconomic systems.`,
+      content: "Fiat currencies, created by decree and not backed by real value, are inherently unstable and fraudulent—as the Africonomics Theory of Monetary Justice has decisively demonstrated. They are subject to manipulation, devaluation, and confiscation through inflation, silently eroding the wealth and savings of the majority.\n\nFiat monetary systems are a central and confiscatory structural injustice in contemporary statist socioeconomic systems.\n\nAfrican countries that rely on fiat systems remain at the mercy of foreign central banks, external shocks, and artificial boom-bust cycles"
     },
     {
       id: "colonial-legacy",
       title: "The Colonial and Neocolonial Legacy of Monetary Dependence",
-      content: `African monetary systems were shaped by colonial powers—and in many cases, those powers still exert control.\n\nThe Nilar is an effective and liberating alternative.`,
+      content: "African monetary systems were shaped by colonial powers—and in many cases, those powers still exert control. From direct monetary governance to indirect dependence on foreign-denominated reserves and international financial institutions, African nations remain economically subjugated.\n\nThe Nilar is an effective and liberating alternative"
     },
     {
       id: "colonial-currencies",
       title: "Why Existing “African Currencies” Remain Colonial Extensions",
-      content: `The CFA Franc, still used by 14 countries in West and Central Africa, is a stark example of lingering colonial control.\n\nEven non-CFA countries remain heavily reliant on central banking models imported from the West.`,
+      content: "The CFA Franc, still used by 14 countries in West and Central Africa, is a stark example of lingering colonial control. Pegged to the euro and guaranteed by the French Treasury, it denies member states true monetary sovereignty.\n\nEven non-CFA countries remain heavily reliant on central banking models imported from the West—models that prioritize inflation targets, external debt servicing, and currency dilution over economic justice and internal development",
     },
     {
       id: "nilar-corrective",
       title: "The Nilar as a Corrective and Liberating Force",
-      author: "— Manuel Tacanho",
+      author:"— Manuel Tacanho, ",
       subAuthorInfo: "Social philosopher and economist",
-      stages: [
-        "based on gold, an honest and timeless form of money",
-        "free from foreign manipulation and arbitrary devaluation",
-        "designed for long-term monetary reliability and economic stability",
-        "aligned with truth, justice, liberty, and economic sovereignty",
-      ],
-      content: `The Nilar breaks this cycle. Rooted in Africonomics, it is not a Western imitation but an African innovation—based on real value, honest exchange, and ethical monetary policy.\n\nIt allows African nations to build currency systems:`,
-      conclusion:
-        "“The Nilar is more than a sound currency. It is a declaration of independence and a restoration of African sovereignty and dignity.”",
+      stages:["based on gold, an honest and timeless form of money","free from foreign manipulation and arbitrary devaluation","designed for long-term monetary reliability and economic stability","aligned with truth, justice, liberty, and economic sovereignty"],
+      content: "The Nilar breaks this cycle. Rooted in Africonomics, it is not a Western imitation but an African innovation—based on real value, honest exchange, and ethical monetary policy.\n\nIt allows African nations to build currency systems"
+      ,
+      conclusion: "“The Nilar is more than a sound currency. It is a declaration of independence and a restoration of African sovereignty and dignity.”"
     },
   ];
+
+
 
   const [activeId, setActiveId] = useState<string | null>(null);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
