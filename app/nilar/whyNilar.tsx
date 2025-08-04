@@ -123,7 +123,7 @@ function WhyAfricaNeedsNilar() {
                   {sec.title}
                 </h2>
 
-                <div className="h-1 w-full bg-yellow-500 mb-6" />
+              
 
                 <p className="text-gray-700 whitespace-pre-line leading-relaxed text-base md:text-lg">
                   {sec.content}

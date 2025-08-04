@@ -12,7 +12,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 const Subscribe = ({ onHomePage = true }: { onHomePage?: boolean }) => {
   return (
-    <div className={`${ibmPlexSans.className}`}>
+    <div   id="subscribe" className={`${ibmPlexSans.className}`}>
        <div className=" pb-6 px-5 bg-white lg:px-10">
         <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
          Newsletter Sign-Up
@@ -22,7 +22,7 @@ const Subscribe = ({ onHomePage = true }: { onHomePage?: boolean }) => {
 
       <section
         className={` py-20 bg-pattern_subscribe bg-center  bg-cover   bg-no-repeat   ${ibmPlexSans.className}`}
-        id="subscribe"
+      
       >
 
        

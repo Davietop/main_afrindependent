@@ -37,3 +37,25 @@ export function isoStringToTime(isoString: string) {
     .padStart(2, "0")}${hours >= 12 ? "pm" : "am"}`;
   return formattedTime;
 }
+
+export const sharePage = async () => {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: document.title,
+        url: window.location.href,
+      });
+    } catch (error) {
+      console.error("Share failed:", error);
+    }
+  } else {
+    // Fallback for unsupported browsers
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard!");
+    } catch (err) {
+      console.error("Clipboard copy failed:", err);
+      alert("Failed to copy link. Please copy it manually.");
+    }
+  }
+};

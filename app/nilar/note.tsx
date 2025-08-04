@@ -29,7 +29,7 @@ export default function NilarNote() {
        
           </div>
  
-    <section className={`${ibmPlexSans.className} ml-4    bg-white dark:bg-[#0f1c16] text-[#00210d] dark:text-gray-100`}>
+    <section className={`${ibmPlexSans.className} mx-4    bg-white dark:bg-[#0f1c16] text-[#00210d] dark:text-gray-100`}>
          
       <div className="w-full mx-auto">
        
@@ -47,7 +47,7 @@ export default function NilarNote() {
           A genuine gold-based currency—like the Nilar—requires none of these artificial mechanisms:
         </p>
 
-        <ul className="space-y-4 text-base sm:text-lg pl-6 list-none">
+        <ul className="space-y-4 text-base sm:text-lg px-3 list-none">
           <li className="flex items-start gap-3">
             <ShieldCheck className="w-6 h-6 text-yellow-400 mt-1" />
             <span>Fully backed by physical gold, not promises.</span>

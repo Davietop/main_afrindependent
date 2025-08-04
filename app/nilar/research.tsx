@@ -183,7 +183,7 @@ console.log(uniqueFeaturedFeat)
                       </div>
 
                       <div className="flex flex-col gap-y-4">
-                        <h1 className="text-xxl lg:text-3xl font-bold">
+                        <h1 className="text-xl lg:text-3xl font-bold">
                           {title}
                         </h1>
                         <p>{truncateText(cleanedText, 200)}</p>
@@ -240,7 +240,7 @@ console.log(uniqueFeaturedFeat)
                         />
     
                         <div className="p-5 flex flex-col gap-y-4 flex-grow">
-                          <h3 className="text-base md:text-xl font-semibold text-deepForest mb-2">
+                          <h3 className="text-xl font-semibold text-deepForest mb-2">
                             {title}
                           </h3>
     

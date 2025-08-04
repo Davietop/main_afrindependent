@@ -77,8 +77,8 @@ export default function FAQAccordion() {
       <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover bg-center opacity-5"></div>
 
       {/* Decorative background icons */}
-      <FaGlobeAfrica className="absolute top-10 left-5 text-[250px] text-[#ffd700] opacity-60" />
-      <FaCoins className="absolute bottom-10 right-5 text-[200px] text-[#ffd700]  opacity-60" />
+      <FaGlobeAfrica className="absolute top-10 left-5 text-[250px] hidden sm:block text-[#ffd700] opacity-60" />
+      <FaCoins className="absolute bottom-10 right-5 text-[200px]  hidden sm:block text-[#ffd700]  opacity-60" />
 
     
 

@@ -199,7 +199,7 @@ export default function GetInvolvedSection() {
     </div>
 
     {/* How to Submit */}
-    <div className="bg-white p-6 rounded-xl shadow border-l-4 border-yellow-400 mb-12">
+    <div id="submitSpeakingRequest" className="bg-white p-6 rounded-xl shadow border-l-4 border-yellow-400 mb-12">
       <h3 className="text-2xl font-semibold mb-4">How to Submit</h3>
       <ul className="list-disc list-inside text-gray-700 space-y-2">
         <li>Send your article as a Word or Google Doc to: <a href="mailto:submissions@afrindependent.org" className="text-blue-600 underline">submissions@afrindependent.org</a></li>
