@@ -74,11 +74,11 @@ export default function FAQAccordion() {
       className={`${ibmPlexSans.className} relative  pt-6 px-6 sm:px-10 lg:px-20 text-black overflow-hidden`}
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover bg-center opacity-10"></div>
+      <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover bg-center opacity-5"></div>
 
       {/* Decorative background icons */}
-      <FaGlobeAfrica className="absolute hidden sm:block top-10 left-5 text-[250px] text-[#ffd700] opacity-60" />
-      <FaCoins className="absolute bottom-10  hidden sm:block right-5 text-[200px] text-[#ffd700]  opacity-60" />
+      <FaGlobeAfrica className="absolute top-10 left-5 text-[250px] text-[#ffd700] opacity-60" />
+      <FaCoins className="absolute bottom-10 right-5 text-[200px] text-[#ffd700]  opacity-60" />
 
     
 
@@ -109,12 +109,19 @@ export default function FAQAccordion() {
 
             <AccordionDetails>
               {typeof faq.answer === "string" ? (
-                <Typography  className="text-black">{faq.answer}</Typography>
+                <Typography className="text-black">{faq.answer}</Typography>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-2">
                        <p className="text-black">{faq.answer.header}</p>
                  
                   <p className="text-black">{faq.answer.paragraph}</p>
+                  {faq.answer.bullets && (
+  <ul className="list-disc pl-6 space-y-3 text-base text-gray-800">
+    {faq.answer.bullets.map((point, idx) => (
+      <li key={idx}>{point}</li>
+    ))}
+  </ul>
+)}
                 </div>
               )}
             </AccordionDetails>
