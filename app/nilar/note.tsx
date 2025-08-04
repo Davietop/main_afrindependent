@@ -8,18 +8,28 @@ const ibmPlexSans = IBM_Plex_Sans({
 export default function NilarNote() {
   return (
 
-    <div>
-        <div  className="bg-white mb-4 pt-10 px-5 lg:px-10">
-          <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
-       
+    <div className={`${ibmPlexSans.className} md:px-5 lg:px-10`}>
+        <div  className="bg-white mb-4 pt-10 ">
+         
+      <div>
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+           
          Zimbabwe’s “Gold-Backed” Currency Attempts
-     </h3>
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+           
+         Zimbabwe’s “Gold-Backed” Currency Attempts
+            </h3>
+          </div>
+        </div>
    
 
        
           </div>
  
-    <section className={`${ibmPlexSans.className} px-6 sm:px-10 lg:px-16   bg-white dark:bg-[#0f1c16] text-[#00210d] dark:text-gray-100`}>
+    <section className={`${ibmPlexSans.className} ml-4    bg-white dark:bg-[#0f1c16] text-[#00210d] dark:text-gray-100`}>
          
       <div className="w-full mx-auto">
        
@@ -33,7 +43,7 @@ export default function NilarNote() {
           They were monetary illusions—veiled efforts by the state to maintain control over a fiat system that had already collapsed. The central bank continued to issue money without full gold convertibility, applied technocratic exchange rate controls, and attempted to peg the currency to the U.S. dollar—all classic signs of fiat manipulation in disguise.
         </p>
 
-        <p className="text-lg sm:text-xl leading-relaxed font-semibold  mt-8 mb-4">
+        <p className="text-lg sm:text-xl leading-relaxed font-semibold  mt-6 mb-4">
           A genuine gold-based currency—like the Nilar—requires none of these artificial mechanisms:
         </p>
 
@@ -56,11 +66,11 @@ export default function NilarNote() {
           </li>
         </ul>
 
-        <p className="text-lg sm:text-xl leading-relaxed mt-8">
+        <p className="text-lg sm:text-xl leading-relaxed mt-6">
           The failure of Zimbabwe’s gold-linked fiat is not a failure of gold or sound money is a  <span className="font-bold"> failure of monetary dishonesty</span> and state manipulation.
         </p>
 
-        <div className="bg-[#fef9e6] dark:bg-[#173524] mx-auto text-center p-6 mt-10 rounded-xl shadow-sm border border-yellow-400">
+        <div className="bg-[#fef9e6] dark:bg-[#173524] mx-auto text-center p-6 mt-6 rounded-xl shadow-sm border border-yellow-400">
           <h3 className="text-2xl  font-bold mb-2 text-[#00210d] dark:text-yellow-300">
             The Nilar corrects this.
           </h3>

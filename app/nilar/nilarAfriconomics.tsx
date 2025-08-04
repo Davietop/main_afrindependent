@@ -34,14 +34,23 @@ const item = {
 
 function HowNilarAligns() {
   return (
-    <div className={`${ibmPlexSans.className}`}>
-        <div  className="bg-white  px-5 lg:px-10">
-          <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
-       
-          How the Nilar Aligns with Africonomics
-     </h3>
-     <p className="italic ml-4 mt-2 text-lg text-[#835C3B] mb-6">
-        More than a sound currency. It’s a civilizational affirmation.
+    <div className={`${ibmPlexSans.className} md:px-5 lg:px-10`}>
+        <div  className="bg-white   ">
+        
+              <div>
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+            How the Nilar Aligns with Africonomics
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+             How the Nilar Aligns with Africonomics
+            </h3>
+          </div>
+        </div>
+
+        <p className=" text-lg mt-2 text-[#835C3B] font-normal ml-4 mb-4 ">
+          More than a sound currency. It’s a civilizational affirmation.
         </p>
 
         <p className="text-gray-700 text-lg leading-relaxed ml-4">
@@ -52,21 +61,14 @@ function HowNilarAligns() {
         </p>
           </div>
     <section
-      className={`relative py-14  px-6 sm:px-12 lg:px-32 overflow-hidden ${ibmPlexSans.className}`}
+      className={`relative py-6  px-2 lg:px-32 overflow-hidden ${ibmPlexSans.className}`}
     >
  
 
       {/* Pillars Grid */}
-      <motion.div
-        variants={container}
-        // initial="hidden"
-        // whileInView="show"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: false, amount: 0.3 }} 
-        style={{ willChange: "opacity, transform" }}
-        className="grid grid-cols-1 md:grid-cols-2 mx-auto gap-12 mb-20"
+      <div
+       
+        className="grid grid-cols-1 md:grid-cols-2 mx-auto gap-6 mb-6 px-3"
       >
         {[
           {
@@ -90,9 +92,9 @@ function HowNilarAligns() {
               conclusion:"The Nilar reclaims that legacy—restoring the spirit of free enterprise, value-based exchange, and civilizational dignity that once defined African commerce."
           },
         ].map((pillar, idx) => (
-          <motion.div
+          <div
             key={idx}
-            variants={item}
+           
             className="bg-white rounded-2xl   p-6 shadow-sm flex flex-col gap-y-2   border-l-4 border-[#ffd700] hover:shadow-md transition"
           >
             <h3 className="text-xl font-semibold text-deepForest mb-4">
@@ -107,14 +109,14 @@ function HowNilarAligns() {
             <p className="text-gray-600 leading-relaxed">
               {pillar?.conclusion}
             </p>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Quote Callout */}
-      <div className="text-center mb-20">
+      <div className="text-center mb-8">
         <Separator className="mb-8 bg-[#ffd700]" />
-        <blockquote className="text-2xl font-semibold text-deepForest italic leading-relaxed">
+        <blockquote className="text-xl lg:text-2xl font-semibold text-deepForest italic leading-relaxed">
           Africonomics calls for systems grounded in truth and justice.
           <br />
           The Nilar is the monetary foundation that makes that vision real.
@@ -123,20 +125,20 @@ function HowNilarAligns() {
       </div>
 
       {/* Comparison Table */}
-      <div className="mb-20 overflow-x-auto">
-        <h3 className="text-3xl font-bold text-deepForest mb-6 text-center">
+      <div className="mb-8 overflow-x-auto">
+        <h3 className="text-2xl font-bold text-deepForest mb-4 text-center">
           The Nilar vs. Fiat Currencies
         </h3>
-        <p className="text-center text-lg text-gray-600 mb-10">
+        <p className="text-center text-lg text-gray-600 mb-6">
           A principled alternative to inflation, instability, and monetary
           injustice.
         </p>
         <table className="min-w-full text-sm border-collapse border border-gray-200">
           <thead className="bg-deepForest text-white">
             <tr>
-              <th className="p-4 font-semibold text-left text-lg">Feature</th>
-              <th className="p-4 text-lg font-semibold text-left">The Nilar</th>
-              <th className="p-4 text-lg font-semibold text-left">Fiat Currencies</th>
+              <th className="p-4 font-semibold text-left text-base lg:text-lg">Feature</th>
+              <th className="p-4 text-base lg:text-lg font-semibold text-left">The Nilar</th>
+              <th className="p-4 text-base lg:text-lg font-semibold text-left">Fiat Currencies</th>
             </tr>
           </thead>
           <tbody>
@@ -215,15 +217,15 @@ function HowNilarAligns() {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h4 className="text-xl font-bold text-deepForest mb-4">
+        <h4 className="text-base lg:text-xl font-bold text-deepForest mb-4">
           Fiat systems benefit the few at the top.
       
-         <p className="mt-2"> The Nilar protects the property and purchasing power of all Africans—farmers, merchants, workers, families—everyone.</p>
+         <p className="mt-2 text-base lg:text-xl"> The Nilar protects the property and purchasing power of all Africans—farmers, merchants, workers, families—everyone.</p>
         </h4>
-        <p className="text-xl font-bold text-deepForest mb-6">It is the monetary foundation for a free, prosperous, and structurally just Africa.</p>
+        <p className="text-base lg:text-xl font-bold text-deepForest mb-6">It is the monetary foundation for a free, prosperous, and structurally just Africa.</p>
         <Button
           variant="outline"
-          className="flex items-center mx-auto justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300 text-base  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
+          className="flex items-center mx-auto justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300 text-base  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-2 px-6 rounded-xl shadow-md transition duration-300"
         >
           Learn How the Nilar Works
         </Button>

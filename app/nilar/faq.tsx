@@ -57,22 +57,28 @@ const faqs = [
 export default function FAQAccordion() {
   return (
 
-   <div className={`${ibmPlexSans.className}`}>
-       <div  className="bg-white mb-4  pt-10 px-5 lg:px-10">
-          <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
-       
-    Frequently Asked Questions
-     </h3>
+   <div className={`${ibmPlexSans.className} md:px-5 lg:px-10`}>
+      
+             <div>
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+             Frequently Asked Questions
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+            Frequently Asked Questions
+            </h3>
           </div>
+        </div>
     <div
-      className={`${ibmPlexSans.className} relative  py-20 px-6 sm:px-10 lg:px-20 text-black overflow-hidden`}
+      className={`${ibmPlexSans.className} relative  pt-6 px-6 sm:px-10 lg:px-20 text-black overflow-hidden`}
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover bg-center opacity-5"></div>
+      <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover bg-center opacity-10"></div>
 
       {/* Decorative background icons */}
-      <FaGlobeAfrica className="absolute top-10 left-5 text-[250px] text-[#ffd700] opacity-60" />
-      <FaCoins className="absolute bottom-10 right-5 text-[200px] text-[#ffd700]  opacity-60" />
+      <FaGlobeAfrica className="absolute hidden sm:block top-10 left-5 text-[250px] text-[#ffd700] opacity-60" />
+      <FaCoins className="absolute bottom-10  hidden sm:block right-5 text-[200px] text-[#ffd700]  opacity-60" />
 
     
 
@@ -103,7 +109,7 @@ export default function FAQAccordion() {
 
             <AccordionDetails>
               {typeof faq.answer === "string" ? (
-                <Typography className="text-black">{faq.answer}</Typography>
+                <Typography  className="text-black">{faq.answer}</Typography>
               ) : (
                 <div className="space-y-4">
                        <p className="text-black">{faq.answer.header}</p>

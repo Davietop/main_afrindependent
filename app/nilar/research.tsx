@@ -98,30 +98,43 @@ console.log(uniqueFeaturedFeat)
   }
 
   return (
-    <div className={`${ibmPlexSans} mb-20 mt-6`}>
-      <div className="bg-white  pt-10 px-5 lg:px-10">
-        <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
+    <div className={`${ibmPlexSans.className}  my-10`}>
+      <div className="bg-white   md:px-5 lg:px-10">
+        {/* <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
           Publications & Research
-        </h3>
-        <p className="text-lg text-gray-600 max-w-full mx-auto mt-2 ml-4">
-          <span className="italic text-[#835C3B] ">
-            {" "}
+        </h3> */}
+        <div>
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+         Publications & Research
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+             Publications & Research
+            </h3>
+          </div>
+        </div>
+
+         <p className=" text-lg mt-2 text-[#835C3B] font-normal ml-4 ">
             The intellectual foundation of the Nilar framework.
-          </span>
-          <br />
-          <p className="mt-4">
+        </p>
+      
+          <div>
+              <p className="mt-4   text-gray-700 text-lg ml-4">
             {" "}
             The Nilar is the product of moral clarity, sound economic reasoning,
             and a factual understanding of Africa’s postcolonial economic woes.
             Grounded in Africonomics, our publications offer the philosophical,
             historical, and practical insights that shape the vision and
             viability of the Nilar.
-          </p>
+     
         </p>
+          </div>
+        
       </div>
 
       <section
-        className={`bg-white text-gray-800 mt-10 px-6 sm:px-10  ${ibmPlexSans.className}`}
+        className={`bg-white text-gray-800 mt-6 px-5  ${ibmPlexSans.className}`}
       >
         <div className="max-w-full lg:w-11/12  mx-auto">
           {/* Featured Publication */}
@@ -164,19 +177,19 @@ console.log(uniqueFeaturedFeat)
                       }}
                     ></div>
 
-                    <div className="flex flex-col  w-full  md:w-8/12 gap-y-4 md:gap-y-6">
+                    <div className="flex flex-col  w-full  md:w-8/12 gap-y-2 md:gap-y-6">
                       <div className="flex items-center mt-2 md:mt-0 gap-x-2">
                         <p>{author?.name}</p>|<p>{readableDate}</p>
                       </div>
 
                       <div className="flex flex-col gap-y-4">
-                        <h1 className="text-2xl lg:text-3xl font-bold">
+                        <h1 className="text-xxl lg:text-3xl font-bold">
                           {title}
                         </h1>
                         <p>{truncateText(cleanedText, 200)}</p>
 
                         <a
-                          className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
+                          className="flex items-center justify-center gap-3 border-2 bg-deepForest text-base border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
                           href={`${paths.publications}/${slugData?.slug}?type=${category}`}
                         >
                           Read the Paper
@@ -192,12 +205,12 @@ console.log(uniqueFeaturedFeat)
           )}
 
           {/* Related Research & Commentary */}
-          <div className="space-y-10 mt-10 ">
-            <h4 className="text-2xl font-semibold mb-6 text-deepForest">
+          <div className=" mt-6 ">
+            <h4 className="text-xl font-semibold mb-6 text-deepForest">
               Related Research & Commentary
             </h4>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8  ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6  ">
                       {uniqueFeaturedFeat.map(
   (
     {
@@ -227,7 +240,7 @@ console.log(uniqueFeaturedFeat)
                         />
     
                         <div className="p-5 flex flex-col gap-y-4 flex-grow">
-                          <h3 className="text-xl font-semibold text-deepForest mb-2">
+                          <h3 className="text-base md:text-xl font-semibold text-deepForest mb-2">
                             {title}
                           </h3>
     

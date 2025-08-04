@@ -11,12 +11,12 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 const GetInvolved = ()=>{
-  return <section className={`py-16 bg-[#f9f9f6] dark:bg-[#0f1c16] text-[#002813] dark:text-white ${ibmPlexSans.className}`}>
-      <div  className="pt-10 px-5 lg:px-10">
+  return <section className={`py-8 mt-16  bg-[#f9f9f6] dark:bg-[#0f1c16] text-[#002813] dark:text-white ${ibmPlexSans.className}`}>
+      <div  className=" px-5 lg:px-10">
         
        
      <motion.h2
-      className="text-3xl font-bold text-[#002813] dark:text-[#ffd700] mb-4  text-left lg:text-3xl border-l-4 text-deepForest border-[#ffd700]  pl-4"
+      className="text-xl font-bold text-[#002813] dark:text-[#ffd700] mb-4  text-left lg:text-3xl border-l-4 text-deepForest border-[#ffd700]  pl-4"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -24,7 +24,7 @@ const GetInvolved = ()=>{
       Get Involved and Spread the Vision
     </motion.h2>
      <motion.p
-      className="text-lg max-w-3xl text-[#ffd700] ml-4 mb-6"
+      className="text-lg max-w-xl text-yellow-600 ml-4 mb-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2, duration: 0.6 }}
@@ -45,7 +45,7 @@ const GetInvolved = ()=>{
       animate={{ opacity: 1 }}
       transition={{ delay: 0.4, duration: 0.6 }}
     >
-      The Nilar is more than a strategic policy proposal—it’s a framework for
+      The Nilar is more than a strategic policy proposal it’s a framework for
       monetary truth, structural justice, and African economic sovereignty.
       Whether you’re a scholar, policymaker, entrepreneur, or citizen who
       believes Africa deserves better, there’s a way for you to participate.

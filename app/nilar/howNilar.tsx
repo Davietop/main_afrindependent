@@ -33,18 +33,25 @@ const item = {
 function PrinciplesOfNilar() {
   return (
     <section
-      className={`relative py-12 px-5 lg:px-10 overflow-hidden ${ibmPlexSans.className}`}
+      className={`relative py-10 md:px-5   lg:px-10 overflow-hidden ${ibmPlexSans.className}`}
     >
-          <div className="mb-3">
-            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4">
-            Principles of the Nilar Framework
+            <div>
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+          Principles of the Nilar Framework
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+           Principles of the Nilar Framework
             </h3>
-            <p className="italic ml-4 mt-2 text-lg text-[#835C3B] mb-4">
-            A currency established on ethics, stability, and economic sovereignty.
-        </p>
           </div>
+        </div>
+
+        <p className=" text-lg mt-2 text-[#835C3B] font-normal ml-4">
+         A currency established on ethics, stability, and economic sovereignty.
+        </p>
       
-      <div className=" mb-14">
+      <div className="my-6">
       
         <p className="text-gray-700 text-lg leading-relaxed ml-4">
         The Nilar Framework is not just a technical solution to monetary instability—it is a moral and civilizational economic model. Based on Africonomics and natural-moral law, the Nilar offers a principled foundation for integrated, stable, and prosperous African economies. Each core principle reflects a commitment to truth, justice, liberty, sound money, and human dignity.
@@ -52,12 +59,10 @@ function PrinciplesOfNilar() {
       </div>
 
       {/* Principles List */}
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        className="space-y-10 max-w-5xl mx-auto"
+      <section className={`relative    lg:px-32 overflow-hidden ${ibmPlexSans.className}`}>
+ <div
+        
+        className="grid grid-cols-1 md:grid-cols-2 mx-auto gap-6  "
       >
         {[
           {
@@ -82,20 +87,21 @@ function PrinciplesOfNilar() {
             conclusion: "The Nilar enables free enterprise and free trade across African nations, laying the foundation for a unified African free-market economy characterized by secured property rights, voluntary exchange, structural injustice, economic integration, and continental prosperity."
           },
         ].map((principle, idx) => (
-          <motion.div
-            key={idx}
-            variants={item}
-            style={{ willChange: "opacity, transform" }}
-            className="border-l-4 border-[#ffd700] pl-6"
+          <div key={idx}
+            
+            className="border-l-4 mx-5 rounded-2xl border-[#ffd700] p-6 hover:shadow-md transition shadow-sm flex flex-col gap-y-2"
           >
-            <h3 className="text-2xl font-semibold text-deepForest mb-4">{principle.title}</h3>
+            <h3 className="text-xl font-semibold text-deepForest mb-4">{principle.title}</h3>
             <p className="text-gray-700 leading-relaxed">{principle.description}</p>
             <p className="text-gray-700 leading-relaxed">{principle?.conclusion}</p>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
+      </section>
+     
     </section>
   );
 }
 
 export default PrinciplesOfNilar;
+       

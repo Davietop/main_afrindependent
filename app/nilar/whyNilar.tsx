@@ -10,14 +10,13 @@ const ibmPlexSans = IBM_Plex_Sans({
   display: "swap",
 });
 
-const fadeRight = {
-  hidden: { opacity: 0, x: -40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" }},
-};
-
-const fadeLeft = {
-  hidden: { opacity: 0, x: 40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" }},
+const fadeIn = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 function WhyAfricaNeedsNilar() {
@@ -25,29 +24,32 @@ function WhyAfricaNeedsNilar() {
     {
       id: "fiat-inflation",
       title: "The Dangers of Fiat Currency and Inflation",
-      content: `Fiat currencies, created by decree and not backed by real value, are inherently unstable and fraudulent—as the Africonomics Theory of Monetary Justice has decisively demonstrated. They are subject to manipulation, devaluation, and confiscation through inflation, silently eroding the wealth and savings of the majority.\n\nFiat monetary systems are a central and confiscatory structural injustice in contemporary statist socioeconomic systems.\n\nAfrican countries that rely on fiat systems remain at the mercy of foreign central banks, external shocks, and artificial boom-bust cycles.
-`,
+      content: `Fiat currencies, created by decree and not backed by real value, are inherently unstable and fraudulent—as the Africonomics Theory of Monetary Justice has decisively demonstrated.\n\nFiat monetary systems are a central and confiscatory structural injustice in contemporary statist socioeconomic systems.`,
     },
     {
       id: "colonial-legacy",
       title: "The Colonial and Neocolonial Legacy of Monetary Dependence",
-      content: `African monetary systems were shaped by colonial powers—and in many cases, those powers still exert control. From direct monetary governance to indirect dependence on foreign-denominated reserves and international financial institutions, African nations remain economically subjugated.\n\nThe Nilar is an effective and liberating alternative.
-`,
+      content: `African monetary systems were shaped by colonial powers—and in many cases, those powers still exert control.\n\nThe Nilar is an effective and liberating alternative.`,
     },
     {
       id: "colonial-currencies",
       title: "Why Existing “African Currencies” Remain Colonial Extensions",
-      content: `The CFA Franc, still used by 14 countries in West and Central Africa, is a stark example of lingering colonial control. Pegged to the euro and guaranteed by the French Treasury, it denies member states true monetary sovereignty.\n\nEven non-CFA countries remain heavily reliant on central banking models imported from the West—models that prioritize inflation targets, external debt servicing, and currency dilution over economic justice and internal development.`,
+      content: `The CFA Franc, still used by 14 countries in West and Central Africa, is a stark example of lingering colonial control.\n\nEven non-CFA countries remain heavily reliant on central banking models imported from the West.`,
     },
     {
       id: "nilar-corrective",
       title: "The Nilar as a Corrective and Liberating Force",
-      author:"— Manuel Tacanho, ",
+      author: "— Manuel Tacanho",
       subAuthorInfo: "Social philosopher and economist",
-      stages:["based on gold, an honest and timeless form of money","free from foreign manipulation and arbitrary devaluation","designed for long-term monetary reliability and economic stability","aligned with truth, justice, liberty, and economic sovereignty"],
-      content: `The Nilar breaks this cycle. Rooted in Africonomics, it is not a Western imitation but an African innovation—based on real value, honest exchange, and ethical monetary policy.\n\nIt allows African nations to build currency systems:
-      `,
-      conclusion: "“The Nilar is more than a sound currency. It is a declaration of independence and a restoration of African sovereignty and dignity.”"
+      stages: [
+        "based on gold, an honest and timeless form of money",
+        "free from foreign manipulation and arbitrary devaluation",
+        "designed for long-term monetary reliability and economic stability",
+        "aligned with truth, justice, liberty, and economic sovereignty",
+      ],
+      content: `The Nilar breaks this cycle. Rooted in Africonomics, it is not a Western imitation but an African innovation—based on real value, honest exchange, and ethical monetary policy.\n\nIt allows African nations to build currency systems:`,
+      conclusion:
+        "“The Nilar is more than a sound currency. It is a declaration of independence and a restoration of African sovereignty and dignity.”",
     },
   ];
 
@@ -56,131 +58,130 @@ function WhyAfricaNeedsNilar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-
+      const scrollY = window.scrollY;
       sections.forEach((section, index) => {
-        const sectionElement = refs.current[index];
-        if (sectionElement) {
-          const rect = sectionElement.getBoundingClientRect();
-          const sectionTop = rect.top + scrollPosition;
-          const sectionBottom = sectionTop + rect.height;
-
-          // Check if the section's top is close to the top of the viewport
-          if (scrollPosition >= sectionTop - 50 && scrollPosition <= sectionBottom - 50) {
+        const ref = refs.current[index];
+        if (ref) {
+          const top = ref.offsetTop - 200;
+          const bottom = top + ref.offsetHeight;
+          if (scrollY >= top && scrollY < bottom) {
             setActiveId(section.id);
           }
         }
       });
     };
 
-    // Attach the scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup on unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <section className={`relative mt-14  px-5 lg:px-10 ${ibmPlexSans.className}`}>
-
-      
-       <div className="mb-4">
-            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4">
- Why Africa Needs the <span >Nilar</span>
+    <div className={`${ibmPlexSans.className} mt-10  md:px-5   lg:px-10`}>
+       <div >
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+            Why Africa Needs the Nilar
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+              Why Africa Needs the Nilar
             </h3>
-            <p className="italic ml-4 mt-2 text-lg text-[#835C3B] mb-4">
-        Ending monetary dependency. Rooting out Economic instability. Restoring African sovereignty.
-        </p>
           </div>
-      
-      {/* Heading */}
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        variants={fadeRight}
-        className="text-left ml-4 mb-14"
-      >
-        
-       
-        <p className="text-gray-700 text-lg leading-relaxed ">Africa remains trapped in a cycle of monetary dependence and fiat-induced economic injustice, instability, and impoverishment. While the continent has made strides in development, its monetary systems remain colonial in structure and statist in design, leaving nations vulnerable and trapped in debilitating inflation, arbitrary currency devaluation, and external control.</p>
-        <p className="text-gray-700 text-lg leading-relaxed mt-2">
-        The Nilar offers a principled and transformative way forward. It corrects this inherited dysfunction and is a liberating force for African nations seeking true economic independence, structural justice, and monetary stability.
-        </p>
-      </motion.div>
-
-      {/* Main two-column layout */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-6xl mx-auto">
-        
-        {/* Left side (titles sticky) */}
-        <div className="hidden md:flex flex-col gap-6 sticky top-32 h-max">
-          {sections.map((sec) => (
-            <a
-              key={sec.id}
-              href={`#${sec.id}`}
-              className={`transition-all border-l-4 pl-4 ${
-                activeId === sec.id
-                  ? "border-deepForest text-deepForest font-semibold"
-                  : "border-transparent text-gray-500 hover:text-deepForest"
-              }`}
-            >
-              {sec.title}
-            </a>
-          ))}
         </div>
 
-        {/* Right side (content) */}
-        <div className="md:col-span-3 space-y-10">
-          {sections.map((sec, idx) => (
+        <p className=" text-lg mt-2 text-[#835C3B] font-normal ml-4 ">
+         Ending monetary dependency. Rooting out instability. Restoring
+          sovereignty.
+        </p>
+ <section
+      className={`relative px-4 sm:px-6 md:px-10 max-w-7xl mx-auto pt-6 ${ibmPlexSans.className}`}
+    >
+    
+
+      {/* Sections - Alternating Layout */}
+      <div className="flex flex-col mt-6 gap-8 md:gap-24">
+        {sections.map((sec, idx) => {
+          const isEven = idx % 2 === 0;
+
+          return (
             <motion.div
               key={sec.id}
               id={sec.id}
-              data-id={sec.id}
               ref={(el) => {
-  refs.current[idx] = el;
-}}
+                refs.current[idx] = el;
+              }}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              variants={fadeLeft}
-              className="bg-white border-deepForest border rounded-2xl flex flex-col p-8 shadow-sm hover:shadow-md transition"
+              variants={fadeIn}
+              className="grid grid-cols-1 md:grid-cols-2 gap-x-10 items-start"
             >
-              <h3 className="text-2xl font-semibold text-deepForest mb-4 md:hidden block">
-                {sec.title}
-              </h3>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                {sec.content}
-              </p>
-             <div className="flex flex-col gap-y-2 font-semibold mt-2">
-             {sec?.stages?.map((stage, index)=> <p key={index} className="text-gray-700 leading-relaxed whitespace-pre-line"> 	•	{stage}</p> )}
-             </div>
+              {/* Title Side */}
+              <div
+                className={`${
+                  isEven ? "md:order-1" : "md:order-2"
+                } flex flex-col justify-start`}
+              >
+                <h2 className="text-xl font-semibold text-deepForest mb-2">
+                  {sec.title}
+                </h2>
 
-             {/* <p className="text-gray-700 leading-relaxed whitespace-pre-line mt-2"></p> */}
-               <div className="mt-8 border-l-4 border-yellow-500 pl-4  text-[#1a1a1a] text-lg sm:text-sm lg:text-base font-semibold leading-relaxed">
-   {sec?.conclusion}
-  </div>
+                <div className="h-1 w-full bg-yellow-500 mb-6" />
 
-<p className="text-[#323232] text-base sm:text-sm lg:text-base leading-relaxed text-right self-end mt-4 font-semibold italic">
-   {sec?.author} 
-  
- 
-</p>
+                <p className="text-gray-700 whitespace-pre-line leading-relaxed text-base md:text-lg">
+                  {sec.content}
+                </p>
 
-<p className="text-[#323232] text-base sm:text-sm lg:text-base leading-relaxed text-right self-end mt-1 font-medium italic">
-    {sec?.subAuthorInfo} 
-  
- 
-</p>
+                {sec.stages && (
+                  <ul className="mt-4 list-disc list-inside space-y-1 text-gray-700 font-semibold">
+                    {sec.stages.map((stage, i) => (
+                      <li key={i}>{stage}</li>
+                    ))}
+                  </ul>
+                )}
 
-        
-              
+                {sec.conclusion && (
+                  <blockquote className="mt-6 pl-4 border-l-4 border-yellow-500 italic text-[#1a1a1a] font-medium">
+                    {sec.conclusion}
+                  </blockquote>
+                )}
+
+                {(sec.author || sec.subAuthorInfo) && (
+                  <div className="mt-4 text-right italic text-sm text-[#323232]">
+                    <p className="font-semibold">{sec.author}</p>
+                    <p>{sec.subAuthorInfo}</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Section Indicator */}
+              <div
+                className={`${
+                  isEven ? "md:order-2" : "md:order-1"
+                } flex justify-center md:justify-end md:items-start pt-2`}
+              >
+                <div className="hidden md:flex flex-col items-center">
+                  <div
+                    className={`text-sm font-medium rounded-full px-4 py-1 border ${
+                      activeId === sec.id
+                        ? "bg-deepForest text-white border-deepForest"
+                        : "border-gray-300 text-gray-400"
+                    }`}
+                  >
+                    Section {idx + 1}
+                  </div>
+                  {idx < sections.length - 1 && (
+                    <div className="w-1 h-24 bg-gray-300 my-2" />
+                  )}
+                </div>
+              </div>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
+    </div>
+   
   );
 }
 
