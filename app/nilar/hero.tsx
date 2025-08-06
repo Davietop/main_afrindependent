@@ -81,7 +81,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
              
                 <a  href="https://www.afrindependent.org/publications/the-nilar-the-path-to-african-economic-sovereignty-and-prosperity?type=policy-papers">
-                 <button className="flex items-center justify-center gap-3 w-full border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-3  px-6 rounded-3xl shadow-md transition duration-300">
+                 <button className="flex items-center justify-center gap-3 w-10/12 mx-auto md:w-full md:mx-0 border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-2 px-4 md:py-3  md:px-6 rounded-3xl shadow-md transition duration-300">
                 
                   Read the Policy Paper
                
@@ -98,7 +98,7 @@ const Hero = () => {
                       ? nativeShare()
                       : setOpen(!open)
                   }
-                  className="flex w-full items-center justify-center gap-3 border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-3 px-6 rounded-3xl shadow-md transition duration-300"
+                  className="flex w-10/12 mx-auto md:w-full md:mx-0 items-center justify-center gap-3 border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-2 px-4 md:py-3  md:px-6 rounded-3xl shadow-md transition duration-300"
                 >
                   <FaShareAlt /> Share this Page
                 </button>
