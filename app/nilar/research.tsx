@@ -83,14 +83,12 @@ function PublicationsResearch() {
     fetchPub();
   }, [publications?.length]);
 
-    
-
   const stripHtml = (html: string) => {
     if (!html) return "";
     return html.replace(/<[^>]*>?/gm, "");
   };
 
-console.log(uniqueFeaturedFeat)
+ 
 
   function truncateText(text: string, maxLength: number): string {
     if (text.length <= maxLength) return text;
@@ -106,31 +104,29 @@ console.log(uniqueFeaturedFeat)
         <div>
           {" "}
           <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
-         Publications & Research
+            Publications & Research
           </h3>
           <div className="px-5 sm:hidden">
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
-             Publications & Research
+              Publications & Research
             </h3>
           </div>
         </div>
 
-         <p className=" text-lg mt-2 text-[#835C3B] font-normal ml-4 ">
-            The intellectual foundation of the Nilar framework.
+        <p className=" text-lg mt-2 text-[#835C3B] font-normal ml-4 ">
+          The intellectual foundation of the Nilar framework.
         </p>
-      
-          <div>
-              <p className="mt-4   text-gray-700 text-lg ml-4">
+
+        <div>
+          <p className="mt-4   text-gray-700 text-lg ml-4">
             {" "}
             The Nilar is the product of moral clarity, sound economic reasoning,
             and a factual understanding of Africa’s postcolonial economic woes.
             Grounded in Africonomics, our publications offer the philosophical,
             historical, and practical insights that shape the vision and
             viability of the Nilar.
-     
-        </p>
-          </div>
-        
+          </p>
+        </div>
       </div>
 
       <section
@@ -152,6 +148,9 @@ console.log(uniqueFeaturedFeat)
               index
             ) => {
               const slugData = uniqueFeatured[index];
+              const datacheckNilar = publications?.find((pub) => {
+                return pub.title === title;
+              });
 
               const combinedText = abstract[0]?.children
                 .map((item: any) => item.text)
@@ -166,6 +165,7 @@ console.log(uniqueFeaturedFeat)
                 }
               );
               const isLast = index === publicationData.length - 1;
+           
 
               return (
                 <div key={index}>
@@ -190,7 +190,7 @@ console.log(uniqueFeaturedFeat)
 
                         <a
                           className="flex items-center justify-center gap-3 border-2 bg-deepForest text-base border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
-                          href={`${paths.publications}/${slugData?.slug}?type=${category}`}
+                          href={`${paths.publications}/${datacheckNilar?.slug}?type=${category}`}
                         >
                           Read the Paper
                         </a>
@@ -211,25 +211,23 @@ console.log(uniqueFeaturedFeat)
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6  ">
-                      {uniqueFeaturedFeat.map(
-  (
-    {
-      title,
-      level,
-      slug,
-      image,
-      author,
-      publishedAt,
-      abstract,
-      category,
-      intro
-    }: any,
-    index: number
-  ) =>{
-      
-             
-              
-    return      <a
+              {uniqueFeaturedFeat.map(
+                (
+                  {
+                    title,
+                    level,
+                    slug,
+                    image,
+                    author,
+                    publishedAt,
+                    abstract,
+                    category,
+                    intro,
+                  }: any,
+                  index: number
+                ) => {
+                  return (
+                    <a
                       key={slug}
                       href={`${paths.publications}/${slug}?type=${category}`}
                     >
@@ -238,29 +236,32 @@ console.log(uniqueFeaturedFeat)
                           className="h-52 w-full bg-cover bg-center"
                           style={{ backgroundImage: `url('${image}')` }}
                         />
-    
+
                         <div className="p-5 flex flex-col gap-y-4 flex-grow">
                           <h3 className="text-xl font-semibold text-deepForest mb-2">
                             {title}
                           </h3>
-    
+
                           {intro && (
                             <p className="text-gray-700 text-base line-clamp-3">
                               {intro}
                             </p>
                           )}
-    
+
                           <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
                             <p>Manuel Tacanho</p> |
                             <p className="text-sm text-gray-700">
-                              {new Date(publishedAt).toLocaleDateString("en-GB")}
+                              {new Date(publishedAt).toLocaleDateString(
+                                "en-GB"
+                              )}
                             </p>
                           </div>
                         </div>
                       </div>
                     </a>
-  }
-)}
+                  );
+                }
+              )}
             </div>
           </div>
         </div>
@@ -270,5 +271,3 @@ console.log(uniqueFeaturedFeat)
 }
 
 export default PublicationsResearch;
-
-   

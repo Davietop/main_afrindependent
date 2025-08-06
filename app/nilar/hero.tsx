@@ -53,7 +53,7 @@ const Hero = () => {
         url: currentUrl,
       });
     } catch (err) {
-      console.log("Native share failed:", err);
+     return err
     }
   };
 
@@ -79,13 +79,15 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
-               <a href="https://www.afrindependent.org/publications/why-the-nilar-is-superior-to-bitcoin-as-a-comprehensive-monetary-solution?type=policy-papers">
-                 <button className="flex items-center justify-center gap-3 border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-3 px-6 rounded-3xl shadow-md transition duration-300">
+             
+                <a  href="https://www.afrindependent.org/publications/the-nilar-the-path-to-african-economic-sovereignty-and-prosperity?type=policy-papers">
+                 <button className="flex items-center justify-center gap-3 w-full border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-3  px-6 rounded-3xl shadow-md transition duration-300">
                 
                   Read the Policy Paper
                
               </button>
                 </a>
+           
              
 
               {/* Share Button */}
