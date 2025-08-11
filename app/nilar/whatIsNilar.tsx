@@ -9,7 +9,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 const WhatIsNilar = () => {
   return (
     <div className={`${ibmPlexSans.className}`}>
-      <div className=" mt-10 md:px-5   lg:px-10">
+      <div className=" mt-6 md:px-5   lg:px-10">
         <div>
           {" "}
           <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">

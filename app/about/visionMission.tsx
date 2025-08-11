@@ -10,42 +10,54 @@ const ibmPlexSans = IBM_Plex_Sans({
 const VissionMission = () => {
   return (
     <section className={`w-full     ${ibmPlexSans.className}`}>
-      <h2 className="text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 mb-10">
-        <span className="border-l-4 border-yellow-400 pl-4">
-          {" "}
-          Vision & Mission
-        </span>
-      </h2>
-      <div className="max-w-full w-full md:w-10/12 mx-auto px-6  lg:px-6">
-        <div className="grid xl:grid-cols-2 gap-y-10 gap-x-16 items-stretch">
-          {/* Vision Block - Left */}
-          <div className="bg-[#002813] text-white rounded-2xl  p-6 lg:p-10 border border-[#ffd700] flex flex-col  h-full">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#ffd700] mb-6 flex items-center gap-3">
-              <FaEye className="text-[#ffd700]" /> Our Vision
-            </h2>
-            <p className="tracking-wide text-base md:text-lg leading-relaxed ">
-              To see a free, prosperous, and structurally just Africa—anchored
-              in truth, liberty, sound money, and respect for natural individual
-              rights.
-            </p>
-          </div>
+   
 
-          {/* Mission Block - Right */}
-          <div className="bg-[#002813] text-white rounded-2xl  p-6 lg:p-10 border border-[#ffd700] flex flex-col justify-between h-full">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#ffd700] mb-6 flex items-center gap-3">
-              <FaBullseye className="text-[#ffd700]" /> Our Mission
-            </h2>
-            <p className="tracking-wide text-base md:text-lg leading-relaxed">
-              The Afrindependent Institute exists to advance African
-              intellectual and economic sovereignty through original research,
-              principled policy frameworks, and public education grounded in
-              Africonomics. We challenge prevailing models, expose systemic
-              injustice, and promote sound ideas to empower African nations and
-              humanize global systems.
-            </p>
+<div className=" mt-10 md:px-5   lg:px-10">
+  
+       <div>
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+           Vision & Mission
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+               Vision & Mission
+            </h3>
           </div>
         </div>
+</div>
+  <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-6">
+  <div className="grid md:grid-cols-2 gap-10">
+
+    {/* Vision Card */}
+    <div className="bg-white rounded-3xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#ffd700]/20 mb-6">
+        <FaEye className="text-[#c19a00] text-3xl" />
       </div>
+      <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+        Our Vision
+      </h2>
+      <p className="text-gray-600 leading-relaxed text-lg">
+      To see a free, prosperous, and structurally just Africa anchored in truth, liberty, sound money, and respect for natural individual rights.
+      </p>
+    </div>
+
+    {/* Mission Card */}
+    <div className="bg-white rounded-3xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#ffd700]/20 mb-6">
+        <FaBullseye className="text-[#c19a00] text-3xl" />
+      </div>
+      <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+        Our Mission
+      </h2>
+      <p className="text-gray-600 leading-relaxed text-lg">
+      The Afrindependent Institute exists to advance African intellectual and economic sovereignty through original research, principled policy frameworks, and public education grounded in Africonomics. We challenge prevailing models, expose systemic injustice, and promote sound ideas to empower African nations and humanize global systems.
+      </p>
+    </div>
+
+  </div>
+</div>
+
     </section>
   );
 };

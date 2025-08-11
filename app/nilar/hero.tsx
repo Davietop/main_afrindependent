@@ -69,7 +69,7 @@ const Hero = () => {
           <div className="absolute inset-0 bg-nilar_coin bg-cover bg-center opacity-30 z-0" />
           <div className="absolute inset-0 bg-opacity-80 z-0" />
           <div className="relative w-full z-10 lg:max-w-5xl mx-auto text-white">
-            <h1 className="text-4xl md:text-6xl leading-snug font-extrabold lg:leading-tight mb-6 lg:mb-6">
+            <h1 className="text-3xl md:text-6xl leading-snug font-extrabold lg:leading-tight mb-6 lg:mb-6">
               The Nilar: <br className="block md:hidden" />
               A Gold-Based Currency for African Economic Sovereignty
             </h1>

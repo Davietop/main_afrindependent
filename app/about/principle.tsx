@@ -32,14 +32,34 @@ const principles = [
 const Principle = () => {
   return (
     <div className={`pb-10  ${ibmPlexSans.className}`}>
-      <h2 className=" text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 ">
+      {/* <h2 className=" text-2xl px-6 sm:px-10 lg:px-20 pt-10  sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300 ">
         <p className="border-l-4 border-yellow-400 pl-4"> Our Principles</p>
       </h2>
       <p className="pl-6 lg:pl-24 mt-2   lg:font-medium text-[#323232]   text-lg leading-[28px] mb-6 lg:text-xl lg:leading-[40px]">
         We are guided by four foundational principles that undergird all our
         work:
-      </p>
-      <section className="px-6  ">
+      </p> */}
+
+      <div className=" mt-6 md:px-5   lg:px-10">
+        <div>
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+           Our Principles
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+         Our Principles
+            </h3>
+          </div>
+        </div>
+
+        <p className=" text-lg mt-2 text-[#835C3B] font-normal ml-4 mr-4 ">
+         We are guided by four foundational principles that undergird all our
+        work:
+        </p>
+       
+      </div>
+      <section className="px-6 py-6  ">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {principles.map((p, i) => (
@@ -49,7 +69,7 @@ const Principle = () => {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="bg-[#ffd700] p-3 rounded-full">{p.icon}</div>
-                  <h3 className="text-xl font-semibold text-[#002813]">
+                  <h3 className="text-lg md:text-xl font-semibold text-[#002813]">
                     {p.title}
                   </h3>
                 </div>
