@@ -13,7 +13,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 const AfriDifferent = () => {
   return (
-    <div className={`flex flex-col   ${ibmPlexSans.className}`}>
+    <div className={`flex flex-col py-3  ${ibmPlexSans.className}`}>
       
        <div className=" md:px-5   lg:px-10">
   
