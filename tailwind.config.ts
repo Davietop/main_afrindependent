@@ -40,6 +40,7 @@ const config = {
         "eco_flow": `url("/eco_flow.jpg")`,
         "concept": `url("/concept.jpg")`,
         "teacher": `url("/teacher-replace.jpg")`,
+        "key_concepts": `url("/bg_concept.png")`,
         bg_home:`url("/hero_landing.jpg")`,
         contact: `url("/contact.jpg")`,
         mission_hands:`url("/about_new.png")`,

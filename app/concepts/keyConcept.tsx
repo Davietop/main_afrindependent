@@ -331,34 +331,46 @@ export default function AfriconomicsPage() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="px-2 lg:px-6 py-12 bg-white text-center space-y-6"
+        className=" md:px-5   lg:px-10  py-10 bg-white space-y-6"
       >
-        <h1 className="text-4xl  mx-auto md:text-3xl font-bold text-deepForest">
-          The Intellectual Architecture of Africonomics
-        </h1>
-        <p className="max-w-5xl mx-auto text-gray-700 text-base md:text-lg leading-relaxed">
+         <div>
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+            The Intellectual Architecture of Africonomics
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+             The Intellectual Architecture of Africonomics
+            </h3>
+          </div>
+        </div>
+       <div className="px-5 flex flex-col gap-y-4 md:px-0">
+         <p className=" text-gray-700 text-base md:text-lg leading-relaxed">
           The Afrindependent Institute advances a principled and transformative
           body of knowledge based on Africonomics— an African school of
           philosophical, economic, and civilizational thought grounded in
           natural-moral law, justice, and liberty that advances sound economic
           systems.
         </p>
-        <p className="max-w-5xl mx-auto text-gray-700 text-base md:text-lg leading-relaxed">
+        <p className=" text-gray-700 text-base md:text-lg leading-relaxed">
           This section presents the key concepts, frameworks, and theories that
           define our work—from foundational ideas like natural-moral law and the
           African worldview to deep critiques of fiat money, statism, and
           technocracy, to fully developed Africonomics theories of money,
           economic cycles, and international relations.
         </p>
-        <p className="max-w-5xl mx-auto text-gray-700 text-base md:text-lg leading-relaxed">
+        <p className=" text-gray-700 text-base md:text-lg leading-relaxed">
           Each concept is a building block in a larger civilizational vision: a
           free, sovereign, prosperous Africa—and a more human and peaceful
           global order.
         </p>
-        <p className="max-w-5xl mx-auto text-deepForest text-base md:text-lg leading-relaxed font-bold">
+        <p className=" text-left md:text-center mx-auto text-deepForest text-base md:text-lg leading-relaxed font-bold mt-4">
           Browse the categories below to explore core frameworks of
           Africonomics.
         </p>
+       </div>
+       
+        
       </motion.section>
       <div className={`${ibmPlexSans.className} flex flex-col md:flex-row`}>
         {/* Sidebar Navigation for Desktop */}
@@ -383,7 +395,7 @@ export default function AfriconomicsPage() {
         {/* Main Content */}
         <div className="flex-1 relative">
           {/* Mobile Navigation */}
-          <div className="block md:hidden sticky top-0 bg-white py-2 z-20 border-b shadow-sm">
+          <div className="block md:hidden sticky top-20 bg-white py-2 z-20 border-b shadow-sm">
             <div className="flex overflow-x-auto no-scrollbar px-4 space-x-2">
               {clusters.map((c) => (
                 <button
@@ -406,7 +418,7 @@ export default function AfriconomicsPage() {
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.4 }}
-            className="sticky top-11 md:top-0  z-30 bg-white px-6 pt-4 pb-2 "
+            className="sticky top-32 md:top-0  z-30 bg-white px-6 pt-4 pb-2 "
           >
             <input
               type="text"
@@ -477,10 +489,9 @@ export default function AfriconomicsPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -30 }}
                       transition={{ duration: 0.5 }}
-                      className="space-y-16"
-                    >
-                      <div className="mb-6">
-                        <h2 className="text-3xl font-bold text-deepForest">
+                      className="space-y-10"
+                     >                      <div className="">
+                        <h2 className="text-2xl md:text-3xl font-bold text-deepForest">
                           {cluster.title}
                         </h2>
                         <p className="text-[#8B4513] italic text-lg mt-2">
@@ -490,7 +501,7 @@ export default function AfriconomicsPage() {
                       </div>
 
                       {/* Other Concepts */}
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12 items-start">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6  items-start">
                         {cluster.concepts.map((concept) => (
                           <motion.div
                             key={concept.id}

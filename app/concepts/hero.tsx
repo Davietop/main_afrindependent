@@ -29,7 +29,7 @@ export default function HeroSection() {
           <div className="max-w-5xl mx-auto flex flex-col gap-y-2 lg:gap-y-10 text-white">
             {/* Heading */}
             <motion.h1
-              className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"
+              className="text-4xl md:text-6xl  font-extrabold tracking-tight leading-tight"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}

@@ -1,5 +1,5 @@
 import Navbar from "@/components/ui/page-sections/nav-bar";
-import HeroSection from "./hero";
+import HeroSection from "./heroNew";
 import KeyConcept from "./keyConcept";
 import Footer from "@/components/ui/page-sections/footer";
 // app/keyConcepts/metadata.ts
