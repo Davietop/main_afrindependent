@@ -61,6 +61,8 @@ export async function generateMetadata({ searchParams }: { searchParams: { filte
 const Publications = async ({ searchParams }: { searchParams: { filter?: string } }) => {
   const categories = await getCategories();
 
+
+
   return (
     <main className={`${ibmPlexSans.className} bg-white`}>
       <div className=" ">

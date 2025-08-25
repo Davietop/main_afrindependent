@@ -88,7 +88,7 @@ const Article = ({ post }: { post: PublicationDto }) => {
     const subscription = sanityClient
       .listen('*[_type == "publications"]')
       .subscribe((update) => {
-        console.log("Publication changed:", update);
+       
         if (update.result?._type === "publications") {
          
           const slug = update.result?.slug?.current;
