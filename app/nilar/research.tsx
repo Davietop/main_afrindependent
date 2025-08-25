@@ -72,8 +72,7 @@ function PublicationsResearch() {
 
   useEffect(() => {
     const fetchPub = async () => {
-      const slug =
-        "the-nilar-the-path-to-african-economic-sovereignty-and-prosperity";
+      const slug = "the-nilar-the-path-to-african-economic-sovereignty";
       const results = await getSinglePublication({ slug });
       const pubArray = [results];
 
@@ -87,8 +86,6 @@ function PublicationsResearch() {
     if (!html) return "";
     return html.replace(/<[^>]*>?/gm, "");
   };
-
- 
 
   function truncateText(text: string, maxLength: number): string {
     if (text.length <= maxLength) return text;
@@ -134,7 +131,7 @@ function PublicationsResearch() {
       >
         <div className="max-w-full lg:w-11/12  mx-auto">
           {/* Featured Publication */}
-          {publicationData.map(
+          {publicationData?.map(
             (
               {
                 title,
@@ -165,7 +162,6 @@ function PublicationsResearch() {
                 }
               );
               const isLast = index === publicationData.length - 1;
-           
 
               return (
                 <div key={index}>
