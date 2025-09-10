@@ -193,13 +193,13 @@ export default function Filters({ categories }: PropType) {
 
   return (
     <>
-      <section className=" py-10 px-5 lg:px-10">
-        <div className="mb-8">
+      <section className=" pb-6 px-5 lg:px-10">
+        <div className="mb-6">
           <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] pl-4">
             Featured Publications
           </h3>
         </div>
-        <div className="lg:px-10">
+        <div className="">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {uniqueFeatured.map(
               (
@@ -253,7 +253,7 @@ export default function Filters({ categories }: PropType) {
 
       <section
         ref={filterSectionRef}
-        className="text-black px-5 mt-10 lg:px-10"
+        className="text-black px-5 mt-2 lg:px-10"
       >
         <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] pl-4">
           Filter by type or topic to begin exploring in-depth, principled
@@ -261,12 +261,12 @@ export default function Filters({ categories }: PropType) {
         </h3>
 
         {/* Filter Buttons */}
-        <div className="flex flex-col lg:flex-row flex-wrap gap-4 mt-8 mb-10">
+        <div className="flex flex-col lg:flex-row flex-wrap gap-4 my-5">
           {FILTER_OPTIONS.map((item) => (
             <button
               key={item.id}
               onClick={() => handleFilterClick(item.id)}
-              className={`py-3 px-6 rounded-xl font-semibold shadow-md border-2 transition duration-300 text-left text-sm lg:text-base ${
+              className={`py-2 px-4 rounded-xl font-semibold shadow-md border-2 transition duration-300 text-left text-sm lg:text-base ${
                 activeFilter === item.id
                   ? "bg-white text-deepForest border-[#00210d]"
                   : "bg-deepForest text-[#ffd700] border-[#00210d] hover:bg-white hover:text-deepForest"
@@ -339,7 +339,7 @@ export default function Filters({ categories }: PropType) {
             </div>
 
             {/* Pagination */}
-            <div className="flex justify-center mt-10">
+            <div className="flex justify-center my-10">
               <ReactPaginate
                 previousLabel="← Previous"
                 nextLabel="Next →"

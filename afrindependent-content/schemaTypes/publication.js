@@ -16,12 +16,12 @@ export default {
       type: 'slug',
       options: {
         source: 'title',
-        slugify: (input) =>
+        slugify: (input) =f>
           input
             .toLowerCase()
             .replace(/\s+/g, '-')
             .replace(/[^\w-]+/g, '')
-            .slice(0, 10),
+            .slice(0, 47),
       },
       validation: (Rule) => Rule.required(),
     },

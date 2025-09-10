@@ -33,7 +33,7 @@ type Props = {
   };
 };
 
-const Paper = ({ post }: { post: PublicationDto }, { params }: Props) => {
+const Paper = ({ post }: { post: PublicationDto }) => {
    const [open, setOpen] = React.useState(false);
   const searchParams = useSearchParams();
   const type = searchParams.get("type");

@@ -66,7 +66,7 @@ const List = ({
 
   return (
     <section
-      className={`${isComponent ? "" : ""} mb-[70px] ${ibmPlexSans.className}`}
+      className={`${isComponent ? "" : ""}  ${ibmPlexSans.className}`}
     >
        {categories?.length ? (
         <Filters

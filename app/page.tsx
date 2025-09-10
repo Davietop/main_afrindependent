@@ -109,14 +109,17 @@ export default function Home() {
   
   return (
     <main className="overflow-x-hidden">
-      <div className="h-[800px]  bg-pattern_bg  bg-cover overflow-hidden flex justify-center flex-col bg-center  relative">
-        <div className="relative  h-full">
+      <div className="h-fit  overflow-hidden flex justify-center flex-col bg-center  relative">
+        <div className="relative mb-16 lg:mb-0 bg-white h-full">
           <Navbar />
         </div>
 
-        <div className="absolute inset-0   min-h-fit  lg:pl-10 lg:pr-16   xl:px-18 2xl:px-24 lg:pt-8 px-4 h-full flex items-center flex-col lg:flex-row justify-between overflow-hidden">
+       
+      </div>
+
+       <div className=" inset-0 bg-pattern_bg  bg-cover bg-no-repeat   min-h-fit  lg:pl-10 lg:pr-16  lg:my-16 xl:my-0 py-16 xl:px-18 2xl:px-24  px-4 h-full flex items-center flex-col lg:flex-row justify-between overflow-hidden">
           <div
-            className={`${ibmPlexSans.className} w-full md:w-6/12 xl:w-6/12 h-full  flex flex-col   justify-center gap-y-8 2xl:gap-y-10`}
+            className={`${ibmPlexSans.className} w-full md:w-10/12 lg:w-7/12 xl:w-7/12 h-fit  flex flex-col   justify-center gap-y-8 2xl:gap-y-10`}
           >
             <h1 className="text-black text-center  lg:text-left text-5xl leading-[50px]  font-bold lg:text-5xl  lg:leading-[60px] 2xl:leading-[70px] ">
               Restoring African Intellectual and Economic Sovereignty
@@ -159,11 +162,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden lg:h-[480px] lg:w-[480px] xl:h-[500px] xl:w-[500px] 2xl:h-[550px] 2xl:w-[550px] rounded-3xl relative bg-bg_home bg-center bg-cover  lg:flex">
+          <div className="hidden  w-4/12 h-[450px] rounded-3xl relative bg-bg_home bg-center bg-cover  lg:flex">
         
           </div>
         </div>
-      </div>
 
       <VissionMission />
       <FeaturedConcept />

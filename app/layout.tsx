@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Afrindependent Institute",
   description: "Unlocking Africa's Prosperity through Africonomics",
   icons: {
-    icon: "/favicon.ico", // if you're using a PNG instead
+    icon: "/favicon.ico",
   },
   applicationName: "Afrindenpendent Organisation",
   manifest: "https://www.afrindependent.org/",
@@ -86,61 +86,65 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-T07D9QCKGL"
           strategy="afterInteractive"
         />
-
-        {/* Inline gtag initialization */}
         <Script id="gtag-init" strategy="afterInteractive">
           {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-T07D9QCKGL');
-        `}
-        </Script>
-        <body
-          id="body"
-          className={`${nohemi.variable} ${inter_tight.variable} ${ojuju.variable} bg-[#f2f2f2] max-w-[1920px] mx-auto`}
-        >
-          <WebVitals />
-          <Motion>{children}</Motion>
-          <Link
-            rel="alternate"
-            type="application/rss+xml"
-            href="/rss"
-            title="Afrindependent RSS Feed"
-          />
-          <Script
-            defer
-            type="text/javascript"
-            src="https://donorbox.org/install-popup-button.js"
-            id="donorbox-popup-button-installer"
-          />
-          <Script id="meta-pixel" strategy="afterInteractive">
-            {`
-            !function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '872800324995642');
-fbq('track', 'PageView');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-T07D9QCKGL');
           `}
-          </Script>
-          <noscript>
-            <Image
-              alt=""
-              height="1"
-              width="1"
-              style={{ display: "none" }}
-              src="https://www.facebook.com/tr?id=872800324995642&ev=PageView&noscript=1"
-            />
-          </noscript>
-
-          <Analytics />
-        </body>
+        </Script>
       </head>
+
+      {/* ✅ body moved outside head */}
+      <body
+        id="body"
+        className={`${nohemi.variable} ${inter_tight.variable} ${ojuju.variable} bg-[#f2f2f2] max-w-[1920px] mx-auto`}
+      >
+        <WebVitals />
+        <Motion>{children}</Motion>
+
+        <Link
+          rel="alternate"
+          type="application/rss+xml"
+          href="/rss"
+          title="Afrindependent RSS Feed"
+        />
+
+        <Script
+          defer
+          type="text/javascript"
+          src="https://donorbox.org/install-popup-button.js"
+          id="donorbox-popup-button-installer"
+        />
+
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '872800324995642');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+
+        <noscript>
+          <Image
+            alt=""
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=872800324995642&ev=PageView&noscript=1"
+          />
+        </noscript>
+
+        <Analytics />
+      </body>
     </html>
   );
 }

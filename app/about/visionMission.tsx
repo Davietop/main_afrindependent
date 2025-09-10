@@ -14,9 +14,9 @@ const VissionMission = () => {
 
 <div className=" mt-10 md:px-5   lg:px-10">
   
-       <div>
+       <div>  
           {" "}
-          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-bold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
            Vision & Mission
           </h3>
           <div className="px-5 sm:hidden">

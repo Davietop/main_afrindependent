@@ -72,7 +72,7 @@ function PublicationsResearch() {
 
   useEffect(() => {
     const fetchPub = async () => {
-      const slug = "the-nilar-the-path-to-african-economic-sovereignty";
+      const slug = "the-nilar-the-path-to-african-economic-sovereig";
       const results = await getSinglePublication({ slug });
       const pubArray = [results];
 

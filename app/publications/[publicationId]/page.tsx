@@ -1,21 +1,22 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 
 import Navbar from "@/components/ui/page-sections/nav-bar";
 import Footer from "@/components/ui/page-sections/footer";
 import Post from "./post";
 import { getSinglePublication } from "@/service/sanity-queries";
 
-import { optimizeImage } from "next/dist/server/image-optimizer";
 type Props = {
-  params: { publicationId: string };
+  params: Promise<{ publicationId: string }>; // ✅ make it async
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { publicationId } = await params; // ✅ await params
+
   const publication = await getSinglePublication({
-    slug: params.publicationId,
+    slug: publicationId,
   });
 
-  const canonicalUrl = `https://www.afrindependent.org/publications/${params.publicationId}`;
+  const canonicalUrl = `https://www.afrindependent.org/publications/${publicationId}`;
 
   return {
     title: publication.title,
@@ -50,29 +51,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "African politics",
       "African liberation",
       "geopolitics",
-      "principled insights"
+      "principled insights",
     ],
   };
 }
 
+const Publication = async ({ params }: Props) => {
+  const { publicationId } = await params; // ✅ same fix here
+  const data = await getSinglePublication({ slug: publicationId });
 
-const Publication = async ({
-  params,
-}: {
-  params: { publicationId: string };
-}) => {
-  const data = await getSinglePublication({ slug: params.publicationId });
   return (
     <main className="bg-[#faf9f6]">
-       
-      <div className=" ">
+      <div>
         <Navbar />
       </div>
 
-      <div className="  xl:mt-0">
-        
+      <div className="xl:mt-0">
         <Post post={data} />
       </div>
+
       <div className="mt-10">
         <Footer />
       </div>

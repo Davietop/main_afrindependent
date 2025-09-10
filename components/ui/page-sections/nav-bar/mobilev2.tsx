@@ -7,18 +7,40 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { IBM_Plex_Sans } from "next/font/google";
 import { links, paths } from "./pc";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { usePublications } from "@/app/publications/publication-section";
+import Page from "@/app/dashboard/page";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   display: "swap",
 });
-
+interface Publication {
+  slug: string;
+  title: string;
+  image: string;
+  publishedAt: string;
+  category: string;
+}
 export const MobileDevV2 = () => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   const toggleSidebar = () => setOpen(!open);
   const closeSidebar = () => setOpen(false);
+
 
   return (
     <div className={`${ibmPlexSans.className} xl:hidden`}>
@@ -34,7 +56,7 @@ export const MobileDevV2 = () => {
               <Image
                 src={`/Afridependen_2.png`}
                 alt="Afrindependent"
-                width={180}
+                width={170}
                 height={1}
                 className="relative z-30"
                 priority
@@ -42,8 +64,10 @@ export const MobileDevV2 = () => {
             </Link>
           </div>
 
-          
-         <button onClick={toggleSidebar}>
+         <div className="flex items-center gap-x-2">
+         {pathname.includes("/publications") ?  <Page/> :""} 
+         <button 
+         onClick={toggleSidebar}>
               {!open ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -74,6 +98,7 @@ export const MobileDevV2 = () => {
                 </svg>
               )}
             </button>
+         </div>
         </div>
       </header>
 
@@ -119,3 +144,10 @@ export const MobileDevV2 = () => {
     </div>
   );
 };
+
+
+
+
+          
+             
+         

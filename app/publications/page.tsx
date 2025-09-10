@@ -14,11 +14,15 @@ const ibmPlexSans = IBM_Plex_Sans({
   display: "swap",
 });
 
+// ✅ Fixed: searchParams is now a Promise in Next.js 15
+export async function generateMetadata(
+  { searchParams }: { searchParams: Promise<{ filter?: string }> }
+): Promise<Metadata> {
+  const params = await searchParams; // must await
 
-export async function generateMetadata({ searchParams }: { searchParams: { filter?: string } }): Promise<Metadata> {
   const baseUrl = "https://www.afrindependent.org/publications";
-  const canonicalUrl = searchParams?.filter
-    ? `${baseUrl}?filter=${searchParams.filter}`
+  const canonicalUrl = params?.filter
+    ? `${baseUrl}?filter=${params.filter}`
     : baseUrl;
 
   const description =
@@ -58,19 +62,23 @@ export async function generateMetadata({ searchParams }: { searchParams: { filte
   };
 }
 
-const Publications = async ({ searchParams }: { searchParams: { filter?: string } }) => {
+// ✅ Publications component also needs searchParams as Promise
+const Publications = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ filter?: string }>;
+}) => {
+  const params = await searchParams; // await here too
   const categories = await getCategories();
-
-
 
   return (
     <main className={`${ibmPlexSans.className} bg-white`}>
-      <div className=" ">
+      <div>
         <Navbar />
       </div>
 
       {/* HERO SECTION */}
-      <section className="relative bg-publication bg-cover bg-center xl:mt-0  py-24 px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-publication bg-cover bg-center xl:mt-0 py-24 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-deepForest opacity-80 z-0"></div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
           <svg
@@ -110,15 +118,15 @@ const Publications = async ({ searchParams }: { searchParams: { filter?: string 
       </section>
 
       {/* INTRO SECTION */}
-      <section className="bg-white px-5 py-10 lg:px-10">
-        <div className=" ">
-          <div className="mb-8">
+      <section className="bg-white px-5 py-6 lg:px-10">
+        <div>
+          <div className="mb-4">
             <h3 className="text-xl lg:text-2xl font-bold text-deepForest border-l-4 border-[#ffd700] pl-4">
               Ideas with Purpose. Research with Principle.
             </h3>
           </div>
 
-          <div className="space-y-6 text-gray-800 text-base lg:text-lg leading-relaxed">
+          <div className="space-y-4 text-gray-800 text-base lg:text-lg leading-relaxed">
             <p>
               The Afrindependent Institute produces original, paradigm-shifting
               publications grounded in Africonomics—a school of thought
@@ -135,8 +143,6 @@ const Publications = async ({ searchParams }: { searchParams: { filter?: string 
           </div>
         </div>
       </section>
-
-     
 
       <List categories={categories} />
       <Footer />
