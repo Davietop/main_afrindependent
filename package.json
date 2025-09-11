@@ -49,7 +49,7 @@
     "locomotive-scroll": "^5.0.0-beta.11",
     "lucide-react": "^0.352.0",
     "next": "^15.5.2",
-    "next-sanity": "^10.0.14",
+    "next-sanity": "^10.1.4",
     "next-video": "^2.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
