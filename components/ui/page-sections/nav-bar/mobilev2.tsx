@@ -65,7 +65,7 @@ export const MobileDevV2 = () => {
           </div>
 
          <div className="flex items-center gap-x-2">
-         {pathname.includes("/publications") ?  <Page/> :""} 
+       
          <button 
          onClick={toggleSidebar}>
               {!open ? (

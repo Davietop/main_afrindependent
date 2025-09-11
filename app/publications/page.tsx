@@ -7,6 +7,7 @@ import { getCategories } from "@/service/sanity-queries";
 import { IBM_Plex_Sans } from "next/font/google";
 import { paths } from "@/components/ui/page-sections/nav-bar/pc";
 import Filters from "./filters";
+import Page from "../dashboard/page";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -78,44 +79,53 @@ const Publications = async ({
       </div>
 
       {/* HERO SECTION */}
-      <section className="relative bg-publication bg-cover bg-center xl:mt-0 py-24 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 bg-deepForest opacity-80 z-0"></div>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-          <svg
-            className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 opacity-10 text-gray-300"
-            width="404"
-            height="404"
-            fill="none"
-            viewBox="0 0 404 404"
-          >
-            <defs>
-              <pattern
-                id="pattern"
-                x="0"
-                y="0"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse"
-              >
-                <rect x="0" y="0" width="4" height="4" fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect width="404" height="404" fill="url(#pattern)" />
-          </svg>
-        </div>
+    <section className="relative bg-publication bg-cover bg-center xl:mt-0 py-24 px-4 sm:px-6 lg:px-8">
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-deepForest opacity-80 z-0"></div>
 
-        <div className="relative max-w-4xl mx-auto text-center px-4 py-16 h-[300px] z-20">
-          <div className="absolute h-[700px] inset-0 -z-10 bg-gradient-to-b from-violet-100/20 via-transparent to-transparent blur-xl"></div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Publications
-          </h1>
-          <p className="mt-6 text-lg sm:text-xl text-[#ffd700] max-w-2xl mx-auto leading-relaxed">
-            Explore the Afrindependent Institute’s original research, essays,
-            and frameworks advancing African intellectual and economic
-            sovereignty.
-          </p>
-        </div>
-      </section>
+  {/* Subtle background pattern */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+    <svg
+      className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 opacity-10 text-gray-300"
+      width="404"
+      height="404"
+      fill="none"
+      viewBox="0 0 404 404"
+    >
+      <defs>
+        <pattern
+          id="pattern"
+          x="0"
+          y="0"
+          width="20"
+          height="20"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect x="0" y="0" width="4" height="4" fill="currentColor" />
+        </pattern>
+      </defs>
+      <rect width="404" height="404" fill="url(#pattern)" />
+    </svg>
+  </div>
+
+  {/* Main content */}
+  <div className="relative max-w-3xl  mx-auto text-center z-20">
+    <div className="absolute h-[700px] inset-0 -z-10 bg-gradient-to-b from-violet-100/20 via-transparent to-transparent blur-xl"></div>
+
+    <h1 className="text-4xl pt-10 xl:pt-0 sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+      Publications
+    </h1>
+    <p className="mt-6 text-lg sm:text-xl text-[#ffd700] max-w-2xl mx-auto leading-relaxed">
+      Explore the Afrindependent Institute’s original research, essays, and
+      frameworks advancing African intellectual and economic sovereignty.
+    </p>
+
+    {/* Clean, minimal input layout */}
+    <div className="mt-8 max-w-md mx-auto">
+      <Page />
+    </div>
+  </div>
+</section>
 
       {/* INTRO SECTION */}
       <section className="bg-white px-5 py-6 lg:px-10">
@@ -151,3 +161,6 @@ const Publications = async ({
 };
 
 export default Publications;
+
+
+

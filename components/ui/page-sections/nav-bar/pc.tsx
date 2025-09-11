@@ -71,47 +71,8 @@ const PcNav = () => {
 
 
     >
-      {
-        pathname.includes("/publications") ?  <div className="flex items-center">
-        <Link href="/">
-          <Image
-            src={`/Afridependen_2.png`}
-            alt="Afrindependent.svg"
-            width={170}
-            height={52}
-            priority
-          />
-        </Link>
-
-        <ul className="flex items-center text-base font-semibold">
-          {links.map(({ name, link }, index) => {
-            const active = pathname === link;
-            return (
-              <li key={link} className="flex items-center">
-                <Link
-                  href={link}
-                  className={`px-4 ${
-                    shouldRenderWhite
-                      ? `text-deepForest ${
-                          active
-                            ? "border-b-2 border-b-white font-extrabold"
-                            : ""
-                        }`
-                      : `text-deepForest`
-                  } pb-1 block`}
-                >
-                  {name}
-                </Link>
-
-                {/* Add vertical divider except after the last link */}
-                {index !== links.length - 1 && (
-                  <div className="h-6  w-0.5 bg-[#ffd700]"></div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </div> : <>  <Link href="/">
+        <>  
+       <Link href="/">
           <Image
             src={`/Afridependen_2.png`}
             alt="Afrindependent.svg"
@@ -149,13 +110,12 @@ const PcNav = () => {
             );
           })}
         </ul></>
-      } 
 
      
      
 
       <div className="flex items-center gap-x-4">
-        {pathname.includes("/publications") ? <Page /> : ""}
+    
 
         <Link
           href="/donate"

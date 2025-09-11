@@ -115,6 +115,7 @@ export default function Filters({ categories }: PropType) {
   };
 
   const handleFilterClick = (id: string, customData?: Publication[]) => {
+    setCurrentPage(0)
     setActiveFilter(id);
 
     const params = new URLSearchParams(window.location.search);
@@ -179,7 +180,10 @@ export default function Filters({ categories }: PropType) {
 
   const handlePageClick = (event: { selected: number }) => {
     setCurrentPage(event.selected);
+
   };
+
+
 
   const truncateText = (text: string, limit: number) =>
     text.length > limit ? text.slice(0, limit) + "..." : text;

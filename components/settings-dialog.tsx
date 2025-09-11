@@ -48,6 +48,7 @@ export function SettingsDialog() {
 
   const [query, setQuery] = React.useState("");
   const [foundPub, setFoundPub] = React.useState<Publication[]>([]);
+  const [textField, setTextField] = React.useState("")
   const searchPublication = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
@@ -77,18 +78,31 @@ export function SettingsDialog() {
   React.useEffect(()=>{
    if(open === false) {
     setFoundPub([])
+    setTextField("")
+
    }
   }, [open])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild className="sm:block">
-        <Button variant="deepForest" size="lg"><Search className="h-8 w-8  "/></Button>
+      <DialogTrigger asChild className="">
+        <Input
+          type="text"
+          onChange={()=>{
+            setOpen(true)
+          }}
+          placeholder="Enter a publication title, keyword or category"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
+          value={textField}
+          className="w-full px-4 py-3 rounded-xl bg-white/90 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-0 focus:ring-[#ffd700] focus:ring-offset-2"
+        />
       </DialogTrigger>
-      <DialogTrigger asChild className="sm:hidden">
-        <Button variant="deepForest" size="sm"><Search className="h-8 w-8  "/></Button>
-      </DialogTrigger>
+  
       <DialogContent className="overflow-hidden p-0 md:max-h-[500px] md:max-w-[700px] lg:max-w-[800px]">
+
+        
      
         <SidebarProvider className="items-start">
           <main className="flex h-[780px] flex-1 flex-col overflow-hidden">

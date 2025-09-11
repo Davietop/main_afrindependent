@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FaBookOpen } from "react-icons/fa";
+import Page from "../dashboard/page";
 
 export default function PublicationsHero() {
   return (
@@ -37,7 +38,13 @@ export default function PublicationsHero() {
       Explore the Afrindependent Institute’s original research, essays, and
       frameworks advancing African intellectual and economic sovereignty.
     </motion.p>
+
+
   </div>
+
+
+  
+ 
 </section>
 
 
