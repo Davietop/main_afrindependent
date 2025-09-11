@@ -12,16 +12,37 @@ export function isoStringToDate(isoString: string): string {
     day: "numeric",
   });
 }
+
 // lib/utils.ts
-export function sharePage(url: string, title?: string) {
+export function sharePage(
+  eventOrUrl: React.MouseEvent<HTMLButtonElement> | string,
+  maybeTitle?: string
+) {
+  // If called from a click event → use current page URL
+  if (typeof eventOrUrl !== "string") {
+    eventOrUrl.preventDefault();
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({
+        title: document.title,
+        url,
+      });
+    } else {
+      navigator.clipboard.writeText(url);
+      alert("Link copied to clipboard!");
+    }
+    return;
+  }
+
+  // If called manually with (url, title)
+  const url = eventOrUrl;
   if (navigator.share) {
     navigator.share({
-      title: title || document.title,
+      title: maybeTitle || document.title,
       url,
-    })
+    });
   } else {
-    // fallback → copy to clipboard
-    navigator.clipboard.writeText(url)
-    alert("Link copied to clipboard!")
+    navigator.clipboard.writeText(url);
+    alert("Link copied to clipboard!");
   }
 }
