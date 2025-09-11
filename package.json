@@ -18,7 +18,7 @@
     "@mui/icons-material": "^7.0.2",
     "@mui/material": "^7.0.2",
     "@next/bundle-analyzer": "^14.2.3",
-    "@next/third-parties": "^14.2.3",
+    "@next/third-parties": "^15.5.3",
     "@portabletext/react": "^3.0.15",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-avatar": "^1.1.0",
