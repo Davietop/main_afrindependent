@@ -131,54 +131,54 @@ export function SettingsDialog() {
       <h1 className="text-base font-medium">Find a publication</h1>
 
       {/* ✅ Input stays fixed width now */}
-      <div className="w-[360px] sm:w-full">
-        <Input
-          type="text"
-          onChange={searchPublication}
-          placeholder="Enter a publication title, keyword or category"
-          autoCapitalize="none"
-          autoCorrect="off"
-          spellCheck={false}
-          className="w-[360px] sm:w-full"
-        />
-      </div>
+     <div className="w-full max-w-md sm:max-w-full">
+  <Input
+    type="text"
+    onChange={searchPublication}
+    placeholder="Enter a publication title, keyword or category"
+    autoCapitalize="none"
+    autoCorrect="off"
+    spellCheck={false}
+    className="w-full"
+  />
+</div>
+
     </div>
 
     {/* Results container */}
-    <div className="h-[600px] sm:h-[300px] flex flex-col gap-y-6 w-full overflow-auto">
-      {foundPub?.map(({ slug, title, image, category }, index) => (
-        <div
-          key={slug}
-          className="text-black h-[300px] sm:h-[200px] flex flex-col  justify-center sm:flex-row sm:w-11/12 sm:gap-x-10  aspect-video rounded-xl"
-        >
-          {/* Left image preview */}
-          <div
-            className="h-[300px] w-8/12 sm:h-[200px] sm:w-6/12 bg-cover bg-center rounded-xl"
-            style={{
-              backgroundImage: `url('${image}')`,
-            }}
-          ></div>
+  <div className="h-[600px] sm:h-[300px] flex flex-col gap-y-6 w-full overflow-y-auto">
+  {foundPub?.map(({ slug, title, image, category }) => (
+    <div
+      key={slug}
+      className="text-black flex flex-col sm:flex-row justify-center w-full sm:w-11/12 gap-y-4 sm:gap-x-10 rounded-xl"
+    >
+      {/* Left image preview */}
+      <div
+        className="w-full sm:w-6/12 h-48 sm:h-52 bg-cover bg-center rounded-xl"
+        style={{
+          backgroundImage: `url('${image}')`,
+        }}
+      ></div>
 
-          {/* Right text section */}
-          <div className="flex flex-col w-full md:w-8/12 gap-y-2 md:gap-y-6">
-            <div className="flex items-center mt-2 md:mt-0 gap-x-2"></div>
+      {/* Right text section */}
+      <div className="flex flex-col w-full sm:w-6/12 gap-y-2 sm:gap-y-6">
+        <div className="flex items-center gap-x-2"></div>
 
-            <div className="flex w-9/12 sm:w-full flex-col gap-y-4">
-              <h1 className="text-base font-bold w-10/12 sm:w-full">
-                {title}
-              </h1>
+        <div className="flex flex-col gap-y-4">
+          <h1 className="text-base font-bold">{title}</h1>
 
           <a
-                          className="flex items-center justify-center gap-3 border-2 w-fit bg-deepForest  border-[#00210d] dark:border-yellow-400 text-sm text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold  rounded-xl py-1.5 px-4 shadow-md transition duration-300"
-                          href={`${paths.publications}/${slug}?type=${category}`}
-                        >
-                          Read the Paper
-                        </a>
-            </div>
-          </div>
+            className="flex items-center justify-center gap-3 border-2 w-fit bg-deepForest border-[#00210d] dark:border-yellow-400 text-sm text-[#ffd700] dark:text-yellow-300 dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold rounded-xl py-1.5 px-4 shadow-md transition duration-300"
+            href={`${paths.publications}/${slug}?type=${category}`}
+          >
+            Read the Paper
+          </a>
         </div>
-      ))}
+      </div>
     </div>
+  ))}
+</div>
+
   </div>
 </div>
 
