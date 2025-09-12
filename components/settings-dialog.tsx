@@ -106,10 +106,10 @@ export function SettingsDialog() {
      
         <SidebarProvider className="items-start">
           <main className="flex h-[780px] flex-1 flex-col overflow-hidden">
-            <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+            <header className="hidden sm:flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
               <div className="flex items-center gap-2 px-4 mt-8">
                 <Breadcrumb>
-                  <BreadcrumbList>
+                  <BreadcrumbList className="">
                     <BreadcrumbItem className="hidden md:block">
                       <BreadcrumbLink className="font-bold text-base" href="#">
                         Publication
@@ -126,12 +126,12 @@ export function SettingsDialog() {
               </div>
             </header>
           <div className="flex flex-1 flex-col gap-4 overflow-y-auto  py-4">
-  <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-3 sm:px-4 pt-0">
+  <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-3 sm:px-4 sm:pt-0 pt-5">
     <div className="flex flex-col gap-y-4">
       <h1 className="text-base font-medium">Find a publication</h1>
 
       {/* ✅ Input stays fixed width now */}
-     <div className="w-full max-w-md sm:max-w-full">
+     <div className="w-full max-w-md mt-1 sm:mt-0 sm:max-w-full">
   <Input
     type="text"
     onChange={searchPublication}
