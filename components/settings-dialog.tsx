@@ -32,6 +32,7 @@ import {
 import { usePublications } from "@/app/publications/publication-section";
 import { Input } from "./ui/input";
 import { paths } from "./ui/page-sections/nav-bar/pc";
+import Link from "next/link";
 
 interface Publication {
   slug: string;
@@ -140,12 +141,12 @@ export function SettingsDialog() {
 
                 {/* Results container */}
                 <div className=" sm:h-[300px] flex flex-col gap-y-6 w-full overflow-y-auto">
-                  {foundPub?.map(({ slug, title, image, category }) => (
+                  {/* {foundPub?.map(({ slug, title, image, category }) => (
                     <div
                       key={slug}
                       className="text-black flex flex-col sm:flex-row justify-center w-full sm:w-11/12 gap-y-4 sm:gap-x-10 rounded-xl"
                     >
-                      {/* Left image preview */}
+                   
                       <div
                         className="w-full sm:w-6/12 h-48 sm:h-52 bg-cover bg-center rounded-xl"
                         style={{
@@ -153,7 +154,7 @@ export function SettingsDialog() {
                         }}
                       ></div>
 
-                      {/* Right text section */}
+                     
                       <div className="flex flex-col w-full sm:w-6/12 gap-y-2 sm:gap-y-6">
                         <div className="flex items-center gap-x-2"></div>
 
@@ -169,14 +170,46 @@ export function SettingsDialog() {
                         </div>
                       </div>
                     </div>
-                  ))}
+                  ))} */}
+
+                   {foundPub.map(
+                ({ slug, title, image, publishedAt, category}) => (
+                  <Link
+                    key={slug}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = `${paths.publications}/${slug}?type=${category}`; // ⬅️ forces full reload
+                    }}
+                   href={`${paths.publications}/${slug}?type=${category}`}
+                  >
+                    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col sm:flex-row h-full">
+                      <div
+                        className="h-52 w-full sm:w-5/12 bg-cover bg-center"
+                        style={{ backgroundImage: `url('${image}')` }}
+                      />
+                      <div className="p-5 sm:w-7/12 flex flex-col gap-y-4 flex-grow">
+                        <h3 className="text-base font-semibold text-deepForest">
+                          {title}
+                        </h3>
+                       
+                        <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
+                       
+                          <p className="text-sm">
+                            {new Date(publishedAt).toLocaleDateString("en-GB")}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                )
+              )}
                 </div>
 
-                <Button
+                <Button variant="deepForest2"
                   onClick={() => {
                     setOpen(false);
                   }}
-                  className="py-6   sm:hidden mb-4"
+                  className="py-4  sm:hidden mb-4"
                 >
                   Close
                 </Button>
