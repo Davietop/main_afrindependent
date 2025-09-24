@@ -15,6 +15,7 @@ import FeaturedConcept from "./home/featuredConcept";
 import Support from "./home/support";
 import SupportSection from "./home/support";
 import { BookOpen, MailCheck, HeartHandshake } from "lucide-react";
+// import HomeHero from "./hero_home";
 
 
 
@@ -108,14 +109,16 @@ export default function Home() {
 
   
   return (
-    <main className="overflow-x-hidden">
-      <div className="h-fit  overflow-hidden flex justify-center flex-col bg-center  relative">
+    <main className="overflow-x-hidden bg-white">
+      <div className="h-fit   overflow-hidden flex justify-center flex-col bg-center  relative">
         <div className="relative mb-16 lg:mb-0 bg-white h-full">
           <Navbar />
         </div>
 
        
       </div>
+
+      {/* <HomeHero/> */}
 
        <div className=" inset-0 bg-pattern_bg  bg-cover bg-no-repeat   min-h-fit  lg:pl-10 lg:pr-16  lg:my-16 xl:my-0 py-16 xl:px-18 2xl:px-24  px-4 h-full flex items-center flex-col lg:flex-row justify-between overflow-hidden">
           <div
@@ -126,14 +129,14 @@ export default function Home() {
             </h1>
 
             <p className=" text-black text-center  lg:text-left text-xl ">
-              {" "}
+        
               Grounded in Africonomics. Committed to Truth,{" "}
               <br className="hidden lg:block" /> Justice, and Liberty.
             </p>
          
 
             <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full max-w-md mx-auto cursor-pointer relative z-10 lg:mx-0">
-              {/* Explore */}
+             
               <Link
                 href="/concepts"
                 className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
@@ -142,7 +145,7 @@ export default function Home() {
                 Explore
               </Link>
 
-              {/* Subscribe */}
+            
               <a
                 href="#subscribe"
                 className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
@@ -151,7 +154,6 @@ export default function Home() {
                 Subscribe
               </a>
 
-              {/* Donate */}
               <Link
                 href="/donate"
                 className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
