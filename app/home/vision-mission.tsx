@@ -16,7 +16,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 const VissionMission = () => {
   return (
-    <section className={`${ibmPlexSans.className} bg-white relative    text-white`}>
+    <section className={`${ibmPlexSans.className} bottom-10 md:bottom-0 bg-white relative    text-white`}>
   
   <div  className="bg-white  pt-10 px-5 lg:px-10">
           <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">

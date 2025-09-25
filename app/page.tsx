@@ -15,7 +15,7 @@ import FeaturedConcept from "./home/featuredConcept";
 import Support from "./home/support";
 import SupportSection from "./home/support";
 import { BookOpen, MailCheck, HeartHandshake } from "lucide-react";
-// import HomeHero from "./hero_home";
+import HomeHero from "./hero_home";
 
 
 
@@ -111,63 +111,49 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden bg-white">
       <div className="h-fit   overflow-hidden flex justify-center flex-col bg-center  relative">
-        <div className="relative mb-16 lg:mb-0 bg-white h-full">
+        <div className="relative  bg-white h-full">
           <Navbar />
         </div>
 
        
       </div>
 
-      {/* <HomeHero/> */}
+       {/* hero section on the home route */}
+      <HomeHero />
+      {/* the section that completes the hero section on the home route */}
+      <div className="w-full relative bottom-10 bg-[#181818]  h-fit block  md:hidden  flex flex-col text-base tracking-[1px]  py-6 px-4 space-y-6  ">
+        <p className="text-base md:text-lg text-[#d0d5cd]">
+          Grounded in Africonomics. Committed to Truth, Justice, and Liberty.
+        </p>
 
-       <div className=" inset-0 bg-pattern_bg  bg-cover bg-no-repeat   min-h-fit  lg:pl-10 lg:pr-16  lg:my-16 xl:my-0 py-16 xl:px-18 2xl:px-24  px-4 h-full flex items-center flex-col lg:flex-row justify-between overflow-hidden">
-          <div
-            className={`${ibmPlexSans.className} w-full md:w-10/12 lg:w-7/12 xl:w-7/12 h-fit  flex flex-col   justify-center gap-y-8 2xl:gap-y-10`}
+        <div className="grid grid-cols-3 gap-4 ">
+          <Link
+            href="/concepts"
+            className="flex items-center justify-center gap-2 border-2 bg-[#d9e6da]  border-[#d9e6da] text-[#0a3622] text-sm md:text-base hover:text-[#ffd700] hover:bg-deepForest hover:border-deepForest font-semibold py-2 px-4 rounded-xl shadow-md transition duration-300"
           >
-            <h1 className="text-black text-center  lg:text-left text-5xl leading-[50px]  font-bold lg:text-5xl  lg:leading-[60px] 2xl:leading-[70px] ">
-              Restoring African Intellectual and Economic Sovereignty
-            </h1>
+            <BookOpen className="w-5 h-5 hidden sm:block" />
+            Explore
+          </Link>
 
-            <p className=" text-black text-center  lg:text-left text-xl ">
-        
-              Grounded in Africonomics. Committed to Truth,{" "}
-              <br className="hidden lg:block" /> Justice, and Liberty.
-            </p>
-         
+          <a
+            href="#subscribe"
+            className="flex items-center justify-center gap-2 border-2 bg-[#d9e6da]  border-[#d9e6da] text-[#0a3622] text-sm md:text-base hover:text-[#ffd700] hover:bg-deepForest hover:border-deepForest font-semibold py-2 px-4 rounded-xl shadow-md transition duration-300"
+          >
+            <MailCheck className="w-5 sm:block hidden h-5" />
+            Subscribe
+          </a>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full max-w-md mx-auto cursor-pointer relative z-10 lg:mx-0">
-             
-              <Link
-                href="/concepts"
-                className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
-              >
-                <BookOpen className="w-5 h-5" />
-                Explore
-              </Link>
-
-            
-              <a
-                href="#subscribe"
-                className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
-              >
-                <MailCheck className="w-5 h-5" />
-                Subscribe
-              </a>
-
-              <Link
-                href="/donate"
-                className="flex items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
-              >
-                <HeartHandshake className="w-5 h-5" />
-                Donate
-              </Link>
-            </div>
-          </div>
-
-          <div className="hidden  w-4/12 h-[450px] rounded-3xl relative bg-bg_home bg-center bg-cover  lg:flex">
-        
-          </div>
+          <Link
+            href="/donate"
+            className="flex items-center justify-center gap-2 border-2 bg-[#d9e6da]  border-[#d9e6da] text-[#0a3622] text-sm md:text-base hover:text-[#ffd700] hover:bg-deepForest hover:border-deepForest font-semibold py-2 px-4 rounded-xl shadow-md transition duration-300"
+          >
+            <HeartHandshake className="hidden w-5 h-5 sm:block" />
+            Donate
+          </Link>
         </div>
+      </div>
+    
+
 
       <VissionMission />
       <FeaturedConcept />
