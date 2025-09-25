@@ -123,7 +123,7 @@ export default function Home() {
       {/* the section that completes the hero section on the home route */}
       <div className="w-full relative bottom-10 bg-[#181818]  h-fit block  md:hidden  flex flex-col text-base tracking-[1px]  py-6 px-4 space-y-6  ">
         <p className="text-base md:text-lg text-[#d0d5cd]">
-          Grounded in Africonomics. Committed to Truth, Justice, and Liberty.
+          Grounded in Africonomics.<br/> Committed to Truth, Justice, and Liberty.
         </p>
 
         <div className="grid grid-cols-3 gap-4 ">

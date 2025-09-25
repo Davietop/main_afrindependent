@@ -27,7 +27,7 @@ const HomeHero = () => {
         {/* glass Content */}
         <div className="w-full sm:w-[500px] md:w-[600px] h-fit hidden md:block box2 flex flex-col text-base tracking-[1px] rounded-3xl p-6 space-y-6 bg-white/10 backdrop-blur-lg border border-white/20">
           <p className="text-base md:text-lg text-[#D0DDCD]">
-            Grounded in Africonomics. Committed to Truth, Justice, and Liberty.
+            Grounded in Africonomics. <br/>Committed to Truth, Justice, and Liberty.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
