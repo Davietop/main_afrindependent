@@ -48,6 +48,7 @@ const config = {
         logo_bg: 'url("/Afridependent_2.svg")',
         founder: 'url("/founder.jpg")',
         world: 'url("/world.jpg")',
+        missionHome: 'url("/homeMission_5.jpg")',
         gradient:
           "linear-gradient(rgba(138, 65, 50, .9) 10%, rgba(36, 17, 13, 0.6) 90%)",
         "tan-lavender-gradient":
