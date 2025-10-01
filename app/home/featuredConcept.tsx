@@ -30,12 +30,12 @@ const concepts = [
 const FeaturedConcept = () => {
   return (
     <div className={`bg-white ${ibmPlexSans.className}`}>
-      <div className="bg-white pt-10  px-5 lg:px-10">
+      <div className="bg-white sm:pt-6  px-5 lg:px-10">
         <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
           Featured Concepts
         </h3>
       </div>
-      <section className="px-6 sm:px-10 lg:px-20 bg-white dark:bg-[#0f1c16] py-8">
+      <section className="px-6 sm:px-10 lg:px-20 bg-white dark:bg-[#0f1c16] pt-6">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {concepts.map((item, i) => (
             <div

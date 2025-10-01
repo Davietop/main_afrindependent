@@ -19,7 +19,7 @@ const VissionMission = () => {
     <section
       className={`${ibmPlexSans.className} bottom-10 md:bottom-0 bg-white relative    text-white`}
     >
-      <div className="bg-white  pt-10 px-5 lg:px-10">
+      <div className="bg-white  pt-6  px-5 lg:px-10">
         <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
           Our Mission
         </h3>

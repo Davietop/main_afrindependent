@@ -17,7 +17,7 @@ const PcModelCard = () =>{
     return <div className="">
 
      
-      <div  className="bg-white pt-10 pb-6 px-5 lg:px-10">
+      <div  className="bg-white pt-6  px-5 lg:px-10">
           <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
        
      The Nilar
@@ -27,19 +27,19 @@ const PcModelCard = () =>{
   
 
   
-<section className="  px-8">
+<section className=" pt-2  px-8">
       <div className="max-w-6xl mx-auto text-center">
         {/* Hero */}
-        <h1 className="text-2xl font-extrabold text-[#002813]  leading-[50px] mb-2">
+        <h1 className="text-2xl font-extrabold text-[#002813]   mb-2">
           Africa’s Gold-Based Path to Monetary Justice
         </h1>
-        <p className="text-gray-700 text-base md:text-xl mb-10 max-w-3xl mx-auto">
+        <p className="text-gray-700 text-base md:text-xl mb-6 max-w-3xl mx-auto">
         The Nilar is a transformative gold-based monetary system grounded in Africonomics and designed to restore African sovereignty and dignity.
         </p>
       </div>
 
       {/* Pillars */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto ">
         {[
           {
             icon: <FaCoins className="text-[#ffd700] w-8 h-8" />,
@@ -68,7 +68,7 @@ const PcModelCard = () =>{
       </div>
 
       {/* CTA */}
-      <div className="text-center mt-16">
+      <div className="text-center mt-8">
         <Link
           href="/nilar"
           className="flex w-fit mx-auto items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
