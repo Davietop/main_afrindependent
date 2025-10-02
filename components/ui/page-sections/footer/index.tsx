@@ -54,19 +54,19 @@ const Footer = () => {
       },
       {
         icon: <FaTiktok />,
-        link: companyDetails?.tiktok || "",
+        link: companyDetails?.tiktok || "https://www.tiktok.com/@afrindependent",
       },
       {
         icon: <FaYoutube />,
-        link: companyDetails?.youtube || "/#",
+        link: companyDetails?.youtube || "/video",
       },
       {
         icon: <FaWhatsapp />,
-        link: companyDetails?.youtube || "/#",
+        link: "https://whatsapp.com/channel/0029VaPKZ8U5PO0sCbTvQb31",
       },
       {
         icon: <FaFacebook />,
-        link: companyDetails?.youtube || "/#",
+        link:  "https://www.facebook.com/profile.php?id=61566887330858",
       },
     ]
   }, [companyDetails]);
