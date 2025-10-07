@@ -306,14 +306,14 @@ export default function Filters({ categories }: PropType) {
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {currentItems.map(
-                ({ slug, title, image, publishedAt, author, intro }) => (
+                ({ slug, title, image, publishedAt, author, intro, category }) => (
                   <Link
                     key={slug}
                     onClick={(e) => {
                       e.preventDefault();
-                      window.location.href = `${paths.publications}/${slug}?type=${urlFilterMap[activeFilter] || activeFilter}`; // ⬅️ forces full reload
+                      window.location.href = `${paths.publications}/${slug}?type=${category}`; // ⬅️ forces full reload
                     }}
-                    href={`${paths.publications}/${slug}?type=${urlFilterMap[activeFilter] || activeFilter}`}
+                    href={`${paths.publications}/${slug}?type=${category}`}
                   >
                     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col h-full">
                       <div

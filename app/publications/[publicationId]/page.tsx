@@ -15,8 +15,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const publication = await getSinglePublication({
     slug: publicationId,
   });
+ 
 
-  const canonicalUrl = `https://www.afrindependent.org/publications/${publicationId}`;
+  const canonicalUrl = `https://www.afrindependent.org/publications/${publicationId}?type=${publication?.category}`;
 
   return {
     title: publication.title,
