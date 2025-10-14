@@ -28,7 +28,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: "Afrindependent Institute",
   description: "Restoring African Intellectual and Economic Sovereignty",
-  applicationName: "Afrindenpendent Institute",
+  applicationName: "Afrindependent Institute",
   manifest: "https://www.afrindependent.org/",
   openGraph: {
     title: "Afrindependent Institute—Restoring African Intellectual and Economic Sovereignty",

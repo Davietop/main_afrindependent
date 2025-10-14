@@ -27,7 +27,7 @@ const PcModelCard = () =>{
   
 
   
-<section className=" pt-2  px-8">
+<section className=" pt-2 ">
       <div className="max-w-6xl mx-auto text-center">
         {/* Hero */}
         <h1 className="text-2xl font-extrabold text-[#002813]   mb-2">
@@ -39,7 +39,7 @@ const PcModelCard = () =>{
       </div>
 
       {/* Pillars */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto ">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-11/12 mx-auto  ">
         {[
           {
             icon: <FaCoins className="text-[#ffd700] w-8 h-8" />,

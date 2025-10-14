@@ -32,7 +32,7 @@ export async function generateMetadata(
   return {
     title: "Afrindependent Publications",
     description,
-    applicationName: "Afrindenpendent Organisation",
+    applicationName: "Afrindependent Organisation",
     manifest: baseUrl,
     openGraph: {
       title: "Afrindependent Publications",

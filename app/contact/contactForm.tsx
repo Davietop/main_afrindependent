@@ -34,22 +34,63 @@ const ContactSection: FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+ function isGibberish(text:string) {
+  if (!text) return true;
+
+  // Normalize
+  const cleaned = text.toLowerCase().replace(/[^a-z]/g, "");
+
+  // Too short → gibberish
+  if (cleaned.length < 10) return true;
+
+  // Too few spaces (no proper words)
+  const wordCount = text.trim().split(/\s+/).length;
+  if (wordCount < 2) return true;
+
+  // Ratio check: vowels vs consonants
+  const vowels = (cleaned.match(/[aeiou]/g) || []).length;
+  const consonants = cleaned.length - vowels;
+  const ratio = vowels / (consonants || 1);
+  if (ratio < 0.2 || ratio > 0.8) return true; // too skewed → gibberish
+
+  // Long consecutive same-type sequences
+  if (/[bcdfghjklmnpqrstvwxyz]{6,}/i.test(cleaned)) return true;
+
+  // Check for repetition patterns
+  if (/(.)\1{3,}/.test(cleaned)) return true;
+
+  // Low number of recognizable English words
+  const commonWords = ["the","and","you","for","this","that","with","have","are","was","not","but","they","what","can"];
+  const words = text.toLowerCase().split(/\s+/);
+  const knownWords = words.filter(w => commonWords.includes(w));
+  if (knownWords.length === 0) return true;
+
+  return false;
+}
+ 
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    try {
-      const res = await fetch("/api/send-contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
 
-      if (res.ok) {
-        setShowModal(true);
-        setFormData({ firstName: "", lastName: "", email: "", message: "" });
+    try {
+      if (isGibberish(formData.message) ) {
+        throw new Error("Rejected Data Content, Message looks like gibberish.");
+      } else {
+        const res = await fetch("/api/send-contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (res.ok) {
+          setShowModal(true);
+          setFormData({ firstName: "", lastName: "", email: "", message: "" });
+        }
       }
     } catch (err) {
-      console.error("Submission error:", err);
+      alert( err)
+     
     } finally {
       setLoading(false);
     }
