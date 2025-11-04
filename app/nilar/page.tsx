@@ -1,6 +1,3 @@
-
-
-
 import Navbar from "@/components/ui/page-sections/nav-bar";
 import { Metadata } from "next";
 import Hero from "./hero";

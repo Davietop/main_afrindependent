@@ -145,10 +145,10 @@ const clusters = [
       },
       {
         id: "origin-of-money-credit",
-        title: "The Africonomics Theory of the Origin of Money and Credit",
-        intro: "Money emerges naturally—not by decree or state design.",
+        title: "The Africonomics Theory of Exchange, Credit, and Money",
+        intro: "Money emerges naturally not by decree or state design.",
         description:
-          "This theory explains how money and credit arise organically through voluntary human exchange, not through bureaucratic design, state legislation, or coercive authority. It refutes statist and chartalist myths, grounding the origin of money in natural-moral law and market cooperation.\n\nThe Africonomics Theory of the Origin of Money and Credit affirms that the institutions of money and credit are not state inventions. Money and credit are products of human action but not products of human design, much less products of intentional state design.",
+          "This theory explains how money and credit arise organically through voluntary human exchange, not through bureaucratic design, state legislation, or coercive authority. It refutes statist and chartalist myths, grounding the origin of money in natural-moral law and market cooperation.\n\nMoney is the foundational medium of voluntary cooperation, decentralized coordination, and peaceful human flourishing. Credit is a trust-based deferred exchange that predates formal money and the state. The legitimacy of money and credit derive from natural-moral law, not state decree.",
       },
       {
         id: "monetary-justice",

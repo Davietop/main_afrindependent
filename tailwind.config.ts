@@ -49,6 +49,7 @@ const config = {
         founder: 'url("/founder.jpg")',
         world: 'url("/world.jpg")',
         missionHome: 'url("/homeMission_5.jpg")',
+        ambassador: 'url("/africonomics-ambassador.jpg")',
         gradient:
           "linear-gradient(rgba(138, 65, 50, .9) 10%, rgba(36, 17, 13, 0.6) 90%)",
         "tan-lavender-gradient":
