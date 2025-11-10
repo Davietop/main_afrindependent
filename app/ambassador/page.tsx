@@ -2,6 +2,10 @@ import Navbar from "@/components/ui/page-sections/nav-bar";
 import { Metadata } from "next";
 import Footer from "@/components/ui/page-sections/footer";
 import Hero from "./hero";
+import Intro from "./intro";
+import Values from "./values";
+import WhatAmbassadorDo from "./whatAmbassadorDo";
+import EligibilitySection from "./eligibility";
 
 export const metadata: Metadata = {
   title: "Africonomics Campus Ambassador Program | Afrindependent Institute",
@@ -64,6 +68,10 @@ const AmbassadorPage = () => {
     <main className="bg-white">
       <Navbar />
     <Hero/>
+    <Intro/>
+    <Values/>
+    <WhatAmbassadorDo/>
+    <EligibilitySection/>
       <Footer />
     </main>
   );

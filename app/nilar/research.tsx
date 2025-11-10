@@ -70,17 +70,24 @@ function PublicationsResearch() {
     ).values()
   );
 
+  const slugNilar = publications?.find(pub =>{
+    return pub?.slug.includes('the-nilar-a-gold-based-framework-for-african-ec')
+  })
+  console.log(slugNilar)
+
   useEffect(() => {
     const fetchPub = async () => {
-      const slug = "the-nilar-the-path-to-african-economic-sovereig";
+      const slug = slugNilar?.slug;
       const results = await getSinglePublication({ slug });
       const pubArray = [results];
+      console.log(publicationData)
 
       setPublicationData(pubArray);
     };
 
     fetchPub();
   }, [publications?.length]);
+  
 
   const stripHtml = (html: string) => {
     if (!html) return "";

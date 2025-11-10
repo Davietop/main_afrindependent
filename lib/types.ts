@@ -1,5 +1,5 @@
 export interface SanityPropType {
-  slug: string;
+  slug: any;
 }
 
 export interface TeamDto {

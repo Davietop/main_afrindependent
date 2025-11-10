@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { IBM_Plex_Sans } from 'next/font/google';
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp, FaCopy, FaShareAlt } from "react-icons/fa";
+import { usePublications } from "../publications/publication-section";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -13,6 +14,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 const Hero = () => {
   const ref = useRef(null);
+    const { data: publications } = usePublications({});
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -22,6 +24,10 @@ const Hero = () => {
 
   const [open, setOpen] = useState(false);
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+    const slugNilar = publications?.find(pub =>{
+    return pub?.slug.includes('the-nilar-a-gold-based-framework-for-african-ec')
+  })
+  console.log(slugNilar)
 
   const shareLinks = [
     {
@@ -80,7 +86,8 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
              
-                <a  href="https://www.afrindependent.org/publications/the-nilar-the-path-to-african-economic-sovereig?type=policy-papers">
+             
+                <a  href={ `https://www.afrindependent.org/publications/${slugNilar?.slug}?type=policy-papers`}>
                  <button className="flex items-center justify-center gap-3 w-10/12 mx-auto md:w-full md:mx-0 border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-2 px-4 md:py-3  md:px-6 rounded-3xl shadow-md transition duration-300">
                 
                   Read the Policy Paper
