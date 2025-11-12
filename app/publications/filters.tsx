@@ -129,6 +129,8 @@ export default function Filters({ categories }: PropType) {
     const dataToUse = customData || updatedPubData;
     if (!dataToUse) return;
 
+    
+
     const result =
       id === "latest_pub"
         ? getRecentPublications(dataToUse, 120)
@@ -363,7 +365,7 @@ export default function Filters({ categories }: PropType) {
           </>
         ) : (
           <p className="text-gray-500 text-center">
-            No publications found for th|is filter.
+            No publications found for this filter.
           </p>
         )}
       </section>

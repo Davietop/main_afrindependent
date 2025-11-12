@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { MdEmail } from "react-icons/md";
@@ -10,6 +11,8 @@ import Footer from "@/components/ui/page-sections/footer";
 import { getCategories, getFacultyMember } from "@/service/sanity-queries";
 import founder from "/public/founder.jpg";
 import { IBM_Plex_Sans } from "next/font/google";
+import LatestPub from "./latest_pug";
+
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -37,6 +40,7 @@ const Author = async ({ params }: AuthorPageProps) => {
   const names = (name ?? "").trim().split(" ");
   const firstname = names[0] ?? "";
   const lastname = names[1] ?? "";
+ 
 
   return (
     <main className={`${ibmPlexSans.className} bg-white`}>
@@ -45,7 +49,7 @@ const Author = async ({ params }: AuthorPageProps) => {
 
         <div className="mt-20 xl:mt-0" />
 
-        <header className="relative flex flex-col items-center justify-center px-6 py-20 mt-[60px] bg-white text-deepForest text-center space-y-10">
+        <header className="relative flex flex-col items-center justify-center px-6 py-10 mt-[60px] bg-white text-deepForest text-center space-y-10">
           {/* Name Block */}
           <div className="w-full max-w-6xl space-y-2">
             <h1 className="text-5xl lg:text-6xl leading-tight font-bold break-words">
@@ -71,13 +75,20 @@ const Author = async ({ params }: AuthorPageProps) => {
 
         {/* About Section */}
         <div className={`${ibmPlexSans.className}`}>
-          <h2 className="text-2xl px-5 lg:px-10 pt-10 sm:text-3xl font-bold text-[#00210d] dark:text-yellow-300">
-            <p className="border-l-4 border-yellow-400 pl-4">
-              About the Author
-            </p>
-          </h2>
+        
+            <div className="mt-6 md:px-5   lg:px-10 ">
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+          About the Author
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+                About the Author
+            </h3>
+          </div>
+        </div>
 
-          <div className="flex flex-col xl:flex-row items-center justify-center gap-x-10 mt-10 mb-20">
+          <div className="flex flex-col xl:flex-row items-center justify-center gap-x-10 my-10 ">
             <div className="relative w-11/12 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12 text-white overflow-hidden">
               <Image
                 src={founder}
@@ -103,14 +114,24 @@ const Author = async ({ params }: AuthorPageProps) => {
           </div>
         </div>
 
-        <div className="hidden lg:block h-[1px] my-[60px] bg-[#000000]" />
+      
 
         {/* Latest Works Section */}
         <div>
-          <h2 className="ml-4 lg:mt-0 text-center text-black font-bold text-3xl leading-[62px]">
-            Latest Work from {name}
-          </h2>
-          <List authorSlug={slug} isComponent categories={categories} />
+      
+            <div className="mb-6 md:px-5   lg:px-10 ">
+          {" "}
+          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+          Latest Work from {name}
+          </h3>
+          <div className="px-5 sm:hidden">
+            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+               Latest Work from {name}
+            </h3>
+          </div>
+        </div>
+          <LatestPub firstName={firstname} lastName={lastname}/>
+          {/* <List authorSlug={slug} isComponent categories={categories} /> */}
         </div>
       </div>
       <Footer />
@@ -150,3 +171,5 @@ const Social = ({
     </div>
   );
 };
+
+
