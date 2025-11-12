@@ -31,7 +31,7 @@ const LatestPub: React.FC<AuthorName> = ({ firstName, lastName }) => {
   const latest = getRecentPublications(publications, 120);
   const offset = currentPage * itemsPerPage;
   const currentItems = latest?.slice(offset, offset + itemsPerPage);
-  const pageCount = Math.ceil(latest?.length ?? 0 / itemsPerPage);
+  const pageCount = Math.ceil(latest?.length / itemsPerPage);
 
   const handlePageClick = (event: { selected: number }) => {
     setCurrentPage(event.selected);
