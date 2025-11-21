@@ -1,4 +1,4 @@
-import { SettingsDialog } from "@/components/settings-dialog"
+import { PublicationSearch, } from "@/components/publication-dialog"
 import { IBM_Plex_Sans } from "next/font/google";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -9,7 +9,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 export default function Page() {
   return (
     <div className={`${ibmPlexSans.className} flex  items-center justify-center`}>
-      <SettingsDialog />
+      <PublicationSearch />
     </div>
   )
 }

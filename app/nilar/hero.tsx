@@ -24,10 +24,14 @@ const Hero = () => {
 
   const [open, setOpen] = useState(false);
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-    const slugNilar = publications?.find(pub =>{
-    return pub?.slug.includes('the-nilar-a-gold-based-framework-for-african-ec')
-  })
-  console.log(slugNilar)
+ 
+
+
+   const slugNilar = publications?.find(pub =>
+      pub?.title?.trim().toLowerCase() ===
+      'the nilar: a gold-based framework for african economic sovereignty and prosperity'.toLowerCase()
+    );
+
 
   const shareLinks = [
     {

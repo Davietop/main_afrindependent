@@ -16,7 +16,7 @@ const WhatAmbassadorDo = ()=>{
       <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide ">
               What Ambassadors Do
           </h3>
-         <div className="px-5 sm:hidden">
+         <div className=" sm:hidden">
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
                 What Ambassadors Do
             </h3>
@@ -33,7 +33,7 @@ const WhatAmbassadorDo = ()=>{
           <FaBookOpen className="w-8 h-8 text-deepForest" />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          Host Discussions
+          Host Africonomics Discussions
         </h3>
         <p className="text-gray-600 text-base leading-relaxed">
          Lead reading sessions using the Introduction & Discussion Guide.
@@ -46,7 +46,7 @@ const WhatAmbassadorDo = ()=>{
           <FaUsers className="w-8 h-8 text-deepForest" />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          Organize Forums
+          Organize Campus Forums
         </h3>
         <p className="text-gray-600 text-base leading-relaxed">
         Partner with economic and philosophical student associations.

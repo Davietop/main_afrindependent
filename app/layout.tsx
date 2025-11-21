@@ -10,6 +10,7 @@ import Motion from "./motion";
 import WebVitals from "@/components/web-vitals";
 import Image from "next/image";
 import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "@/components/ui/toaster"
 
 export const revalidate = 0;
 
@@ -144,6 +145,7 @@ export default function RootLayout({
         </noscript>
 
         <Analytics />
+         <Toaster />
       </body>
     </html>
   );

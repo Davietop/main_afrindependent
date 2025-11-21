@@ -73,20 +73,30 @@ function PublicationsResearch() {
   const slugNilar = publications?.find(pub =>{
     return pub?.slug.includes('the-nilar-a-gold-based-framework-for-african-ec')
   })
-  console.log(slugNilar)
+  
 
-  useEffect(() => {
-    const fetchPub = async () => {
-      const slug = slugNilar?.slug;
-      const results = await getSinglePublication({ slug });
-      const pubArray = [results];
-      console.log(publicationData)
+useEffect(() => {
+  if (!publications) return;
 
-      setPublicationData(pubArray);
-    };
+  const fetchPub = async () => {
+    const test = publications.find(pub =>
+      pub?.title?.trim().toLowerCase() ===
+      'the nilar: a gold-based framework for african economic sovereignty and prosperity'.toLowerCase()
+    );
 
-    fetchPub();
-  }, [publications?.length]);
+    const slug = test?.slug;
+    if (!slug) {
+      console.log("Slug not found", test);
+      return;
+    }
+
+    const results = await getSinglePublication({ slug });
+    setPublicationData([results]);
+  };
+
+  fetchPub();
+}, [publications]);
+
   
 
   const stripHtml = (html: string) => {
@@ -138,7 +148,7 @@ function PublicationsResearch() {
       >
         <div className="max-w-full lg:w-11/12  mx-auto">
           {/* Featured Publication */}
-          {publicationData?.map(
+          {publicationData && publicationData?.map(
             (
               {
                 title,

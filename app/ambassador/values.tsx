@@ -14,7 +14,7 @@ const Values = () => {
          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide ">
              Program Goals & Values
           </h3>
-         <div className="px-5 sm:hidden">
+         <div className=" sm:hidden">
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
                Program Goals & Values
             </h3>
@@ -48,7 +48,7 @@ const Values = () => {
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               Intellectual Liberation
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-base leading-relaxed">
               Challenge Western-dominated models and foster a rebirth of African
               intellectual traditions.
             </p>
@@ -75,7 +75,7 @@ const Values = () => {
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               Leadership Development
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-base leading-relaxed">
               Cultivate principled young leaders rooted in truth, justice, and
               moral conviction.
             </p>
@@ -102,9 +102,8 @@ const Values = () => {
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               Community Building
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Create forums for dialogue, collaboration, and shared intellectual
-              growth across Africa.
+            <p className="text-gray-600 text-base leading-relaxed">
+              Create forums for dialogue, collaboration, and intellectual growth.
             </p>
           </div>
 
@@ -129,7 +128,7 @@ const Values = () => {
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               Civic Responsibility
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-base leading-relaxed">
               Advance a culture of liberty, ethics, and nonaggression in
               academic and civic life.
             </p>

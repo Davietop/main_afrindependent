@@ -8,6 +8,7 @@ import {
   FaUsers,
   FaCertificate,
 } from "react-icons/fa";
+import { AmbassadorForm } from "@/components/form-dialog";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -24,14 +25,14 @@ const EligibilitySection = () => {
         <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide ">
           Eligibility & Ideal Candidate
         </h3>
-        <div className="px-5 sm:hidden">
+        <div className=" sm:hidden">
           <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
             Eligibility & Ideal Candidate
           </h3>
         </div>
 
         {/* Highlight Box */}
-        <div className=" rounded-r-xl px-8 pt-4 pb-10 space-y-4">
+        <div className=" rounded-r-xl pl-4 md:pl-8 pt-4 pb-10 space-y-4">
           <ul className="space-y-3 list-disc list-inside text-lg text-gray-800 leading-relaxed">
             <li>
               Current undergraduate or graduate student at an African university
@@ -56,7 +57,7 @@ const EligibilitySection = () => {
           <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide ">
             Benefits of the Program
           </h3>
-          <div className="px-5 sm:hidden">
+          <div className=" sm:hidden">
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
               Benefits of the Program
             </h3>
@@ -87,8 +88,7 @@ const EligibilitySection = () => {
                 Mentorship
               </h3>
               <p className="text-[#333333] leading-relaxed text-base">
-                Receive mentorship and intellectual development opportunities
-                from leading thinkers.
+                Receive mentorship and intellectual development opportunities.
               </p>
             </div>
 
@@ -101,8 +101,7 @@ const EligibilitySection = () => {
                 Exclusive Resources
               </h3>
               <p className="text-[#333333] leading-relaxed text-base">
-                Access exclusive learning materials and research discussions
-                curated by the Institute.
+                Access exclusive learning materials and research discussions.
               </p>
             </div>
 
@@ -129,8 +128,7 @@ const EligibilitySection = () => {
                 Certificate of Recognition
               </h3>
               <p className="text-[#333333] leading-relaxed text-base">
-                Receive a formal certificate of recognition upon successful
-                completion of the program.
+                Certificate of recognition upon successful completion.
               </p>
             </div>
           </div>
@@ -139,27 +137,19 @@ const EligibilitySection = () => {
 
 
       <section className="bg-[#002813] text-[#F4F1E6] mt-10 py-10 px-6 md:px-16 rounded-3xl">
-      <div className=" mx-auto">
+      <div className=" mx-auto flex flex-col gap-y-6">
         {/* Heading */}
-        <h2 className="text-xl lg:text-2xl font-semibold mb-4 text-[#FFD700]">
+        <h2 className="text-xl lg:text-2xl font-semibold  text-[#FFD700]">
           Ready to join the movement?
         </h2>
 
         {/* Subtext */}
-        <p className="text-lg md:text-base text-[#F4F1E6]/90 leading-relaxed max-w-3xl mb-10">
-          Apply below to become an <span className="font-semibold text-[#FFD700]">Africonomics Campus Ambassador</span>     and help shape Africa’s intellectual and economic renaissance.
+        <p className="text-lg md:text-base text-[#F4F1E6]/90 leading-relaxed max-w-3xl ">
+          Apply below to become an <span className="font-semibold ">Africonomics Campus Ambassador</span>     and help shape Africa’s intellectual and economic renaissance.
         </p>
 
         {/* CTA Button */}
-        <a
-          href="https://forms.gle/example" // Replace with Typeform or Google Form link
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button className="bg-[#FFD700] hover:bg-[#D2B48C] text-[#002813] font-semibold text-base px-6 py-4 rounded-xl flex items-center gap-3 transition-all">
-            Apply Now <FaArrowRight className="w-5 h-5" />
-          </Button>
-        </a>
+       <AmbassadorForm/>
       </div>
     </section>
     </section>

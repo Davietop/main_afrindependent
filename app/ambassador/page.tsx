@@ -72,7 +72,7 @@ const AmbassadorPage = () => {
     <Values/>
     <WhatAmbassadorDo/>
     <EligibilitySection/>
-      <Footer />
+      <Footer mail='campus@afrindependent.org' />
     </main>
   );
 };

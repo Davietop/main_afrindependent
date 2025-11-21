@@ -15,18 +15,11 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogTitle,
+
   DialogTrigger,
 } from "@/components/ui/dialog";
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
+ 
   SidebarProvider,
 } from "@/components/ui/sidebar";
 import { usePublications } from "@/app/publications/publication-section";
@@ -41,7 +34,7 @@ interface Publication {
   publishedAt: string;
   category: string;
 }
-export function SettingsDialog() {
+export function PublicationSearch() {
   const [open, setOpen] = React.useState(false);
   const { data: publications } = usePublications({});
 
@@ -141,36 +134,7 @@ export function SettingsDialog() {
 
                 {/* Results container */}
                 <div className=" sm:h-[300px] flex flex-col gap-y-6 w-full overflow-y-auto">
-                  {/* {foundPub?.map(({ slug, title, image, category }) => (
-                    <div
-                      key={slug}
-                      className="text-black flex flex-col sm:flex-row justify-center w-full sm:w-11/12 gap-y-4 sm:gap-x-10 rounded-xl"
-                    >
-                   
-                      <div
-                        className="w-full sm:w-6/12 h-48 sm:h-52 bg-cover bg-center rounded-xl"
-                        style={{
-                          backgroundImage: `url('${image}')`,
-                        }}
-                      ></div>
-
-                     
-                      <div className="flex flex-col w-full sm:w-6/12 gap-y-2 sm:gap-y-6">
-                        <div className="flex items-center gap-x-2"></div>
-
-                        <div className="flex flex-col gap-y-4">
-                          <h1 className="text-base font-bold">{title}</h1>
-
-                          <a
-                            className="flex items-center justify-center gap-3 w-full border-2 w-fit bg-deepForest border-[#00210d] dark:border-yellow-400 text-sm text-[#ffd700] dark:text-yellow-300 dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold rounded-xl py-2 px-4 shadow-md transition duration-300"
-                            href={`${paths.publications}/${slug}?type=${category}`}
-                          >
-                            Read the Paper
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  ))} */}
+                  
 
                    {foundPub.map(
                 ({ slug, title, image, publishedAt, category}) => (
