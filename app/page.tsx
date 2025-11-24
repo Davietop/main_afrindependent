@@ -161,9 +161,30 @@ export default function Home() {
       <Publications />
   
     <Subscribe  />
+     <SupportSection />
+     
    
- 
-      <SupportSection />
+   {/* AMBASSADORS SECTION */}
+   <div className="px-6 sm:px-10  lg:px-24">
+     <div className="bg-[#002813] mb-6 text-white p-8 rounded-3xl  flex flex-col md:flex-row  justify-between md:items-center gap-y-4">
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold">
+              Join the Africonomics Ambassador Program
+            </h2>
+            <p className="mt-2 text-base md:text-lg">
+              Become a voice of liberty, truth, and sound economics.
+            </p>
+          </div>
+
+          <Link href="/ambassador">
+            <button className="bg-[#ffd700] text-deepForest hover:bg-white hover:border-deepForest px-6 py-3 rounded-lg font-semibold">
+              Learn More
+            </button>
+          </Link>
+        </div>
+   </div>
+       
+    
       <Footer />
     </main>
   );

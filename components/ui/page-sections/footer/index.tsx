@@ -158,6 +158,14 @@ const Footer = ({ mail }: any) => {
                 Submit an Article
               </a>
             </li>
+             <li>
+              <a
+                href="/ambassador"
+                className="hover:underline"
+              >
+                Become an Ambassador
+              </a>
+            </li>
           </ul>
         </div>
 
