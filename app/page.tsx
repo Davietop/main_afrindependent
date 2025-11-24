@@ -17,8 +17,6 @@ import SupportSection from "./home/support";
 import { BookOpen, MailCheck, HeartHandshake } from "lucide-react";
 import HomeHero from "./hero_home";
 
-
-
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -31,7 +29,8 @@ export const metadata: Metadata = {
   applicationName: "Afrindependent Institute",
   manifest: "https://www.afrindependent.org/",
   openGraph: {
-    title: "Afrindependent Institute—Restoring African Intellectual and Economic Sovereignty",
+    title:
+      "Afrindependent Institute—Restoring African Intellectual and Economic Sovereignty",
     description:
       "Home of Africonomics. Advancing African monetary sovereignty, economic stability, and prosperity. ",
     type: "website",
@@ -48,7 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Afrindependent Institute—Restoring African Intellectual and Economic Sovereignty",
+    title:
+      "Afrindependent Institute—Restoring African Intellectual and Economic Sovereignty",
     description:
       "Home of Africonomics. Advancing African monetary sovereignty, economic stability, and prosperity. ",
     site: "https://www.afrindependent.org/",
@@ -62,68 +62,64 @@ export const metadata: Metadata = {
     ],
     creator: "@AfrindependentI",
   },
- keywords: [
-  "Afrindependent Institute",
-  "Africonomics",
-  "African economic sovereignty",
-  "African intellectual sovereignty",
-  "sound money Africa",
-  "postcolonial Africa",
-  "economics",
-  "African free enterprise",
-  "natural-moral law",
-  "structural justice",
-  "decolonizing economics",
-  "African philosophy",
-  "free trade Africa",
-  "African worldview",
-  "truth and justice",
-  "gold currency Africa",
-  "the Nilar",
-  "economic justice",
-  "liberty Africa",
-  "Manuel Tacanho",
-  "African think tank",
-  "Africa economic thought",
-  "alternative to Western economics",
-  "fiat money Africa",
-  "anti-statism Africa",
-  "African policy reform",
-  "African economic truth",
-  "African economic development",
-  "monetary justice",
-  "monetary policy Africa",
-  "economics redefined",
-  "civilization redefined",
-  "African economics",
-  "economic liberation",
-  "the economy Africa",
-  "human civilization",
-  "human development",
-  "intellectual leadership"
-],
-
+  keywords: [
+    "Afrindependent Institute",
+    "Africonomics",
+    "African economic sovereignty",
+    "African intellectual sovereignty",
+    "sound money Africa",
+    "postcolonial Africa",
+    "economics",
+    "African free enterprise",
+    "natural-moral law",
+    "structural justice",
+    "decolonizing economics",
+    "African philosophy",
+    "free trade Africa",
+    "African worldview",
+    "truth and justice",
+    "gold currency Africa",
+    "the Nilar",
+    "economic justice",
+    "liberty Africa",
+    "Manuel Tacanho",
+    "African think tank",
+    "Africa economic thought",
+    "alternative to Western economics",
+    "fiat money Africa",
+    "anti-statism Africa",
+    "African policy reform",
+    "African economic truth",
+    "African economic development",
+    "monetary justice",
+    "monetary policy Africa",
+    "economics redefined",
+    "civilization redefined",
+    "African economics",
+    "economic liberation",
+    "the economy Africa",
+    "human civilization",
+    "human development",
+    "intellectual leadership",
+  ],
 };
 
 export default function Home() {
-
-  
   return (
     <main className="overflow-x-hidden bg-white">
       <div className="h-fit   overflow-hidden flex justify-center flex-col bg-center  relative">
         <div className="relative  bg-white h-full">
           <Navbar />
         </div>
-
-       
       </div>
 
-       {/* hero section on the home route */}
+      {/* hero section on the home route */}
       <HomeHero />
       {/* the section that completes the hero section on the home route */}
       <div className="w-full relative bottom-10 bg-[#181818]  h-fit block  md:hidden  flex flex-col text-base tracking-[1px]  py-6 px-4 space-y-6  ">
         <p className="text-base md:text-lg text-[#d0d5cd]">
-          Grounded in Africonomics.<br/> Committed to Truth, Justice, and Liberty.
+          Grounded in Africonomics.
+          <br /> Committed to Truth, Justice, and Liberty.
         </p>
 
         <div className="grid grid-cols-3 gap-4 ">
@@ -152,39 +148,42 @@ export default function Home() {
           </Link>
         </div>
       </div>
-    
-
 
       <VissionMission />
       <FeaturedConcept />
       <Model />
       <Publications />
-  
-    <Subscribe  />
-     <SupportSection />
-     
-   
-   {/* AMBASSADORS SECTION */}
-   <div className="px-6 sm:px-10  lg:px-24">
-     <div className="bg-[#002813] mb-6 text-white p-8 rounded-3xl  flex flex-col md:flex-row  justify-between md:items-center gap-y-4">
-          <div>
-            <h2 className="text-xl md:text-2xl font-bold">
-              Join the Africonomics Ambassador Program
-            </h2>
-            <p className="mt-2 text-base md:text-lg">
-              Become a voice of liberty, truth, and sound economics.
-            </p>
-          </div>
 
-          <Link href="/ambassador">
-            <button className="bg-[#ffd700] text-deepForest hover:bg-white hover:border-deepForest px-6 py-3 rounded-lg font-semibold">
-              Learn More
-            </button>
-          </Link>
+      <Subscribe />
+      <SupportSection />
+
+      {/* AMBASSADORS SECTION */}
+      <div className={`${ibmPlexSans.className}`}>
+        <div className="bg-white pb-4 px-5 lg:px-10">
+          <h3 className=" text-left  text-2xl lg:text-3xl border-l-4 text-deepForest border-[#ffd700] font-bold pl-4">
+            Become an Ambassador
+          </h3>
         </div>
-   </div>
-       
-    
+        <div className="px-6 sm:px-10 my-2  lg:px-24">
+          <div className="bg-[#002813] mb-6 text-white p-8 rounded-3xl  flex flex-col md:flex-row  justify-between md:items-center gap-y-4">
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold">
+                Join the Africonomics Campus Ambassador Program
+              </h2>
+              <p className="mt-2 text-base md:text-lg">
+                Become a voice of liberty, truth, and sound economics.
+              </p>
+            </div>
+
+            <Link href="/ambassador">
+              <button className="bg-[#ffd700] text-deepForest hover:bg-white hover:border-deepForest px-6 py-3 rounded-lg font-semibold">
+                Learn More
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <Footer />
     </main>
   );
