@@ -7,6 +7,7 @@ import { Megaphone, Users, HandHeart, Share2 } from "lucide-react";
 import type { Metadata } from "next";
 import Footer from "@/components/ui/page-sections/footer";
 import Link from "next/link";
+import { Globe2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Get Involved – Afrindependent Institute",
@@ -85,21 +86,29 @@ export default function GetInvolvedSection() {
           </p>
         </div>
         {/* AMBASSADORS SECTION */}
-       <div className="bg-[#002813] mb-6 text-white p-8 rounded-3xl mt-12 flex flex-col md:flex-row  justify-between md:items-center gap-y-4">
+        <div className="bg-[#002813] mb-6 text-white p-8  rounded-3xl mt-12 flex flex-col lg:flex-row  justify-between lg:items-center gap-y-3 shadow-md border border-[#ffd700]">
           <div>
-            <h2 className="text-xl md:text-2xl font-bold">
-              Join the Africonomics Ambassador Program
-            </h2>
-            <p className="mt-2 text-base md:text-lg">
+            <h3 className="text-xl md:text font-bold flex items-start gap-3 mb-3">
+             <Users className="w-6 h-6 text-[#ffd700] mt-[5px] sm:mt-0 shrink-0" />
+              Join the Africonomics Campus Ambassador Program
+            </h3>
+
+            <p className="mt-2 text-white dark:text-[#e2e2e2] ">
               Become a voice of liberty, truth, and sound economics.
             </p>
           </div>
 
           <Link href="/ambassador">
-            <button className="bg-[#ffd700] text-deepForest hover:bg-white hover:border-deepForest px-6 py-3 rounded-lg font-semibold">
+            <button className="bg-[#ffd700] hidden lg:flex text-deepForest hover:bg-white hover:border-deepForest px-6 py-3 rounded-lg font-semibold">
               Learn More
             </button>
           </Link>
+            <a
+              href="/ambassador"
+              className="text-[#ffd700] lg:hidden hover:underline font-medium transition"
+            >
+               Learn More →
+            </a>
         </div>
 
         {/* Engagement Pathways */}
@@ -108,7 +117,7 @@ export default function GetInvolvedSection() {
           <div className="bg-[#002813] dark:bg-[#173329] p-8 rounded-3xl shadow-md border border-[#ffd700] transition hover:shadow-lg">
             <div className="flex items-center gap-3 mb-3">
               <HandHeart className="text-[#ffd700] w-6 h-6" />
-              <h3 className="text-2xl font-semibold text-white dark:text-white">
+              <h3 className="text-xl font-semibold text-white dark:text-white">
                 Support Our Work
               </h3>
             </div>
@@ -129,7 +138,7 @@ export default function GetInvolvedSection() {
           <div className="bg-[#002813] dark:bg-[#173329] p-8 rounded-3xl shadow-md border border-[#ffd700] transition hover:shadow-lg">
             <div className="flex items-center gap-3 mb-3">
               <Share2 className="text-[#ffd700] w-6 h-6" />
-              <h3 className="text-2xl font-semibold text-white dark:text-white">
+              <h3 className="text-xl font-semibold text-white dark:text-white">
                 Spread the Vision
               </h3>
             </div>
@@ -158,7 +167,7 @@ export default function GetInvolvedSection() {
           <div className="bg-[#002813] dark:bg-[#173329] p-8 rounded-3xl shadow-md border border-[#ffd700] transition hover:shadow-lg">
             <div className="flex items-center gap-3 mb-3">
               <Megaphone className="text-[#ffd700] w-6 h-6" />
-              <h3 className="text-2xl font-semibold text-white dark:text-white">
+              <h3 className="text-xl font-semibold text-white dark:text-white">
                 Invite Us to Speak
               </h3>
             </div>
@@ -179,7 +188,7 @@ export default function GetInvolvedSection() {
           <div className="bg-[#002813] dark:bg-[#173329] p-8 rounded-3xl shadow-md border border-[#ffd700] transition hover:shadow-lg">
             <div className="flex items-center gap-3 mb-3">
               <Users className="text-[#ffd700] w-6 h-6" />
-              <h3 className="text-2xl font-semibold text-white dark:text-white">
+              <h3 className="text-xl font-semibold text-white dark:text-white">
                 Volunteer or Collaborate
               </h3>
             </div>
