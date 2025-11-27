@@ -27,17 +27,15 @@ const Intro = () => {
     </div>
     {/* LEFT COLUMN — TEXT */}
     <div className="lg:space-y-6 col-span-8">
-      <span className="text-deepForest hidden lg:block font-semibold uppercase tracking-widest">
-        Introduction
-      </span>
+     
 
       <h2 className="text-3xl md:text-4xl hidden lg:block font-semibold text-gray-900 leading-tight">
-        The Africonomics Campus Ambassador Program
+       Campus Ambassador Program
       </h2>
 
          <div className=" lg:hidden ">
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
-               The Africonomics Campus Ambassador Program
+               Campus Ambassador Program
             </h3>
           </div>
 

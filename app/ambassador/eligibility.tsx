@@ -1,6 +1,6 @@
 import { IBM_Plex_Sans } from "next/font/google";
 import { Button } from "@/components/ui/button";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaBriefcase } from "react-icons/fa";
 import {
   FaGlobeAfrica,
   FaUserTie,
@@ -71,11 +71,11 @@ const EligibilitySection = () => {
                 <FaGlobeAfrica className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-semibold text-[#002813] mb-2">
-                Global Network
+              Broaden Your Network
+
               </h3>
               <p className="text-[#333333] leading-relaxed text-base">
-                Join an international network of Africonomics scholars and
-                thinkers.
+                Join and help expand an international network of Africonomics-grounded students and thinkers.
               </p>
             </div>
 
@@ -91,8 +91,21 @@ const EligibilitySection = () => {
                 Receive mentorship and intellectual development opportunities.
               </p>
             </div>
+            {/* Card 3  */}
+            <div className="flex flex-col items-start bg-white border border-[#d0d5cd] rounded-2xl shadow-sm p-6 hover:shadow-md transition-all">
+              <div className="w-12 h-12 flex items-center justify-center bg-[#d0d5cd] text-[#002813] rounded-full mb-4">
+                <FaBriefcase className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-semibold text-[#002813] mb-2">
+               Part-time Job Opportunities 
 
-            {/* Card 3 */}
+              </h3>
+              <p className="text-[#333333] leading-relaxed text-base">
+               Successful candidates may be offered the opportunity to join the Afrindependent Institute as an Intern, Research Associate, or other roles.
+              </p>
+            </div>
+
+            {/* Card 4 */}
             <div className="flex flex-col items-start bg-white border border-[#d0d5cd] rounded-2xl shadow-sm p-6 hover:shadow-md transition-all">
               <div className="w-12 h-12 flex items-center justify-center bg-[#d0d5cd] text-[#002813] rounded-full mb-4">
                 <FaBookOpen className="w-6 h-6" />
@@ -105,7 +118,7 @@ const EligibilitySection = () => {
               </p>
             </div>
 
-            {/* Card 4 */}
+            {/* Card 5 */}
             <div className="flex flex-col items-start bg-white border border-[#d0d5cd] rounded-2xl shadow-sm p-6 hover:shadow-md transition-all">
               <div className="w-12 h-12 flex items-center justify-center bg-[#d0d5cd] text-[#002813] rounded-full mb-4">
                 <FaUsers className="w-6 h-6" />
@@ -119,7 +132,7 @@ const EligibilitySection = () => {
               </p>
             </div>
 
-            {/* Card 5 */}
+            {/* Card 6 */}
             <div className="flex flex-col items-start bg-white border border-[#d0d5cd] rounded-2xl shadow-sm p-6 hover:shadow-md transition-all">
               <div className="w-12 h-12 flex items-center justify-center bg-[#d0d5cd] text-[#002813] rounded-full mb-4">
                 <FaCertificate className="w-6 h-6" />

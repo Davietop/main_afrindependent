@@ -49,8 +49,7 @@ const Values = () => {
               Intellectual Liberation
             </h3>
             <p className="text-gray-600 text-base leading-relaxed">
-              Challenge Western-dominated models and foster a rebirth of African
-              intellectual traditions.
+            Challenge Western-dominated models and foster a rebirth of African epistemological and intellectual sovereignty.
             </p>
           </div>
 
@@ -76,8 +75,7 @@ const Values = () => {
               Leadership Development
             </h3>
             <p className="text-gray-600 text-base leading-relaxed">
-              Cultivate principled young leaders rooted in truth, justice, and
-              moral conviction.
+              Cultivate principled young leaders grounded in truth, justice, and moral clarity.
             </p>
           </div>
 
@@ -129,8 +127,7 @@ const Values = () => {
               Civic Responsibility
             </h3>
             <p className="text-gray-600 text-base leading-relaxed">
-              Advance a culture of liberty, ethics, and nonaggression in
-              academic and civic life.
+             Advance a culture of truth, liberty, and natural-moral law ethics in academic and civic life.
             </p>
           </div>
         </div>

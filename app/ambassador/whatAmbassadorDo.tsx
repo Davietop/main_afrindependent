@@ -36,7 +36,8 @@ const WhatAmbassadorDo = ()=>{
           Host Africonomics Discussions
         </h3>
         <p className="text-gray-600 text-base leading-relaxed">
-         Lead reading sessions using the Introduction & Discussion Guide.
+         Lead reading sessions using the Introduction & Discussion Guide; and other Africonomics resources. 
+
         </p>
       </div>
 
@@ -49,7 +50,7 @@ const WhatAmbassadorDo = ()=>{
           Organize Campus Forums
         </h3>
         <p className="text-gray-600 text-base leading-relaxed">
-        Partner with economic and philosophical student associations.
+        Collaborate with economics, political science, and other student associations related with social sciences.
         </p>
       </div>
 

@@ -163,7 +163,7 @@ const Footer = ({ mail }: any) => {
                 href="/ambassador"
                 className="hover:underline"
               >
-                Become an Ambassador
+                Campus Ambassador
               </a>
             </li>
           </ul>

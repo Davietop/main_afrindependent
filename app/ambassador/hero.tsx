@@ -32,7 +32,7 @@ const Hero = () => {
                  
                   
           <AmbassadorForm/>
-            <button className="flex  items-center justify-center gap-3 border-2 bg-[#ffd700] border-[#ffd700] dark:border-yellow-400 text-deepForest dark:text-yellow-300  dark:hover:bg-yellow-400 text-base hover:border-deepForest hover:text-deepForest hover:bg-white dark:hover:text-white font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300">
+            <button className="flex  items-center justify-center gap-3 border-2 bg-white border-white dark:border-yellow-400 text-deepForest dark:text-yellow-300  dark:hover:bg-yellow-400 text-base hover:border-deepForest hover:text-deepForest hover:bg-white dark:hover:text-white font-semibold sm:py-3 py-1.5  px-6 rounded-xl shadow-md transition duration-300">
           Download Program Guide
         </button>
         
