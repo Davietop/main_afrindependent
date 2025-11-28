@@ -28,11 +28,11 @@ const Hero = () => {
                  Join a movement restoring African intellectual and economic sovereignty through truth, liberty, and sound ideas.
                 </p>
     
-                <div className="flex flex-col sm:flex-row justify-center px-4 gap-4 mb-6">
+                <div className="flex flex-col sm:flex-row  justify-center  gap-4 mb-6">
                  
                   
           <AmbassadorForm/>
-            <button className="flex  items-center justify-center gap-3 border-2 bg-white border-white dark:border-yellow-400 text-deepForest dark:text-yellow-300  dark:hover:bg-yellow-400 text-base hover:border-deepForest hover:text-deepForest hover:bg-white dark:hover:text-white font-semibold sm:py-3 py-1.5  px-6 rounded-xl shadow-md transition duration-300">
+            <button className="flex   w-9/12 sm:w-fit px-3 sm:px-6 mx-auto sm:mx-0 items-center justify-center gap-3 border-2 bg-white border-white dark:border-yellow-400 text-deepForest dark:text-yellow-300  dark:hover:bg-yellow-400 text-base hover:border-deepForest hover:text-deepForest hover:bg-white dark:hover:text-white font-semibold sm:py-3 py-1.5 rounded-xl shadow-md transition duration-300">
           Download Program Guide
         </button>
         

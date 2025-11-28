@@ -63,7 +63,7 @@ async function handleSubmit(formData: FormData) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="flex  items-center justify-center gap-3 border-2 bg-white border-white dark:border-yellow-400 text-deepForest dark:text-yellow-300  dark:hover:bg-yellow-400 text-base hover:border-deepForest hover:text-deepForest hover:bg-white dark:hover:text-white font-semibold sm:py-3 py-1.5  px-6 rounded-xl shadow-md transition duration-300">
+        <button className="flex w-9/12 sm:w-fit px-3 sm:px-6 mx-auto sm:mx-0 items-center justify-center gap-3 border-2 bg-white border-white dark:border-yellow-400 text-deepForest dark:text-yellow-300  dark:hover:bg-yellow-400 text-base hover:border-deepForest hover:text-deepForest hover:bg-white dark:hover:text-white font-semibold sm:py-3 py-1.5   rounded-xl shadow-md transition duration-300">
           Apply Now <FaArrowRight className="w-5 h-5" />
         </button>
       </DialogTrigger>
