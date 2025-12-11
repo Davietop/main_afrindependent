@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/dialog";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
-import { FormAmbassador } from "@/lib/action";
+import { handleSubmit } from "@/lib/action";
 
 import { useToast } from "@/hooks/use-toast";
 import { Label } from "@radix-ui/react-label";
@@ -34,29 +34,6 @@ export function AmbassadorForm() {
 
   const { toast } = useToast();
 
-  // ----------- CLIENT ACTION HANDLER -------------
-async function handleSubmit(formData: FormData) {
-  setFormErrors(null);
-  setSuccessMessage("");
-
-  const result = await FormAmbassador(formData);
-  console.log(result)
-
-  if (!result.success) {
-    setFormErrors(result.errors);
-  } else {
-    setSuccessMessage(result?.message);
-
-    toast({
-      description: result?.message,
-    });
-
-    // Auto close after 1.2s
-    setTimeout(() => {
-      setOpen(false);
-    }, 1200);
-  }
-}
 
   
 

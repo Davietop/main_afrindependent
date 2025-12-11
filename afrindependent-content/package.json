@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "@sanity/vision": "^4.5.0",
+    "mime-types": "^3.0.2",
     "react": "^19.1",
     "react-dom": "^19.1",
     "sanity": "^4.5.0",

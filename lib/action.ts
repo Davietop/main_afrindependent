@@ -1,84 +1,52 @@
 "use server";
 
-import { ambassadorSchema } from "@/actions/schema";
-import { supabase } from "@/lib/supabase";
-import { randomUUID } from "crypto";
 
-export async function FormAmbassador(formData: FormData) {
+const mime = require("mime-types");
+import { sanityClient } from "@/service/sanity";
+
+
+
+export async function handleSubmit(formData: FormData) {
   try {
-    const rawData = {
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-      description: formData.get("description"),
-      cv: formData.get("cv") as File | null,
-    };
+    // 2. GET FORM VALUES
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
+    const description = formData.get("description") as string;
+    const cvFile = formData.get("cv") as File;
 
-    // ---- VALIDATE INPUT ----
-    const parsed = ambassadorSchema.safeParse(rawData);
-
-    if (!parsed.success) {
-      return {
-        success: false,
-        errors: parsed.error.flatten().fieldErrors,
-      };
+    if (!cvFile) {
+      return { error: "Please upload your CV." };
     }
 
-    const data = parsed.data;
+    // 3. CONVERT TO BUFFER (IMPORTANT)
+    const arrayBuffer = await cvFile.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
-    let cvUrl: string | null = null;
+    // 4. UPLOAD FILE TO SANITY
+    const uploadedCV = await sanityClient.assets.upload("file", buffer, {
+      filename: cvFile.name,
+      contentType: cvFile.type || mime.lookup(cvFile.name),
+    });
 
-    // ---- UPLOAD FILE ----
-    if (data.cv) {
-      const file = data.cv;
-      const safeName = file.name.replace(/\s+/g, "_");
-      const filePath = `cvs/${randomUUID()}-${safeName}`;
+    // 5. CREATE DOCUMENT IN SANITY
+    await sanityClient.create({
+      _type: "ambassador",
+      firstName,
+      lastName,
+      description,
+      cv: {
+        _type: "file",
+        asset: {
+          _type: "reference",
+          _ref: uploadedCV._id,
+        },
+      },
+      submittedAt: new Date().toISOString(),
+    });
 
-      const { error: uploadError } = await supabase.storage
-        .from("ambassadors_resume")
-        .upload(filePath, file);
-
-        console.log(uploadError)
-
-      if (uploadError) {
-        return {
-          success: false,
-          errors: { cv: ["Failed to upload CV. Try again."] },
-        };
-      }
-
-      const { data: urlData } = supabase.storage
-        .from("ambassadors_resume")
-        .getPublicUrl(filePath);
-
-      cvUrl = urlData.publicUrl;
-    }
-
-    // ---- INSERT INTO DATABASE ----
-    const { error: insertError } = await supabase
-      .from("ambassador_applications")
-      .insert({
-        first_name: data.firstName,
-        last_name: data.lastName,
-        description: data.description,
-        cv: cvUrl,
-      });
-
-    if (insertError) {
-      return {
-        success: false,
-        errors: { database: insertError.message },
-      };
-    }
-
-    // ---- SUCCESS ----
-    return {
-      success: true,
-      message: "Data submitted successfully",
-    };
+    return { success: true };
   } catch (err: any) {
-    return {
-      success: false,
-      errors: { server: err.message },
-    };
+    console.error("CV SUBMISSION ERROR:", err);
+    return { error: "Failed to submit application. Try again." };
   }
 }

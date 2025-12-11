@@ -16,7 +16,7 @@ export default {
       type: 'slug',
       options: {
         source: 'title',
-        slugify: (input) =f>
+        slugify: (input) =>
           input
             .toLowerCase()
             .replace(/\s+/g, '-')
@@ -29,20 +29,20 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: [{ type: 'facultyMembers' }], // <-- important for your query
+      to: [{type: 'facultyMembers'}], // <-- important for your query
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: [{ type: 'category' }],
+      to: [{type: 'category'}],
     },
     {
       name: 'mainImage',
       title: 'Main Image',
       type: 'image',
-      options: { hotspot: true },
+      options: {hotspot: true},
     },
     {
       name: 'publishedAt',
@@ -58,7 +58,13 @@ export default {
       name: 'abstract',
       title: 'Abstract',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [
+        {type: 'block'},
+        {
+          type: 'image',
+          options: {hotspot: true},
+        },
+      ],
     },
     {
       name: 'file',
@@ -66,4 +72,4 @@ export default {
       type: 'file',
     },
   ],
-};
+}
