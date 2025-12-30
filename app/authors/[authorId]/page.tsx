@@ -101,14 +101,8 @@ const Author = async ({ params }: AuthorPageProps) => {
 
             <div className="w-11/12 md:w-10/12 md:text-center xl:text-left xl:w-7/12 mt-4 lg:mt-0">
               <p className="lg:font-medium text-[#323232] mt-4 text-lg leading-[28px] lg:text-xl lg:leading-[40px]">
-                Manuel Tacanho is a social philosopher, economist, and the
-                founder of the Afrindependent Institute. He is the author of
-                Africonomics: A School of African Philosophical and Economic
-                Thought and several works exploring sound money, natural-moral
-                law, and African economic sovereignty. His work challenges
-                dominant Western philosophical and economic models and presents
-                principled alternatives rooted in truth, justice, liberty, and
-                the African worldview.
+               
+Manuel Tacanho is a social philosopher and economist, and the founder and president of the Afrindependent Institute. He is the originator of Africonomics, a school of philosophical, economic, and civilizational thought grounded in natural-moral law, sound money, structural justice, and peaceful human relations. His research focuses on political economy, monetary systems, international relations, and the philosophical foundations of economics and the social sciences. His work critically examines Western statist, utilitarian, and positivist frameworks and advances principled alternatives aimed at fostering justice, prosperity, and economic sovereignty, particularly in the African context.
               </p>
             </div>
           </div>

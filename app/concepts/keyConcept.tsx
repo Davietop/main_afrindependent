@@ -94,7 +94,7 @@ const clusters = [
         title: "Structural Justice",
         intro: "Justice is not a slogan. It is the moral structure of society.",
         description:
-          "Africonomics defines justice not primarily as fairness or equality but as a society structured in alignment with natural rights, truth, and nonaggression. Structural justice requires legal, political, and economic systems that consistently uphold liberty, sound money, voluntary exchange, and ethical governance.",
+          "The Africonomics Theory of Structural Justice defines justice not primarily as fairness or equality but as a society structured in alignment with natural rights, truth, and nonaggression. Structural justice requires legal, political, and economic systems that consistently uphold liberty, sound money, voluntary exchange, and ethical governance.",
       },
       {
         id: "rule-of-just-law",
