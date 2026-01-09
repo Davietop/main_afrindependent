@@ -87,7 +87,7 @@ export function PublicationSearch() {
           autoCorrect="off"
           spellCheck={false}
           value={textField}
-          className="w-full px-4 py-3 rounded-xl bg-white/90 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-0 focus:ring-[#ffd700] focus:ring-offset-2"
+          className="w-full px-4 py-5 lg:py-6 rounded-xl bg-white/90 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-0 focus:ring-[#ffd700] focus:ring-offset-2"
         />
       </DialogTrigger>
 
