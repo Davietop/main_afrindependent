@@ -59,10 +59,10 @@ function PrinciplesOfNilar() {
       </div>
 
       {/* Principles List */}
-      <section className={`relative    lg:px-32 overflow-hidden ${ibmPlexSans.className}`}>
+      <section className={`relative     overflow-hidden ${ibmPlexSans.className}`}>
  <div
         
-        className="grid grid-cols-1 md:grid-cols-2 mx-auto gap-6  "
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-y-6  "
       >
         {[
           {
@@ -89,7 +89,7 @@ function PrinciplesOfNilar() {
         ].map((principle, idx) => (
           <div key={idx}
             
-            className="border-l-4 mx-5 rounded-2xl border-[#ffd700] p-6 hover:shadow-md transition shadow-sm flex flex-col gap-y-2"
+            className="border-l-4 mx-4 rounded-2xl border-[#ffd700] p-6 hover:shadow-md transition shadow-sm flex flex-col gap-y-2"
           >
             <h3 className="text-xl font-semibold text-deepForest mb-4">{principle.title}</h3>
             <p className="text-gray-700 leading-relaxed">{principle.description}</p>

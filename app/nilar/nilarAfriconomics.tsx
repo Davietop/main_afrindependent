@@ -61,14 +61,14 @@ function HowNilarAligns() {
         </p>
           </div>
     <section
-      className={`relative py-6  px-2 lg:px-32 overflow-hidden ${ibmPlexSans.className}`}
+      className={`relative py-6  px-2  overflow-hidden ${ibmPlexSans.className}`}
     >
  
 
       {/* Pillars Grid */}
       <div
        
-        className="grid grid-cols-1 md:grid-cols-2 mx-auto gap-6 mb-6 px-3"
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-6 mb-6 px-3"
       >
         {[
           {

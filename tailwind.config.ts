@@ -50,6 +50,7 @@ const config = {
         world: 'url("/world.jpg")',
         missionHome: 'url("/homeMission_5.jpg")',
         ambassador: 'url("/africonomics-ambassador_4.jpg")',
+        contactImg: 'url("/contact_img.jpg")',
         ambassador_intro: 'url("/africonomics-ambassador_2.jpg")',
         gradient:
           "linear-gradient(rgba(138, 65, 50, .9) 10%, rgba(36, 17, 13, 0.6) 90%)",

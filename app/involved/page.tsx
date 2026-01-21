@@ -86,7 +86,7 @@ export default function GetInvolvedSection() {
           </p>
         </div>
         {/* AMBASSADORS SECTION */}
-        <div className="bg-[#002813] mb-6 text-white p-8  rounded-3xl mt-12 flex flex-col lg:flex-row  justify-between lg:items-center gap-y-3 shadow-md border border-[#ffd700]">
+        <div className="bg-[#002813] mb-6 text-white p-8 max-w-6xl mx-auto  rounded-3xl mt-12 flex flex-col lg:flex-row  justify-between  lg:items-center gap-y-3 shadow-md border border-[#ffd700]">
           <div>
             <h3 className="text-xl md:text font-bold flex items-start gap-3 mb-3">
              <Users className="w-6 h-6 text-[#ffd700] mt-[5px] sm:mt-0 shrink-0" />

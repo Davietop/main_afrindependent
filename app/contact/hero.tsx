@@ -9,8 +9,15 @@ const Hero = () => {
 
 
   return (
-    <div className="mt-20 xl:mt-0 text-center mb-16 w-full  bg-deepForest h-[400px] ">
-      <div className="mx-auto pt-[100px]">
+    // <div className="mt-20 xl:mt-0 text-center mb-16 w-full   h-[500px] ">
+     
+    // </div>
+     <main className={` pt-16 xl:pt-0 xl:mt-0`}>
+          <div className="bg-white">
+            <section className="relative py-16 xl:py-32 min-h-fit bg-deepForest  h-[450px] flex items-center justify-center text-center px-6">
+              <div className="absolute inset-0 bg-contactImg bg-center bg-cover  opacity-20 z-0" />
+              <div className="absolute inset-0 bg-opacity-80 z-0" />
+               <div className="mx-auto">
         <h2 className="text-4xl text-[#ffd700] sm:text-5xl font-bold mb-4 tracking-tight ">
           Contact Us
         </h2>
@@ -22,7 +29,10 @@ const Hero = () => {
           from you.
         </p>
       </div>
-    </div>
+             
+            </section>
+          </div>
+        </main>
   );
 };
 
