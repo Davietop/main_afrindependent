@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { IBM_Plex_Sans } from 'next/font/google';
 import ResponseModal from '../ui/responseModal';
 import { Resend } from 'resend';
+import { PlayCircle, Youtube, BellRing } from "lucide-react";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -69,21 +70,26 @@ const SubscribeForm = ({post}:any) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full rounded-xl border border-gray-300 shadow-sm px-5 py-3 text-[#1E1E1E]"
+          className="w-full rounded-xl border border-gray-300 shadow-sm px-5 py-6 text-[#1E1E1E]"
         />
 
+      
+
         <div className="w-full flex justify-center">
-          <Button
+          <button
             type="submit"
             disabled={status === 'loading'}
-            className={`flex items-center gap-2 bg-deepForest ${post=== "post"? "text-sm" :"text-base"} border-2 border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700] font-medium px-10 py-1 rounded-full transition duration-200`}
+            className={` ${post=== "post"? "text-sm" :"text-base"} `}
           >
             {status === 'loading' ? (
               <LuLoader2 className="animate-spin w-6 h-6 text-[#ffd700]" />
             ) : (
-              'Subscribe'
+               <button className="flex items-center gap-2 bg-deepForest border-2 border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700] font-medium px-6 py-2 rounded-full transition duration-200">
+                <BellRing className="w-5 h-5" />
+                Subscribe for Updates
+              </button>
             )}
-          </Button>
+          </button>
         </div>
       </form>
 

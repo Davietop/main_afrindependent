@@ -20,7 +20,7 @@ export default function SupportSection() {
           {/* Title */}
 
           {/* Description */}
-          <p className="text-lg sm:text-xl text-[#323232] dark:text-gray-300 max-w-3xl mx-auto mb-12">
+          <p className="text-base md:text-lg text-[#323232] dark:text-gray-300 max-w-3xl mx-auto mb-6">
             Help us advance African sovereignty and truth through principled
             research, sound economics, and bold alternatives to failed models.
           </p>

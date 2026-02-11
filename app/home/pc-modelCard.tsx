@@ -59,7 +59,7 @@ const PcModelCard = () =>{
         ].map((item, i) => (
           <div
             key={i}
-            className="bg-white p-6 rounded-2xl shadow-md border-l-4 border-[#ffd700] hover:shadow-lg transition"
+            className="bg-white px-6 py-12 rounded-2xl shadow-md border-l-4 border-[#ffd700] hover:shadow-lg transition"
           >
             <div className="flex items-center gap-4 mb-4">{item.icon}<h3 className="text-lg md:text-xl font-bold text-[#002813]">{item.title}</h3></div>
             <p className="text-gray-700 text-base md:text-lg">{item.desc}</p>

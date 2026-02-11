@@ -4,8 +4,6 @@ import ParallaxText from "@/components/parallex-text";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { IBM_Plex_Sans } from "next/font/google";
-import Video from "next-video";
-import mission_img from "../../public/AfridependentLogo.svg";
 import Link from "next/link";
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -27,7 +25,16 @@ const VissionMission = () => {
 
       <div className="flex flex-col xl:flex-row items-center justify-center gap-x-10 mt-6 px-6">
         {/* Left: Image Card */}
-        <div className="relative w-full md:w-9/12 lg:h-[500px] h-[300px] xl:w-4/12   bg-missionHome bg-center bg-cover text-white rounded-xl overflow-hidden"></div>
+        <div className="relative w-full md:w-9/12 lg:h-[500px] h-[300px] xl:w-4/12 rounded-xl overflow-hidden">
+          <Image
+            src="/homeMission_5.jpg" 
+            alt="Afrindependent mission"
+            fill
+           
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 75vw, 33vw"
+          />
+        </div>
 
         {/* Right: Text Section */}
         <div className="w-full md:w-10/12 md:text-center xl:text-left flex flex-col xl:w-7/12 mt-2 lg:mt-0">

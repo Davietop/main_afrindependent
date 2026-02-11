@@ -48,26 +48,23 @@ const List = ({ authorSlug }: PropType) => {
 
   const shouldShowArrow =
     width >= 1024 ? publications!?.length > 3 : publications!?.length > 1;
-  const topThree = (publications ?? [])
-    .sort(
-      (a: Article, b: Article) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    )
-    
+  const topThree = (publications ?? []).sort(
+    (a: Article, b: Article) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  );
 
-    const getRecentPublications = (data: any[], maxAgeInDays = 180) => {
-      const now = new Date();
-      const cutoff = new Date(now.setDate(now.getDate() - maxAgeInDays));
-      return data
-        .filter((item) => new Date(item.publishedAt) >= cutoff)
-        .sort(
-          (a, b) =>
-            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-        );
-    };
+  const getRecentPublications = (data: any[], maxAgeInDays = 180) => {
+    const now = new Date();
+    const cutoff = new Date(now.setDate(now.getDate() - maxAgeInDays));
+    return data
+      .filter((item) => new Date(item.publishedAt) >= cutoff)
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+      );
+  };
 
-    const latest = getRecentPublications(topThree ?? []).slice(0,4)
-
+  const latest = getRecentPublications(topThree ?? []).slice(0, 4);
 
   useEffect(() => {
     if (!topThree || topThree.length === 0) return;
@@ -75,10 +72,10 @@ const List = ({ authorSlug }: PropType) => {
     const fetchAll = async () => {
       try {
         const results = await Promise.all(
-          latest.map(({ slug }) => getSinglePublication({ slug }))
+          latest.map(({ slug }) => getSinglePublication({ slug })),
         );
 
-        console.log(results)
+        console.log(results);
         setPublicationData(results);
       } catch (error) {
         console.error("Failed to fetch publications:", error);
@@ -108,7 +105,7 @@ const List = ({ authorSlug }: PropType) => {
                 abstract,
                 categoryName,
               },
-              index
+              index,
             ) => {
               const slugData = topThree[index];
 
@@ -122,7 +119,7 @@ const List = ({ authorSlug }: PropType) => {
                   year: "numeric",
                   month: "long",
                   timeZone: "UTC", // Optional, remove if you want local time
-                }
+                },
               );
               const isLast = index === publicationData.length - 1;
 
@@ -132,18 +129,20 @@ const List = ({ authorSlug }: PropType) => {
                   href={`${paths.publications}/${slugData.slug}?type=${category}`}
                 >
                   <div className="text-black flex flex-col md:flex-row gap-x-10   w-full  ">
-                    <div
-                      className="h-[300px] w-full md:w-4/12 bg-cover bg-center rounded-xl "
-                      style={{
-                        backgroundImage: `url('${image}')`,
-                      }}
-                    ></div>
+                   
+                    <div className="relative h-[300px] w-full md:w-4/12 rounded-xl overflow-hidden">
+                      <Image
+                        src={image}
+                        alt="Card image"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
 
                     <div className="flex flex-col  w-full  md:w-8/12 gap-y-4 md:gap-y-6">
                       <div className="flex items-center mt-2 md:mt-0 gap-x-2">
-                        <p>{author?.name}</p>|
-
-                        <p>{readableDate}</p>
+                        <p>{author?.name}</p>|<p>{readableDate}</p>
                       </div>
 
                       <div className="flex flex-col gap-y-4">
@@ -158,7 +157,7 @@ const List = ({ authorSlug }: PropType) => {
                   {!isLast && <hr className="border-t border-[#ffd700] mt-6" />}
                 </Link>
               );
-            }
+            },
           )}
         </div>
       )}
