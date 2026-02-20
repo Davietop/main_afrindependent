@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 import Link from "next/link";
 import { AiFillFilePdf } from "react-icons/ai";
@@ -20,8 +20,8 @@ import { useSearchParams } from "next/navigation";
 import Head from "next/head";
 import { sanityClient } from "@/service/sanity";
 import { getSinglePublication } from "@/service/sanity-queries";
-import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -34,37 +34,39 @@ type Props = {
 };
 
 const Paper = ({ post }: { post: PublicationDto }) => {
-   const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
 
- const { data: publications, isLoading, mutate, key } = usePublications({});
-   const [updatedPublication, setUpdatedPub] = useState<PublicationDto | null>(
-    null
+  const { data: publications, isLoading, mutate, key } = usePublications({});
+  const [updatedPublication, setUpdatedPub] = useState<PublicationDto | null>(
+    null,
   );
 
   const [currentPage, setCurrentPage] = useState(0);
   const [url, setUrl] = useState("");
   const itemsPerPage = 6;
 
-  const updatedPublications = publications
-    ?.filter((pub) => pub.title !== post.title);
+  const updatedPublications = publications?.filter(
+    (pub) => pub.title !== post.title,
+  );
 
   const filterByCategory = (data: any, category: any) => {
     const uniqueData = Array.from(
-      new Map(data.map((item: any) => [item.slug, item])).values()
+      new Map(data.map((item: any) => [item.slug, item])).values(),
     );
     return uniqueData
       .filter((item: any) => item.category === category)
       .sort(
         (a: any, b: any) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
       );
   };
 
-  const filteredData = filterByCategory(updatedPublications || [], type === "latest_pub" ? post.category: type);
-  
-
+  const filteredData = filterByCategory(
+    updatedPublications || [],
+    type === "latest_pub" ? post.category : type,
+  );
 
   const pageCount = Math.ceil(filteredData.length / itemsPerPage);
 
@@ -75,36 +77,30 @@ const Paper = ({ post }: { post: PublicationDto }) => {
   const offset = currentPage * itemsPerPage;
   const currentItems = filteredData.slice(offset, offset + itemsPerPage);
   useEffect(() => {
-  setUrl(window.location.href);
-}, []);
- 
-
+    setUrl(window.location.href);
+  }, []);
 
   useEffect(() => {
     const subscription = sanityClient
       .listen('*[_type == "publications"]')
       .subscribe((update) => {
         if (update.result?._type === "publications") {
-         
           const slug = update.result?.slug?.current;
-          
-        
 
-       setTimeout(()=>{
-           getSinglePublication({ slug }).then((data) => {
-            setUpdatedPub(data);
-          });
-       }, 120000)
+          setTimeout(() => {
+            getSinglePublication({ slug }).then((data) => {
+              setUpdatedPub(data);
+            });
+          }, 120000);
         }
       });
 
     return () => subscription.unsubscribe(); // Clean up on unmount
-  },[key, mutate]);
+  }, [key, mutate]);
 
   return (
     <section className={`pt-20 xl:pt-0 ${ibmPlexSans.className} px-5 lg:px-14`}>
-
-             <Head>
+      <Head>
         <title>{post?.title}</title>
         <meta property="og:title" content={post?.title} />
         <meta property="og:description" content={post?.intro} />
@@ -114,9 +110,9 @@ const Paper = ({ post }: { post: PublicationDto }) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className="mt-4 lg:hidden w-full">
-                      <h1 className="col-span-full mb-6  font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
-    {post.title}
-  </h1>
+        <h1 className="col-span-full mb-6  font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
+          {post.title}
+        </h1>
         <Link
           href={post.file}
           download={post.title}
@@ -132,83 +128,83 @@ const Paper = ({ post }: { post: PublicationDto }) => {
         <Share title={post.title} />
       </div>
       <div className="w-full lg:w-8/12">
-                 <h1 className="col-span-full hidden lg:block font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
-    {post.title}
-  </h1>
-          <div className="lg:flex font-medium mb-3 hidden items-center gap-x-3 mt-4">
-            <div className="h-[50px] w-[50px] bg-founder bg-cover  rounded-full"></div>
-            <Link
-              href={`${paths.authors}/${post?.author?.slug}`}
-              className="text-sm lg:text-base"
-            >
-              {post?.author?.name}
-            </Link>{" "}
-            <p className="font-bold">|</p>
-            <p className="text-sm lg:text-base">
-              {isoStringToDate(post.publishedAt)}
-            </p>{" "}
-            <p className="font-bold">|</p>
-            <a
-              href={
-                post?.categoryName === "Afrindependent Lens"
-                  ? "/publications?filter=afrindependent-lens#filter"
-                  : post?.categoryName === "Afrindependent Post"
-                    ? "/publications?filter=afrindependent-post#filter"
-                    : post?.categoryName === "Policy Papers"
-                      ? "/publications?filter=policy-papers"
-                      : "/publications?filter=academic-papers#filter"
-              }
-              className="flex underline  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
-            >
-              <img src="/arrow.png" height={20} width={20} alt="back icon" />
-              <p className="text-sm lg:text-base"> {post?.categoryName}</p>
-            </a>
-          </div>
+        <h1 className="col-span-full hidden lg:block font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
+          {post.title}
+        </h1>
+        <div className="lg:flex font-medium mb-3 hidden items-center gap-x-3 mt-4">
+          <div className="h-[50px] w-[50px] bg-founder bg-cover  rounded-full"></div>
+          <Link
+            href={`${paths.authors}/${post?.author?.slug}`}
+            className="text-sm lg:text-base"
+          >
+            {post?.author?.name}
+          </Link>{" "}
+          <p className="font-bold">|</p>
+          <p className="text-sm lg:text-base">
+            {isoStringToDate(post.publishedAt)}
+          </p>{" "}
+          <p className="font-bold">|</p>
+          <a
+            href={
+              post?.categoryName === "Afrindependent Lens"
+                ? "/publications?filter=afrindependent-lens#filter"
+                : post?.categoryName === "Afrindependent Post"
+                  ? "/publications?filter=afrindependent-post#filter"
+                  : post?.categoryName === "Policy Papers"
+                    ? "/publications?filter=policy-papers"
+                    : "/publications?filter=academic-papers#filter"
+            }
+            className="flex underline  w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+          >
+            <img src="/arrow.png" height={20} width={20} alt="back icon" />
+            <p className="text-sm lg:text-base"> {post?.categoryName}</p>
+          </a>
+        </div>
 
-          <div className="flex flex-wrap items-center gap-x-2 lg:hidden mb-4 font-medium">
-            <Link
-              href={`${paths.authors}/${post?.author?.slug}`}
-              className="capitalize text-sm lg:text-base leading-[12px] underline"
-            >
-              {post?.author?.name}
-            </Link>{" "}
-            <p className="font-bold">|</p>
-            <div>
-              <span className="text-sm lg:text-base">
-                {isoStringToDate(post.publishedAt)}
-              </span>
-            </div>{" "}
-            <p className="font-bold">|</p>
-            <a
-              href={
-                post?.categoryName === "Afrindependent Lens"
-                  ? "/publications?filter=afrindependent-lens#filter"
-                  : post?.categoryName === "Afrindependent Post"
-                    ? "/publications?filter=afrindependent-post#filter"
-                    : post?.categoryName === "Policy Papers"
-                      ? "/publications?filter=policy-papers"
-                      : "/publications?filter=academic-papers#filter"
-              }
-              className="flex underline w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
-            >
-              <p className="text-sm lg:text-base underline">
-                {" "}
-                {post?.categoryName}
-              </p>
-            </a>
-          </div></div>
+        <div className="flex flex-wrap items-center gap-x-2 lg:hidden mb-4 font-medium">
+          <Link
+            href={`${paths.authors}/${post?.author?.slug}`}
+            className="capitalize text-sm lg:text-base leading-[12px] underline"
+          >
+            {post?.author?.name}
+          </Link>{" "}
+          <p className="font-bold">|</p>
+          <div>
+            <span className="text-sm lg:text-base">
+              {isoStringToDate(post.publishedAt)}
+            </span>
+          </div>{" "}
+          <p className="font-bold">|</p>
+          <a
+            href={
+              post?.categoryName === "Afrindependent Lens"
+                ? "/publications?filter=afrindependent-lens#filter"
+                : post?.categoryName === "Afrindependent Post"
+                  ? "/publications?filter=afrindependent-post#filter"
+                  : post?.categoryName === "Policy Papers"
+                    ? "/publications?filter=policy-papers"
+                    : "/publications?filter=academic-papers#filter"
+            }
+            className="flex underline w-fit items-center gap-2 text-[#0E102A] text-sm lg:text-base font-bold hover:underline"
+          >
+            <p className="text-sm lg:text-base underline">
+              {" "}
+              {post?.categoryName}
+            </p>
+          </a>
+        </div>
+      </div>
       <section className="grid grid-cols-1 lg:grid-cols-6 gap-x-20 max-lg:gap-y-8">
         <article className="col-span-4  overflow-x-hidden">
-     
-
           <div className="mt-5 mb-5">
             {/* Category Name Heading */}
 
             {/* Back Link */}
           </div>
           <div className="mb-6  overflow-hidden flex items-center justify-center">
+        
             <Image
-              src={post.image}
+               src={`${post.image}?w=800&h=500&q=80`}
               alt={post.title}
               width={1732}
               height={862}
@@ -216,13 +212,18 @@ const Paper = ({ post }: { post: PublicationDto }) => {
             />
           </div>
           <h3 className="font-semibold text-xl lg:text-2xl leading-[20px] lg:leading-[40px] mb-6 ">
-            {type === "policy_papers" ||
-            post.category === "policy-papers"
+            {type === "policy_papers" || post.category === "policy-papers"
               ? "Executive Summary:"
               : "Abstract:"}
           </h3>
           <div className="min-w-full leading-6 lg:text-lg  mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:25px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] prose-blockquote:after:left-6 prose-blockquote:after:w-full prose-blockquote:after:h-full prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:deepForest prose-strong:font-bold prose-a:text-deepForest">
-            <TextComponent value={updatedPublication === null ? post.abstract : updatedPublication?.abstract} />
+            <TextComponent
+              value={
+                updatedPublication === null
+                  ? post.abstract
+                  : updatedPublication?.abstract
+              }
+            />
           </div>
           <div className="mt-5 mb-2">
             <Image
@@ -246,7 +247,7 @@ const Paper = ({ post }: { post: PublicationDto }) => {
             </Link>
           </p>
           <Reaction />
-           <div className=" p-5 rounded-[19px] bg-[#D9D9D9] mt-10">
+          <div className=" p-5 rounded-[19px] bg-[#D9D9D9] mt-10">
             <p className=" font-medium text-lg text-black mb-5">
               About the author
             </p>
@@ -277,19 +278,17 @@ const Paper = ({ post }: { post: PublicationDto }) => {
         </article>
         <aside className=" col-span-4 flex  lg:flex lg:flex-col  mt-5 items-end lg:col-span-2">
           <div className="mx-auto  sticky flex flex-wrap lg:flex-col gap-x-6 gap-y-6 top-0">
-             <div className="w-full ">
-            <Link
-              href={post.file}
-              download={post.title}
-              target="_blank"
-              className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-5     w-fit"
-            >
-              Access PDF
-              <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
-            </Link>
-
-           
-          </div>
+            <div className="w-full ">
+              <Link
+                href={post.file}
+                download={post.title}
+                target="_blank"
+                className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-5     w-fit"
+              >
+                Access PDF
+                <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
+              </Link>
+            </div>
             <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
               {/* green Accent Bar */}
               <div className="w-full h-[20px] bg-deepForest" />
@@ -313,11 +312,14 @@ const Paper = ({ post }: { post: PublicationDto }) => {
               {/* Content */}
               <div className="relative z-10 py-6 px-4 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Newsletter</h1>
-                <p className="text-sm">Join the movement for African sovereignty and global civilizational renewal</p>
+                <p className="text-sm">
+                  Join the movement for African sovereignty and global
+                  civilizational renewal
+                </p>
                 <SubscribeForm post={"post"} />
                 <p className="text-sm">
-                  
-No spam—just truthful content and reliable insights. You can unsubscribe anytime.
+                  No spam—just truthful content and reliable insights. You can
+                  unsubscribe anytime.
                 </p>
               </div>
             </div>
@@ -329,7 +331,10 @@ No spam—just truthful content and reliable insights. You can unsubscribe anyt
               <div className="relative z-10 px-4 py-6 gap-y-4 flex items-center flex-col text-black">
                 <h1 className="font-bold text-base">Donate</h1>
                 <p className="text-sm">
-                Partner with us in our mission to advance African intellectual independence and economic prosperity. Your donation aligns you with our transformative vision and empowers groundbreaking work.
+                  Partner with us in our mission to advance African intellectual
+                  independence and economic prosperity. Your donation aligns you
+                  with our transformative vision and empowers groundbreaking
+                  work.
                 </p>
                 <Link href={paths.donate}>
                   <Button
@@ -339,9 +344,8 @@ No spam—just truthful content and reliable insights. You can unsubscribe anyt
                     Donate
                   </Button>
                 </Link>{" "}
-                   <p className="text-sm text-black">
-                  
-Help restore truth in economics and dignity in society.
+                <p className="text-sm text-black">
+                  Help restore truth in economics and dignity in society.
                 </p>
               </div>
             </div>
@@ -372,8 +376,6 @@ Help restore truth in economics and dignity in society.
                 </Link>{" "}
               </div>
             </div>
-       
-           
           </div>
         </aside>
       </section>
@@ -423,14 +425,14 @@ Help restore truth in economics and dignity in society.
                             <p> {post?.author?.name}</p> |
                             <p className="text-sm text-gray-700">
                               {new Date(publishedAt).toLocaleDateString(
-                                "en-GB"
+                                "en-GB",
                               )}
                             </p>
                           </div>
                         </div>
                       </div>
                     </Link>
-                  )
+                  ),
                 )}
             </div>
 
@@ -454,9 +456,6 @@ Help restore truth in economics and dignity in society.
           </div>
         </section>
       )}
-
-      
-            
     </section>
   );
 };

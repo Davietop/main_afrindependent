@@ -46,7 +46,7 @@ const Subscribe = ({ onHomePage = true }: { onHomePage?: boolean }) => {
         </p>
 
         {/* Newsletter Form */}
-        <div className="w-full mt-4">
+        <div className="w-full mt-2">
           <GetResponseForm />
         </div>
 

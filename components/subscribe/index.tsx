@@ -70,7 +70,7 @@ const SubscribeForm = ({post}:any) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full rounded-xl border border-gray-300 shadow-sm px-5 py-6 text-[#1E1E1E]"
+          className="w-full rounded-xl border border-gray-300 shadow-sm px-5 py-5 text-[#1E1E1E]"
         />
 
       

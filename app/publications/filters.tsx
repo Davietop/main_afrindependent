@@ -9,6 +9,8 @@ import { CategoriesDto, PublicationDto } from "@/lib/types";
 import { getSinglePublication } from "@/service/sanity-queries";
 import { usePublications } from "./publication-section";
 import { paths } from "@/components/ui/page-sections/nav-bar/pc";
+import Image from "next/image";
+import { urlFor } from "@/service/sanity";
 
 interface Publication {
   slug: string;
@@ -58,8 +60,11 @@ export default function Filters({ categories }: PropType) {
   >([]);
   const [publicationData, setPublicationData] = useState<Publication[]>([]);
   const [updatedPubData, setUpdatedPubData] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
+  const [errorMessage, setErrorMessage] = useState<any>(false);
+  const [featureLoader, setFeatureLoader] = useState<boolean>(true);
+  const [hasFetched, setHasFetched] = useState(false);
 
   const itemsPerPage = 6;
   const { data: publications } = usePublications({});
@@ -78,7 +83,7 @@ export default function Filters({ categories }: PropType) {
       const match = publications?.find(
         (pub) =>
           pub.title?.toLowerCase().includes(keyword) ||
-          pub.slug?.toLowerCase().includes(keyword)
+          pub.slug?.toLowerCase().includes(keyword),
       );
       if (match) {
         return { ...match };
@@ -90,9 +95,14 @@ export default function Filters({ categories }: PropType) {
   // Step 2: Remove duplicates by slug
   const uniqueFeatured = Array.from(
     new Map(
-      orderedFeaturedPublications.map((item) => [item?.slug, item])
-    ).values()
+      orderedFeaturedPublications.map((item) => [item?.slug, item]),
+    ).values(),
   );
+
+  // loader for the featured publications section
+  useEffect(() => {
+    if (uniqueFeatured.length > 1) setFeatureLoader(false);
+  }, [uniqueFeatured.length]);
 
   const getRecentPublications = (data: Publication[], maxAgeInDays = 180) => {
     const now = new Date();
@@ -101,7 +111,7 @@ export default function Filters({ categories }: PropType) {
       .filter((item) => new Date(item.publishedAt) >= cutoff)
       .sort(
         (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
       );
   };
 
@@ -110,12 +120,12 @@ export default function Filters({ categories }: PropType) {
       .filter((item) => item.category === category)
       .sort(
         (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
       );
   };
 
   const handleFilterClick = (id: string, customData?: Publication[]) => {
-    setCurrentPage(0)
+    setCurrentPage(0);
     setActiveFilter(id);
 
     const params = new URLSearchParams(window.location.search);
@@ -129,17 +139,14 @@ export default function Filters({ categories }: PropType) {
     const dataToUse = customData || updatedPubData;
     if (!dataToUse) return;
 
-    
-
     const result =
       id === "latest_pub"
         ? getRecentPublications(dataToUse, 120)
         : filterByCategory(dataToUse, id);
-        
 
     const uniqueResults = result.filter(
       (item, index, self) =>
-        index === self.findIndex((t) => t.slug === item.slug)
+        index === self.findIndex((t) => t.slug === item.slug),
     );
 
     setFilteredPublications(uniqueResults);
@@ -159,21 +166,36 @@ export default function Filters({ categories }: PropType) {
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
-      const results = await Promise.all(
-        filteredPublications.map(async ({ slug, ...rest }) => {
-          const data = await getSinglePublication({ slug });
-          return { ...data, slug, ...rest };
-        })
-      );
-      setPublicationData(results);
-      setLoading(false);
+      
+      setErrorMessage(null);
+
+      try {
+        if (filteredPublications.length === 0) {
+          setPublicationData([]);
+          setHasFetched(true);
+          return;
+        }
+
+        const results = await Promise.all(
+          filteredPublications.map(async ({ slug, ...rest }) => {
+            const data = await getSinglePublication({ slug });
+            return { ...data, slug, ...rest };
+          }),
+        );
+
+        setPublicationData(results || []);
+        setHasFetched(true);
+      } catch (error) {
+        console.error("Error fetching publications:", error);
+        setErrorMessage("Failed to load publications.");
+        setPublicationData([]);
+        setHasFetched(true);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    if (filteredPublications.length > 0) {
-      getData();
-    } else {
-      setLoading(false);
-    }
+    getData();
   }, [filteredPublications]);
 
   const offset = currentPage * itemsPerPage;
@@ -182,10 +204,7 @@ export default function Filters({ categories }: PropType) {
 
   const handlePageClick = (event: { selected: number }) => {
     setCurrentPage(event.selected);
-
   };
-
-
 
   const truncateText = (text: string, limit: number) =>
     text.length > limit ? text.slice(0, limit) + "..." : text;
@@ -194,8 +213,6 @@ export default function Filters({ categories }: PropType) {
     if (!html) return "";
     return html.replace(/<[^>]*>?/gm, "");
   };
-
-
 
   return (
     <>
@@ -206,61 +223,71 @@ export default function Filters({ categories }: PropType) {
           </h3>
         </div>
         <div className="">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-            {uniqueFeatured.map(
-              (
-                {
-                  title,
-                  level,
-                  slug,
-                  image,
-                  author,
-                  publishedAt,
-                  abstract,
-                  category,
-                }: any,
-                index: number
-              ) => (
-                <Link
-                  key={slug}
-                  href={`${paths.publications}/${slug}?type=${category}`}
-                  className="relative flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg"
-                >
-                  <div className="absolute top-0 left-0 z-30">
-                    <div className="ribbon-wrapper">
-                      <span className="ribbon">FEATURED</span>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+            {featureLoader ? (
+              <div className="col-span-full flex items-center justify-center py-20">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#ffd700]"></div>
+              </div>
+            ) : (
+              <>
+                {uniqueFeatured.map(
+                  (
+                    {
+                      title,
+                      level,
+                      slug,
+                      image,
+                      author,
+                      publishedAt,
+                      abstract,
+                      category,
+                    }: any,
+                    index: number,
+                  ) => (
+                    <Link
+                      key={slug}
+                      href={`${paths.publications}/${slug}?type=${category}`}
+                      className="relative flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg"
+                    >
+                      <div className="absolute top-0 left-0 z-30">
+                        <div className="ribbon-wrapper">
+                          <span className="ribbon">FEATURED</span>
+                        </div>
+                      </div>
 
-                  {/* Image Thumbnail */}
-                  <div
-                    className="h-[150px] w-full bg-cover bg-center"
-                    style={{ backgroundImage: `url('${image}')` }}
-                  />
+                      {/* Image Thumbnail */}
+                      <div className="relative h-[150px] w-full">
+                        <Image
+                          src={`${image}?w=800&h=500&q=80`}
+                          alt={title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover"
+                        />
+                      </div>
 
-                  {/* Content */}
-                  <div className="flex flex-col p-4 gap-y-3">
-                    {/* Title */}
-                    <h3 className="text-lg font-semibold text-deepForest line-clamp-2">
-                      {title}
-                    </h3>
+                      {/* Content */}
+                      <div className="flex flex-col p-4 gap-y-3">
+                        {/* Title */}
+                        <h3 className="text-lg font-semibold text-deepForest line-clamp-2">
+                          {title}
+                        </h3>
 
-                    {/* Abstract */}
-                    <p className="text-sm text-gray-700 line-clamp-3">
-                      {truncateText(stripHtml(abstract), 200)}
-                    </p>
-                  </div>
-                </Link>
-              )
+                        {/* Abstract */}
+                        <p className="text-sm text-gray-700 line-clamp-3">
+                          {truncateText(stripHtml(abstract), 200)}
+                        </p>
+                      </div>
+                    </Link>
+                  ),
+                )}
+              </>
             )}
           </div>
         </div>
       </section>
 
-      <section
-        ref={filterSectionRef}
-        className="text-black px-5 mt-2 lg:px-10"
-      >
+      <section ref={filterSectionRef} className="text-black px-5 mt-2 lg:px-10">
         <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] pl-4">
           Filter by type or topic to begin exploring in-depth, principled
           research.
@@ -287,15 +314,15 @@ export default function Filters({ categories }: PropType) {
         <h4 className="text-xl font-semibold text-deepForest mb-6">
           Showing results for:{" "}
           <span className="text-[#FFD700]  underline">
-         
-{FILTER_OPTIONS.find(
-              (f) => f.id === activeFilter
-            )?.label.toUpperCase().includes("AFRIN") ?`THE  ${FILTER_OPTIONS.find(
-              (f) => f.id === activeFilter
-            )?.label.toUpperCase()}`: FILTER_OPTIONS.find(
-              (f) => f.id === activeFilter
-            )?.label.toUpperCase()}
-           
+            {FILTER_OPTIONS.find((f) => f.id === activeFilter)
+              ?.label.toUpperCase()
+              .includes("AFRIN")
+              ? `THE  ${FILTER_OPTIONS.find(
+                  (f) => f.id === activeFilter,
+                )?.label.toUpperCase()}`
+              : FILTER_OPTIONS.find(
+                  (f) => f.id === activeFilter,
+                )?.label.toUpperCase()}
           </span>
         </h4>
 
@@ -304,35 +331,54 @@ export default function Filters({ categories }: PropType) {
           <div className="flex justify-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#ffd700]"></div>
           </div>
-        ) : currentItems.length > 0 ? (
+        ) : hasFetched && currentItems.length === 0 ? (
+          <p className="text-gray-500 text-center py-20">
+            No publications found for this filter.
+          </p>
+        ) : (
           <>
+            {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {currentItems.map(
-                ({ slug, title, image, publishedAt, author, intro, category }) => (
+                ({
+                  slug,
+                  title,
+                  image,
+                  publishedAt,
+                  author,
+                  intro,
+                  category,
+                }) => (
                   <Link
                     key={slug}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.location.href = `${paths.publications}/${slug}?type=${category}`; // ⬅️ forces full reload
-                    }}
+                    scroll={true}
                     href={`${paths.publications}/${slug}?type=${category}`}
                   >
                     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col h-full">
-                      <div
-                        className="h-52 w-full bg-cover bg-center"
-                        style={{ backgroundImage: `url('${image}')` }}
-                      />
+                      <div className="relative h-52 w-full">
+                        <Image
+                          src={`${image}?w=800&h=500&q=80`}
+                          alt={title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover"
+                        />
+                      </div>
+
                       <div className="p-5 flex flex-col gap-y-4 flex-grow">
                         <h3 className="text-xl font-semibold text-deepForest">
                           {title}
                         </h3>
+
                         {intro && (
                           <p className="text-gray-700 text-base line-clamp-3">
                             {intro}
                           </p>
                         )}
+
                         <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
-                          <p>{author?.name}</p> |
+                          <p>{author?.name}</p>
+                          <span>|</span>
                           <p className="text-sm">
                             {new Date(publishedAt).toLocaleDateString("en-GB")}
                           </p>
@@ -340,7 +386,7 @@ export default function Filters({ categories }: PropType) {
                       </div>
                     </div>
                   </Link>
-                )
+                ),
               )}
             </div>
 
@@ -363,10 +409,6 @@ export default function Filters({ categories }: PropType) {
               />
             </div>
           </>
-        ) : (
-          <p className="text-gray-500 text-center">
-            No publications found for this filter.
-          </p>
         )}
       </section>
     </>

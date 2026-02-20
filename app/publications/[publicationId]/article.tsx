@@ -204,12 +204,13 @@ const Article = ({ post }: { post: PublicationDto }) => {
         <article className="w-full col-span-full md:col-span-4   overflow-x-hidden">
           <div className="pb-8 overflow-hidden flex items-center justify-center">
             <Image
-              src={post.image}
+                src={`${post.image}?w=800&h=500&q=80`}
               alt={post.title}
               width={1732}
               height={862}
               className="w-full h-auto object-cover rounded-2xl object-center"
             />
+
           </div>
           <div className="min-w-full leading-6 lg:text-lg mb-[52px] text-black prose prose-blockquote:bg-[#DEDEDE] prose-blockquote:rounded-lg lg:prose-blockquote:text-base prose-blockquote:font-normal prose-blockquote:px-6 prose-blockquote:py-8  prose-blockquote:after:bg-quote prose-blockquote:after:bg-[length:20px_auto] lg:prose-blockquote:after:bg-[length:25px_auto] prose-blockquote:after:absolute prose-blockquote:after:inset-0 prose-blockquote:after:-top-[6px] lg:prose-blockquote:after:-top-3 prose-blockquote:after:left-6 prose-blockquote:after:w-[40px] prose-blockquote:after:h-[40px] prose-blockquote:after:z-30 prose-blockquote:relative  prose-blockquote:after:bg-no-repeat prose-blockquote:not-italic prose-blockquote:border-none prose-a:decoration-deepForest prose-strong:font-bold prose-a:text-deepForest">
             <TextComponent
