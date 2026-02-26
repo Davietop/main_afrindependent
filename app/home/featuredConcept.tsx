@@ -47,13 +47,9 @@ const FeaturedConcept = () => {
       {/* Concepts Grid */}
       <div className="w-11/12 mx-auto   grid gap-6 lg:gap-10 md:grid-cols-2 lg:grid-cols-3">
         {concepts.map((item, i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.15 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -8 }}
+         
             className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-[#ffd700]/30"
           >
             {/* Large Background Number */}
@@ -79,9 +75,8 @@ const FeaturedConcept = () => {
               Explore Framework →
             </Link>
 
-            {/* Subtle Bottom Accent Line */}
-            <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#ffd700] transition-all duration-500 group-hover:w-full" />
-          </motion.div>
+          
+          </div>
         ))}
       </div>
     </section>
