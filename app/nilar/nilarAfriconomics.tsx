@@ -54,7 +54,7 @@ function HowNilarAligns() {
         </p>
 
         <p className="text-gray-700 text-lg leading-relaxed ml-4">
-        The Nilar is not a technocratic experiment or Western-style reform. It is a direct, practical application of <span className="font-bold">Africonomics</span>—an African school of philosophical and economic thought grounded in truth, justice, liberty, and nonaggression.
+        The Nilar is not a technocratic experiment or Western-style reform. It is a direct, practical application of <span className="font-bold">Africonomics</span>—a school of philosophical and economic thought grounded in truth, justice, liberty, and nonaggression.
         </p>
         <p className="text-gray-700 text-lg leading-relaxed mt-2 ml-4">
         Designed within the natural-moral law framework of Africonomics, the Nilar affirms the dignity and rights of every individual to save, trade, invest, and prosper free from institutionalized monetary deception and coercion. Unlike fiat money, which serves governments and elites, the Nilar serves people, empowers nations, and fosters structural justice
