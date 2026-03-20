@@ -12,7 +12,60 @@ import { getCategories, getFacultyMember } from "@/service/sanity-queries";
 import founder from "/public/founder.jpg";
 import { IBM_Plex_Sans } from "next/font/google";
 import LatestPub from "./latest_pug";
+import { Metadata } from "next";
 
+
+
+export const metadata: Metadata = {
+  title: "Manuel Tacanho – Author | Afrindependent Institute",
+  description:
+    "Explore the works and ideas of Manuel Tacanho, a contributor at Afrindependent Institute. Discover insights on Africonomics, sound money, African economic reform, and structural justice.",
+
+  applicationName: "Afrindependent Institute",
+  metadataBase: new URL("https://www.afrindependent.org"),
+  manifest: "/manifest.json",
+
+  openGraph: {
+    title: "Manuel Tacanho – Afrindependent Institute",
+    description:
+      "Read publications and insights by Manuel Tacanho on Africonomics, economic freedom, and Africa’s structural transformation.",
+    url: "https://www.afrindependent.org/authors/manuel-tacanho",
+    siteName: "Afrindependent Institute",
+    type: "profile",
+    images: [
+      {
+        url: "https://www.afrindependent.org/founder.jpg", // replace with actual author image
+        width: 1200,
+        height: 630,
+        alt: "Manuel Tacanho – Afrindependent Institute",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Manuel Tacanho – Afrindependent Institute",
+    description:
+      "Explore Manuel Tacanho’s publications on Africonomics, sound money, and African economic transformation.",
+    images: ["https://www.afrindependent.org/founder.jpg"],
+  },
+
+  keywords: [
+    "Manuel Tacanho",
+    "Afrindependent Institute author",
+    "Africonomics writer",
+    "African economic reform",
+    "sound money Africa",
+    "African policy research",
+    "economic freedom Africa",
+    "African intellectual thought",
+    "Afrindependent publications",
+  ],
+
+  alternates: {
+    canonical: "https://www.afrindependent.org/authors/manuel-tacanho",
+  },
+};
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
