@@ -347,8 +347,7 @@ export default function AfriconomicsPage() {
        <div className="px-5 flex flex-col gap-y-4 md:px-0">
          <p className=" text-gray-700 text-base md:text-lg leading-relaxed">
           The Afrindependent Institute advances a principled and transformative
-          body of knowledge based on Africonomics— an African school of
-          philosophical, economic, and civilizational thought grounded in
+          body of knowledge based on Africonomics— a school of philosophical, economic and civilizational thought grounded in
           natural-moral law, justice, and liberty that advances sound economic
           systems.
         </p>

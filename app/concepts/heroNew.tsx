@@ -49,8 +49,7 @@ export default function HeroSection() {
                 <span className="font-medium text-[#ffd700]">
                   Explore the foundations
                 </span>{" "}
-                of a distinctly human and principled approach to economics,
-                jurisprudence, and the broader social sciences.
+                of a distinctly principled and human-centered approach to economics, law, governance and the broader social sciences.
               </motion.p>
             </div>
 
