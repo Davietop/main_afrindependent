@@ -137,10 +137,10 @@ const AppFAQ = () => {
             {/* Custom Contact Card - Responsive Width */}
             <div className="p-6 sm:p-10 w-full lg:max-w-full rounded-[2rem] sm:rounded-[2.5rem] border border-slate-100 bg-slate-50/40 shadow-sm">
               <h3 className="text-xl sm:text-2xl font-bold mb-3">
-                Can't find answers?
+                Can not find answers?
               </h3>
               <p className="text-sm sm:text-base text-slate-500 mb-6 leading-relaxed">
-                We're here to help you out whenever you need! Get in touch with
+                We are here to help you out whenever you need! Get in touch with
                 our dedicated support team for personalized assistance anytime.
               </p>
               <Button
@@ -177,7 +177,7 @@ const AppFAQ = () => {
             >
               {faqs.map((item, index) => {
                 // Helper to render the different answer formats
-                const renderAnswer = (answer) => {
+                const renderAnswer = (answer:any) => {
                   // Case 1: Simple String
                   if (typeof answer === "string") {
                     return <p className="leading-relaxed">{answer}</p>;
@@ -194,7 +194,7 @@ const AppFAQ = () => {
 
                       {answer.bullets && (
                         <ul className="list-disc pl-5 space-y-2 text-slate-600">
-                          {answer.bullets.map((bullet, idx) => (
+                          {answer.bullets.map((bullet:any, idx:any) => (
                             <li key={idx}>{bullet}</li>
                           ))}
                         </ul>
