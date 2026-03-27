@@ -1,18 +1,16 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { FaGlobeAfrica, FaCoins } from "react-icons/fa";
+import React from "react";
+import { Collapse, Button, ConfigProvider } from "antd";
+import { ArrowUpOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { IBM_Plex_Sans } from "next/font/google";
+import Link from "next/link";
+
+const { Panel } = Collapse;
 const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"], // Or 'latin-ext' if needed
-  weight: ["400", "500", "700"], // Optional: choose weights you use
-  display: "swap", // Optional: improves text rendering
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 const faqs = [
@@ -26,7 +24,7 @@ const faqs = [
     answer:
       "Absolutely. African nations have the sovereign right and capacity to establish sound monetary systems, especially because the current era of fiat currency systems has proven unjust and destructive. The Nilar is designed to be implemented gradually, nationally or regionally, with complete transparency. More importantly, African leaders have the moral, cultural, and material obligation to provide African nations with an entirely sound monetary system. ",
   },
- 
+
   {
     question: "How does the Nilar compare to Bitcoin or CBDCs?",
     answer: {
@@ -47,88 +45,192 @@ const faqs = [
   {
     question: "  How is the Nilar secured and audited",
     answer: {
-      header: ` All gold reserves backing the Nilar are independently audited and securely stored, with full transparency for public trust. Digital issuance is strictly limited to the actual gold held—eliminating inflation risk and monetary manipulation.`
-    }
+      header: ` All gold reserves backing the Nilar are independently audited and securely stored, with full transparency for public trust. Digital issuance is strictly limited to the actual gold held—eliminating inflation risk and monetary manipulation.`,
+    },
   },
-
- 
 ];
 
-export default function FAQAccordion() {
+const FAQData = [
+  {
+    key: "1",
+    label: "What is this app, and how can it help me?",
+    children: (
+      <p className="text-slate-500 leading-relaxed">
+        This app helps you track your daily expenses, set budgets, and manage
+        your finances more effectively. It provides you with the tools you need
+        to understand your spending patterns.
+      </p>
+    ),
+  },
+  {
+    key: "2",
+    label: "Is there a free trial available?",
+    children: (
+      <p className="text-slate-500">
+        Yes, we offer a 14-day free trial for all new users.
+      </p>
+    ),
+  },
+  {
+    key: "3",
+    label: "Which payment methods do you accept?",
+    children: (
+      <p className="text-slate-500">
+        We accept Visa, Mastercard, and American Express.
+      </p>
+    ),
+  },
+  {
+    key: "4",
+    label: "How does the app keep my financial data secure?",
+    children: (
+      <p className="text-slate-500">
+        We use 256-bit SSL encryption to protect your data.
+      </p>
+    ),
+  },
+  {
+    key: "5",
+    label: "I need help with the app. How can I contact support?",
+    children: (
+      <p className="text-slate-500">
+        Our support team is available 24/7 via the contact form.
+      </p>
+    ),
+  },
+];
+
+const AppFAQ = () => {
   return (
-
-   <div className={`${ibmPlexSans.className} md:px-5 lg:px-10`}>
-      
-             <div>
-          {" "}
-          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
-             Frequently Asked Questions
-          </h3>
-          <div className="px-5 sm:hidden">
-            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
-            Frequently Asked Questions
-            </h3>
-          </div>
-        </div>
-    <div
-      className={`${ibmPlexSans.className} relative  pt-6 px-6 sm:px-10 lg:px-20 text-black overflow-hidden`}
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#18181b",
+          borderRadius: 16,
+          fontFamily: ibmPlexSans.style.fontFamily,
+        },
+        components: {
+          Collapse: {
+            headerBg: "#f8fafc",
+            contentBg: "#f8fafc",
+            headerPadding: "16px 20px", // Slightly tighter for mobile
+          },
+        },
+      }}
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover bg-center opacity-5"></div>
+      <div
+        className={`${ibmPlexSans.className} w-full bg-white pt-6 px-5  lg:px-10`}
+      >
+        {/* Section Title - Stays top-left */}
+        <div className="mb-2 md:mb-6">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-800 border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide ">
+            Frequently Asked Questions
+          </h3>
+        </div>
 
-      {/* Decorative background icons */}
-      <FaGlobeAfrica className="absolute top-10 left-5 text-[250px] hidden sm:block text-[#ffd700] opacity-60" />
-      <FaCoins className="absolute bottom-10 right-5 text-[200px]  hidden sm:block text-[#ffd700]  opacity-60" />
+        {/* Responsive Grid Container */}
+        <div className="w-full lg:w-11/12 mx-auto flex flex-col lg:flex-row gap-y-6 lg:gap-x-16 items-start">
+          {/* Left Side: Header & Contact Card */}
+          <div className="w-full lg:w-6/12 space-y-4">
+      
 
-    
+            {/* Custom Contact Card - Responsive Width */}
+            <div className="p-6 sm:p-10 w-full lg:max-w-full rounded-[2rem] sm:rounded-[2.5rem] border border-slate-100 bg-slate-50/40 shadow-sm">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3">
+                Can't find answers?
+              </h3>
+              <p className="text-sm sm:text-base text-slate-500 mb-6 leading-relaxed">
+                We're here to help you out whenever you need! Get in touch with
+                our dedicated support team for personalized assistance anytime.
+              </p>
+              <Button
+                type="primary"
+                size="large"
+                shape="round"
+                icon={<ArrowRightOutlined rotate={-45} />}
+                className="h-18 px-6 bg-deepForest text-[#ffd700] hover:!bg-zinc-800 border-none flex items-center gap-2 text-sm sm:text-base"
+              >
+               <Link href='/contact'> Contact us</Link>
+              </Button>
+            </div>
+          </div>
 
-      <div className="max-w-4xl mx-auto space-y-5 relative z-10">
-        {faqs.map((faq, i) => (
-          <Accordion
-            key={i}
-            sx={{
-              backgroundColor: "rgba(255, 255, 255, 0.05)",
-              color: "black",
-              boxShadow: "none",
-              borderRadius: 2,
-              backdropFilter: "blur(4px)",
-              "&::before": { display: "none" },
-              border: "1px solid #002813",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                backgroundColor: "#faf9f6",
-                borderColor: "rgba(255, 255, 255, 0.2)",
-              },
-            }}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon sx={{ color: "black" }} />}
-            >
-              <Typography fontWeight="bold">{faq.question}</Typography>
-            </AccordionSummary>
-
-            <AccordionDetails>
-              {typeof faq.answer === "string" ? (
-                <Typography className="text-black">{faq.answer}</Typography>
-              ) : (
-                <div className="space-y-2">
-                       <p className="text-black">{faq.answer.header}</p>
-                 
-                  <p className="text-black">{faq.answer.paragraph}</p>
-                  {faq.answer.bullets && (
-  <ul className="list-disc pl-6 space-y-3 text-base text-gray-800">
-    {faq.answer.bullets.map((point, idx) => (
-      <li key={idx}>{point}</li>
-    ))}
-  </ul>
-)}
+          {/* Right Side: Ant Design Accordion */}
+          <div className="w-full lg:w-6/12">
+            <Collapse
+              accordion
+              defaultActiveKey={["1"]}
+              expandIconPosition="end"
+              ghost
+              className="faq-collapse"
+              expandIcon={({ isActive }) => (
+                <div
+                  className={`transition-all p-1.5 rounded-lg flex items-center justify-center ${
+                    isActive
+                      ? "bg-slate-200 text-white"
+                      : "bg-slate-200 text-slate-500"
+                  }`}
+                >
+                  <ArrowUpOutlined rotate={isActive ? 0 : 180} />
                 </div>
               )}
-            </AccordionDetails>
-          </Accordion>
-        ))}
+            >
+              {faqs.map((item, index) => {
+                // Helper to render the different answer formats
+                const renderAnswer = (answer) => {
+                  // Case 1: Simple String
+                  if (typeof answer === "string") {
+                    return <p className="leading-relaxed">{answer}</p>;
+                  }
+
+                  // Case 2: Object with Header/Paragraph/Bullets
+                  return (
+                    <div className="space-y-4">
+                      {answer.header && (
+                        <p className="font-medium text-slate-800">
+                          {answer.header}
+                        </p>
+                      )}
+
+                      {answer.bullets && (
+                        <ul className="list-disc pl-5 space-y-2 text-slate-600">
+                          {answer.bullets.map((bullet, idx) => (
+                            <li key={idx}>{bullet}</li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {answer.paragraph && (
+                        <p className="leading-relaxed italic text-slate-700 bg-slate-100/50 p-3 rounded-lg border-l-2 border-slate-300">
+                          {answer.paragraph}
+                        </p>
+                      )}
+                    </div>
+                  );
+                };
+
+                return (
+                  <Panel
+                    header={
+                      <span className="text-base sm:text-lg font-semibold text-slate-900 pr-4">
+                        {item.question}
+                      </span>
+                    }
+                    key={index} // Using index as key since the data keys aren't provided
+                    className="mb-4 overflow-hidden rounded-2xl bg-slate-50 border-none last:mb-0"
+                  >
+                    <div className="text-sm sm:text-base text-slate-600 pb-2">
+                      {renderAnswer(item.answer)}
+                    </div>
+                  </Panel>
+                );
+              })}
+            </Collapse>
+          </div>
+        </div>
       </div>
-    </div>
-   </div>
+    </ConfigProvider>
   );
-}
+};
+
+export default AppFAQ;
