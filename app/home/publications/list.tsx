@@ -165,7 +165,7 @@ const List = ({ authorSlug }: PropType) => {
       <div className="text-center mt-6">
         <Link
           href="/publications"
-          className="flex items-center justify-center gap-3 border-2 w-fit mx-auto bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
+          className="flex items-center justify-center gap-3 border-2 w-fit mx-auto bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-2 px-4 rounded-xl text-sm lg:text-base shadow-md transition duration-300"
         >
           Read More Publications
         </Link>

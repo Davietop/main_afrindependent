@@ -30,7 +30,7 @@ const PcModelCard = () =>{
 <section className=" pt-2 ">
       <div className="max-w-6xl mx-auto text-center">
         {/* Hero */}
-        <h1 className="text-2xl font-extrabold text-[#002813]   mb-2">
+        <h1 className="text-base  md:text-xl font-extrabold text-[#002813]   mb-2">
           Africa’s Gold-Based Path to Monetary Justice
         </h1>
         <p className="text-gray-700 text-base md:text-xl mb-6 max-w-3xl mx-auto">
@@ -71,7 +71,7 @@ const PcModelCard = () =>{
       <div className="text-center mt-8">
         <Link
           href="/nilar"
-          className="flex w-fit mx-auto items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black font-semibold py-3 px-6 rounded-xl shadow-md transition duration-300"
+          className="flex w-fit mx-auto items-center justify-center gap-3 border-2 bg-deepForest border-[#00210d] dark:border-yellow-400 text-[#ffd700] dark:text-yellow-300  dark:hover:bg-yellow-400 hover:text-deepForest hover:bg-white dark:hover:text-black text-sm lg:text-base font-semibold py-2 px-4 rounded-xl shadow-md transition duration-300"
         >
           Learn More About the Nilar
         </Link>
