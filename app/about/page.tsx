@@ -19,12 +19,12 @@ import Principle from "./principle";
 
 export const metadata: Metadata = {
   title: "About Afrindependent",
-  description: "An African school of philosophical and economic thought",
+  description: "A school of philosophical and economic thought",
   applicationName: "Afrindenpendent Organisation",
   manifest: "https://www.afrindependent.org/about",
   openGraph: {
     title: "About Afrindependent",
-    description: "An African school of philosophical and economic thought",
+    description: "A school of philosophical and economic thought",
     images: [
       {
         url: "https://www.afrindependent.org/about_new.png",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: "About Afrindependent",
-    description: "An African school of philosophical and economic thought",
+    description: "A school of philosophical and economic thought",
     images: [
       {
         url: "https://www.afrindependent.org/about_new.png",

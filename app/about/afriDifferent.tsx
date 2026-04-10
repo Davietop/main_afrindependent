@@ -31,7 +31,7 @@ const AfriDifferent = () => {
 </div>
       <h3 className=" mt-4 w-full   text-[#323232] px-4  lg:px-20  text-lg leading-[28px] lg:text-xl lg:leading-[40px]">
         The Afrindependent Institute is a pioneering think tank advancing
-        Africonomics, an African school of philosophical, economic, and
+        Africonomics, a school of philosophical, economic, and
         civilizational thought.{" "}
       </h3>
 

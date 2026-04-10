@@ -12,7 +12,7 @@ const Whatabout = () => {
             What is Africonomics?
           </h3>
           <p className="font-inter_tight lg:font-medium text-[#323232] text-lg leading-[28px] lg:text-2xl lg:leading-[40px]">
-            It’s an African school of philosophical and economic thought.
+            It’s a school of philosophical, economic and civilizational thought.
             Africonomics is a social science grounded in upholding people’s
             natural individual rights [life, liberty, and (self and property)
             ownership]. Its central goal is to study and understand

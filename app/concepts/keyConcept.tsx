@@ -27,7 +27,7 @@ const clusters = [
         id: "africonomics",
         title: "Africonomics",
         intro:
-          "An African school of philosophical, economic, and civilizational thought grounded in natural-moral law, truth, liberty, and justice.",
+          "A school of philosophical, economic, and civilizational thought grounded in natural-moral law, truth, liberty, and justice.",
         description:
           " Africonomics offers a principled and transformative alternative to Western economic orthodoxy—rejecting statism, fiat money, coercive governance, and technocratic social engineering in favor of upholding natural rights, voluntary cooperation, sound money systems, and structurally just social order grounded in natural-moral law jurisprudence.\n\nAfriconomics challenges established philosophical and economic models and advances a principled and more constructive approach to economics and other social sciences.",
       },
