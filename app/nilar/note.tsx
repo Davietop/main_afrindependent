@@ -67,7 +67,7 @@ export default function NilarNote() {
         </ul>
 
         <p className="text-lg sm:text-xl leading-relaxed mt-6">
-          The failure of Zimbabwe’s gold-linked fiat is not a failure of gold or sound money is a  <span className="font-bold"> failure of monetary dishonesty</span> and state manipulation.
+          The failure of Zimbabwe’s gold-linked fiat is not a failure of gold or sound money but a <span className="font-bold"> failure of monetary dishonesty</span> and state manipulation.
         </p>
 
         <div className="bg-[#fef9e6] dark:bg-[#173524] mx-auto text-center p-6 mt-6 rounded-xl shadow-sm border border-yellow-400">
