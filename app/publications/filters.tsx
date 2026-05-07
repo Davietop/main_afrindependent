@@ -103,6 +103,7 @@ export default function Filters({ categories }: PropType) {
   useEffect(() => {
     if (uniqueFeatured.length > 1) setFeatureLoader(false);
   }, [uniqueFeatured.length]);
+ 
 
   const getRecentPublications = (data: Publication[], maxAgeInDays = 180) => {
     const now = new Date();
@@ -186,7 +187,6 @@ export default function Filters({ categories }: PropType) {
         setPublicationData(results || []);
         setHasFetched(true);
       } catch (error) {
-        console.error("Error fetching publications:", error);
         setErrorMessage("Failed to load publications.");
         setPublicationData([]);
         setHasFetched(true);
@@ -269,7 +269,7 @@ export default function Filters({ categories }: PropType) {
                       {/* Content */}
                       <div className="flex flex-col p-4 gap-y-3">
                         {/* Title */}
-                        <h3 className="text-lg font-semibold text-deepForest line-clamp-2">
+                        <h3 className="text-lg font-semibold text-deepForest">
                           {title}
                         </h3>
 
