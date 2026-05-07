@@ -75,7 +75,7 @@ export default function Filters({ categories }: PropType) {
     }
   }, []);
 
-  const titlesInOrder = ["philosophical", "purpose", "really"];
+  const titlesInOrder = ["principled paradigm", "purpose", "really"];
 
   // Step 1: Match publications by keywords in order
   const orderedFeaturedPublications = titlesInOrder
@@ -166,7 +166,7 @@ export default function Filters({ categories }: PropType) {
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
-      
+
       setErrorMessage(null);
 
       try {
