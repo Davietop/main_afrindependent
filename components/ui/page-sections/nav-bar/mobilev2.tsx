@@ -114,7 +114,7 @@ export const MobileDevV2 = () => {
 
         {/* Sidebar */}
         <div
-          className={`fixed top-16  left-0 w-8/12 h-screen bg-[#ffd700] z-50 transform transition-transform duration-300 ease-in-out ${
+          className={`fixed top-16  left-0 w-8/12 h-screen bg-[#d2b48c] z-50 transform transition-transform duration-300 ease-in-out ${
             open ? "translate-x-0" : "-translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}

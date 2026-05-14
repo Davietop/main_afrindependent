@@ -92,7 +92,7 @@ const Hero = () => {
              
              
                 <a  href={ `https://www.afrindependent.org/publications/${slugNilar?.slug}?type=policy-papers`}>
-                 <button className="flex items-center justify-center gap-3 w-10/12 mx-auto md:w-full md:mx-0 border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-2 px-4 md:py-3  md:px-6 rounded-3xl shadow-md transition duration-300">
+                 <button className="flex w-10/12 mx-auto md:w-fit md:mx-0   justify-center gap-3 border-2 border-white dark:border-yellow-400 text-white dark:text-yellow-300 hover:bg-[#00210d] hover:border-[#00210d] dark:hover:bg-yellow-400 hover:text-[#ffd700] dark:hover:text-black font-semibold py-2 px-4 md:py-3  md:px-6  rounded-3xl shadow-md transition duration-300 ">
                 
                   Read the Policy Paper
                
@@ -109,9 +109,9 @@ const Hero = () => {
                       ? nativeShare()
                       : setOpen(!open)
                   }
-                  className="flex w-10/12 mx-auto md:w-full md:mx-0 items-center justify-center gap-3 border-2 bg-deepForest border-deepForest text-[#ffd700] hover:text-deepForest hover:bg-white font-semibold py-2 px-4 md:py-3  md:px-6 rounded-3xl shadow-md transition duration-300"
+                  className="flex w-10/12 mx-auto md:w-fit md:mx-0  items-center justify-center gap-3 border-2 border-white dark:border-yellow-400 text-white dark:text-yellow-300 hover:bg-[#00210d] hover:border-[#00210d] dark:hover:bg-yellow-400 hover:text-[#ffd700] dark:hover:text-black font-semibold py-2 px-4 md:py-3  md:px-6  rounded-3xl shadow-md transition duration-300 "
                 >
-                  <FaShareAlt /> Share this Page
+                  <FaShareAlt /> <p>Share this Page</p>
                 </button>
 
                 {open && (
