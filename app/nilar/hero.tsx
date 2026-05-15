@@ -76,7 +76,7 @@ const Hero = () => {
     <main className={`${ibmPlexSans.className} pt-16 xl:pt-0 xl:mt-0`}>
       <div className="bg-white">
         <section className="relative py-16 xl:py-32 min-h-fit bg-deepForest flex items-center justify-center text-center px-6">
-          <div className="absolute inset-0 bg-nilar_coin bg-cover bg-center opacity-30 z-0" />
+          <div className="absolute inset-0 bg-nilar_coin bg-cover bg-center opacity-20 z-0" />
           <div className="absolute inset-0 bg-opacity-80 z-0" />
           <div className="relative w-full z-10 lg:max-w-5xl mx-auto text-white">
             <h1 className="text-3xl md:text-6xl leading-snug font-extrabold lg:leading-tight mb-6 lg:mb-6">
@@ -85,7 +85,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl mb-6 text-[#ffd700] lg:mb-6">
-              Rooted in Africonomics. Grounded in justice. Built for Prosperity.
+             Grounded in Africonomics. Rooted in justice. Built for Prosperity.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">

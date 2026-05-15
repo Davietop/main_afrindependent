@@ -64,9 +64,9 @@ const clusters = [
       },
       {
         id: "natural-social-order",
-        title: "The Natural Social Order",
+        title: "The Natural-Moral Social Order",
         intro:
-          "A peaceful order built on natural-moral law and individual rights",
+          "A structurally just, peaceful and dignified order built on natural-moral law and individual rights",
         description:
           "A socioeconomic system is most peaceful, civilized, and beneficial to the extent that it aligns with the universal moral principles of truth, justice, and nonaggression. This concept articulates a vision for structuring social life ethically—without centralized and technocratic statist systems of coercion, repression, and dispossession.",
       },
@@ -85,7 +85,7 @@ const clusters = [
         id: "natural-individual-rights",
         title: "Natural Individual Rights",
         intro:
-          "Life, liberty, and ownership—endowed by the Creator, not granted by the state.",
+          " Life, liberty, and ownership-grounded in God and reason, not granted by the state",
         description:
           "Africonomics affirms that every human being possesses inherent rights by virtue of their humanity. The fundamental human rights are life, liberty, and the ownership of self and property. Any system that violates these rights is oppressive, unjust, and morally illegitimate—no matter how legal or democratic it may appear.",
       },
@@ -116,7 +116,7 @@ const clusters = [
       {
         id: "sound-money-banking",
         title: "Sound Money and Banking",
-        intro: "The foundation of economic justice, stability, and liberty.",
+        intro: "The foundation of economic justice, stability, and prosperity",
         description:
           "Africonomics defines sound money as money that arises naturally in the marketplace, retains its purchasing power over time, and is free from manipulation by states or central banks. Combined with free-market banking principles, it provides a structurally just monetary order.\n\nFor Africa, Africonomics offers the Nilar, a gold-based currency system designed to restore monetary justice, sovereignty, and economic stability.",
       },
@@ -189,7 +189,7 @@ const clusters = [
         intro:
           "Restoring truth, ethics, and clarity to the leading social science.",
         description:
-          "Africonomics refines economics by returning it to its rightful foundation: the ethical study of human choices, actions, relations, and institutions. It rejects utilitarianism, positivism, and materialism in favor of a natural-moral framework that recognizes the existence of objective, universal moral principles and prioritizes justice, liberty, and voluntary cooperation.\n\nA New and Constructive Definition of Economics:\n\nEconomics is a social science whose fundamental purpose is to study and understand socioeconomic phenomena to foster justice, prosperity, and peaceful human relations within and among societies.",
+          "Africonomics refines economics by returning it to its rightful foundation: the ethical study of human choices, actions, relations, and institutions. It rejects utilitarianism, positivism, and materialism in favor of a natural-moral framework that recognizes the existence of objective, universal moral principles and prioritizes justice, liberty, and voluntary cooperation.\n\nA New and Constructive Definition of Economics:\n\nEconomics is the social science that studies human action, production, and exchange with the fundamental purpose of fostering structural justice, genuine prosperity, and peaceful human relations within and among societies.",
       },
       {
         id: "scale-of-statism",
@@ -233,7 +233,7 @@ const clusters = [
           },
         ],
         closing:
-          "The Scale of Statism has dispelled a central global myth by demonstrating that contrary to the established belief, the United States, other Western nations, and the current global order are not free-market capitalist systems. In reality, they are heavily statist systems—closer to socialism than to free-market capitalism.",
+          "The Scale of Statism has dispelled a central global myth by demonstrating that contrary to the established belief, the United States, other Western nations, and the current global order are not free-market capitalist systems. They are heavily statist systems that lean closer to socialism than to free-market capitalism.",
       },
     ],
   },
