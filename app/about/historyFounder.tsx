@@ -1,5 +1,4 @@
 import Image from "next/image";
-import mission_img from "../../public/AfridependentLogo.svg";
 import manuel from "../../public/manuel_copy.png";
 import { IBM_Plex_Sans } from "next/font/google";
 const ibmPlexSans = IBM_Plex_Sans({
