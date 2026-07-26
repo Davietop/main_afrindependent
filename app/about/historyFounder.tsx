@@ -1,5 +1,5 @@
 import Image from "next/image";
-import manuel from "/public/manuel_copy.png";
+import manuel from "/public/profile.jpg";
 import { IBM_Plex_Sans } from "next/font/google"; 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], 
@@ -30,9 +30,15 @@ const HistoryFounder = () => {
       <div
         className={`${ibmPlexSans.className} flex flex-col xl:flex-row items-center justify-center  my-6`}
       >
-       <div className="relative left-10 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12 text-white overflow-hidden">
-              <div className=" bg-contain h-[600px] w-[400px] bg-founder  " />
-            </div>
+        <div className="relative w-11/12 md:w-9/12 lg:h-[380px] h-[400px] xl:w-4/12   text-white  overflow-hidden">
+          <Image
+            src={manuel}
+            height={600}
+            width={400}
+            alt="mission_img"
+            className="absolute object-contain  left-1/2  transform -translate-x-1/2"
+          />
+        </div>
 
         <div className="w-11/12 md:w-10/12 md:text-center xl:text-left xl:w-7/12 mt-4 lg:mt-0 ">
           <p className=" text-gray-700 mt-2 text-lg leading-[28px] lg:text-xl lg:leading-normal ">

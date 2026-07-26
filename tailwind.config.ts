@@ -46,7 +46,7 @@ const config = {
         mission_hands: 'url("/about_new.png")',
         publication: 'url("/pub_lica.jpg")',
         logo_bg: 'url("/Afridependent_2.svg")',
-        founder: 'url("/manuel_copy.png")',
+        founder: 'url("/profile.jpg")',
         world: 'url("/world.jpg")',
         missionHome: 'url("/homeMission_5.jpg")',
         ambassador: 'url("/africonomics-ambassador_4.jpg")',
