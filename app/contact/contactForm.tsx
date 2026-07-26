@@ -74,10 +74,7 @@ const ContactSection: FC = () => {
     setLoading(true);
 
     try {
-      if (isGibberish(formData.message) ) {
-        throw new Error("Rejected Data Content, Message looks like gibberish.");
-      } else {
-        const res = await fetch("/api/send-contact", {
+       const res = await fetch("/api/send-contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
@@ -87,7 +84,6 @@ const ContactSection: FC = () => {
           setShowModal(true);
           setFormData({ firstName: "", lastName: "", email: "", message: "" });
         }
-      }
     } catch (err) {
       alert( err)
      
