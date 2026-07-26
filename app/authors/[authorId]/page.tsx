@@ -136,8 +136,8 @@ const Author = async ({ params }: AuthorPageProps) => {
           </div>
 
           <div className="flex flex-col xl:flex-row items-center justify-center gap-x-10 my-10 ">
-            <div className="relative w-11/12 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12 text-white overflow-hidden">
-              <div className="absolute bg-contain h-[600px] w-[400px] bg-founder  left-1/2  transform -translate-x-1/2" />
+            <div className="relative left-10 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12 text-white overflow-hidden">
+              <div className=" bg-contain h-[600px] w-[400px] bg-founder  " />
             </div>
 
             <div className="w-11/12 md:w-10/12 md:text-center xl:text-left xl:w-7/12 mt-4 lg:mt-0">
