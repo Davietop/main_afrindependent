@@ -1,6 +1,6 @@
 import Image from "next/image";
-import manuel from "../../public/manuel_copy.png";
-import { IBM_Plex_Sans } from "next/font/google";
+import manuel from "/public/manuel_copy.png";
+import { IBM_Plex_Sans } from "next/font/google"; 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], 
   weight: ["400", "500", "700"], 
