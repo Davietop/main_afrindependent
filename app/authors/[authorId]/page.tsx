@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { MdEmail } from "react-icons/md";
@@ -9,12 +8,9 @@ import Navbar from "@/components/ui/page-sections/nav-bar";
 import List from "@/app/publications/list";
 import Footer from "@/components/ui/page-sections/footer";
 import { getCategories, getFacultyMember } from "@/service/sanity-queries";
-import founder from "/public/manuel_copy.png";  
 import { IBM_Plex_Sans } from "next/font/google";
 import LatestPub from "./latest_pug";
 import { Metadata } from "next";
-
-
 
 export const metadata: Metadata = {
   title: "Manuel Tacanho – Author | Afrindependent Institute",
@@ -34,7 +30,7 @@ export const metadata: Metadata = {
     type: "profile",
     images: [
       {
-        url: "https://www.afrindependent.org/founder.jpg", // replace with actual author image
+        url: "https://www.afrindependent.org/manuel_copy.png",
         width: 1200,
         height: 630,
         alt: "Manuel Tacanho – Afrindependent Institute",
@@ -47,7 +43,7 @@ export const metadata: Metadata = {
     title: "Manuel Tacanho – Afrindependent Institute",
     description:
       "Explore Manuel Tacanho’s publications on Africonomics, sound money, and African economic transformation.",
-    images: ["https://www.afrindependent.org/founder.jpg"],
+    images: ["https://www.afrindependent.org/manuel_copy.png"],
   },
 
   keywords: [
@@ -93,7 +89,6 @@ const Author = async ({ params }: AuthorPageProps) => {
   const names = (name ?? "").trim().split(" ");
   const firstname = names[0] ?? "";
   const lastname = names[1] ?? "";
- 
 
   return (
     <main className={`${ibmPlexSans.className} bg-white`}>
@@ -128,56 +123,56 @@ const Author = async ({ params }: AuthorPageProps) => {
 
         {/* About Section */}
         <div className={`${ibmPlexSans.className}`}>
-        
-            <div className="mt-6 md:px-5   lg:px-10 ">
-          {" "}
-          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
-          About the Author
-          </h3>
-          <div className="px-5 sm:hidden">
-            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
-                About the Author
+          <div className="mt-6 md:px-5   lg:px-10 ">
+            {" "}
+            <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+              About the Author
             </h3>
+            <div className="px-5 sm:hidden">
+              <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+                About the Author
+              </h3>
+            </div>
           </div>
-        </div>
 
           <div className="flex flex-col xl:flex-row items-center justify-center gap-x-10 my-10 ">
             <div className="relative w-11/12 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12 text-white overflow-hidden">
-              <Image
-                src={founder}
-                height={600}
-                width={400}
-                alt="mission_img"
-                className="absolute object-contain left-1/2 transform -translate-x-1/2"
-              />
+              <div className="absolute bg-contain h-[600px] w-[400px] bg-founder  left-1/2  transform -translate-x-1/2" />
             </div>
 
             <div className="w-11/12 md:w-10/12 md:text-center xl:text-left xl:w-7/12 mt-4 lg:mt-0">
               <p className="lg:font-medium text-[#323232] mt-4 text-lg leading-[28px] lg:text-xl lg:leading-[40px]">
-               
-Manuel Tacanho is a social philosopher and economist, and the founder and president of the Afrindependent Institute. He is the originator of Africonomics, a school of philosophical, economic, and civilizational thought grounded in natural-moral law, sound money, structural justice, and peaceful human relations. His research focuses on political economy, monetary systems, international relations, and the philosophical foundations of economics and the social sciences. His work critically examines Western statist, utilitarian, and positivist frameworks and advances principled alternatives aimed at fostering justice, prosperity, and economic sovereignty, particularly in the African context.
+                Manuel Tacanho is a social philosopher and economist, and the
+                founder and president of the Afrindependent Institute. He is the
+                originator of Africonomics, a school of philosophical, economic,
+                and civilizational thought grounded in natural-moral law, sound
+                money, structural justice, and peaceful human relations. His
+                research focuses on political economy, monetary systems,
+                international relations, and the philosophical foundations of
+                economics and the social sciences. His work critically examines
+                Western statist, utilitarian, and positivist frameworks and
+                advances principled alternatives aimed at fostering justice,
+                prosperity, and economic sovereignty, particularly in the
+                African context.
               </p>
             </div>
           </div>
         </div>
 
-      
-
         {/* Latest Works Section */}
         <div>
-      
-            <div className="mb-6 md:px-5   lg:px-10 ">
-          {" "}
-          <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
-          Latest Work from {name}
-          </h3>
-          <div className="px-5 sm:hidden">
-            <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
-               Latest Work from {name}
+          <div className="mb-6 md:px-5   lg:px-10 ">
+            {" "}
+            <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
+              Latest Work from {name}
             </h3>
+            <div className="px-5 sm:hidden">
+              <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
+                Latest Work from {name}
+              </h3>
+            </div>
           </div>
-        </div>
-          <LatestPub firstName={firstname} lastName={lastname}/>
+          <LatestPub firstName={firstname} lastName={lastname} />
           {/* <List authorSlug={slug} isComponent categories={categories} /> */}
         </div>
       </div>
@@ -212,11 +207,21 @@ const Social = ({
           </div>
         </Link>
       )}
-      {linkedin && <Link href={linkedin}><FaLinkedinIn className="text-deepForest h-[25px] w-auto" /></Link>}
-      {twitter && <Link href={twitter}><FaXTwitter className="text-deepForest h-[25px] w-auto" /></Link>}
-      {instagram && <Link href={instagram}><FaInstagram className="text-deepForest h-[25px] w-auto" /></Link>}
+      {linkedin && (
+        <Link href={linkedin}>
+          <FaLinkedinIn className="text-deepForest h-[25px] w-auto" />
+        </Link>
+      )}
+      {twitter && (
+        <Link href={twitter}>
+          <FaXTwitter className="text-deepForest h-[25px] w-auto" />
+        </Link>
+      )}
+      {instagram && (
+        <Link href={instagram}>
+          <FaInstagram className="text-deepForest h-[25px] w-auto" />
+        </Link>
+      )}
     </div>
   );
 };
-
-

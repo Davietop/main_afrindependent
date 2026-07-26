@@ -31,12 +31,9 @@ const HistoryFounder = () => {
         className={`${ibmPlexSans.className} flex flex-col xl:flex-row items-center justify-center  my-6`}
       >
         <div className="relative w-11/12 md:w-9/12 lg:h-[380px] h-[400px] xl:w-4/12   text-white  overflow-hidden">
-          <Image
-            src={manuel}
-            height={600}
-            width={400}
-            alt="mission_img"
-            className="absolute object-contain  left-1/2  transform -translate-x-1/2"
+          <div
+          
+            className="absolute bg-contain h-[600px] w-[400px] bg-founder  left-1/2  transform -translate-x-1/2"
           />
         </div>
 
