@@ -1,6 +1,7 @@
 import Image from "next/image";
 import mission_img from "../../public/AfridependentLogo.svg";
 import founder from "../../public/founder.jpg";
+import manuel from "../../public/manuel_copy.png";
 import { IBM_Plex_Sans } from "next/font/google";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], 
@@ -33,7 +34,7 @@ const HistoryFounder = () => {
       >
         <div className="relative w-11/12 md:w-9/12 lg:h-[380px] h-[400px] xl:w-4/12   text-white  overflow-hidden">
           <Image
-            src={founder}
+            src={manuel}
             height={600}
             width={400}
             alt="mission_img"

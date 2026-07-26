@@ -9,7 +9,7 @@ import Navbar from "@/components/ui/page-sections/nav-bar";
 import List from "@/app/publications/list";
 import Footer from "@/components/ui/page-sections/footer";
 import { getCategories, getFacultyMember } from "@/service/sanity-queries";
-import founder from "/public/founder.jpg";
+import founder from "/public/manuel_copy.png";  
 import { IBM_Plex_Sans } from "next/font/google";
 import LatestPub from "./latest_pug";
 import { Metadata } from "next";
