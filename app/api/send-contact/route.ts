@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend('re_j5g1WtaS_2MrLQHVQqYURHoQJyUATMczZ');
+import nodemailer from "nodemailer";
+
+
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,19 +10,19 @@ export async function POST(req: NextRequest) {
 
     if (!firstName || !lastName || !email || !message) {
       return NextResponse.json(
-        { error: 'All fields are required.' },
-        { status: 400 }
+        { error: "All fields are required." },
+        { status: 400 },
       );
     }
- // 1. Send email to site owner
-const htmlBody = `
+  
+    const htmlBody = `
   <div style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 40px 20px;">
     <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden;">
       
       <!-- Header with Logo -->
       <div style="background-color: #002813; padding: 24px 32px; text-align: center;">
         <div style="display: inline-block; background-color: #ffffff; padding: 8px; border-radius: 8px;">
-          <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/104455417/446529944-2f89f308-b252-466d-9525-f868b14fb50a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250522%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250522T105703Z&X-Amz-Expires=300&X-Amz-Signature=0817285ed20704185156705e73a1b8a1c7c0e06894951a741300c5dbc0d5af17&X-Amz-SignedHeaders=host" alt="Afrindependent Logo" style="height: 60px; max-width: 100%;" />
+          <img src="https://www.afrindependent.org/_next/image?url=%2FAfridependen_2.png&w=256&q=75" alt="Afrindependent Logo" style="height: 60px; max-width: 100%;" />
         </div>
         <h2 style="color: #ffd700; margin: 12px 0 0; font-size: 20px;">New Contact Form Submission</h2>
       </div>
@@ -45,23 +46,6 @@ const htmlBody = `
     </div>
   </div>
 `;
-
-  
-
-    const sendToAdmin = await resend.emails.send({
-      from: "Afrindependent Contact <noreply@afrindependent.org>",
-      to: ['hello@afrindependent.org'],
-      subject: `New Contact Message from ${firstName} ${lastName}`,
-      replyTo: email,
-      html: htmlBody,
-    });
-
-    if (sendToAdmin.error) {
-      console.error('Error sending to admin:', sendToAdmin.error);
-      return NextResponse.json({ error: 'Failed to notify admin.' }, { status: 500 });
-    }
-
-    // 2. Send automatic reply to sender
     const autoReplyHtml = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6;">
         <p>Dear ${firstName},</p>
@@ -89,21 +73,44 @@ const htmlBody = `
       </div>
     `;
 
-    const sendAutoReply = await resend.emails.send({
-      from: "Afrindependent Contact <noreply@afrindependent.org>",
-      to: [email],
-      subject: 'Thank You for Contacting the Afrindependent Institute',
-      html: autoReplyHtml,
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
     });
 
-    if (sendAutoReply.error) {
-      console.error('Error sending auto-reply:', sendAutoReply.error);
-      return NextResponse.json({ error: 'Failed to send auto-reply.' }, { status: 500 });
-    }
+    const adminMailOptions = {
+      from: `"Afrindependent Contact" <${process.env.EMAIL_USER}>`,
+      to: "hello@afrindependent.org", 
+      replyTo: email,
+      subject: `New Contact Message from ${firstName} ${lastName}`,
+      html: htmlBody,
+    };
 
-    return NextResponse.json({ ok: true });
+    const userAutoResponderOptions = {
+      from: `"Afrindependent Contact" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject:
+        "We received your message! Thank You for Contacting the Afrindependent Institute",
+      html: autoReplyHtml,
+    };
+
+    await Promise.all([
+      transporter.sendMail(adminMailOptions),
+      transporter.sendMail(userAutoResponderOptions),
+    ]);
+
+    return NextResponse.json(
+      { message: "Emails sent successfully" },
+      { status: 200 },
+    );
   } catch (err) {
-    console.error('Unexpected error:', err);
-    return NextResponse.json({ error: 'Server error.' }, { status: 500 });
+    console.error("Error sending emails:", err);
+    return NextResponse.json(
+      { error: "Failed to send message" },
+      { status: 500 },
+    );
   }
 }
