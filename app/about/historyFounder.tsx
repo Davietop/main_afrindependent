@@ -1,31 +1,28 @@
 import Image from "next/image";
 import manuel from "/public/profile.jpg";
-import { IBM_Plex_Sans } from "next/font/google"; 
+import { IBM_Plex_Sans } from "next/font/google";
 const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"], 
-  weight: ["400", "500", "700"], 
-  display: "swap", 
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 const HistoryFounder = () => {
   return (
     <div className={`${ibmPlexSans.className}`}>
-     
-
       <div className=" mt-10 md:px-5   lg:px-10">
-  
-       <div>
+        <div>
           {" "}
           <h3 className="text-xl hidden sm:block lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-4 -tracking-wide">
-          History And Founder
+            History And Founder
           </h3>
           <div className="px-5 sm:hidden">
             <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] leading-relaxed pl-3 -tracking-wide">
-             History And Founder
+              History And Founder
             </h3>
           </div>
         </div>
-</div>
+      </div>
 
       <div
         className={`${ibmPlexSans.className} flex flex-col xl:flex-row items-center justify-center  my-6`}

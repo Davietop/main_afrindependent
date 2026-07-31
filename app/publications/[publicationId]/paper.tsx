@@ -20,8 +20,7 @@ import { useSearchParams } from "next/navigation";
 import Head from "next/head";
 import { sanityClient } from "@/service/sanity";
 import { getSinglePublication } from "@/service/sanity-queries";
-import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
+import manuel from "/public/profile.jpg";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -254,12 +253,14 @@ const Paper = ({ post }: { post: PublicationDto }) => {
             <div className="flex gap-4">
               <div className="h-14 w-14 rounded-full overflow-hidden">
                 <Image
-                  src={post.author.image}
+                  src={manuel}
                   alt={post.author.name}
                   width={100}
                   height={150}
                   className="w-full object-cover"
                 />
+
+                
               </div>
               <div className="flex-1 space-y-2">
                 <p className="text-black  font-semibold">{post.author.name}</p>

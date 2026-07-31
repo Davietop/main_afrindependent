@@ -142,10 +142,10 @@ const Author = async ({ params }: AuthorPageProps) => {
         </div>
 
           <div className="flex flex-col xl:flex-row items-center justify-center gap-x-10 my-10 ">
-            <div className="relative w-11/12 md:w-9/12 lg:h-[400px] h-[400px] xl:w-4/12 text-white overflow-hidden">
+            <div className="relative w-11/12 md:w-9/12 lg:h-[450px] h-[450px] xl:w-4/12 text-white overflow-hidden">
               <Image
                 src={founder}
-                height={600}
+                height={500}
                 width={400}
                 alt="mission_img"
                 className="absolute object-contain left-1/2 transform -translate-x-1/2"
