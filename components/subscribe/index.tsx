@@ -1,13 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { LuLoader2 } from 'react-icons/lu';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { IBM_Plex_Sans } from 'next/font/google';
 import ResponseModal from '../ui/responseModal';
-import { Resend } from 'resend';
-import { PlayCircle, Youtube, BellRing } from "lucide-react";
+import { BellRing } from "lucide-react";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -15,53 +13,43 @@ const ibmPlexSans = IBM_Plex_Sans({
   display: 'swap',
 });
 
-const SubscribeForm = ({post}:any) => {
-  const [email, setEmail] = useState('');
+const SubscribeForm = ({ post }: any) => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
-  const [status, setStatus] = useState('');
-  const [message, setMessage] = useState('');
-  const [showModal, setShowModal] = useState(false);
-
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubscribe = async (e: FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-
-
-    
+    setStatus("loading");
+    setMessage("");
 
     try {
-      const res = await fetch('/api/add-contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+    
+      const res = await fetch("/api/add-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
 
-    
-
       const data = await res.json();
 
-      if (res.ok) {
-        setMessage('✅ Contact added successfully!');
-        setEmail('');
-   
-        setStatus('success');
-      } else {
-        setMessage(`⚠️ ${data.error || 'Failed to add contact'}`);
-        setStatus('error');
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong.");
       }
-    } catch (error) {
-      setMessage('❌ Server error, please try again.');
-      setStatus('error');
-    } finally {
-      setShowModal(true);
+
+      setStatus("success");
+      setMessage("Successfully subscribed!");
+      setEmail("");
+    } catch (error: any) {
+      setStatus("error");
+      setMessage(error.message); 
     }
   };
 
   return (
     <div className={`${ibmPlexSans.className} w-full max-w-3xl mx-auto`}>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubscribe}
         className="flex flex-wrap gap-4 justify-between items-center w-full"
       >
         <Input
@@ -73,31 +61,32 @@ const SubscribeForm = ({post}:any) => {
           className="w-full rounded-xl border border-gray-300 shadow-sm px-5 py-5 text-[#1E1E1E]"
         />
 
-      
-
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center mt-2">
           <button
             type="submit"
             disabled={status === 'loading'}
-            className={` ${post=== "post"? "text-sm" :"text-base"} `}
+            className={`flex items-center gap-2 bg-deepForest border-2 border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700] font-medium px-6 py-2 rounded-full transition duration-200 disabled:opacity-75 ${
+              post === "post" ? "text-sm" : "text-base"
+            }`}
           >
             {status === 'loading' ? (
               <LuLoader2 className="animate-spin w-6 h-6 text-[#ffd700]" />
             ) : (
-               <button className="flex items-center gap-2 bg-deepForest border-2 border-deepForest hover:text-deepForest hover:bg-white text-[#ffd700] font-medium px-6 py-2 rounded-full transition duration-200">
+              <>
                 <BellRing className="w-5 h-5" />
                 Subscribe for Updates
-              </button>
+              </>
             )}
           </button>
         </div>
       </form>
 
-      <ResponseModal
-        isOpen={showModal}
-        message={message}
-        onClose={() => setShowModal(false)}
-      />
+      {status === "success" && (
+        <p className="text-sm font-medium text-green-700 mt-4 text-center">{message}</p>
+      )}
+      {status === "error" && (
+        <p className="text-sm font-medium text-red-600 mt-4 text-center">{message}</p>
+      )}
     </div>
   );
 };

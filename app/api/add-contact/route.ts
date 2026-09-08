@@ -1,39 +1,38 @@
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
+  const { email } = await request.json();
+
+  if (!email) {
+    return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+  }
+
+  const API_KEY = process.env.MAILCHIMP_API_KEY;
+  const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
+  const DATACENTER = process.env.MAILCHIMP_API_SERVER; 
+
+  const url = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`;
   try {
-    const { email } = await request.json();
+   
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `apikey ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email_address: email,
+        status: 'subscribed',
+      }),
+    });
 
-    if (!email) {
-      return NextResponse.json({ error: 'Missing email' }, { status: 400 });
+    if (!response.ok) {
+      const errorData = await response.json();
+      return NextResponse.json({ error: errorData.title || 'Subscription failed' }, { status: response.status });
     }
 
-    const res = await fetch(
-      'https://api.resend.com/audiences/ce26564b-8fce-46ce-9bbf-9f107351b6f0/contacts',
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer re_j5g1WtaS_2MrLQHVQqYURHoQJyUATMczZ`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      }
-    );
-
-    const data = await res.json();
-
-    // Handle duplicate email (already exists)
-    if (res.status === 409) {
-      return NextResponse.json({ error: 'Email already exists in the contact list' }, { status: 409 });
-    }
-
-    if (!res.ok) {
-      return NextResponse.json({ error: data }, { status: res.status });
-    }
-
-    return NextResponse.json({ message: 'Contact added successfully', data });
+    return NextResponse.json({ message: 'Success' }, { status: 201 });
   } catch (error) {
-    console.error('Resend contact error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
