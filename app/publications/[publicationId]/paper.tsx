@@ -21,6 +21,7 @@ import Head from "next/head";
 import { sanityClient } from "@/service/sanity";
 import { getSinglePublication } from "@/service/sanity-queries";
 import manuel from "/public/profile.jpg";
+import { useParams } from "next/navigation";
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"], // Or 'latin-ext' if needed
   weight: ["400", "500", "700"], // Optional: choose weights you use
@@ -36,6 +37,9 @@ const Paper = ({ post }: { post: PublicationDto }) => {
   const [open, setOpen] = React.useState(false);
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
+  const params = useParams();
+
+  const slug = params.publicationId as string;
 
   const { data: publications, isLoading, mutate, key } = usePublications({});
   const [updatedPublication, setUpdatedPub] = useState<PublicationDto | null>(
@@ -49,6 +53,17 @@ const Paper = ({ post }: { post: PublicationDto }) => {
   const updatedPublications = publications?.filter(
     (pub) => pub.title !== post.title,
   );
+
+  const trackPublicationDownload = () => {
+    if (typeof window === "undefined" || !window.gtag) return;
+
+    window.gtag("event", "publication_download", {
+      publication_title: post.title,
+      publication_slug: slug,
+      publication_type: post.categoryName || post.category,
+      file_extension: "pdf",
+    });
+  };
 
   const filterByCategory = (data: any, category: any) => {
     const uniqueData = Array.from(
@@ -112,15 +127,26 @@ const Paper = ({ post }: { post: PublicationDto }) => {
         <h1 className="col-span-full mb-6  font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
           {post.title}
         </h1>
-        <Link
-          href={post.file}
-          download={post.title}
-          target="_blank"
-          className="inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px]     mb-4 p-3 hover:bg-deepForest max-w-fit"
-        >
-          <p className="text-sm">Access PDF</p>
-          <AiFillFilePdf className="ml-2 text-white h-4 w-auto" />
-        </Link>
+        <div className="w-full flex items-center gap-x-2 ">
+              <Link
+                href={post.file}
+                download={post.title}
+                target="_blank"
+                className="inline-flex lg:hidden items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-3 w-fit"
+              >
+                Access PDF
+                <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
+              </Link>
+              <a
+                href={`/api/publications/download/${slug}`}
+                onClick={trackPublicationDownload}
+                className="inline-flex items-center justify-center border border-deepForest text-deepForest rounded-[8px] py-3 px-3 w-fit hover:bg-deepForest hover:text-white transition-colors"
+              >
+                Download PDF
+                <AiFillFilePdf className="ml-4 h-5 w-auto" />
+              </a>
+            </div>
+
         <p className=" text-base font-semibold lg:text-xl leading-[25px] lg:leading-[45px] mb-4 lg:mb-0">
           Share this Publication
         </p>
@@ -201,9 +227,8 @@ const Paper = ({ post }: { post: PublicationDto }) => {
             {/* Back Link */}
           </div>
           <div className="mb-6  overflow-hidden flex items-center justify-center">
-        
             <Image
-               src={`${post.image}?w=800&h=500&q=80`}
+              src={`${post.image}?w=800&h=500&q=80`}
               alt={post.title}
               width={1732}
               height={862}
@@ -259,8 +284,6 @@ const Paper = ({ post }: { post: PublicationDto }) => {
                   height={150}
                   className="w-full object-cover"
                 />
-
-                
               </div>
               <div className="flex-1 space-y-2">
                 <p className="text-black  font-semibold">{post.author.name}</p>
@@ -279,16 +302,24 @@ const Paper = ({ post }: { post: PublicationDto }) => {
         </article>
         <aside className=" col-span-4 flex  lg:flex lg:flex-col  mt-5 items-end lg:col-span-2">
           <div className="mx-auto  sticky flex flex-wrap lg:flex-col gap-x-6 gap-y-6 top-0">
-            <div className="w-full ">
+            <div className="w-full flex items-center gap-x-2 ">
               <Link
                 href={post.file}
                 download={post.title}
                 target="_blank"
-                className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-5     w-fit"
+                className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-3 w-fit"
               >
                 Access PDF
                 <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
               </Link>
+              <a
+                href={`/api/publications/download/${slug}`}
+                onClick={trackPublicationDownload}
+                className="inline-flex items-center justify-center border border-deepForest text-deepForest rounded-[8px] py-3 px-3 w-fit hover:bg-deepForest hover:text-white transition-colors"
+              >
+                Download PDF
+                <AiFillFilePdf className="ml-4 h-5 w-auto" />
+              </a>
             </div>
             <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
               {/* green Accent Bar */}

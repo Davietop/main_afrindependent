@@ -1,5 +1,4 @@
 import Script from "next/script";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import Link from "next/link";
 
 import { Metadata } from "next";
