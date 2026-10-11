@@ -124,27 +124,20 @@ const Paper = ({ post }: { post: PublicationDto }) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className="mt-4 lg:hidden w-full">
-        <h1 className="col-span-full mb-6  font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
+        <h1 className="col-span-full mb-4  font-bold text-black w-full max-w-full text-2xl lg:text-4xl leading-tight lg:leading-[50px]">
           {post.title}
         </h1>
-        <div className="w-full flex items-center gap-x-2 ">
+        <div className="w-full mb-4 flex items-center gap-2 ">
               <Link
-                href={post.file}
-                download={post.title}
-                target="_blank"
+                 href={`/api/publications/download/${slug}`}
+                onClick={trackPublicationDownload}
+                
                 className="inline-flex lg:hidden items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-3 w-fit"
               >
                 Access PDF
                 <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
               </Link>
-              <a
-                href={`/api/publications/download/${slug}`}
-                onClick={trackPublicationDownload}
-                className="inline-flex items-center justify-center border border-deepForest text-deepForest rounded-[8px] py-3 px-3 w-fit hover:bg-deepForest hover:text-white transition-colors"
-              >
-                Download PDF
-                <AiFillFilePdf className="ml-4 h-5 w-auto" />
-              </a>
+            
             </div>
 
         <p className=" text-base font-semibold lg:text-xl leading-[25px] lg:leading-[45px] mb-4 lg:mb-0">
@@ -304,22 +297,15 @@ const Paper = ({ post }: { post: PublicationDto }) => {
           <div className="mx-auto  sticky flex flex-wrap lg:flex-col gap-x-6 gap-y-6 top-0">
             <div className="w-full flex items-center gap-x-2 ">
               <Link
-                href={post.file}
-                download={post.title}
-                target="_blank"
+                href={`/api/publications/download/${slug}`}
+                onClick={trackPublicationDownload}
+               
                 className="hidden lg:inline-flex items-center justify-center bg-deepForest text-white max-lg:text-base border-none rounded-[8px] py-3 px-3 w-fit"
               >
                 Access PDF
                 <AiFillFilePdf className="ml-4 text-white h-5 w-auto" />
               </Link>
-              <a
-                href={`/api/publications/download/${slug}`}
-                onClick={trackPublicationDownload}
-                className="inline-flex items-center justify-center border border-deepForest text-deepForest rounded-[8px] py-3 px-3 w-fit hover:bg-deepForest hover:text-white transition-colors"
-              >
-                Download PDF
-                <AiFillFilePdf className="ml-4 h-5 w-auto" />
-              </a>
+            
             </div>
             <div className="hidden lg:flex w-full lg:w-[300px] flex-col items-center text-center rounded-xl overflow-hidden border border-gray-200 bg-white text-black shadow-md">
               {/* green Accent Bar */}
