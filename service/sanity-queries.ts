@@ -52,11 +52,15 @@ const queries = {
   }] | order(publishedAt desc) {
   title,
   intro,
+ 
   "category": category->slug.current,
   "image": mainImage.asset->url,
   "slug": slug.current,
   publishedAt,
-  "author": author.name,
+    "author": author -> {
+    name,
+    
+  },
 }`,
 
   // Fetches publications by author
@@ -151,12 +155,15 @@ export const getTeam = async () => {
   });
 };
 
-export const getPublications = async ({ category }: { category?: string }) => {
+
+// Add = {} at the end of the parameters
+export const getPublications = async ({ category }: { category?: string } = {}) => {
   const data: PublicationsDto[] = await sanityClient.fetch(
     queries.publications({ category })
   );
   return data;
 };
+
 
 export const getPublicationsByAuthor = async ({ slug }: SanityPropType) => {
   const data = await sanityClient.fetch(queries.publicationsByAuthor({ slug }));

@@ -1,304 +1,188 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import ReactPaginate from "react-paginate";
-
-import { CategoriesDto, PublicationDto } from "@/lib/types";
-import { getSinglePublication } from "@/service/sanity-queries";
-import { usePublications } from "./publication-section";
-import { paths } from "@/components/ui/page-sections/nav-bar/pc";
 import Image from "next/image";
-import { urlFor } from "@/service/sanity";
+
+import { paths } from "@/components/ui/page-sections/nav-bar/pc";
+import { urlFor } from "@/service/sanity"; // Make sure this is properly exported from your Sanity config
 
 interface Publication {
   slug: string;
   title: string;
-  image: string;
+  image: any; 
   publishedAt: string;
   category: string;
   intro: string;
-  categoryName: string;
-  author: {
+  categoryName?: string;
+  author?: {
     name: string;
   };
-  file: string;
+  file?: string;
   abstract: string;
 }
 
 interface PropType {
-  categories: CategoriesDto[];
+  // CRITICAL SEO FIX: You must pass the FULL, pre-fetched publications array 
+  // from your Server Component to this Client Component as a prop.
+  publications: Publication[];
 }
 
 const FILTER_OPTIONS = [
   { label: "Latest Publications", id: "latest_pub" },
   { label: "Academic Papers", id: "academic-papers" },
   { label: "Policy Papers", id: "policy-papers" },
-  { label: "Afrindependent Lens", id: "afrindependent-lens" }, // keep id as "afrindependent-edge"
-  { label: "Afrindependent Post", id: "afrindependent-post" }, // keep id as "afrindependent-blog"
+  { label: "Afrindependent Lens", id: "afrindependent-lens" }, 
+  { label: "Afrindependent Post", id: "afrindependent-post" }, 
 ];
 
-// Map filter ids to URL params — change edge/blog to lens/post only for URL
-const urlFilterMap: Record<string, string> = {
-  "afrindependent-lens": "afrindependent-lens",
-  "afrindependent-post": "afrindependent-post",
-  latest_pub: "latest_pub",
-  "africonomics-papers": "africonomics-papers",
-  policy_papers: "policy_papers",
-};
-
-export default function Filters({ categories }: PropType) {
+export default function Filters({ publications }: PropType) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const filterSectionRef = useRef<HTMLElement>(null);
-  const initialFilter = searchParams.get("filter") || "latest_pub";
-  const [activeFilter, setActiveFilter] = useState(initialFilter);
 
-  const [filteredPublications, setFilteredPublications] = useState<
-    Publication[]
-  >([]);
-  const [publicationData, setPublicationData] = useState<Publication[]>([]);
-  const [updatedPubData, setUpdatedPubData] = useState<any>([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [errorMessage, setErrorMessage] = useState<any>(false);
-  const [featureLoader, setFeatureLoader] = useState<boolean>(true);
-  const [hasFetched, setHasFetched] = useState(false);
+  // SEO FIX: Initialize state directly from URL params so Googlebot 
+  // sees the correct view immediately upon landing on a filtered URL.
+  const activeFilter = searchParams.get("filter") || "latest_pub";
+  const urlPage = parseInt(searchParams.get("page") || "1", 10) - 1;
+  const [currentPage, setCurrentPage] = useState(urlPage > 0 ? urlPage : 0);
 
   const itemsPerPage = 6;
-  const { data: publications } = usePublications({});
 
   useEffect(() => {
-    if (window.location.hash === "#filter" && filterSectionRef.current) {
+    if (typeof window !== "undefined" && window.location.hash === "#filter" && filterSectionRef.current) {
       filterSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
 
-  const titlesInOrder = ["principled paradigm", "purpose", "really"];
-
-  // Step 1: Match publications by keywords in order
-  const orderedFeaturedPublications = titlesInOrder
-    .map((keyword, index) => {
-      const match = publications?.find(
-        (pub) =>
-          pub.title?.toLowerCase().includes(keyword) ||
-          pub.slug?.toLowerCase().includes(keyword),
-      );
-      if (match) {
-        return { ...match };
-      }
-      return null;
-    })
-    .filter(Boolean); // Remove any nulls if no match found
-
-  // Step 2: Remove duplicates by slug
-  const uniqueFeatured = Array.from(
-    new Map(
-      orderedFeaturedPublications.map((item) => [item?.slug, item]),
-    ).values(),
-  );
-
-  // loader for the featured publications section
+  // Sync state if user uses browser back/forward buttons
   useEffect(() => {
-    if (uniqueFeatured.length > 1) setFeatureLoader(false);
-  }, [uniqueFeatured.length]);
- 
+    const pageFromUrl = parseInt(searchParams.get("page") || "1", 10) - 1;
+    setCurrentPage(pageFromUrl > 0 ? pageFromUrl : 0);
+  }, [searchParams]);
 
-  const getRecentPublications = (data: Publication[], maxAgeInDays = 180) => {
-    const now = new Date();
-    const cutoff = new Date(now.setDate(now.getDate() - maxAgeInDays));
-    return data
-      .filter((item) => new Date(item.publishedAt) >= cutoff)
-      .sort(
-        (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-      );
-  };
+  // PERFORMANCE FIX: useMemo prevents the N+1 find/filter loops on every single render
+  const uniqueFeatured = useMemo(() => {
+    if (!publications || publications.length === 0) return [];
+    
+    const titlesInOrder = ["principled paradigm", "purpose", "really"];
+    
+    const ordered = titlesInOrder
+      .map((keyword) => {
+        return publications.find(
+          (pub) =>
+            pub.title?.toLowerCase().includes(keyword) ||
+            pub.slug?.toLowerCase().includes(keyword)
+        );
+      })
+      .filter((pub): pub is Publication => Boolean(pub));
 
-  const filterByCategory = (data: Publication[], category: string) => {
-    return data
-      .filter((item) => item.category === category)
-      .sort(
-        (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-      );
-  };
-
-  const handleFilterClick = (id: string, customData?: Publication[]) => {
-    setCurrentPage(0);
-    setActiveFilter(id);
-
-    const params = new URLSearchParams(window.location.search);
-    params.set("filter", id);
-    router.push(`?${params.toString()}`, { scroll: false });
-
-    setFilteredPublications([]);
-    setPublicationData([]);
-    setLoading(true);
-
-    const dataToUse = customData || updatedPubData;
-    if (!dataToUse) return;
-
-    const result =
-      id === "latest_pub"
-        ? getRecentPublications(dataToUse, 120)
-        : filterByCategory(dataToUse, id);
-
-    const uniqueResults = result.filter(
-      (item, index, self) =>
-        index === self.findIndex((t) => t.slug === item.slug),
-    );
-
-    setFilteredPublications(uniqueResults);
-  };
-
-  useEffect(() => {
-    if (!publications) return;
-
-    setUpdatedPubData(publications);
+    return Array.from(new Map(ordered.map((item) => [item.slug, item])).values());
   }, [publications]);
 
-  useEffect(() => {
-    if (updatedPubData?.length === 0) return;
-    handleFilterClick(activeFilter, updatedPubData);
-  }, [updatedPubData]);
+  // SEO & PERFORMANCE FIX: Filters data synchronously. No loading states required.
+  const filteredPublications = useMemo(() => {
+    if (!publications || publications.length === 0) return [];
 
-  useEffect(() => {
-    const getData = async () => {
-      setLoading(true);
+    let result: Publication[] = [];
+    if (activeFilter === "latest_pub") {
+      const cutoff = new Date();
+      cutoff.setDate(cutoff.getDate() - 120);
 
-      setErrorMessage(null);
+      result = publications
+        .filter((item) => new Date(item.publishedAt) >= cutoff)
+        .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+    } else {
+      result = publications
+        .filter((item) => item.category === activeFilter)
+        .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+    }
 
-      try {
-        if (filteredPublications.length === 0) {
-          setPublicationData([]);
-          setHasFetched(true);
-          return;
-        }
+    return result.filter((item, index, self) => index === self.findIndex((t) => t.slug === item.slug));
+  }, [publications, activeFilter]);
 
-        const results = await Promise.all(
-          filteredPublications.map(async ({ slug, ...rest }) => {
-            const data = await getSinglePublication({ slug });
-            return { ...data, slug, ...rest };
-          }),
-        );
-
-        setPublicationData(results || []);
-        setHasFetched(true);
-      } catch (error) {
-        setErrorMessage("Failed to load publications.");
-        setPublicationData([]);
-        setHasFetched(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getData();
-  }, [filteredPublications]);
-
+  // Pagination logic
   const offset = currentPage * itemsPerPage;
-  const currentItems = publicationData.slice(offset, offset + itemsPerPage);
-  const pageCount = Math.ceil(publicationData.length / itemsPerPage);
-
-  const handlePageClick = (event: { selected: number }) => {
-    setCurrentPage(event.selected);
-  };
+  const currentItems = filteredPublications.slice(offset, offset + itemsPerPage);
+  const pageCount = Math.ceil(filteredPublications.length / itemsPerPage);
 
   const truncateText = (text: string, limit: number) =>
-    text.length > limit ? text.slice(0, limit) + "..." : text;
+    text?.length > limit ? text.slice(0, limit) + "..." : text || "";
 
   const stripHtml = (html: string) => {
     if (!html) return "";
     return html.replace(/<[^>]*>?/gm, "");
   };
 
+  const getImageUrl = (image: any) => {
+    try {
+      return typeof image === 'string' ? `${image}?w=800&h=500&q=80` : urlFor(image).width(800).height(500).quality(80).url();
+    } catch {
+      return typeof image === 'string' ? image : ''; 
+    }
+  };
+
   return (
     <>
-      <section className=" pb-6 px-5 lg:px-10">
+      <section className="pb-6 px-5 lg:px-10">
         <div className="mb-6">
           <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] pl-4">
             Featured Publications
           </h3>
         </div>
-        <div className="">
-          <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-            {featureLoader ? (
-              <div className="col-span-full flex items-center justify-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#ffd700]"></div>
-              </div>
+        <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {uniqueFeatured.length === 0 ? (
+              <p className="text-gray-500 py-10">No featured publications found.</p>
             ) : (
-              <>
-                {uniqueFeatured.map(
-                  (
-                    {
-                      title,
-                      level,
-                      slug,
-                      image,
-                      author,
-                      publishedAt,
-                      abstract,
-                      category,
-                    }: any,
-                    index: number,
-                  ) => (
-                    <Link
-                      key={slug}
-                      href={`${paths.publications}/${slug}?type=${category}`}
-                      className="relative flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg"
-                    >
-                      <div className="absolute top-0 left-0 z-30">
-                        <div className="ribbon-wrapper">
-                          <span className="ribbon">FEATURED</span>
-                        </div>
-                      </div>
-
-                      {/* Image Thumbnail */}
-                      <div className="relative h-[150px] w-full">
-                        <Image
-                          src={`${image}?w=800&h=500&q=80`}
-                          alt={title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-cover"
-                        />
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex flex-col p-4 gap-y-3">
-                        {/* Title */}
-                        <h3 className="text-lg font-semibold text-deepForest">
-                          {title}
-                        </h3>
-
-                        {/* Abstract */}
-                        <p className="text-sm text-gray-700 line-clamp-3">
-                          {truncateText(stripHtml(abstract), 200)}
-                        </p>
-                      </div>
-                    </Link>
-                  ),
-                )}
-              </>
+              uniqueFeatured.map((pub) => (
+                <Link
+                  key={pub.slug}
+                  href={`${paths.publications}/${pub.slug}?type=${pub.category}`}
+                  className="relative flex flex-col bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg"
+                >
+                  <div className="absolute top-0 left-0 z-30">
+                    <div className="ribbon-wrapper">
+                      <span className="ribbon">FEATURED</span>
+                    </div>
+                  </div>
+                  <div className="relative h-[150px] w-full">
+                    <Image
+                      src={getImageUrl(pub.image)}
+                      alt={pub.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col p-4 gap-y-3">
+                    <h3 className="text-lg font-semibold text-deepForest">{pub.title}</h3>
+                    <p className="text-sm text-gray-700 line-clamp-3">
+                      {truncateText(stripHtml(pub.abstract), 200)}
+                    </p>
+                  </div>
+                </Link>
+              ))
             )}
           </div>
         </div>
       </section>
 
-      <section ref={filterSectionRef} className="text-black px-5 mt-2 lg:px-10">
+      <section ref={filterSectionRef} className="text-black px-5 mt-2 lg:px-10" id="filter">
         <h3 className="text-xl lg:text-2xl font-semibold text-deepForest border-l-4 border-[#ffd700] pl-4">
-          Filter by type or topic to begin exploring in-depth, principled
-          research.
+          Filter by type or topic to begin exploring in-depth, principled research.
         </h3>
 
-        {/* Filter Buttons */}
+        {/* SEO FIX: Converted buttons to Next.js Links with URL parameters */}
         <div className="flex flex-col lg:flex-row flex-wrap gap-4 my-5">
           {FILTER_OPTIONS.map((item) => (
-            <button
+            <Link
               key={item.id}
-              onClick={() => handleFilterClick(item.id)}
+              href={`?filter=${item.id}#filter`}
+              scroll={false}
+              onClick={() => setCurrentPage(0)} // Reset pagination on filter change
               className={`py-2 px-4 rounded-xl font-semibold shadow-md border-2 transition duration-300 text-left text-sm lg:text-base ${
                 activeFilter === item.id
                   ? "bg-white text-deepForest border-[#00210d]"
@@ -306,98 +190,74 @@ export default function Filters({ categories }: PropType) {
               }`}
             >
               {item.label}
-            </button>
+            </Link>
           ))}
         </div>
 
-        {/* Active Filter Header */}
         <h4 className="text-xl font-semibold text-deepForest mb-6">
           Showing results for:{" "}
-          <span className="text-[#FFD700]  underline">
-            {FILTER_OPTIONS.find((f) => f.id === activeFilter)
-              ?.label.toUpperCase()
-              .includes("AFRIN")
-              ? `THE  ${FILTER_OPTIONS.find(
-                  (f) => f.id === activeFilter,
-                )?.label.toUpperCase()}`
-              : FILTER_OPTIONS.find(
-                  (f) => f.id === activeFilter,
-                )?.label.toUpperCase()}
+          <span className="text-[#FFD700] underline">
+            {FILTER_OPTIONS.find((f) => f.id === activeFilter)?.label.toUpperCase().includes("AFRIN")
+              ? `THE ${FILTER_OPTIONS.find((f) => f.id === activeFilter)?.label.toUpperCase()}`
+              : FILTER_OPTIONS.find((f) => f.id === activeFilter)?.label.toUpperCase()}
           </span>
         </h4>
 
-        {/* Publications Grid */}
-        {loading ? (
-          <div className="flex justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#ffd700]"></div>
-          </div>
-        ) : hasFetched && currentItems.length === 0 ? (
+        {/* SEO FIX: Removed client-side loading spinners. Content renders instantly for Googlebot */}
+        {currentItems.length === 0 ? (
           <p className="text-gray-500 text-center py-20">
             No publications found for this filter.
           </p>
         ) : (
           <>
-            {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {currentItems.map(
-                ({
-                  slug,
-                  title,
-                  image,
-                  publishedAt,
-                  author,
-                  intro,
-                  category,
-                }) => (
-                  <Link
-                    key={slug}
-                    scroll={true}
-                    href={`${paths.publications}/${slug}?type=${category}`}
-                  >
-                    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col h-full">
-                      <div className="relative h-52 w-full">
-                        <Image
-                          src={`${image}?w=800&h=500&q=80`}
-                          alt={title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-cover"
-                        />
-                      </div>
-
-                      <div className="p-5 flex flex-col gap-y-4 flex-grow">
-                        <h3 className="text-xl font-semibold text-deepForest">
-                          {title}
-                        </h3>
-
-                        {intro && (
-                          <p className="text-gray-700 text-base line-clamp-3">
-                            {intro}
-                          </p>
-                        )}
-
-                        <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
-                          <p>{author?.name}</p>
-                          <span>|</span>
-                          <p className="text-sm">
-                            {new Date(publishedAt).toLocaleDateString("en-GB")}
-                          </p>
-                        </div>
+              {currentItems.map((pub) => (
+                <Link
+                  key={pub.slug}
+                  scroll={true}
+                  href={`${paths.publications}/${pub.slug}?type=${pub.category}`}
+                >
+                  <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col h-full">
+                    <div className="relative h-52 w-full">
+                      <Image
+                        src={getImageUrl(pub.image)}
+                        alt={pub.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-5 flex flex-col gap-y-4 flex-grow">
+                      <h3 className="text-xl font-semibold text-deepForest">{pub.title}</h3>
+                      {pub.intro && (
+                        <p className="text-gray-700 text-base line-clamp-3">{pub.intro}</p>
+                      )}
+                      <div className="flex items-center text-gray-700 gap-x-2 mt-auto">
+                        <p>{pub.author?.name}</p>
+                        <span>|</span>
+                        <p className="text-sm">
+                          {pub.publishedAt ? new Date(pub.publishedAt).toLocaleDateString("en-GB") : ""}
+                        </p>
                       </div>
                     </div>
-                  </Link>
-                ),
-              )}
+                  </div>
+                </Link>
+              ))}
             </div>
 
-            {/* Pagination */}
             <div className="flex justify-center my-10">
               <ReactPaginate
                 previousLabel="← Previous"
                 nextLabel="Next →"
                 breakLabel="..."
                 pageCount={pageCount}
-                onPageChange={handlePageClick}
+                // SEO FIX: Added hrefBuilder so Googlebot sees pagination as real <a href> links
+                hrefBuilder={(page) => `?filter=${activeFilter}&page=${page}#filter`}
+                hrefAllControls={true}
+                onPageChange={(event) => {
+                  setCurrentPage(event.selected);
+                  router.push(`?filter=${activeFilter}&page=${event.selected + 1}#filter`, { scroll: false });
+                }}
                 forcePage={currentPage}
                 containerClassName="flex gap-2"
                 pageClassName="px-4 py-2 rounded border border-gray-300 text-sm"

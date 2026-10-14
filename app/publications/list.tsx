@@ -6,15 +6,14 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 import Filters from "./filters";
-import PublicationSection, { usePublications } from "./publication-section";
 import { paths } from "@/components/ui/page-sections/nav-bar/pc";
 import { CategoriesDto } from "@/lib/types";
 import { IBM_Plex_Sans } from "next/font/google";
 
 const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"], // Or 'latin-ext' if needed
-  weight: ["400", "500", "700"], // Optional: choose weights you use
-  display: "swap", // Optional: improves text rendering
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 interface PropType {
@@ -22,6 +21,8 @@ interface PropType {
   authorSlug?: string;
   categories?: CategoriesDto[];
   showViewMore?: boolean;
+  // SEO FIX: Add publications array to your props
+  publications: any[]; 
 }
 
 const List = ({
@@ -29,16 +30,14 @@ const List = ({
   isComponent = false,
   categories,
   showViewMore = true,
+  publications, // SEO FIX: Receive pre-fetched data from the server
 }: PropType) => {
   const typeParams = useSearchParams();
-
   const type = typeParams.get("type");
-
   const [activeFilter, setActiveFilter] = useState("latest");
-  const { data: publications, isLoading } = usePublications({
-    ...(activeFilter && { category: activeFilter }),
-    authorSlug,
-  });
+
+  // SEO FIX: We completely removed `usePublications()`. 
+  // All filtering will now happen synchronously using the `publications` prop.
 
   useEffect(() => {
     if (type) {
@@ -46,39 +45,37 @@ const List = ({
     }
   }, [type]);
 
+  // Keep your existing keywords logic, but run it against the pre-fetched prop
   const keywords = ["statism", "human-civilization", "nilar"];
-  const seen = new Set<string>();
-  const matchedItems = publications?.filter((item) => {
-    const slug = item.slug;
-    if (!slug) return false;
+  
+  const matchedItems = useMemo(() => {
+    if (!publications) return [];
+    const seen = new Set<string>();
+    
+    return publications.filter((item) => {
+      const slug = item.slug;
+      if (!slug) return false;
 
-    const matchesKeyword = keywords.some((keyword) => slug.includes(keyword));
-    const isUnique = !seen.has(slug);
+      const matchesKeyword = keywords.some((keyword) => slug.includes(keyword));
+      const isUnique = !seen.has(slug);
 
-    if (matchesKeyword && isUnique) {
-      seen.add(slug);
-      return true;
-    }
-
-    return false;
-  });
-
+      if (matchesKeyword && isUnique) {
+        seen.add(slug);
+        return true;
+      }
+      return false;
+    });
+  }, [publications]);
 
   return (
-    <section
-      className={`${isComponent ? "" : ""}  ${ibmPlexSans.className}`}
-    >
+    <section className={`${isComponent ? "" : ""}  ${ibmPlexSans.className}`}>
        {categories?.length ? (
         <Filters
-          categories={categories}
-          
+        
+          // SEO FIX: Pass the server-fetched publications directly into Filters
+          publications={publications} 
         />
       ) : null}
-
-
-   
-     
-      
     </section>
   );
 };
